@@ -25,7 +25,7 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(self.battleship.primary_board_player_one, expected)
 
-    def test_read_computer_config_file(self):
+    def test_read_computer_gamemode_file(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
 
@@ -37,6 +37,17 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(observed_opponent_type, expected_opponent_type)
 
+    def test_read_game_difficulty_config_file(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_game_difficulty = 1
+        # call object of class BattleShip
+        observed_game_difficulty = self.battleship.pick_game_difficulty()
+
+        # assert
+        self.assertEqual(observed_game_difficulty, expected_game_difficulty)
 
 
 # class TestBattleShip(unittest.TestCase):

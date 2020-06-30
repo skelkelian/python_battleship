@@ -18,6 +18,9 @@ class BattleShip:
     # CONSTANTS
     COMPUTER_OPPONENT = 1
     PLAYER_OPPONENT = 2
+    EASY_DIFFICULTY = 1
+    NORMAL_DIFFICULTY = 2
+    GOD_DIFFICULTY = 3
 
     def __init__(self):
 
@@ -40,13 +43,27 @@ class BattleShip:
         # opponent_type defaults to 1 so
         self.opponent_type = self.COMPUTER_OPPONENT
 
-    def pick_gamemode(self):
+        # game_difficulty defaults to 1
+        self.game_difficulty = self.EASY_DIFFICULTY
 
+    def pick_gamemode(self):
+        # read config file
         self.config.read('config.ini')
 
+        # get opponent_type value from config file
         self.opponent_type = int(self.config.get('main', 'opponent_type'))
 
         return self.opponent_type
+
+    def pick_game_difficulty(self):
+        # read config file
+        self.config.read('config.ini')
+
+        # get game_difficulty value from config file
+        self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
+
+        return self.game_difficulty
+
 
     # def start(self):
         
