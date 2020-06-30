@@ -37,8 +37,10 @@ class BattleShip:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
-
+        # creates an object of ConfigParser
         self.config = ConfigParser()
+        # read config file
+        self.config.read('config.ini')
 
         # opponent_type defaults to 1 so
         self.opponent_type = self.COMPUTER_OPPONENT
@@ -47,18 +49,12 @@ class BattleShip:
         self.game_difficulty = self.EASY_DIFFICULTY
 
     def pick_gamemode(self):
-        # read config file
-        self.config.read('config.ini')
-
         # get opponent_type value from config file
         self.opponent_type = int(self.config.get('main', 'opponent_type'))
 
         return self.opponent_type
 
     def pick_game_difficulty(self):
-        # read config file
-        self.config.read('config.ini')
-
         # get game_difficulty value from config file
         self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
 
