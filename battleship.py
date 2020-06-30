@@ -22,7 +22,7 @@ class BattleShip:
     NORMAL_DIFFICULTY = 2
     GOD_DIFFICULTY = 3
 
-    def __init__(self):
+    def __init__(self, config_name):
 
         # create primary board for player 1
         self.primary_board_player_one = [
@@ -40,7 +40,7 @@ class BattleShip:
         # creates an object of ConfigParser
         self.config = ConfigParser()
         # read config file
-        self.config.read('config.ini')
+        self.config.read(config_name)
 
         # opponent_type defaults to 1 so
         self.opponent_type = self.COMPUTER_OPPONENT
