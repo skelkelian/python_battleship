@@ -3,6 +3,7 @@
 
 # imports
 from random import *
+from configparser import ConfigParser
 
 # todo: convert raw numbers to constants, ON=1, OFF=2
 # todo: add tests
@@ -14,6 +15,10 @@ from random import *
 
 
 class BattleShip:
+    # CONSTANTS
+    COMPUTER_OPPONENT = 1
+    PLAYER_OPPONENT = 2
+
     def __init__(self):
 
         # create primary board for player 1
@@ -29,6 +34,19 @@ class BattleShip:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
+
+        self.config = ConfigParser()
+
+        # opponent_type defaults to 1 so
+        self.opponent_type = self.COMPUTER_OPPONENT
+
+    def pick_gamemode(self):
+
+        self.config.read('config.ini')
+
+        self.opponent_type = int(self.config.get('main', 'opponent_type'))
+
+        return self.opponent_type
 
     # def start(self):
         

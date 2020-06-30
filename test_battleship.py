@@ -26,13 +26,13 @@ class TestInit(unittest.TestCase):
         self.assertEqual(self.battleship.primary_board_player_one, expected)
 
     def test_read_computer_config_file(self):
-        # given
-        config = ConfigParser()
-        config.read('config.ini')
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
 
         # when
         expected_opponent_type = 1
-        observed_opponent_type = int(config.get('main', 'opponent_type'))
+        # call an object of class BattleShip
+        observed_opponent_type = self.battleship.pick_gamemode()
 
         # assert
         self.assertEqual(observed_opponent_type, expected_opponent_type)
