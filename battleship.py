@@ -5,8 +5,8 @@
 from random import *
 from configparser import ConfigParser
 
-# todo: convert raw numbers to constants, ON=1, OFF=2
-# todo: add tests
+# todo: create config files for each difficulty
+# todo: create simple print functions
 
 # questions:
 # how does the example in step two have icons in the gutters?
@@ -319,7 +319,7 @@ class BattleShip:
         #     CA2 = (randint(1, 2))  # carrier axis computer
         #
         #     # have computer assign location for carrier
-        #     CR2 = (randint(1, 10))
+        #     CR2 = (intrand(1, 10))
         #     CC2 = (randint(1, 10))
         #
         #     # verify ship will fit
