@@ -8,11 +8,6 @@ from configparser import ConfigParser
 # todo: create config files for each difficulty
 # todo: create simple print functions
 
-# questions:
-# how does the example in step two have icons in the gutters?
-    # left gutter is where the line numbers are and the right gutter is where the scroll down bar is
-
-
 
 class BattleShip:
     # CONSTANTS
@@ -59,6 +54,7 @@ class BattleShip:
         self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
 
         return self.game_difficulty
+
 
 
     # def start(self):
