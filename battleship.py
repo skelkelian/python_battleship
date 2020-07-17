@@ -17,7 +17,7 @@ class BattleShip:
     NORMAL_DIFFICULTY = 2
     GOD_DIFFICULTY = 3
 
-    def __init__(self, config_name):
+    def __init__(self, config_name=None):
 
         # create primary board for player 1
         self.primary_board_player_one = [
@@ -32,39 +32,46 @@ class BattleShip:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
-        # creates an object of ConfigParser
-        self.config = ConfigParser()
-        # read config file
-        self.config.read(config_name)
 
-        # opponent_type defaults to 1 so
-        self.opponent_type = self.COMPUTER_OPPONENT
+        # if there is a config file, take values from there
+        # if not, set the values to default
+        if config_name is not None:
+            # creates an object of ConfigParser
+            self.config = ConfigParser()
 
-        # game_difficulty defaults to 1
-        self.game_difficulty = self.EASY_DIFFICULTY
+            # read config file
+            self.config.read(config_name)
 
-    def pick_gamemode(self):
-        # get opponent_type value from config file
-        self.opponent_type = int(self.config.get('main', 'opponent_type'))
+            # get values from config file
+            self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
+            self.opponent_type = int(self.config.get('main', 'opponent_type'))
+        else:
+            self.game_difficulty = self.EASY_DIFFICULTY
+            self.opponent_type = self.COMPUTER_OPPONENT
 
+    def pick_opponent_type(self):
         return self.opponent_type
 
     def pick_game_difficulty(self):
-        # get game_difficulty value from config file
-        self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
-
         return self.game_difficulty
 
+    def print_directions(self, opponent_type_computer, game_difficulty_easy):
+        print('You have chosen to play against: ' + opponent_type_computer + '\nThe game difficulty is ' + game_difficulty_easy)
+
+# print_directions(opponent_type_computer="Computer", game_difficulty_easy="easy")
+# what does self do? why am i forced to set it to a value
 
 
     # def start(self):
         
         # functions
-        # def # pretty_print_list(self, matrix):
-        #     for row in range(0, len(matrix)):
-        #         print(matrix[row])
-        #         for col in range(0, len(matrix)-1):
-        #             pass
+        #   def pretty_print_list(self, matrix):
+    #         for row in range(0, len(matrix)):
+    #             print(matrix[row])
+    #             for col in range(0, len(matrix)-1):
+    #                 pass
+    #
+
 
         # # display directions
         # print('If you want to play against a computer type 1 \nIf you want to play against a friend type 2\n')
