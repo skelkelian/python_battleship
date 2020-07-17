@@ -5,8 +5,10 @@
 from random import *
 from configparser import ConfigParser
 
-# todo: create config files for each difficulty
 # todo: create simple print functions
+# todo: add config parameters for each ship (axis, row, column)
+# todo: add error handling in our function
+# todo: create a class for player and class for computer
 
 
 class BattleShip:
@@ -320,7 +322,7 @@ class BattleShip:
         #     CA2 = (randint(1, 2))  # carrier axis computer
         #
         #     # have computer assign location for carrier
-        #     CR2 = (intrand(1, 10))
+        #     CR2 = (randint(1, 10))
         #     CC2 = (randint(1, 10))
         #
         #     # verify ship will fit
