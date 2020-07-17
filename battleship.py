@@ -49,17 +49,15 @@ class BattleShip:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
 
-    def pick_opponent_type(self):
+    def get_opponent_type(self):
         return self.opponent_type
 
-    def pick_game_difficulty(self):
+    def get_game_difficulty(self):
         return self.game_difficulty
 
-    def print_directions(self, opponent_type_computer, game_difficulty_easy):
-        print('You have chosen to play against: ' + opponent_type_computer + '\nThe game difficulty is ' + game_difficulty_easy)
-
-# print_directions(opponent_type_computer="Computer", game_difficulty_easy="easy")
-# what does self do? why am i forced to set it to a value
+    def print_directions(self):
+        print('You have chosen to play against: ' + str(self.get_opponent_type()) +
+              '\nThe game difficulty is ' + str(self.get_game_difficulty()))
 
 
     # def start(self):
