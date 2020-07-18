@@ -6,11 +6,13 @@ from random import *
 from configparser import ConfigParser
 
 # todo: read new config parameters for each ship (axis, row, column)
-# todo: refactor magic numbers
+# todo: refactor magic numbers, variable names and comments
+# todo: add new config parameters for the rest of the ships (axis, row, column)
 # todo: add logic for config parameters (axis, row, column)
 # todo: create simple print functions (pretty print)
 # todo: add error handling for opponent type (like game difficulty)
 # todo: create a class for player and class for computer
+# todo: create method that places the computer ships too
 
 
 class BattleShip:
