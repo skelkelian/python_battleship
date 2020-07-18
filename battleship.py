@@ -6,7 +6,7 @@ from random import *
 from configparser import ConfigParser
 
 # todo: create simple print functions
-# todo: add config parameters for each ship (axis, row, column)
+# todo: add config parameters for each ship (axis, row, column) ✓
 # todo: add error handling in our function
 # todo: create a class for player and class for computer
 
@@ -21,8 +21,21 @@ class BattleShip:
 
     def __init__(self, config_name=None):
 
-        # create primary board for player 1
+        # create primary board for player 1 and computer
         self.primary_board_player_one = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        self.primary_board_computer = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

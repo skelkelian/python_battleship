@@ -3,6 +3,7 @@ import unittest
 from battleship import BattleShip
 from configparser import ConfigParser
 
+
 class TestInit(unittest.TestCase):
     def test_player_board_1(self):
         # given
