@@ -6,8 +6,9 @@ from random import *
 from configparser import ConfigParser
 
 # todo: read new config parameters for each ship (axis, row, column)
+# todo: refactor magic numbers
 # todo: add logic for config parameters (axis, row, column)
-# todo: create simple print functions
+# todo: create simple print functions (pretty print)
 # todo: add error handling for opponent type (like game difficulty)
 # todo: create a class for player and class for computer
 
@@ -19,6 +20,7 @@ class BattleShip:
     EASY_DIFFICULTY = 1
     NORMAL_DIFFICULTY = 2
     GOD_DIFFICULTY = 3
+    CARRIER = 5
 
     def __init__(self, config_name=None):
 
@@ -61,6 +63,7 @@ class BattleShip:
             # get values from config file
             self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
             self.opponent_type = int(self.config.get('main', 'opponent_type'))
+            self.modify_primary_board_player_one()
             self.validate_game_difficulty()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
@@ -71,6 +74,9 @@ class BattleShip:
 
     def get_game_difficulty(self):
         return self.game_difficulty
+
+    def get_primary_board_player_one(self):
+        return self.primary_board_player_one
 
     def print_directions(self):
         print('You have chosen to play against: ' + str(self.get_opponent_type()) +
@@ -83,8 +89,30 @@ class BattleShip:
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
 
+    def modify_primary_board_player_one(self):
+        carrier_values_player_one = self.config.get('main', 'carrier_player')
+        carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
+        carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
+        carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
+        if carrier_axis_player_one == 1:
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = 5
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = 5
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = 5
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = 5
+        else:
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = 5
 
-    # def start(self):
+
+
+
+
+
+        # def start(self):
         
         # functions
         #   def pretty_print_list(self, matrix):

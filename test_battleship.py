@@ -7,7 +7,7 @@ from configparser import ConfigParser
 class TestInit(unittest.TestCase):
     def test_player_board_1(self):
         # given
-        expected = [
+        expected_player_board_1 = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,7 +25,7 @@ class TestInit(unittest.TestCase):
         # does the line above matter because we are not extracting a value from config file in this function?
 
         # assert
-        self.assertEqual(self.battleship.primary_board_player_one, expected)
+        self.assertEqual(self.battleship.primary_board_player_one, expected_player_board_1)
 
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
@@ -77,6 +77,32 @@ class TestInit(unittest.TestCase):
 
         # assert
         self.assertEqual(observed_game_difficulty, expected_game_difficulty)
+
+    def test_player_ship_placements(self):
+        # given
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+
+        expected_primary_board_player_one = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # when
+        observed_primary_board_player_one = self.battleship.get_primary_board_player_one()
+
+        # assert
+        self.assertEqual(observed_primary_board_player_one, expected_primary_board_player_one)
+
+
 
     # def test_simulate_game(self):
     #     # create an object of class BattleShip
