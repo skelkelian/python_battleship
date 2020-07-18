@@ -33,7 +33,7 @@ class TestInit(unittest.TestCase):
 
         # when
         expected_opponent_type = 1
-        # call an object of class BattleShip
+        # call method of object BattleShip
         observed_opponent_type = self.battleship.get_opponent_type()
 
         # assert
@@ -45,7 +45,7 @@ class TestInit(unittest.TestCase):
 
         # when
         expected_game_difficulty = 1
-        # call object of class BattleShip
+        # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
         # assert
@@ -58,7 +58,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_game_difficulty = 1
         expected_opponent_type = 1
-        # call object of class BattleShip
+        # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
         observed_opponent_type = self.battleship.get_opponent_type()
 
@@ -66,16 +66,28 @@ class TestInit(unittest.TestCase):
         self.assertEqual(observed_game_difficulty, expected_game_difficulty)
         self.assertEqual(observed_opponent_type, expected_opponent_type)
 
-    def test_simulate_game(self):
+    def test_validate_game_difficulty(self):
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
-        self.battleship.print_directions()
-
-
+        # when
+        expected_game_difficulty = 1
+        # call method of object BattleShip
+        observed_game_difficulty = self.battleship.get_game_difficulty()
 
         # assert
-        self.assertEqual(1,1)
+        self.assertEqual(observed_game_difficulty, expected_game_difficulty)
+
+    # def test_simulate_game(self):
+    #     # create an object of class BattleShip
+    #     self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+    #
+    #     self.battleship.print_directions()
+    #
+    #
+    #
+    #     # assert
+    #     self.assertEqual(1,1)
 
 
 # class TestBattleShip(unittest.TestCase):

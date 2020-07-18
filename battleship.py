@@ -5,9 +5,10 @@
 from random import *
 from configparser import ConfigParser
 
+# todo: read new config parameters for each ship (axis, row, column)
+# todo: add logic for config parameters (axis, row, column)
 # todo: create simple print functions
-# todo: add config parameters for each ship (axis, row, column) ✓
-# todo: add error handling in our function
+# todo: add error handling for opponent type (like game difficulty)
 # todo: create a class for player and class for computer
 
 
@@ -60,6 +61,7 @@ class BattleShip:
             # get values from config file
             self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
             self.opponent_type = int(self.config.get('main', 'opponent_type'))
+            self.validate_game_difficulty()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -73,6 +75,13 @@ class BattleShip:
     def print_directions(self):
         print('You have chosen to play against: ' + str(self.get_opponent_type()) +
               '\nThe game difficulty is ' + str(self.get_game_difficulty()))
+
+    def validate_game_difficulty(self):
+        if self.game_difficulty != 1 and self.game_difficulty != 2 and self.game_difficulty != 3:
+            self.game_difficulty = self.EASY_DIFFICULTY
+            print('You have selected an invalid choice for game difficulty.' +
+                  '\nThe game difficulty has defaulted to easy.' +
+                  '\nNext time try to choose a value that is valid.')
 
 
     # def start(self):
