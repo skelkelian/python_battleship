@@ -5,9 +5,9 @@ from configparser import ConfigParser
 
 
 class TestInit(unittest.TestCase):
-    def test_player_board_1(self):
+    def test_player_board_one(self):
         # given
-        expected_player_board_1 = [
+        expected_player_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,14 +25,14 @@ class TestInit(unittest.TestCase):
         # does the line above matter because we are not extracting a value from config file in this function?
 
         # assert
-        self.assertEqual(self.battleship.primary_board_player_one, expected_player_board_1)
+        self.assertEqual(self.battleship.PRIMARY_BOARD_START, expected_player_board_player_one)
 
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
 
         # when
-        expected_opponent_type = 1
+        expected_opponent_type = self.battleship.COMPUTER_OPPONENT
         # call method of object BattleShip
         observed_opponent_type = self.battleship.get_opponent_type()
 
@@ -44,7 +44,7 @@ class TestInit(unittest.TestCase):
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
 
         # when
-        expected_game_difficulty = 1
+        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
@@ -56,8 +56,8 @@ class TestInit(unittest.TestCase):
         self.battleship = BattleShip()
 
         # when
-        expected_game_difficulty = 1
-        expected_opponent_type = 1
+        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
+        expected_opponent_type = self.battleship.COMPUTER_OPPONENT
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
         observed_opponent_type = self.battleship.get_opponent_type()
@@ -71,7 +71,7 @@ class TestInit(unittest.TestCase):
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
         # when
-        expected_game_difficulty = 1
+        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
 

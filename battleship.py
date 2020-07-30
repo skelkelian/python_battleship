@@ -6,7 +6,7 @@ from random import *
 from configparser import ConfigParser
 
 # todo: read new config parameters for each ship (axis, row, column)
-# todo: refactor magic numbers, variable names and comments
+# todo: refactor magic numbers, variable names and comments for test file
 # todo: add new config parameters for the rest of the ships (axis, row, column)
 # todo: add logic for config parameters (axis, row, column)
 # todo: create simple print functions (pretty print)
@@ -23,6 +23,32 @@ class BattleShip:
     NORMAL_DIFFICULTY = 2
     GOD_DIFFICULTY = 3
     CARRIER = 5
+    PRIMARY_BOARD_START = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+    # so i had an issue with test_player_board_one(self): because it was expecting to get a
+    # 10x10 list of zeros however, when we created the modify_primary_board_player_one(self):
+    # it modified the existing variable self.primary_board_player_one. for some odd reason,
+    # we did not catch that last time or did not get an error. I fixed this issue by created a
+    # constant called PRIMARY_BOARD_START which is a 10x10 list of zeros that we can use for testing
+
+    # okay one more thing; i got an error with test_validate_game_difficulty because
+    # configparser.NoOptionError: No option 'carrier_player' in section: 'main'
+    # this is confusing because in test_validate_game_difficulty, we do not need
+    # to extract the values from carrier_player in the config_easy_difficulty_with_errors.
+    # we need to extract the game_difficulty value from that config file. for the life of
+    # me i do not understand why i am getting this issue and why we did not face this issue
+    # during our last meeting.
 
     def __init__(self, config_name=None):
 
