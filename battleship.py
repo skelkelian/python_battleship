@@ -13,6 +13,7 @@ from configparser import ConfigParser
 # todo: add error handling for opponent type (like game difficulty)
 # todo: create a class for player and class for computer
 # todo: create method that places the computer ships too
+# todo: add validate functions for each value in config file
 
 
 class BattleShip:
@@ -91,7 +92,6 @@ class BattleShip:
             # get values from config file
             self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
             self.opponent_type = int(self.config.get('main', 'opponent_type'))
-            self.modify_primary_board_player_one()
             self.validate_game_difficulty()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
@@ -135,6 +135,8 @@ class BattleShip:
             self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = 5
             self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = 5
 
+    def start_game(self):
+        self.modify_primary_board_player_one()
 
 
 
