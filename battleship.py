@@ -15,16 +15,35 @@ from configparser import ConfigParser
 # todo: create method that places the computer ships too
 # todo: add validate functions for each value in config file
 
+# todo: BEFORE NEXT MEETING WITH KERI
+# todo: REFACTOR ALL MAGIC NUMBERS INTO CONSTANTS IN BOTH IN TEST FILE AND IN REGULAR FILE
+
 
 class BattleShip:
     # CONSTANTS
+
+    # OPPONENT TYPE
     COMPUTER_OPPONENT = 1
     PLAYER_OPPONENT = 2
+
+    # GAME DIFFICULTY
     EASY_DIFFICULTY = 1
     NORMAL_DIFFICULTY = 2
     GOD_DIFFICULTY = 3
+
+    # SHIP IDENTIFICATION
     CARRIER = 5
-    PRIMARY_BOARD_START = [
+    BATTLESHIP = 4
+    DESTROYER = 3
+    PATROL_BOAT = 2
+    SUBMARINE = 1
+
+    # AXIS
+    HORIZONTAL_AXIS = 1
+    VERTICAL_AXIS = 2
+
+    # BOARD
+    PRIMARY_BOARD = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -36,12 +55,26 @@ class BattleShip:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
+    SECONDARY_BOARD = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+    # I created constants for the primary/secondary board. Should I use it to replace the 10x10 list or is that 10x10
+    # list self explanatory?
 
     # so i had an issue with test_player_board_one(self): because it was expecting to get a
     # 10x10 list of zeros however, when we created the modify_primary_board_player_one(self):
     # it modified the existing variable self.primary_board_player_one. for some odd reason,
     # we did not catch that last time or did not get an error. I fixed this issue by created a
-    # constant called PRIMARY_BOARD_START which is a 10x10 list of zeros that we can use for testing
+    # constant called PRIMARY_BOARD which is a 10x10 list of zeros that we can use for testing
 
     # okay one more thing; i got an error with test_validate_game_difficulty because
     # configparser.NoOptionError: No option 'carrier_player' in section: 'main'
@@ -111,7 +144,8 @@ class BattleShip:
               '\nThe game difficulty is ' + str(self.get_game_difficulty()))
 
     def validate_game_difficulty(self):
-        if self.game_difficulty != 1 and self.game_difficulty != 2 and self.game_difficulty != 3:
+        if self.game_difficulty != self.EASY_DIFFICULTY and self.game_difficulty != self.NORMAL_DIFFICULTY and \
+                self.game_difficulty != self.GOD_DIFFICULTY:
             self.game_difficulty = self.EASY_DIFFICULTY
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
@@ -122,18 +156,20 @@ class BattleShip:
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        if carrier_axis_player_one == 1:
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = 5
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = 5
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = 5
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = 5
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = 5
+        if carrier_axis_player_one == self.HORIZONTAL_AXIS:
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = self.CARRIER
         else:
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = 5
-            self.primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = 5
-            self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = 5
-            self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = 5
-            self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = 5
+            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.CARRIER
+            self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.CARRIER
+            # I'm not sure if I need to change the magic numbers above (in the if statement) because I don't know
+            # what to call it. If I do need to change it, what should I call the constant so it makes sense?
 
     def start_game(self):
         self.modify_primary_board_player_one()
