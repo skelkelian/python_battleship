@@ -71,7 +71,7 @@ class BattleShip:
     # list self explanatory?
 
     # so i had an issue with test_player_board_one(self): because it was expecting to get a
-    # 10x10 list of zeros however, when we created the modify_primary_board_player_one(self):
+    # 10x10 list of zeros however, when we created the place_carrier_player_one(self):
     # it modified the existing variable self.primary_board_player_one. for some odd reason,
     # we did not catch that last time or did not get an error. I fixed this issue by created a
     # constant called PRIMARY_BOARD which is a 10x10 list of zeros that we can use for testing
@@ -151,7 +151,7 @@ class BattleShip:
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
 
-    def modify_primary_board_player_one(self):
+    def place_carrier_player_one(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
@@ -172,7 +172,7 @@ class BattleShip:
             # what to call it. If I do need to change it, what should I call the constant so it makes sense?
 
     def start_game(self):
-        self.modify_primary_board_player_one()
+        self.place_carrier_player_one()
 
 
 
