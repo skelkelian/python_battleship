@@ -25,7 +25,7 @@ class TestInit(unittest.TestCase):
         # does the line above matter because we are not extracting a value from config file in this function?
 
         # assert
-        self.assertEqual(self.battleship.primary_board_player_one, expected_player_board_player_one)
+        self.assertEqual(expected_player_board_player_one, self.battleship.primary_board_player_one)
 
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
@@ -37,7 +37,7 @@ class TestInit(unittest.TestCase):
         observed_opponent_type = self.battleship.get_opponent_type()
 
         # assert
-        self.assertEqual(observed_opponent_type, expected_opponent_type)
+        self.assertEqual(expected_opponent_type, observed_opponent_type)
 
     def test_read_game_difficulty_config_file(self):
         # create an object of class BattleShip
@@ -49,7 +49,7 @@ class TestInit(unittest.TestCase):
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
         # assert
-        self.assertEqual(observed_game_difficulty, expected_game_difficulty)
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
 
     def test_read_value_without_config_file(self):
         # create an object of class BattleShip
@@ -63,8 +63,8 @@ class TestInit(unittest.TestCase):
         observed_opponent_type = self.battleship.get_opponent_type()
 
         # assert
-        self.assertEqual(observed_game_difficulty, expected_game_difficulty)
-        self.assertEqual(observed_opponent_type, expected_opponent_type)
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
+        self.assertEqual(expected_opponent_type, observed_opponent_type)
 
     def test_validate_game_difficulty(self):
         # create an object of class BattleShip
@@ -76,7 +76,7 @@ class TestInit(unittest.TestCase):
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
         # assert
-        self.assertEqual(observed_game_difficulty, expected_game_difficulty)
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
 
     def test_start_game(self):
         # given
@@ -85,7 +85,7 @@ class TestInit(unittest.TestCase):
 
         # when
         expected_primary_board_player_one = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 3, 3, 3],
             [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -101,27 +101,10 @@ class TestInit(unittest.TestCase):
         observed_primary_board_player_one = self.battleship.get_primary_board_player_one()
 
         # assert
-        self.assertEqual(observed_primary_board_player_one, expected_primary_board_player_one)
+        self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
 
-
-
-    # def test_simulate_game(self):
-    #     # create an object of class BattleShip
-    #     self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-    #
-    #     self.battleship.print_directions()
-    #
-    #
-    #
-    #     # assert
-    #     self.assertEqual(1,1)
-
-
-# class TestBattleShip(unittest.TestCase):
-    # def setUp(self):
-    #     self.battleship = BattleShip()  # creating an object
-        # class contains methods/functions and fields/attributes
-        # method is a function in a class
-        # watch introductory python vid abt classes and methods
-        # figure out what python self is from yt
-
+# SOMETHING UNUSUAL HAPPENED
+# I TOOK THE SHIP POINTS OUT OF THE SECOND CONFIG FILE (CONFIG FILE W ERRORS) AND IT STILL WORKED
+# THIS IS NORMAL AND LOGICAL AND WHAT I THINK SHOULD HAPPEN HOWEVER, WHEN I WAS WORKING ON THE FIRST
+# SHIP PLACEMENTS (CARRIER), I NEEDED TO PUT THE VALUES IN BOTH CONFIG FILES. NOW FOR SOME ODD REASON,
+# I DON'T NEED TO AND ALL THE TESTS STILL PASS IF I TAKE OUT CARRIER & BATTLESHIP FROM SECOND CONFIG FILE
