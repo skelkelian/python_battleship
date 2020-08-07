@@ -201,10 +201,38 @@ class BattleShip:
             self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.DESTROYER
             self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.DESTROYER
 
+    def place_patrol_boat_player_one(self):
+        patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.PATROL_BOAT
+        else:
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
+
+    def place_submarine_player_one(self):
+        submarine_values_player_one = self.config.get('main', 'submarine_player')
+        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
+        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
+        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
+        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.SUBMARINE
+        else:
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.SUBMARINE
+
     def start_game(self):
         self.place_carrier_player_one()
         self.place_battleship_player_one()
         self.place_destroyer_player_one()
+        self.place_patrol_boat_player_one()
+        self.place_submarine_player_one()
 
 
 
