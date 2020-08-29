@@ -3,6 +3,7 @@
 from random import *
 from configparser import ConfigParser
 
+
 # TODO'S NOW
 # todo: add validate functions for each value in config file
     # todo: make sure that validate function doesn't allow ships to overlap
@@ -10,6 +11,9 @@ from configparser import ConfigParser
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
+# todo: DRY object creation for object BattleShip
+# YAGNI (you ain't gonna need it)
+# DRY (don't repeat yourself)
 
 
 # TODO'S LATER
@@ -167,6 +171,8 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
+            return False
+        return True
 
     def place_carrier_player_one(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
