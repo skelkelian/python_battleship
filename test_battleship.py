@@ -5,6 +5,9 @@ from configparser import ConfigParser
 
 
 class TestInit(unittest.TestCase):
+
+# read
+
     def test_player_board_one(self):
         # given
         expected_player_board_player_one = [
@@ -66,6 +69,8 @@ class TestInit(unittest.TestCase):
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
         self.assertEqual(expected_opponent_type, observed_opponent_type)
 
+# validate
+
     def test_validate_game_difficulty(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
@@ -90,8 +95,19 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
-    # def test_ship_sunk(self):
-    #     pass
+    def test_validate_battleship_points(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_success
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+# start game
 
     def test_start_game(self):
         # given
@@ -117,9 +133,3 @@ class TestInit(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
-
-# SOMETHING UNUSUAL HAPPENED
-# I TOOK THE SHIP POINTS OUT OF THE SECOND CONFIG FILE (CONFIG FILE W ERRORS) AND IT STILL WORKED
-# THIS IS NORMAL AND LOGICAL AND WHAT I THINK SHOULD HAPPEN HOWEVER, WHEN I WAS WORKING ON THE FIRST
-# SHIP PLACEMENTS (CARRIER), I NEEDED TO PUT THE VALUES IN BOTH CONFIG FILES. NOW FOR SOME ODD REASON,
-# I DON'T NEED TO AND ALL THE TESTS STILL PASS IF I TAKE OUT CARRIER & BATTLESHIP FROM SECOND CONFIG FILE
