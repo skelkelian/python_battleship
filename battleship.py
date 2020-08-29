@@ -187,9 +187,24 @@ class BattleShip:
             self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] = self.BATTLESHIP
             self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] = self.BATTLESHIP
 
+    def place_destroyer_player_one(self):
+        destroyer_values_player_one = self.config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.DESTROYER
+        else:
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.DESTROYER
+
     def start_game(self):
         self.place_carrier_player_one()
         self.place_battleship_player_one()
+        self.place_destroyer_player_one()
 
 
 
