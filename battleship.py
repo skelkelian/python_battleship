@@ -1,22 +1,19 @@
 # battleship
-# enhancements: play sound after player wins, god mode difficulty, keep hitting until miss
-
 # imports
 from random import *
 from configparser import ConfigParser
 
-# todo: read new config parameters for each ship (axis, row, column)
-# todo: refactor magic numbers, variable names and comments for test file
-# todo: add new config parameters for the rest of the ships (axis, row, column)
-# todo: add logic for config parameters (axis, row, column)
-# todo: create simple print functions (pretty print)
-# todo: add error handling for opponent type (like game difficulty)
-# todo: create a class for player and class for computer
-# todo: create method that places the computer ships too
+# TODO'S NOW
 # todo: add validate functions for each value in config file
+# todo: create functions that know when ship is sunk and if game is over
 
-# todo: BEFORE NEXT MEETING WITH KERI
-# todo: REFACTOR ALL MAGIC NUMBERS INTO CONSTANTS IN BOTH IN TEST FILE AND IN REGULAR FILE
+
+# TODO'S LATER
+# todo: create a class for player and class for computer
+    # todo: keep track of stats (total shots fired, percent accuracy, number of turns, time)
+    #  for player and computer to display at end of game
+# todo: create method that places the computer ships too
+# todo: create simple print functions (pretty print)
 
 
 class BattleShip:
@@ -41,6 +38,9 @@ class BattleShip:
     # AXIS
     HORIZONTAL_AXIS = 1
     VERTICAL_AXIS = 2
+
+    # VALIDATION
+    validation_success = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -69,20 +69,6 @@ class BattleShip:
         ]
     # I created constants for the primary/secondary board. Should I use it to replace the 10x10 list or is that 10x10
     # list self explanatory?
-
-    # so i had an issue with test_player_board_one(self): because it was expecting to get a
-    # 10x10 list of zeros however, when we created the place_carrier_player_one(self):
-    # it modified the existing variable self.primary_board_player_one. for some odd reason,
-    # we did not catch that last time or did not get an error. I fixed this issue by created a
-    # constant called PRIMARY_BOARD which is a 10x10 list of zeros that we can use for testing
-
-    # okay one more thing; i got an error with test_validate_game_difficulty because
-    # configparser.NoOptionError: No option 'carrier_player' in section: 'main'
-    # this is confusing because in test_validate_game_difficulty, we do not need
-    # to extract the values from carrier_player in the config_easy_difficulty_with_errors.
-    # we need to extract the game_difficulty value from that config file. for the life of
-    # me i do not understand why i am getting this issue and why we did not face this issue
-    # during our last meeting.
 
     def __init__(self, config_name=None):
 
@@ -126,6 +112,7 @@ class BattleShip:
             self.game_difficulty = int(self.config.get('main', 'game_difficulty'))
             self.opponent_type = int(self.config.get('main', 'opponent_type'))
             self.validate_game_difficulty()
+            self.validate_carrier_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -168,8 +155,6 @@ class BattleShip:
             self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.CARRIER
             self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.CARRIER
             self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.CARRIER
-            # I'm not sure if I need to change the magic numbers above (in the if statement) because I don't know
-            # what to call it. If I do need to change it, what should I call the constant so it makes sense?
 
     def place_battleship_player_one(self):
         battleship_values_player_one = self.config.get('main', 'battleship_player')
@@ -226,6 +211,37 @@ class BattleShip:
             self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
             self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.SUBMARINE
             self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.SUBMARINE
+
+    def validate_carrier_points(self):
+        carrier_values_player_one = self.config.get('main', 'carrier_player')
+        carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
+        carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
+        carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if carrier_axis_player_one != self.HORIZONTAL_AXIS or self.VERTICAL_AXIS:
+            print("The carrier axis value is invalid.")
+            self.validation_success = False
+
+        # check row
+        if carrier_axis_player_one == self.VERTICAL_AXIS:
+            if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.validation_success = False
+        elif carrier_axis_player_one == self.HORIZONTAL_AXIS:
+            if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.validation_success = False
+
+        # check column
+        if carrier_axis_player_one == self.HORIZONTAL_AXIS:
+            if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.validation_success = False
+        elif carrier_axis_player_one == self.VERTICAL_AXIS:
+            if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.validation_success = False
 
     def start_game(self):
         self.place_carrier_player_one()
@@ -320,9 +336,6 @@ class BattleShip:
         #         self.primary_board_player_one[CR1 + 2][CC1 - 1] = 5
         #         self.primary_board_player_one[CR1 + 3][CC1 - 1] = 5
         #
-        #     # this was the function I made in matlab idk if we will keep it
-        #     # place rest of points
-        #     # PB1 = placing_carrier_points(PB1, CA1, CR1, CC1)
         #
         #     # display board
         #     # # pretty_print_list(self.primary_board_player_one)
