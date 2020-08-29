@@ -171,8 +171,25 @@ class BattleShip:
             # I'm not sure if I need to change the magic numbers above (in the if statement) because I don't know
             # what to call it. If I do need to change it, what should I call the constant so it makes sense?
 
+    def place_battleship_player_one(self):
+        battleship_values_player_one = self.config.get('main', 'battleship_player')
+        battleship_axis_player_one = int(battleship_values_player_one.split(',')[0].strip())
+        battleship_row_player_one = int(battleship_values_player_one.split(',')[1].strip())
+        battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
+        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 2] = self.BATTLESHIP
+        else:
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one][battleship_column_player_one - 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] = self.BATTLESHIP
+
     def start_game(self):
         self.place_carrier_player_one()
+        self.place_battleship_player_one()
 
 
 
