@@ -1,6 +1,7 @@
 from unittest import TestCase
 import unittest
-from battleship import BattleShip
+from BattleShip import BattleShip
+from unittest.mock import patch
 from configparser import ConfigParser
 
 
@@ -71,7 +72,8 @@ class TestInit(unittest.TestCase):
 
 # validate
 
-    def test_validate_game_difficulty(self):
+    @patch('BattleShip.BattleShip.validate_carrier_points', return_value=True)
+    def test_validate_game_difficulty(self, validate_carrier_points):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
@@ -83,7 +85,8 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
 
-    def test_validate_carrier_points(self):
+    @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
+    def test_validate_carrier_points(self, validate_game_difficulty):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
