@@ -3,18 +3,13 @@
 from random import *
 from configparser import ConfigParser
 
-
 # TODO'S NOW
 # todo: add validate functions for each value in config file
     # todo: make sure that validate function doesn't allow ships to overlap
     # todo: create a mock for the function validate_game_difficulty
-    # todo: create a test for validation_success=true in test_validate_carrier_points
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
-# todo: DRY object creation for object BattleShip
-# YAGNI (you ain't gonna need it)
-# DRY (don't repeat yourself)
 
 
 # TODO'S LATER
@@ -172,8 +167,6 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
-            return False
-        return True
 
     def place_carrier_player_one(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
@@ -254,7 +247,6 @@ class BattleShip:
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        self.validation_success = True
 
         # check axis
         if carrier_axis_player_one != self.HORIZONTAL_AXIS or self.VERTICAL_AXIS:
@@ -280,7 +272,6 @@ class BattleShip:
             if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.validation_success = False
-        return self.validation_success
 
     def start_game(self):
         self.place_carrier_player_one()
