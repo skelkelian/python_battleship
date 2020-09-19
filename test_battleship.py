@@ -106,7 +106,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_carrier
+        observed_result = self.battleship.validation_flag_battleship
 
         # assert
         self.assertEqual(expected_result, observed_result)
