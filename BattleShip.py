@@ -7,14 +7,11 @@ from configparser import ConfigParser
 # TODO'S NOW
 # todo: add validate functions for each value in config file
     # todo: make sure that validate function doesn't allow ships to overlap
-    # todo: create a mock for the function validate_game_difficulty
     # todo: create a test for validation_success=true in test_validate_carrier_points
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
 # todo: DRY object creation for object BattleShip
-# YAGNI (you ain't gonna need it)
-# DRY (don't repeat yourself)
 
 
 # TODO'S LATER
@@ -49,7 +46,7 @@ class BattleShip:
     VERTICAL_AXIS = 2
 
     # VALIDATION
-    validation_success = True
+    validation_flag_carrier = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -161,6 +158,9 @@ class BattleShip:
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
 
+    def get_secondary_board_player_one(self):
+        return self.secondary_board_player_one
+
     def print_directions(self):
         print('You have chosen to play against: ' + str(self.get_opponent_type()) +
               '\nThe game difficulty is ' + str(self.get_game_difficulty()))
@@ -254,33 +254,33 @@ class BattleShip:
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        self.validation_success = True
+        self.validation_flag_carrier = True
 
         # check axis
         if carrier_axis_player_one != self.HORIZONTAL_AXIS or self.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
-            self.validation_success = False
+            self.validation_flag_carrier = False
 
         # check row
         if carrier_axis_player_one == self.VERTICAL_AXIS:
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
         elif carrier_axis_player_one == self.HORIZONTAL_AXIS:
             if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
 
         # check column
         if carrier_axis_player_one == self.HORIZONTAL_AXIS:
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
         elif carrier_axis_player_one == self.VERTICAL_AXIS:
             if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_success = False
-        return self.validation_success
+                self.validation_flag_carrier = False
+        return self.validation_flag_carrier
 
     def start_game(self):
         self.place_carrier_player_one()
@@ -289,7 +289,10 @@ class BattleShip:
         self.place_patrol_boat_player_one()
         self.place_submarine_player_one()
 
-
+        # def test_pick_target(self):
+        #     row_picked = (randint(1, 10))
+        #
+        #     return ____
 
 
 
