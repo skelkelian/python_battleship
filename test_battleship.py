@@ -79,9 +79,9 @@ class TestInit(unittest.TestCase):
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
         # when
-        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
+        expected_game_difficulty = False
         # call method of object BattleShip
-        observed_game_difficulty = self.battleship.get_game_difficulty()
+        observed_game_difficulty = self.battleship.validate_game_difficulty()
 
         # assert
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)

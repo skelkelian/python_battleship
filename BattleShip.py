@@ -47,6 +47,7 @@ class BattleShip:
 
     # VALIDATION
     validation_flag_carrier = True
+    validation_flag_game = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -172,8 +173,8 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
-            return False
-        return True
+            self.validation_flag_game = False
+        return self.validation_flag_game
 
     def place_carrier_player_one(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
