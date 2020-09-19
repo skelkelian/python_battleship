@@ -262,7 +262,7 @@ class BattleShip:
         self.validation_flag_carrier = True
 
         # check axis
-        if carrier_axis_player_one != self.HORIZONTAL_AXIS or self.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.HORIZONTAL_AXIS and carrier_axis_player_one != self.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.validation_flag_carrier = False
 
