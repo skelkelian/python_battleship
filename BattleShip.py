@@ -6,8 +6,6 @@ from configparser import ConfigParser
 
 # TODO'S NOW
 # todo: add validate functions for each value in config file
-    # todo: (MAKE SURE TO REMOVE USELESS LINE THAT SETS VALIDATION_FLAG_CARRIER = TRUE AGAIN WHEN U DONT NEED TO
-    # todo: FIX CARRIER POINTS
     # todo: make sure that validate function doesn't allow ships to overlap
     # todo: create a test for validation_success=true in test_validate_carrier_points
 
@@ -51,6 +49,7 @@ class BattleShip:
     validation_flag_game = True
     validation_flag_carrier = True
     validation_flag_battleship = True
+    validation_flag_destroyer = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -150,6 +149,7 @@ class BattleShip:
             self.validate_game_difficulty()
             self.validate_carrier_points()
             self.validate_battleship_points()
+            self.validate_destroyer_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -317,6 +317,38 @@ class BattleShip:
                 print('\nThe battleship column value is invalid.\n\n')
                 self.validation_flag_battleship = False
         return self.validation_flag_battleship
+
+    def validate_destroyer_points(self):
+        destroyer_values_player_one = self.config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if destroyer_axis_player_one != self.HORIZONTAL_AXIS and destroyer_axis_player_one != self.VERTICAL_AXIS:
+            print("The destroyer axis value is invalid.")
+            self.validation_flag_destroyer = False
+
+        # check row
+        if destroyer_axis_player_one == self.VERTICAL_AXIS:
+            if destroyer_row_player_one > 6 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+        elif destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            if destroyer_row_player_one > 10 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+
+        # check column
+        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            if destroyer_column_player_one > 6 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+        elif destroyer_axis_player_one == self.VERTICAL_AXIS:
+            if destroyer_column_player_one > 10 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+        return self.validation_flag_destroyer
 
     def start_game(self):
         self.place_carrier_player_one()
