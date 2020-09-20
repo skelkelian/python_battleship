@@ -13,6 +13,7 @@ from configparser import ConfigParser
 # todo: create functions that know when ship is sunk and if game is over
 # todo: DRY object creation for object BattleShip
 
+# A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
 
 # TODO'S LATER
 # todo: create a class for player and class for computer
