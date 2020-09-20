@@ -370,7 +370,7 @@ class BattleShip:
 
         # check row
         if patrol_boat_axis_player_one == self.VERTICAL_AXIS:
-            if patrol_boat_row_player_one > 6 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
+            if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
                 self.validation_flag_patrol_boat = False
         elif patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
@@ -380,7 +380,7 @@ class BattleShip:
 
         # check column
         if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
-            if patrol_boat_column_player_one > 6 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
+            if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.validation_flag_patrol_boat = False
         elif patrol_boat_axis_player_one == self.VERTICAL_AXIS:
