@@ -338,7 +338,7 @@ class BattleShip:
 
         # check row
         if destroyer_axis_player_one == self.VERTICAL_AXIS:
-            if destroyer_row_player_one > 6 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
+            if destroyer_row_player_one > 8 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.validation_flag_destroyer = False
         elif destroyer_axis_player_one == self.HORIZONTAL_AXIS:
@@ -348,7 +348,7 @@ class BattleShip:
 
         # check column
         if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
-            if destroyer_column_player_one > 6 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
+            if destroyer_column_player_one > 8 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.validation_flag_destroyer = False
         elif destroyer_axis_player_one == self.VERTICAL_AXIS:
