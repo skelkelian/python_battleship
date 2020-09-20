@@ -306,7 +306,7 @@ class BattleShip:
 
         # check row
         if battleship_axis_player_one == self.VERTICAL_AXIS:
-            if battleship_row_player_one > 6 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
+            if battleship_row_player_one > 7 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
                 self.validation_flag_battleship = False
         elif battleship_axis_player_one == self.HORIZONTAL_AXIS:
@@ -316,7 +316,7 @@ class BattleShip:
 
         # check column
         if battleship_axis_player_one == self.HORIZONTAL_AXIS:
-            if battleship_column_player_one > 6 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
+            if battleship_column_player_one > 7 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
                 self.validation_flag_battleship = False
         elif battleship_axis_player_one == self.VERTICAL_AXIS:
