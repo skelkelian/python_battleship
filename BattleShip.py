@@ -7,6 +7,7 @@ from configparser import ConfigParser
 # TODO'S NOW
 # todo: add validate functions for each value in config file
     # todo: make sure that validate function doesn't allow ships to overlap
+    # todo: change the parameters for each ship row and column placement depending on length of ship
     # todo: create a test for validation_success=true in test_validate_carrier_points
 
 # todo: create function for picking points (both player and computer)
@@ -53,6 +54,7 @@ class BattleShip:
     validation_flag_battleship = True
     validation_flag_destroyer = True
     validation_flag_patrol_boat = True
+    validation_flag_submarine = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -154,6 +156,7 @@ class BattleShip:
             self.validate_battleship_points()
             self.validate_destroyer_points()
             self.validate_patrol_boat_points()
+            self.validate_submarine_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -384,6 +387,38 @@ class BattleShip:
             if patrol_boat_column_player_one > 10 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.validation_flag_patrol_boat = False
+
+    def validate_submarine_points(self):
+        submarine_values_player_one = self.config.get('main', 'submarine_player')
+        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
+        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
+        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if submarine_axis_player_one != self.HORIZONTAL_AXIS and submarine_axis_player_one != self.VERTICAL_AXIS:
+            print("The submarine axis value is invalid.")
+            self.validation_flag_submarine = False
+
+        # check row
+        if submarine_axis_player_one == self.VERTICAL_AXIS:
+            if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.validation_flag_submarine = False
+        elif submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            if submarine_row_player_one > 10 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.validation_flag_submarine = False
+
+        # check column
+        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.validation_flag_submarine = False
+        elif submarine_axis_player_one == self.VERTICAL_AXIS:
+            if submarine_column_player_one > 10 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.validation_flag_submarine = False
+
 
     def start_game(self):
         self.place_carrier_player_one()
