@@ -14,6 +14,7 @@ from configparser import ConfigParser
 # todo: DRY object creation for object BattleShip
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
+# do i need to use return to return the ship validation flags?
 
 # TODO'S LATER
 # todo: create a class for player and class for computer
@@ -51,6 +52,7 @@ class BattleShip:
     validation_flag_carrier = True
     validation_flag_battleship = True
     validation_flag_destroyer = True
+    validation_flag_patrol_boat = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -151,6 +153,7 @@ class BattleShip:
             self.validate_carrier_points()
             self.validate_battleship_points()
             self.validate_destroyer_points()
+            self.validate_patrol_boat_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -350,6 +353,37 @@ class BattleShip:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.validation_flag_destroyer = False
         return self.validation_flag_destroyer
+
+    def validate_patrol_boat_points(self):
+        patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if patrol_boat_axis_player_one != self.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.VERTICAL_AXIS:
+            print("The patrol boat axis value is invalid.")
+            self.validation_flag_patrol_boat = False
+
+        # check row
+        if patrol_boat_axis_player_one == self.VERTICAL_AXIS:
+            if patrol_boat_row_player_one > 6 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+        elif patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            if patrol_boat_row_player_one > 10 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+
+        # check column
+        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            if patrol_boat_column_player_one > 6 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+        elif patrol_boat_axis_player_one == self.VERTICAL_AXIS:
+            if patrol_boat_column_player_one > 10 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
 
     def start_game(self):
         self.place_carrier_player_one()
