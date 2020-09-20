@@ -6,7 +6,8 @@ from configparser import ConfigParser
 
 # TODO'S NOW
 # todo: add validate functions for each value in config file
-    # todo: make sure that validate function doesn't allow ships to overlap
+    # todo: split validate function (one for validate, one for overlap)
+    # todo: implement logic in validate function code
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
