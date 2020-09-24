@@ -147,6 +147,49 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+    def test_validate_battleship_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_battleship_overlap
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+        # MY ISSUE WITH THIS TEST AND WHY IT IS NOT PASSING:
+        # self.battleship.primary_board_player_one DOES NOT TAKE FROM THE VALUES I WANT IT TO.
+
+        # MY ASSUMPTION:
+        # I RAN self.battleship.start_game() WHICH HAS ALL THE PLACE POINTS FUNCTIONS. THESE FUNCTIONS OBTAIN THE SHIP
+        # VALUE FROM WHICH CONFIG FILE WAS CHOSEN IN THE TEST. I CREATED A CONFIG FILE (config_easy_ship_overlap.ini)
+        # WHICH HAD SHIP VALUES THAT WOULD OVERLAP. MY IDEA WAS THAT THIS TEST WOULD PLACE THE SHIPS ON THE BOARD THEN
+        # CHECK TO SEE IF A POINT OVERLAPPED.
+
+        # FIRST ISSUE WITH ASSUMPTION:
+        # THE ISSUE WITH THIS ASSUMPTION IS THAT THE PLACE FUNCTIONS LITERALLY DO
+        # NOT CARE IF THERE IS A SHIP THERE OR NOT. THIS MEANS THAT EITHER WAY, A SHIP WILL BE PLACED IN THAT LOCATION
+        # AND IF A SHIP WAS THERE ALREADY, THE FUNCTION WOULD JUST REPLACE THE POINT. BECAUSE OF THIS THE SHIPS WILL
+        # NEVER OVERLAP WHICH CAUSES MY TEST TO FAIL.
+
+        # SECOND ISSUE WITH ASSUMPTION:
+        # NOW, THE ISSUE WITH WHAT I SAID ABOVE IS THAT THIS IS NOT
+        # HAPPENING. WHAT IS REALLY HAPPENING IS THAT WHEN I RUN self.battleship.start_game(), IT PLACES ALL THE POINTS
+        # BECAUSE THAT IS WHERE ALL THE PLACE POINT FUNCTIONS ARE. MY ASSUMPTION THAT IT WOULD NOT TAKE THE VALUES FROM
+        # THE OLD CONFIG FILE WAS COMPLETELY WRONG BECAUSE WHEN I DEBUGGED THIS TEST BY DOING PRINTING THE PRIMARY BOARD
+        # (print(self.battleship.primary_board_player_one)) I SAW THE POINTS PLACED FOR THE OTHER CONFIG FILE WHICH WAS
+        # (config_easy_difficulty.ini).
+
+        # WHAT I'M THINKING ABOUT WHEN CONSIDERING THESE ISSUES:
+        # THE SECOND ISSUE IS THE ISSUE WE ARE DEALING WITH NOW AND IT IS NOT AS MAJOR. THE FIRST ISSUE IS AN ISSUE THAT
+        # WE WOULD HAVE FOUND IN THE FUTURE IF I DIDN'T LOOK AT THE PLACE FUNCTIONS CAREFULLY. THIS SECOND ISSUE HOWEVER
+        # IS GOING TO NEED A LOT MORE CONSIDERATION TO SEE WHAT WE SHOULD DO ABOUT IT.
+
 # start game
 
     def test_start_game(self):
