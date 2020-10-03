@@ -2,7 +2,6 @@ from unittest import TestCase
 import unittest
 from BattleShip import BattleShip
 from unittest.mock import patch
-from random import *
 from configparser import ConfigParser
 
 

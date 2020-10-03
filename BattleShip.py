@@ -1,6 +1,5 @@
 # battleship
 # imports
-from random import *
 from configparser import ConfigParser
 
 
