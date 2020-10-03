@@ -232,18 +232,3 @@ class TestInit(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
-
-
-    # def test_player_pick_points(self):
-    #     # given
-    #     # create an object of class BattleShip
-    #     self.battleship = BattleShip()
-    #
-    #     # when
-    #
-    #     # call method of object BattleShip
-    #     self.battleship.validate_point_picked()
-    #     observed_point_location = self.battleship.()
-    #
-    #     # assert
-    #     # self.assertEqual(expected_point_location, observed_point_location)
