@@ -1,21 +1,19 @@
 # battleship
 # imports
-from random import *
 from configparser import ConfigParser
 
 
 # TODO'S NOW
 # todo: add validate functions for each value in config file
-    # todo: make sure that validate function doesn't allow ships to overlap
-    # todo: create a mock for the function validate_game_difficulty
-    # todo: create a test for validation_success=true in test_validate_carrier_points
+    # todo: split validate function (one for validate, one for overlap)
+    # todo: implement logic in validate function code
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
 # todo: DRY object creation for object BattleShip
-# YAGNI (you ain't gonna need it)
-# DRY (don't repeat yourself)
 
+# A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
+# do i need to use return to return the ship validation flags?
 
 # TODO'S LATER
 # todo: create a class for player and class for computer
@@ -49,7 +47,16 @@ class BattleShip:
     VERTICAL_AXIS = 2
 
     # VALIDATION
-    validation_success = True
+    validation_flag_game = True
+    validation_flag_carrier = True
+    validation_flag_battleship = True
+    validation_flag_destroyer = True
+    validation_flag_patrol_boat = True
+    validation_flag_submarine = True
+    validation_flag_battleship_overlap = True
+    validation_flag_destroyer_overlap = True
+    validation_flag_patrol_boat_overlap = True
+    validation_flag_submarine_overlap = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -148,6 +155,10 @@ class BattleShip:
             self.opponent_type = int(self.config.get('main', 'opponent_type'))
             self.validate_game_difficulty()
             self.validate_carrier_points()
+            self.validate_battleship_points()
+            self.validate_destroyer_points()
+            self.validate_patrol_boat_points()
+            self.validate_submarine_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -161,6 +172,9 @@ class BattleShip:
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
 
+    def get_secondary_board_player_one(self):
+        return self.secondary_board_player_one
+
     def print_directions(self):
         print('You have chosen to play against: ' + str(self.get_opponent_type()) +
               '\nThe game difficulty is ' + str(self.get_game_difficulty()))
@@ -172,8 +186,8 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
-            return False
-        return True
+            self.validation_flag_game = False
+        return self.validation_flag_game
 
     def place_carrier_player_one(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
@@ -254,33 +268,239 @@ class BattleShip:
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        self.validation_success = True
 
         # check axis
-        if carrier_axis_player_one != self.HORIZONTAL_AXIS or self.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.HORIZONTAL_AXIS and carrier_axis_player_one != self.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
-            self.validation_success = False
+            self.validation_flag_carrier = False
 
         # check row
         if carrier_axis_player_one == self.VERTICAL_AXIS:
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
         elif carrier_axis_player_one == self.HORIZONTAL_AXIS:
             if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
 
         # check column
         if carrier_axis_player_one == self.HORIZONTAL_AXIS:
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_success = False
+                self.validation_flag_carrier = False
         elif carrier_axis_player_one == self.VERTICAL_AXIS:
             if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_success = False
-        return self.validation_success
+                self.validation_flag_carrier = False
+
+    def validate_battleship_points(self):
+        battleship_values_player_one = self.config.get('main', 'battleship_player')
+        battleship_axis_player_one = int(battleship_values_player_one.split(',')[0].strip())
+        battleship_row_player_one = int(battleship_values_player_one.split(',')[1].strip())
+        battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if battleship_axis_player_one != self.HORIZONTAL_AXIS and battleship_axis_player_one != self.VERTICAL_AXIS:
+            print("The battleship axis value is invalid.")
+            self.validation_flag_battleship = False
+
+        # check row
+        if battleship_axis_player_one == self.VERTICAL_AXIS:
+            if battleship_row_player_one > 7 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.validation_flag_battleship = False
+        elif battleship_axis_player_one == self.HORIZONTAL_AXIS:
+            if battleship_row_player_one > 10 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.validation_flag_battleship = False
+
+        # check column
+        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+            if battleship_column_player_one > 7 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.validation_flag_battleship = False
+        elif battleship_axis_player_one == self.VERTICAL_AXIS:
+            if battleship_column_player_one > 10 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.validation_flag_battleship = False
+
+    def validate_battleship_overlap(self):
+        # obtain and parse through values
+        battleship_values_player_one = self.config.get('main', 'battleship_player')
+        battleship_axis_player_one = int(battleship_values_player_one.split(',')[0].strip())
+        battleship_row_player_one = int(battleship_values_player_one.split(',')[1].strip())
+        battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+            if self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 2] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_battleship_overlap = False
+        elif battleship_axis_player_one == self.VERTICAL_AXIS:
+            if self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one][battleship_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_battleship_overlap = False
+
+    def validate_destroyer_points(self):
+        destroyer_values_player_one = self.config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if destroyer_axis_player_one != self.HORIZONTAL_AXIS and destroyer_axis_player_one != self.VERTICAL_AXIS:
+            print("The destroyer axis value is invalid.")
+            self.validation_flag_destroyer = False
+
+        # check row
+        if destroyer_axis_player_one == self.VERTICAL_AXIS:
+            if destroyer_row_player_one > 8 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+        elif destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            if destroyer_row_player_one > 10 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+
+        # check column
+        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            if destroyer_column_player_one > 8 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+        elif destroyer_axis_player_one == self.VERTICAL_AXIS:
+            if destroyer_column_player_one > 10 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.validation_flag_destroyer = False
+
+    def validate_destroyer_overlap(self):
+        destroyer_values_player_one = self.config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+            if self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] != 0 or \
+                    self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.validation_flag_destroyer_overlap = False
+        elif destroyer_axis_player_one == self.VERTICAL_AXIS:
+            if self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.validation_flag_destroyer_overlap = False
+
+    def validate_patrol_boat_points(self):
+        patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if patrol_boat_axis_player_one != self.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.VERTICAL_AXIS:
+            print("The patrol boat axis value is invalid.")
+            self.validation_flag_patrol_boat = False
+
+        # check row
+        if patrol_boat_axis_player_one == self.VERTICAL_AXIS:
+            if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+        elif patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            if patrol_boat_row_player_one > 10 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+
+        # check column
+        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+        elif patrol_boat_axis_player_one == self.VERTICAL_AXIS:
+            if patrol_boat_column_player_one > 10 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat = False
+
+    def validate_patrol_boat_overlap(self):
+        patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+            if self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.validation_flag_patrol_boat_overlap = False
+        else:
+            if self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.validation_flag_patrol_boat_overlap = False
+
+    def validate_submarine_points(self):
+        submarine_values_player_one = self.config.get('main', 'submarine_player')
+        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
+        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
+        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if submarine_axis_player_one != self.HORIZONTAL_AXIS and submarine_axis_player_one != self.VERTICAL_AXIS:
+            print("The submarine axis value is invalid.")
+            self.validation_flag_submarine = False
+
+        # check row
+        if submarine_axis_player_one == self.VERTICAL_AXIS:
+            if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.validation_flag_submarine = False
+        elif submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            if submarine_row_player_one > 10 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.validation_flag_submarine = False
+
+        # check column
+        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.validation_flag_submarine = False
+        elif submarine_axis_player_one == self.VERTICAL_AXIS:
+            if submarine_column_player_one > 10 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.validation_flag_submarine = False
+
+    def validate_submarine_overlap(self):
+        # obtain and parse through values
+        submarine_values_player_one = self.config.get('main', 'submarine_player')
+        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
+        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
+        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+            if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 2] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_submarine_overlap = False
+        elif submarine_axis_player_one == self.VERTICAL_AXIS:
+            if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0 or \
+                    self.primary_board_player_one[submarine_row_player_one + 2][submarine_column_player_one - 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_submarine_overlap = False
 
     def start_game(self):
         self.place_carrier_player_one()
@@ -288,8 +508,15 @@ class BattleShip:
         self.place_destroyer_player_one()
         self.place_patrol_boat_player_one()
         self.place_submarine_player_one()
+        self.validate_battleship_overlap()
+        self.validate_destroyer_overlap()
+        self.validate_patrol_boat_overlap()
+        self.validate_submarine_overlap()
 
-
+        # def test_pick_target(self):
+        #     row_picked = (randint(1, 10))
+        #
+        #     return ____
 
 
 

@@ -78,9 +78,9 @@ class TestInit(unittest.TestCase):
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
         # when
-        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
+        expected_game_difficulty = False
         # call method of object BattleShip
-        observed_game_difficulty = self.battleship.get_game_difficulty()
+        observed_game_difficulty = self.battleship.validate_game_difficulty()
 
         # assert
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
@@ -93,7 +93,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_success
+        observed_result = self.battleship.validation_flag_carrier
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -105,7 +105,103 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_success
+        observed_result = self.battleship.validation_flag_battleship
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_destroyer_points(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_destroyer
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_patrol_boat_points(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_patrol_boat
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_submarine_points(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_submarine
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_battleship_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_battleship_overlap
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_destroyer_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_destroyer_overlap
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_patrol_boat_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_patrol_boat_overlap
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_submarine_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_submarine_overlap
 
         # assert
         self.assertEqual(expected_result, observed_result)
