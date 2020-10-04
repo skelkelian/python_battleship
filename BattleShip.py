@@ -2,11 +2,10 @@
 # imports
 from configparser import ConfigParser
 
-
 # TODO'S NOW
-# todo: add validate functions for each value in config file
-    # todo: split validate function (one for validate, one for overlap)
-    # todo: implement logic in validate function code
+# todo: find two open source repositories and read their README.md and then modify your README.md
+    # pandas readme
+# todo: finish everything (EVERYTHING)
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over
@@ -57,6 +56,8 @@ class BattleShip:
     validation_flag_destroyer_overlap = True
     validation_flag_patrol_boat_overlap = True
     validation_flag_submarine_overlap = True
+    validation_flag_carrier_computer = True
+    validation_flag_battleship_computer = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -159,6 +160,8 @@ class BattleShip:
             self.validate_destroyer_points()
             self.validate_patrol_boat_points()
             self.validate_submarine_points()
+            self.validate_carrier_computer_points()
+            self.validate_battleship_computer_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -502,6 +505,68 @@ class BattleShip:
                 print('\nThe battleship overlaps with another ship.\n\n')
                 self.validation_flag_submarine_overlap = False
 
+    def validate_carrier_computer_points(self):
+        carrier_values_computer = self.config.get('main', 'carrier_computer')
+        carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
+        carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
+        carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
+
+        # check axis
+        if carrier_axis_computer != self.HORIZONTAL_AXIS and carrier_axis_computer != self.VERTICAL_AXIS:
+            print("The carrier axis value is invalid.")
+            self.validation_flag_carrier_computer = False
+
+        # check row
+        if carrier_axis_computer == self.VERTICAL_AXIS:
+            if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.validation_flag_carrier = False
+        elif carrier_axis_computer == self.HORIZONTAL_AXIS:
+            if carrier_row_computer > 10 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.validation_flag_carrier_computer = False
+
+        # check column
+        if carrier_axis_computer == self.HORIZONTAL_AXIS:
+            if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.validation_flag_carrier_computer = False
+        elif carrier_axis_computer == self.VERTICAL_AXIS:
+            if carrier_column_computer > 10 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.validation_flag_carrier_computer = False
+
+    def validate_battleship_computer_points(self):
+        battleship_values_computer = self.config.get('main', 'battleship_player')
+        battleship_axis_computer = int(battleship_values_computer.split(',')[0].strip())
+        battleship_row_computer = int(battleship_values_computer.split(',')[1].strip())
+        battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
+
+        # check axis
+        if battleship_axis_computer != self.HORIZONTAL_AXIS and battleship_axis_computer != self.VERTICAL_AXIS:
+            print("The battleship axis value is invalid.")
+            self.validation_flag_battleship_computer = False
+
+        # check row
+        if battleship_axis_computer == self.VERTICAL_AXIS:
+            if battleship_row_computer > 7 or battleship_row_computer <= 0 or battleship_row_computer % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.validation_flag_battleship_computer = False
+        elif battleship_axis_computer == self.HORIZONTAL_AXIS:
+            if battleship_row_computer > 10 or battleship_row_computer <= 0 or battleship_row_computer % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.validation_flag_battleship_computer = False
+
+        # check column
+        if battleship_axis_computer == self.HORIZONTAL_AXIS:
+            if battleship_column_computer > 7 or battleship_column_computer <= 0 or battleship_column_computer % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.validation_flag_battleship_computer = False
+        elif battleship_axis_computer == self.VERTICAL_AXIS:
+            if battleship_column_computer > 10 or battleship_column_computer <= 0 or battleship_column_computer % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.validation_flag_battleship_computer = False
+
     def start_game(self):
         self.place_carrier_player_one()
         self.place_battleship_player_one()
@@ -512,6 +577,7 @@ class BattleShip:
         self.validate_destroyer_overlap()
         self.validate_patrol_boat_overlap()
         self.validate_submarine_overlap()
+
 
         # def test_pick_target(self):
         #     row_picked = (randint(1, 10))

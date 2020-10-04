@@ -98,6 +98,19 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+    @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
+    def test_validate_carrier_computer_points(self, validate_game_difficulty):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_carrier_computer
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
     def test_validate_battleship_points(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
@@ -106,6 +119,18 @@ class TestInit(unittest.TestCase):
         expected_result = False
         # call method of object BattleShip
         observed_result = self.battleship.validation_flag_battleship
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_battleship_computer_points(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_battleship_computer
 
         # assert
         self.assertEqual(expected_result, observed_result)
