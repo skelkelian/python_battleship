@@ -61,6 +61,7 @@ class BattleShip:
     validation_flag_carrier_computer = True
     validation_flag_battleship_computer = True
     validation_flag_destroyer_computer = True
+    validation_flag_patrol_boat_computer = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -166,6 +167,7 @@ class BattleShip:
             self.validate_carrier_computer_points()
             self.validate_battleship_computer_points()
             self.validate_destroyer_computer_points()
+            self.validate_patrol_boat_computer_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
             self.opponent_type = self.COMPUTER_OPPONENT
@@ -603,6 +605,37 @@ class BattleShip:
             if destroyer_column_computer > 10 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.validation_flag_destroyer_computer = False
+
+    def validate_patrol_boat_computer_points(self):
+        patrol_boat_values_computer = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
+        patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
+        patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
+
+        # check axis
+        if patrol_boat_axis_computer != self.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.VERTICAL_AXIS:
+            print("The patrol boat axis value is invalid.")
+            self.validation_flag_patrol_boat_computer = False
+
+        # check row
+        if patrol_boat_axis_computer == self.VERTICAL_AXIS:
+            if patrol_boat_row_computer > 9 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat_computer = False
+        elif patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+            if patrol_boat_row_computer > 10 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
+                print('\nThe patrol boat row value is invalid.\n\n')
+                self.validation_flag_patrol_boat_computer = False
+
+        # check column
+        if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+            if patrol_boat_column_computer > 9 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat_computer = False
+        elif patrol_boat_axis_computer == self.VERTICAL_AXIS:
+            if patrol_boat_column_computer > 10 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
+                print('\nThe patrol boat column value is invalid.\n\n')
+                self.validation_flag_patrol_boat_computer = False
 
 # START GAME
     def start_game(self):
