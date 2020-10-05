@@ -287,9 +287,24 @@ class TestInit(unittest.TestCase):
             [4, 0, 0, 0, 0, 0, 1, 1, 1, 0],
             [4, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
+
+        expected_primary_board_computer = [
+            [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+            [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
+            [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
+            [2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
         # call method of object BattleShip
         self.battleship.start_game()
         observed_primary_board_player_one = self.battleship.get_primary_board_player_one()
+        observed_primary_board_computer = self.battleship.get_primary_board_computer()
 
         # assert
         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
+        self.assertEqual(expected_primary_board_computer, observed_primary_board_computer)

@@ -187,6 +187,9 @@ class BattleShip:
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
 
+    def get_primary_board_computer(self):
+        return self.primary_board_computer
+
     def get_secondary_board_player_one(self):
         return self.secondary_board_player_one
 
@@ -223,6 +226,24 @@ class BattleShip:
             self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.CARRIER
             self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.CARRIER
 
+    def place_carrier_computer(self):
+        carrier_values_computer = self.config.get('main', 'carrier_computer')
+        carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
+        carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
+        carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
+        if carrier_axis_computer == self.HORIZONTAL_AXIS:
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 2] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 3] = self.CARRIER
+        else:
+            self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer][carrier_column_computer - 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer + 1][carrier_column_computer - 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer + 2][carrier_column_computer - 1] = self.CARRIER
+            self.primary_board_computer[carrier_row_computer + 3][carrier_column_computer - 1] = self.CARRIER
+
     def place_battleship_player_one(self):
         battleship_values_player_one = self.config.get('main', 'battleship_player')
         battleship_axis_player_one = int(battleship_values_player_one.split(',')[0].strip())
@@ -239,6 +260,22 @@ class BattleShip:
             self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] = self.BATTLESHIP
             self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] = self.BATTLESHIP
 
+    def place_battleship_computer(self):
+        battleship_values_computer = self.config.get('main', 'battleship_computer')
+        battleship_axis_computer = int(battleship_values_computer.split(',')[0].strip())
+        battleship_row_computer = int(battleship_values_computer.split(',')[1].strip())
+        battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
+        if battleship_axis_computer == self.HORIZONTAL_AXIS:
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 2] = self.BATTLESHIP
+        else:
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer][battleship_column_computer - 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer + 1][battleship_column_computer - 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer + 2][battleship_column_computer - 1] = self.BATTLESHIP
+
     def place_destroyer_player_one(self):
         destroyer_values_player_one = self.config.get('main', 'destroyer_player')
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
@@ -253,6 +290,20 @@ class BattleShip:
             self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.DESTROYER
             self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.DESTROYER
 
+    def place_destroyer_computer(self):
+        destroyer_values_computer = self.config.get('main', 'destroyer_computer')
+        destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
+        destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
+        destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
+        if destroyer_axis_computer == self.HORIZONTAL_AXIS:
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.DESTROYER
+        else:
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.DESTROYER
+
     def place_patrol_boat_player_one(self):
         patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
@@ -264,6 +315,18 @@ class BattleShip:
         else:
             self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
             self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
+
+    def place_patrol_boat_computer(self):
+        patrol_boat_values_computer = self.config.get('main', 'patrol_boat_computer')
+        patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
+        patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
+        patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
+        if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.PATROL_BOAT
+        else:
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.PATROL_BOAT
 
     def place_submarine_player_one(self):
         submarine_values_player_one = self.config.get('main', 'submarine_player')
@@ -278,6 +341,20 @@ class BattleShip:
             self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
             self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.SUBMARINE
             self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.SUBMARINE
+
+    def place_submarine_computer(self):
+        submarine_values_computer = self.config.get('main', 'submarine_computer')
+        submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
+        submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
+        submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
+        if submarine_axis_computer == self.HORIZONTAL_AXIS:
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.SUBMARINE
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.SUBMARINE
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.SUBMARINE
+        else:
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.SUBMARINE
+            self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.SUBMARINE
+            self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.SUBMARINE
 
     def validate_carrier_points(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
@@ -551,7 +628,7 @@ class BattleShip:
                 self.validation_flag_carrier_computer = False
 
     def validate_battleship_computer_points(self):
-        battleship_values_computer = self.config.get('main', 'battleship_player')
+        battleship_values_computer = self.config.get('main', 'battleship_computer')
         battleship_axis_computer = int(battleship_values_computer.split(',')[0].strip())
         battleship_row_computer = int(battleship_values_computer.split(',')[1].strip())
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
@@ -582,7 +659,7 @@ class BattleShip:
                 self.validation_flag_battleship_computer = False
 
     def validate_destroyer_computer_points(self):
-        destroyer_values_computer = self.config.get('main', 'destroyer_player')
+        destroyer_values_computer = self.config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
@@ -613,7 +690,7 @@ class BattleShip:
                 self.validation_flag_destroyer_computer = False
 
     def validate_patrol_boat_computer_points(self):
-        patrol_boat_values_computer = self.config.get('main', 'patrol_boat_player')
+        patrol_boat_values_computer = self.config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
@@ -644,7 +721,7 @@ class BattleShip:
                 self.validation_flag_patrol_boat_computer = False
 
     def validate_submarine_computer_points(self):
-        submarine_values_computer = self.config.get('main', 'submarine_player')
+        submarine_values_computer = self.config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
@@ -681,6 +758,11 @@ class BattleShip:
         self.place_destroyer_player_one()
         self.place_patrol_boat_player_one()
         self.place_submarine_player_one()
+        self.place_carrier_computer()
+        self.place_battleship_computer()
+        self.place_destroyer_computer()
+        self.place_patrol_boat_computer()
+        self.place_submarine_computer()
         self.validate_battleship_overlap()
         self.validate_destroyer_overlap()
         self.validate_patrol_boat_overlap()
