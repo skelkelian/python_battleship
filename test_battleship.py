@@ -207,6 +207,8 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+# overlap
+
     def test_validate_battleship_overlap(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
@@ -218,6 +220,21 @@ class TestInit(unittest.TestCase):
         expected_result = False
         # call method of object BattleShip
         observed_result = self.battleship.validation_flag_battleship_overlap
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+
+    def test_validate_battleship_computer_overlap(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
+
+        # run start_game function to place all the points
+        self.battleship.start_game()
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.battleship.validation_flag_battleship_computer_overlap
 
         # assert
         self.assertEqual(expected_result, observed_result)
