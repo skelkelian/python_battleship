@@ -66,6 +66,7 @@ class BattleShip:
     validation_flag_battleship_computer_overlap = True
     validation_flag_destroyer_computer_overlap = True
     validation_flag_patrol_boat_computer_overlap = True
+    validation_flag_submarine_computer_overlap = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -586,15 +587,13 @@ class BattleShip:
         if submarine_axis_player_one == self.HORIZONTAL_AXIS:
             if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 2] != 0:
+                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
                 self.validation_flag_submarine_overlap = False
         else:
             if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one + 2][submarine_column_player_one - 1] != 0:
+                    self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
                 self.validation_flag_submarine_overlap = False
 
@@ -815,6 +814,27 @@ class BattleShip:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.validation_flag_submarine_computer = False
 
+    def validate_submarine_computer_overlap(self):
+        # obtain and parse through values
+        submarine_values_computer = self.config.get('main', 'submarine_computer')
+        submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
+        submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
+        submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if submarine_axis_computer == self.HORIZONTAL_AXIS:
+            if self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] != 0 or \
+                    self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] != 0 or \
+                    self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_submarine_computer_overlap = False
+        else:
+            if self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] != 0 or \
+                    self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] != 0 or \
+                    self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.validation_flag_submarine_computer_overlap = False
+
 # START GAME
     def start_game(self):
         self.place_carrier_player_one()
@@ -834,6 +854,7 @@ class BattleShip:
         self.validate_battleship_computer_overlap()
         self.validate_destroyer_computer_overlap()
         self.validate_patrol_boat_computer_overlap()
+        self.validate_submarine_computer_overlap()
 
 
         # def test_pick_target(self):
