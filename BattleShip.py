@@ -1,6 +1,7 @@
 # battleship
 # imports
 from configparser import ConfigParser
+from random import randint
 
 # TODO'S NOW
 # todo: find two open source repositories and read their README.md and then modify your README.md
@@ -44,6 +45,11 @@ class BattleShip:
     # AXIS
     HORIZONTAL_AXIS = 1
     VERTICAL_AXIS = 2
+
+    # HIT COUNTER
+    HIT_COUNTER_PLAYER_ONE = [0, 0, 0, 0, 0]
+    HIT_COUNTER_COMPUTER = [0, 0, 0, 0, 0]
+    # if sum of hit counters is 17 then game is over
 
     # VALIDATION PLAYER
     validation_flag_game = True
@@ -835,7 +841,18 @@ class BattleShip:
                 print('\nThe battleship overlaps with another ship.\n\n')
                 self.validation_flag_submarine_computer_overlap = False
 
+    def pick_point_player_one(self):
+        row_picked_by_player = randint(1, 10)
+        column_picked_by_player = randint(1, 10)
+        return row_picked_by_player, column_picked_by_player
+
+    def pick_point_computer(self):
+        row_picked_by_computer = randint(1, 10)
+        column_picked_by_computer = randint(1, 10)
+        return row_picked_by_computer, column_picked_by_computer
+
 # START GAME
+
     def start_game(self):
         self.place_carrier_player_one()
         self.place_battleship_player_one()

@@ -329,6 +329,45 @@ class TestInit(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+# offense
+    def test_picking_point_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.battleship.pick_point_player_one()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    def test_picking_point_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.battleship.pick_point_computer()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    # def test_trash(self):
+    #     self.battleship = BattleShip()
+    #     print(type(x))
+    #     self.assertEqual(1, 1)
+
+    # def test_check_if_ship_hit(self):
+    #     pass
+
 # start game
 
     def test_start_game(self):
