@@ -851,6 +851,16 @@ class BattleShip:
         column_picked_by_computer = randint(1, 10)
         return row_picked_by_computer, column_picked_by_computer
 
+    def place_point_player(self):
+        row_selected, column_selected = self.pick_point_player_one()
+        self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
+        return self.secondary_board_player_one
+
+    def place_point_computer(self):
+        row_selected, column_selected = self.pick_point_computer()
+        self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
+        return self.secondary_board_player_one
+
 # START GAME
 
     def start_game(self):
@@ -872,6 +882,22 @@ class BattleShip:
         self.validate_destroyer_computer_overlap()
         self.validate_patrol_boat_computer_overlap()
         self.validate_submarine_computer_overlap()
+
+    # do i need to do this?
+    # def attack(self):
+    #     self.place_point_player()
+
+# pick
+# validate
+# place
+# check if hit or miss
+    # go to primary board and check if there is a point in the row and column that was picked
+    # if hit
+        # place 1 on secondary board in that location
+        # check which ship it hit
+        # adjust hit counter
+    # if miss
+        # place 2 on secondary board in that location
 
 
         # def test_pick_target(self):

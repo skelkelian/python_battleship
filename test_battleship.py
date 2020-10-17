@@ -360,14 +360,51 @@ class TestInit(unittest.TestCase):
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
                         lowest_valid_value < observed_point[1] <= highest_valid_value)
 
-    # def test_trash(self):
-    #     self.battleship = BattleShip()
-    #     print(type(x))
-    #     self.assertEqual(1, 1)
+    def test_place_point_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
 
-    # def test_check_if_ship_hit(self):
-    #     pass
+        # when
+        expected_secondary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
 
+        # call method of class BattleShip
+        observed_secondary_board = self.battleship.place_point_player()
+
+        self.assertNotEqual(expected_secondary_board, observed_secondary_board)
+
+    def test_place_point_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_secondary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_secondary_board = self.battleship.place_point_computer()
+
+        self.assertNotEqual(expected_secondary_board, observed_secondary_board)
 # start game
 
     def test_start_game(self):
