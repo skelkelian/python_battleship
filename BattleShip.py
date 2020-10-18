@@ -851,15 +851,43 @@ class BattleShip:
         column_picked_by_computer = randint(1, 10)
         return row_picked_by_computer, column_picked_by_computer
 
-    def place_point_player(self):
+    def place_point_on_primary_player(self):
+        row_selected, column_selected = self.pick_point_player_one()
+        self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
+        return self.primary_board_computer
+
+    def place_point_on_secondary_player(self):
         row_selected, column_selected = self.pick_point_player_one()
         self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
         return self.secondary_board_player_one
 
-    def place_point_computer(self):
+    def place_point_on_primary_computer(self):
         row_selected, column_selected = self.pick_point_computer()
-        self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
-        return self.secondary_board_player_one
+        self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
+        return self.primary_board_player_one
+
+    def place_point_on_secondary_computer(self):
+        row_selected, column_selected = self.pick_point_computer()
+        self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
+        return self.secondary_board_computer
+
+    # def hit_or_miss_player(self):
+    #     row_selected, column_selected = self.pick_point_player_one()
+    #
+    #     while self.primary_board_computer[row_selected, column_selected] == 1 or \
+    #             self.primary_board_computer[row_selected, column_selected] == 2 or \
+    #             self.primary_board_computer[row_selected, column_selected] == 3 or \
+    #             self.primary_board_computer[row_selected, column_selected] == 4 or \
+    #             self.primary_board_computer[row_selected, column_selected] == 5:
+    #         if self.primary_board_computer[row_selected, column_selected] == 1:
+    #             self.HIT_COUNTER_PLAYER_ONE[4] = self.HIT_COUNTER_PLAYER_ONE[4] + 1
+
+
+
+
+    # if player hits a ship
+    #         while PB2[P1PR - 1][P1PC - 1] == 1 or PB2[P1PR - 1][P1PC - 1] == 2 or PB2[P1PR - 1][P1PC - 1] == 3 or PB2[P1PR - 1][P1PC - 1] == 4 or PB2[P1PR - 1][P1PC - 1] == 5:  # If he picks a point and ship is there
+    #
 
 # START GAME
 

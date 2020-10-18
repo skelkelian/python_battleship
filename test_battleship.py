@@ -360,7 +360,30 @@ class TestInit(unittest.TestCase):
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
                         lowest_valid_value < observed_point[1] <= highest_valid_value)
 
-    def test_place_point_player(self):
+    def test_place_point_primary_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_primary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_primary_board = self.battleship.place_point_on_primary_player()
+
+        self.assertNotEqual(expected_primary_board, observed_primary_board)
+
+    def test_place_point_secondary_player(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
 
@@ -379,11 +402,11 @@ class TestInit(unittest.TestCase):
         ]
 
         # call method of class BattleShip
-        observed_secondary_board = self.battleship.place_point_player()
+        observed_secondary_board = self.battleship.place_point_on_secondary_player()
 
         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
 
-    def test_place_point_computer(self):
+    def test_place_point_secondary_computer(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
 
@@ -402,9 +425,22 @@ class TestInit(unittest.TestCase):
         ]
 
         # call method of class BattleShip
-        observed_secondary_board = self.battleship.place_point_computer()
+        observed_secondary_board = self.battleship.place_point_on_secondary_computer()
 
         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
+
+    # def test_hit_or_miss_player(self):
+    #     # create an object of class BattleShip
+    #     self.battleship = BattleShip()
+    #
+    #     # when
+    #     expected_result = False
+    #
+    #     # call method of class BattleShip
+    #     observed_result = self.battleship.hit_or_miss_player()
+    #
+    #     self.assertEqual(expected_result, observed_result)
+
 # start game
 
     def test_start_game(self):
