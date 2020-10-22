@@ -406,6 +406,29 @@ class TestInit(unittest.TestCase):
 
         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
 
+    def test_place_point_primary_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_primary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_primary_board = self.battleship.place_point_on_primary_computer()
+
+        self.assertNotEqual(expected_primary_board, observed_primary_board)
+
     def test_place_point_secondary_computer(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
