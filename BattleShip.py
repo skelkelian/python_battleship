@@ -62,6 +62,7 @@ class BattleShip:
     validation_flag_destroyer_overlap = True
     validation_flag_patrol_boat_overlap = True
     validation_flag_submarine_overlap = True
+    validation_flag_hit_or_miss_player = True
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -73,6 +74,7 @@ class BattleShip:
     validation_flag_destroyer_computer_overlap = True
     validation_flag_patrol_boat_computer_overlap = True
     validation_flag_submarine_computer_overlap = True
+    validation_flag_hit_or_miss_computer = True
 
     # BOARD
     PRIMARY_BOARD = [
@@ -871,9 +873,17 @@ class BattleShip:
         self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.secondary_board_computer
 
-    # def hit_or_miss_player(self):
-    #     row_selected, column_selected = self.pick_point_player_one()
-    #
+    def hit_or_miss_player(self):
+        row_selected, column_selected = self.pick_point_player_one()
+        primary_board_computer = self.get_primary_board_computer()
+        if primary_board_computer[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.PATROL_BOAT and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.DESTROYER and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.CARRIER:
+            self.validation_flag_hit_or_miss_player = False
+        return self.validation_flag_hit_or_miss_player
+
     #     while self.primary_board_computer[row_selected, column_selected] == 1 or \
     #             self.primary_board_computer[row_selected, column_selected] == 2 or \
     #             self.primary_board_computer[row_selected, column_selected] == 3 or \

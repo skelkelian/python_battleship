@@ -429,17 +429,30 @@ class TestInit(unittest.TestCase):
 
         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
 
-    # def test_hit_or_miss_player(self):
-    #     # create an object of class BattleShip
-    #     self.battleship = BattleShip()
-    #
-    #     # when
-    #     expected_result = False
-    #
-    #     # call method of class BattleShip
-    #     observed_result = self.battleship.hit_or_miss_player()
-    #
-    #     self.assertEqual(expected_result, observed_result)
+    @patch('BattleShip.BattleShip.get_primary_board_computer', return_value=[
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ])
+    @patch('BattleShip.BattleShip.pick_point_player_one', return_value=(1, 1))
+    def test_hit_or_miss_player(self, get_primary_board_player_one, pick_point_player_one):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.hit_or_miss_player()
+
+        self.assertEqual(expected_result, observed_result)
 
 # start game
 
