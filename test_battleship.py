@@ -477,6 +477,31 @@ class TestInit(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
+    @patch('BattleShip.BattleShip.get_primary_board_player_one', return_value=[
+        [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ])
+    @patch('BattleShip.BattleShip.pick_point_computer', return_value=(1, 4))
+    def test_hit_or_miss_computer(self, get_primary_board_player_one, pick_point_computer):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.hit_or_miss_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
 # start game
 
     def test_start_game(self):

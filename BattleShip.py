@@ -884,6 +884,17 @@ class BattleShip:
             self.validation_flag_hit_or_miss_player = False
         return self.validation_flag_hit_or_miss_player
 
+    def hit_or_miss_computer(self):
+        row_selected, column_selected = self.pick_point_computer()
+        primary_board_player = self.get_primary_board_player_one()
+        if primary_board_player[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.PATROL_BOAT and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.DESTROYER and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.CARRIER:
+            self.validation_flag_hit_or_miss_computer = False
+        return self.validation_flag_hit_or_miss_computer
+
     #     while self.primary_board_computer[row_selected, column_selected] == 1 or \
     #             self.primary_board_computer[row_selected, column_selected] == 2 or \
     #             self.primary_board_computer[row_selected, column_selected] == 3 or \
