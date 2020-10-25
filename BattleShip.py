@@ -63,7 +63,7 @@ class BattleShip:
     validation_flag_battleship_overlap = True
     validation_flag_destroyer_overlap = True
     validation_flag_patrol_boat_overlap = True
-    validation_flag_submarine_overlap = True
+    validation_flag_submarine_overlap_player = True
     validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
 
@@ -601,13 +601,13 @@ class BattleShip:
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap = False
+                self.validation_flag_submarine_overlap_player = False
         else:
             if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap = False
+                self.validation_flag_submarine_overlap_player = False
 
 # COMPUTER
     def validate_carrier_computer_points(self):
@@ -922,39 +922,29 @@ class BattleShip:
             print("missed ships")
         return self.validation_flag_hit_counter_player
 
-            # elif PB2[P1PR - 1][P1PC - 1] == 5:  # I set the carrier point to five
-            #                 HCA2[0] = HCA2[0] + 1
-            #                 if HCA2[0] == 5:  # if every point has been hit, the ship is sunk
-            #                     PB2[P1PR - 1][P1PC - 1] = 9  # set the opponent's primary board to 9 to remove the ship
-            #                     SB1[P1PR - 1][P1PC - 1] = 1  # sets player 1's secondary board to show a hit
-            #                     # pretty_print_list(SB1)
-            #                     print('\nThe carrier has been sunk!\n\n')
-            #                 else:
-            #                     PB2[P1PR - 1][P1PC - 1] = 9  # set the opponent's primary board to 9 to remove the ship
-            #                     SB1[P1PR - 1][P1PC - 1] = 1  # sets player 1's secondary board to show a hit
-            #                     # pretty_print_list(SB1)
-            #                     print('\nHIT\n\n')
-            # and \
-            #     primary_board_player[row_selected - 1][column_selected - 1] != self.PATROL_BOAT and \
-            #     primary_board_player[row_selected - 1][column_selected - 1] != self.DESTROYER and \
-            #     primary_board_player[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
-            #     primary_board_player[row_selected - 1][column_selected - 1] != self.CARRIER:
+    def hit_counter_computer(self):
+        row_selected, column_selected = self.pick_point_computer()
+        primary_board_player = self.get_primary_board_player_one()
+        if primary_board_player[row_selected - 1][column_selected - 1] == self.CARRIER:
+            self.HIT_COUNTER_PLAYER_ONE[0] = self.HIT_COUNTER_PLAYER_ONE[0] + 1
+            print("hit carrier")
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.BATTLESHIP:
+            self.HIT_COUNTER_PLAYER_ONE[1] = self.HIT_COUNTER_PLAYER_ONE[1] + 1
+            print("hit battleship")
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.DESTROYER:
+            self.HIT_COUNTER_PLAYER_ONE[2] = self.HIT_COUNTER_PLAYER_ONE[2] + 1
+            print("hit destroyer")
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.PATROL_BOAT:
+            self.HIT_COUNTER_PLAYER_ONE[3] = self.HIT_COUNTER_PLAYER_ONE[3] + 1
+            print("hit patrol boat")
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.SUBMARINE:
+            self.HIT_COUNTER_PLAYER_ONE[4] = self.HIT_COUNTER_PLAYER_ONE[4] + 1
+            print("hit submarine")
+        else:
+            self.validation_flag_hit_counter_computer = False
+            print("missed ships")
+        return self.validation_flag_hit_counter_computer
 
-
-    #     while self.primary_board_computer[row_selected, column_selected] == 1 or \
-    #             self.primary_board_computer[row_selected, column_selected] == 2 or \
-    #             self.primary_board_computer[row_selected, column_selected] == 3 or \
-    #             self.primary_board_computer[row_selected, column_selected] == 4 or \
-    #             self.primary_board_computer[row_selected, column_selected] == 5:
-    #         if self.primary_board_computer[row_selected, column_selected] == 1:
-    #             self.HIT_COUNTER_PLAYER_ONE[4] = self.HIT_COUNTER_PLAYER_ONE[4] + 1
-
-
-
-
-    # if player hits a ship
-    #         while PB2[P1PR - 1][P1PC - 1] == 1 or PB2[P1PR - 1][P1PC - 1] == 2 or PB2[P1PR - 1][P1PC - 1] == 3 or PB2[P1PR - 1][P1PC - 1] == 4 or PB2[P1PR - 1][P1PC - 1] == 5:  # If he picks a point and ship is there
-    #
 
 # START GAME
 
