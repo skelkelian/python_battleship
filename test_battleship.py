@@ -93,7 +93,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_carrier
+        observed_result = self.battleship.validation_flag_carrier_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -118,7 +118,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_battleship
+        observed_result = self.battleship.validation_flag_battleship_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -142,7 +142,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_destroyer
+        observed_result = self.battleship.validation_flag_destroyer_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -166,7 +166,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_patrol_boat
+        observed_result = self.battleship.validation_flag_patrol_boat_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -190,7 +190,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_submarine
+        observed_result = self.battleship.validation_flag_submarine_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -219,7 +219,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_battleship_overlap
+        observed_result = self.battleship.validation_flag_battleship_overlap_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -234,7 +234,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_battleship_computer_overlap
+        observed_result = self.battleship.validation_flag_battleship_overlap_computer
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -249,7 +249,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_destroyer_overlap
+        observed_result = self.battleship.validation_flag_destroyer_overlap_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -264,7 +264,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_destroyer_computer_overlap
+        observed_result = self.battleship.validation_flag_destroyer_overlap_computer
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -279,7 +279,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_patrol_boat_overlap
+        observed_result = self.battleship.validation_flag_patrol_boat_overlap_player
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -294,7 +294,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_patrol_boat_computer_overlap
+        observed_result = self.battleship.validation_flag_patrol_boat_overlap_computer
 
         # assert
         self.assertEqual(expected_result, observed_result)
@@ -324,7 +324,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_submarine_computer_overlap
+        observed_result = self.battleship.validation_flag_submarine_overlap_computer
 
         # assert
         self.assertEqual(expected_result, observed_result)
