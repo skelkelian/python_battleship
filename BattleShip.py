@@ -968,6 +968,12 @@ class BattleShip:
             self.validation_flag_ship_sunk_destroyer_player = True
         return self.validation_flag_ship_sunk_destroyer_player
 
+    def ship_sunk_patrol_boat_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[3] == 2:
+            self.validation_flag_ship_sunk_patrol_boat_player = True
+        return self.validation_flag_ship_sunk_patrol_boat_player
+
 # START GAME
 
     def start_game(self):
