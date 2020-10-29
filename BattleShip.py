@@ -66,6 +66,7 @@ class BattleShip:
     validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
     validation_flag_ship_sunk_carrier_player = False
+    validation_flag_ship_sunk_battleship_player = False
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -945,14 +946,20 @@ class BattleShip:
             print("missed ships")
         return self.validation_flag_hit_counter_computer
 
-    def get_hit_counter_computer(self):
-        return self.HIT_COUNTER_COMPUTER
+    def get_hit_counter_player(self):
+        return self.HIT_COUNTER_PLAYER_ONE
 
     def ship_sunk_carrier_player(self):
-        hit_counter_computer = self.get_hit_counter_computer()
-        if hit_counter_computer[0] == 5:
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[0] == 5:
             self.validation_flag_ship_sunk_carrier_player = True
         return self.validation_flag_ship_sunk_carrier_player
+
+    def ship_sunk_battleship_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[1] == 4:
+            self.validation_flag_ship_sunk_battleship_player = True
+        return self.validation_flag_ship_sunk_battleship_player
 
 # START GAME
 
