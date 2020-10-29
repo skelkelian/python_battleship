@@ -552,6 +552,19 @@ class TestInit(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
+    @patch('BattleShip.BattleShip.get_hit_counter_computer', return_value=[5, 1, 2, 0, 0])
+    def test_ship_sunk_carrier_player(self, get_hit_counter_computer):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.ship_sunk_carrier_player()
+
+        self.assertEqual(expected_result, observed_result)
+
 # start game
 
     def test_start_game(self):

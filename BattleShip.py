@@ -13,7 +13,6 @@ from random import randint
 # todo: DRY object creation for object BattleShip
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
-# do i need to use return to return the ship validation flags?
 
 # TODO'S LATER
 # todo: create a class for player and class for computer
@@ -47,8 +46,8 @@ class BattleShip:
     VERTICAL_AXIS = 2
 
     # HIT COUNTER
-    HIT_COUNTER_PLAYER_ONE = [0, 0, 0, 0, 0] # when computer hits a ship adjust this hit counter
-    HIT_COUNTER_COMPUTER = [0, 0, 0, 0, 0] # when player hits a ship adjust this hit counter
+    HIT_COUNTER_PLAYER_ONE = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
+    HIT_COUNTER_COMPUTER = [0, 0, 0, 0, 0]  # when player hits a ship adjust this hit counter
     # if sum of hit counters is 17 then game is over
     # 5,4,3,2,1 [5 = carrier, 4 = battleship, 3 = destroyer, 2 = patrol boat, 1 = submarine]
     # [carrier_max = 5, battleship_max = 4 , destroyer_max = 3, patrol_boat_max = 2, submarine_max = 3]
@@ -66,6 +65,7 @@ class BattleShip:
     validation_flag_submarine_overlap_player = True
     validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
+    validation_flag_ship_sunk_carrier_player = False
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -945,6 +945,14 @@ class BattleShip:
             print("missed ships")
         return self.validation_flag_hit_counter_computer
 
+    def get_hit_counter_computer(self):
+        return self.HIT_COUNTER_COMPUTER
+
+    def ship_sunk_carrier_player(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[0] == 5:
+            self.validation_flag_ship_sunk_carrier_player = True
+        return self.validation_flag_ship_sunk_carrier_player
 
 # START GAME
 
