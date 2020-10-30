@@ -68,6 +68,8 @@ class BattleShip:
     validation_flag_ship_sunk_carrier_player = False
     validation_flag_ship_sunk_battleship_player = False
     validation_flag_ship_sunk_destroyer_player = False
+    validation_flag_ship_sunk_patrol_boat_player = False
+    validation_flag_ship_sunk_submarine_player = False
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -973,6 +975,12 @@ class BattleShip:
         if hit_counter_player[3] == 2:
             self.validation_flag_ship_sunk_patrol_boat_player = True
         return self.validation_flag_ship_sunk_patrol_boat_player
+
+    def ship_sunk_submarine_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[4] == 3:
+            self.validation_flag_ship_sunk_submarine_player = True
+        return self.validation_flag_ship_sunk_submarine_player
 
 # START GAME
 
