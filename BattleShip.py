@@ -83,6 +83,11 @@ class BattleShip:
     validation_flag_submarine_overlap_computer = True
     validation_flag_hit_or_miss_computer = True
     validation_flag_hit_counter_computer = True
+    validation_flag_ship_sunk_carrier_computer = False
+    validation_flag_ship_sunk_battleship_computer = False
+    validation_flag_ship_sunk_destroyer_computer = False
+    validation_flag_ship_sunk_patrol_boat_computer = False
+    validation_flag_ship_sunk_submarine_computer = False
 
     # BOARD
     PRIMARY_BOARD = [
@@ -952,6 +957,9 @@ class BattleShip:
     def get_hit_counter_player(self):
         return self.HIT_COUNTER_PLAYER_ONE
 
+    def get_hit_counter_computer(self):
+        return self.HIT_COUNTER_COMPUTER
+
     def ship_sunk_carrier_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[0] == 5:
@@ -981,6 +989,36 @@ class BattleShip:
         if hit_counter_player[4] == 3:
             self.validation_flag_ship_sunk_submarine_player = True
         return self.validation_flag_ship_sunk_submarine_player
+
+    def ship_sunk_carrier_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[0] == 5:
+            self.validation_flag_ship_sunk_carrier_computer = True
+        return self.validation_flag_ship_sunk_carrier_computer
+
+    def ship_sunk_battleship_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[1] == 4:
+            self.validation_flag_ship_sunk_battleship_computer = True
+        return self.validation_flag_ship_sunk_battleship_computer
+
+    def ship_sunk_destroyer_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[2] == 3:
+            self.validation_flag_ship_sunk_destroyer_computer = True
+        return self.validation_flag_ship_sunk_destroyer_computer
+
+    def ship_sunk_patrol_boat_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[3] == 2:
+            self.validation_flag_ship_sunk_patrol_boat_computer = True
+        return self.validation_flag_ship_sunk_patrol_boat_computer
+
+    def ship_sunk_submarine_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[4] == 3:
+            self.validation_flag_ship_sunk_submarine_computer = True
+        return self.validation_flag_ship_sunk_submarine_computer
 
 # START GAME
 
