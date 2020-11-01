@@ -70,6 +70,7 @@ class BattleShip:
     validation_flag_ship_sunk_destroyer_player = False
     validation_flag_ship_sunk_patrol_boat_player = False
     validation_flag_ship_sunk_submarine_player = False
+    validation_flag_game_over_player = False
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -88,6 +89,7 @@ class BattleShip:
     validation_flag_ship_sunk_destroyer_computer = False
     validation_flag_ship_sunk_patrol_boat_computer = False
     validation_flag_ship_sunk_submarine_computer = False
+    validation_flag_game_over_computer = False
 
     # BOARD
     PRIMARY_BOARD = [
@@ -1019,6 +1021,13 @@ class BattleShip:
         if hit_counter_computer[4] == 3:
             self.validation_flag_ship_sunk_submarine_computer = True
         return self.validation_flag_ship_sunk_submarine_computer
+
+    def game_over_player(self):  # if this triggers, the player lost
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[0] + hit_counter_player[1] + hit_counter_player[2] + \
+                hit_counter_player[3] + hit_counter_player[4] == 17:
+            self.validation_flag_game_over_player = True
+        return self.validation_flag_game_over_player
 
 # START GAME
 
