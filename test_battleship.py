@@ -695,6 +695,19 @@ class TestInit(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
+    @patch('BattleShip.BattleShip.get_hit_counter_computer', return_value=[5, 4, 3, 2, 3])
+    def test_game_over_computer(self, get_hit_counter_computer):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.game_over_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
 # start game
 
     def test_start_game(self):

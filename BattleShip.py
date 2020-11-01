@@ -1029,6 +1029,13 @@ class BattleShip:
             self.validation_flag_game_over_player = True
         return self.validation_flag_game_over_player
 
+    def game_over_computer(self):  # if this triggers, the computer lost
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
+                hit_counter_computer[3] + hit_counter_computer[4] == 17:
+            self.validation_flag_game_over_computer = True
+        return self.validation_flag_game_over_computer
+
 # START GAME
 
     def start_game(self):
