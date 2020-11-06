@@ -523,7 +523,7 @@ class TestInit(unittest.TestCase):
         expected_result = True
 
         # call method of class BattleShip
-        observed_result = self.battleship.hit_counter_player()
+        observed_result = self.battleship.hit_counter_computer()
 
         self.assertEqual(expected_result, observed_result)
 
@@ -548,7 +548,7 @@ class TestInit(unittest.TestCase):
         expected_result = True
 
         # call method of class BattleShip
-        observed_result = self.battleship.hit_counter_computer()
+        observed_result = self.battleship.hit_counter_player()
 
         self.assertEqual(expected_result, observed_result)
 

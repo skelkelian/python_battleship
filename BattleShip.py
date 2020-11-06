@@ -888,7 +888,7 @@ class BattleShip:
         self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.secondary_board_computer
 
-    def hit_or_miss_player(self):
+    def hit_or_miss_player(self):  # player attacking computer's ships
         row_selected, column_selected = self.pick_point_player_one()
         primary_board_computer = self.get_primary_board_computer()
         if primary_board_computer[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
@@ -897,9 +897,13 @@ class BattleShip:
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.CARRIER:
             self.validation_flag_hit_or_miss_player = False
+            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = -1
+        else:
+            self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
+            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
         return self.validation_flag_hit_or_miss_player
 
-    def hit_or_miss_computer(self):
+    def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.pick_point_computer()
         primary_board_player = self.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
@@ -908,9 +912,13 @@ class BattleShip:
                 primary_board_player[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
                 primary_board_player[row_selected - 1][column_selected - 1] != self.CARRIER:
             self.validation_flag_hit_or_miss_computer = False
+            self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
+        else:
+            self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
+            self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.validation_flag_hit_or_miss_computer
 
-    def hit_counter_player(self):
+    def hit_counter_computer(self):  # this tracks the player's hits on the computer's ships
         row_selected, column_selected = self.pick_point_player_one()
         primary_board_computer = self.get_primary_board_computer()
         if primary_board_computer[row_selected - 1][column_selected - 1] == self.CARRIER:
@@ -933,7 +941,7 @@ class BattleShip:
             print("missed ships")
         return self.validation_flag_hit_counter_player
 
-    def hit_counter_computer(self):
+    def hit_counter_player(self):  # this tracks the computer's hits on the player's ships
         row_selected, column_selected = self.pick_point_computer()
         primary_board_player = self.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] == self.CARRIER:
@@ -966,60 +974,70 @@ class BattleShip:
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[0] == 5:
             self.validation_flag_ship_sunk_carrier_player = True
+            print("computer sunk player's carrier")
         return self.validation_flag_ship_sunk_carrier_player
 
     def ship_sunk_battleship_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[1] == 4:
             self.validation_flag_ship_sunk_battleship_player = True
+            print("computer sunk player's battleship")
         return self.validation_flag_ship_sunk_battleship_player
 
     def ship_sunk_destroyer_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[2] == 3:
             self.validation_flag_ship_sunk_destroyer_player = True
+            print("computer sunk player's destroyer")
         return self.validation_flag_ship_sunk_destroyer_player
 
     def ship_sunk_patrol_boat_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[3] == 2:
             self.validation_flag_ship_sunk_patrol_boat_player = True
+            print("computer sunk player's patrol boat")
         return self.validation_flag_ship_sunk_patrol_boat_player
 
     def ship_sunk_submarine_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[4] == 3:
             self.validation_flag_ship_sunk_submarine_player = True
+            print("computer sunk player's submarine")
         return self.validation_flag_ship_sunk_submarine_player
 
     def ship_sunk_carrier_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] == 5:
             self.validation_flag_ship_sunk_carrier_computer = True
+            print("player sunk computer's carrier")
         return self.validation_flag_ship_sunk_carrier_computer
 
     def ship_sunk_battleship_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[1] == 4:
             self.validation_flag_ship_sunk_battleship_computer = True
+            print("player sunk computer's battleship")
         return self.validation_flag_ship_sunk_battleship_computer
 
     def ship_sunk_destroyer_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[2] == 3:
             self.validation_flag_ship_sunk_destroyer_computer = True
+            print("player sunk computer's destroyer")
         return self.validation_flag_ship_sunk_destroyer_computer
 
     def ship_sunk_patrol_boat_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[3] == 2:
             self.validation_flag_ship_sunk_patrol_boat_computer = True
+            print("player sunk computer's patrol boat")
         return self.validation_flag_ship_sunk_patrol_boat_computer
 
     def ship_sunk_submarine_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[4] == 3:
             self.validation_flag_ship_sunk_submarine_computer = True
+            print("player sunk computer's submarine")
         return self.validation_flag_ship_sunk_submarine_computer
 
     def game_over_player(self):  # if this triggers, the player lost
@@ -1058,9 +1076,36 @@ class BattleShip:
         self.validate_patrol_boat_computer_overlap()
         self.validate_submarine_computer_overlap()
 
-    # do i need to do this?
-    # def attack(self):
-    #     self.place_point_player()
+    def play_game(self):
+        game_over = 0
+        while game_over == 0:
+            self.start_game()
+            self.hit_or_miss_player()
+            while self.validation_flag_hit_or_miss_player is True:
+                self.hit_counter_computer()
+                self.ship_sunk_carrier_computer()
+                self.ship_sunk_battleship_computer()
+                self.ship_sunk_destroyer_computer()
+                self.ship_sunk_patrol_boat_computer()
+                self.ship_sunk_submarine_computer()
+                self.game_over_computer()
+            self.hit_or_miss_computer()
+            while self.validation_flag_hit_or_miss_computer is True:
+                self.hit_counter_player()
+                self.ship_sunk_carrier_player()
+                self.ship_sunk_battleship_player()
+                self.ship_sunk_destroyer_player()
+                self.ship_sunk_patrol_boat_player()
+                self.ship_sunk_submarine_player()
+                self.game_over_player()
+
+
+
+
+
+
+
+
 
 # pick
 # validate
