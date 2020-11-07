@@ -1099,7 +1099,12 @@ class BattleShip:
                 self.ship_sunk_submarine_player()
                 self.game_over_player()
 
-
+        # functions
+        #   def pretty_print_list(self, matrix):
+    #         for row in range(0, len(matrix)):
+    #             print(matrix[row])
+    #             for col in range(0, len(matrix)-1):
+    #                 pass
 
 
 
