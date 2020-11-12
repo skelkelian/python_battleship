@@ -34,7 +34,6 @@ class BattleShip:
     # GAME DIFFICULTY
 
     # SHIP IDENTIFICATION
-    BATTLESHIP = 4
     DESTROYER = 3
     PATROL_BOAT = 2
     SUBMARINE = 1
@@ -276,15 +275,15 @@ class BattleShip:
         battleship_row_player_one = int(battleship_values_player_one.split(',')[1].strip())
         battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
         if battleship_axis_player_one == self.HORIZONTAL_AXIS:
-            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 2] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 2] = self.constants.BATTLESHIP
         else:
-            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one][battleship_column_player_one - 1] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] = self.BATTLESHIP
-            self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] = self.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one][battleship_column_player_one - 1] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] = self.constants.BATTLESHIP
+            self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] = self.constants.BATTLESHIP
 
     def place_battleship_computer(self):
         battleship_values_computer = self.config.get('main', 'battleship_computer')
@@ -292,15 +291,15 @@ class BattleShip:
         battleship_row_computer = int(battleship_values_computer.split(',')[1].strip())
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
         if battleship_axis_computer == self.HORIZONTAL_AXIS:
-            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 2] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 2] = self.constants.BATTLESHIP
         else:
-            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer][battleship_column_computer - 1] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer + 1][battleship_column_computer - 1] = self.BATTLESHIP
-            self.primary_board_computer[battleship_row_computer + 2][battleship_column_computer - 1] = self.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer][battleship_column_computer - 1] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer + 1][battleship_column_computer - 1] = self.constants.BATTLESHIP
+            self.primary_board_computer[battleship_row_computer + 2][battleship_column_computer - 1] = self.constants.BATTLESHIP
 
     def place_destroyer_player_one(self):
         destroyer_values_player_one = self.config.get('main', 'destroyer_player')
@@ -923,7 +922,7 @@ class BattleShip:
         if primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.CARRIER:
             self.HIT_COUNTER_COMPUTER[0] = self.HIT_COUNTER_COMPUTER[0] + 1
             print("hit carrier")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.BATTLESHIP:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
             self.HIT_COUNTER_COMPUTER[1] = self.HIT_COUNTER_COMPUTER[1] + 1
             print("hit battleship")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.DESTROYER:
@@ -946,7 +945,7 @@ class BattleShip:
         if primary_board_player[row_selected - 1][column_selected - 1] == self.constants.CARRIER:
             self.HIT_COUNTER_PLAYER_ONE[0] = self.HIT_COUNTER_PLAYER_ONE[0] + 1
             print("hit carrier")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.BATTLESHIP:
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
             self.HIT_COUNTER_PLAYER_ONE[1] = self.HIT_COUNTER_PLAYER_ONE[1] + 1
             print("hit battleship")
         elif primary_board_player[row_selected - 1][column_selected - 1] == self.DESTROYER:
