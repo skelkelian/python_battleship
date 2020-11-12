@@ -7,6 +7,7 @@ from random import randint
 # todo: find two open source repositories and read their README.md and then modify your README.md
     # pandas readme
 # todo: finish everything (EVERYTHING)
+# todo: how to integrate repo w travis
 
 # todo: create function for picking points (both player and computer)
 # todo: create functions that know when ship is sunk and if game is over

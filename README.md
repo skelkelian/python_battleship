@@ -1,7 +1,6 @@
 # BattleShip
 
-I programmed the game Battleship. 
-Battleship is a strategy type guessing game for two players. Each player has a board on which each player's fleet of ships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
+I programmed the game Battleship. Battleship is a strategy type guessing game for two players. Each player has a board on which each player's fleet of ships are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
 
 # Motivation
 
