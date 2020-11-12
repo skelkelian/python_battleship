@@ -48,9 +48,10 @@ class TestInit(unittest.TestCase):
     def test_read_game_difficulty_config_file(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.constants = utils.Constants()
 
         # when
-        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
+        expected_game_difficulty = self.constants.EASY_DIFFICULTY
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
@@ -63,7 +64,7 @@ class TestInit(unittest.TestCase):
         self.constants = utils.Constants()
 
         # when
-        expected_game_difficulty = self.battleship.EASY_DIFFICULTY
+        expected_game_difficulty = self.constants.EASY_DIFFICULTY
         expected_opponent_type = self.constants.COMPUTER_OPPONENT
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
