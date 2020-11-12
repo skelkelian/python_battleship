@@ -1,5 +1,6 @@
 from unittest import TestCase
 import unittest
+import utils
 from BattleShip import BattleShip
 from unittest.mock import patch
 from configparser import ConfigParser
@@ -34,9 +35,10 @@ class TestInit(unittest.TestCase):
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.constants = utils.Constants()
 
         # when
-        expected_opponent_type = self.battleship.COMPUTER_OPPONENT
+        expected_opponent_type = self.constants.COMPUTER_OPPONENT
         # call method of object BattleShip
         observed_opponent_type = self.battleship.get_opponent_type()
 
@@ -58,10 +60,11 @@ class TestInit(unittest.TestCase):
     def test_read_value_without_config_file(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
+        self.constants = utils.Constants()
 
         # when
         expected_game_difficulty = self.battleship.EASY_DIFFICULTY
-        expected_opponent_type = self.battleship.COMPUTER_OPPONENT
+        expected_opponent_type = self.constants.COMPUTER_OPPONENT
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
         observed_opponent_type = self.battleship.get_opponent_type()

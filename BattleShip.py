@@ -2,16 +2,19 @@
 # imports
 from configparser import ConfigParser
 from random import randint
+import utils
 
 # TODO'S NOW
 # todo: find two open source repositories and read their README.md and then modify your README.md
     # pandas readme
 # todo: finish everything (EVERYTHING)
 # todo: how to integrate repo w travis
-
-# todo: create function for picking points (both player and computer)
-# todo: create functions that know when ship is sunk and if game is over
-# todo: DRY object creation for object BattleShip
+# add features
+# screenshots
+# document how to fill out config file (how to configure)
+# how to run
+# how to test
+# learn how
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
 
@@ -27,7 +30,6 @@ class BattleShip:
     # CONSTANTS
 
     # OPPONENT TYPE
-    COMPUTER_OPPONENT = 1
     PLAYER_OPPONENT = 2
 
     # GAME DIFFICULTY
@@ -121,7 +123,7 @@ class BattleShip:
     # list self explanatory?
 
     def __init__(self, config_name=None):
-
+        self.constants = utils.Constants()
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -204,7 +206,7 @@ class BattleShip:
             self.validate_submarine_computer_points()
         else:
             self.game_difficulty = self.EASY_DIFFICULTY
-            self.opponent_type = self.COMPUTER_OPPONENT
+            self.opponent_type = self.constants.COMPUTER_OPPONENT
 
     def get_opponent_type(self):
         return self.opponent_type
