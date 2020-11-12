@@ -32,7 +32,6 @@ class BattleShip:
     # OPPONENT TYPE
 
     # GAME DIFFICULTY
-    GOD_DIFFICULTY = 3
 
     # SHIP IDENTIFICATION
     CARRIER = 5
@@ -227,7 +226,7 @@ class BattleShip:
     def validate_game_difficulty(self):
         if self.game_difficulty != self.constants.EASY_DIFFICULTY and \
                 self.game_difficulty != self.constants.NORMAL_DIFFICULTY and \
-                self.game_difficulty != self.GOD_DIFFICULTY:
+                self.game_difficulty != self.constants.GOD_DIFFICULTY:
             self.game_difficulty = self.constants.EASY_DIFFICULTY
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
