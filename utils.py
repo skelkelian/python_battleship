@@ -6,4 +6,6 @@ class Constants:
 
         # GAME DIFFICULTY
         self.EASY_DIFFICULTY = 1
+        self.NORMAL_DIFFICULTY = 2
+
 
