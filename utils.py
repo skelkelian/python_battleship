@@ -9,5 +9,8 @@ class Constants:
         self.NORMAL_DIFFICULTY = 2
         self.GOD_DIFFICULTY = 3
 
+        # SHIP IDENTIFICATION
+        self.CARRIER = 5
+
 
 
