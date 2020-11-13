@@ -12,6 +12,7 @@ class Constants:
         # SHIP IDENTIFICATION
         self.CARRIER = 5
         self.BATTLESHIP = 4
+        self.DESTROYER = 3
 
 
 

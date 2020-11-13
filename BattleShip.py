@@ -34,7 +34,6 @@ class BattleShip:
     # GAME DIFFICULTY
 
     # SHIP IDENTIFICATION
-    DESTROYER = 3
     PATROL_BOAT = 2
     SUBMARINE = 1
 
@@ -307,13 +306,13 @@ class BattleShip:
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
         if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.DESTROYER
         else:
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
 
     def place_destroyer_computer(self):
         destroyer_values_computer = self.config.get('main', 'destroyer_computer')
@@ -321,13 +320,13 @@ class BattleShip:
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
         if destroyer_axis_computer == self.HORIZONTAL_AXIS:
-            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.DESTROYER
-            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.DESTROYER
-            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.DESTROYER
         else:
-            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.DESTROYER
-            self.primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.DESTROYER
-            self.primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.DESTROYER
+            self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
+            self.primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.constants.DESTROYER
+            self.primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.DESTROYER
 
     def place_patrol_boat_player_one(self):
         patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
