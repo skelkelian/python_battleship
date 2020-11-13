@@ -13,6 +13,7 @@ class Constants:
         self.CARRIER = 5
         self.BATTLESHIP = 4
         self.DESTROYER = 3
+        self.PATROL_BOAT = 2
 
 
 

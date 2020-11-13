@@ -34,7 +34,6 @@ class BattleShip:
     # GAME DIFFICULTY
 
     # SHIP IDENTIFICATION
-    PATROL_BOAT = 2
     SUBMARINE = 1
 
     # AXIS
@@ -334,11 +333,11 @@ class BattleShip:
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
         if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
         else:
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
-            self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+            self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
 
     def place_patrol_boat_computer(self):
         patrol_boat_values_computer = self.config.get('main', 'patrol_boat_computer')
@@ -346,11 +345,11 @@ class BattleShip:
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
         if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
-            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.PATROL_BOAT
-            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.PATROL_BOAT
         else:
-            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.PATROL_BOAT
-            self.primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+            self.primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
 
     def place_submarine_player_one(self):
         submarine_values_player_one = self.config.get('main', 'submarine_player')
