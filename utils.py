@@ -14,6 +14,10 @@ class Constants:
         self.BATTLESHIP = 4
         self.DESTROYER = 3
         self.PATROL_BOAT = 2
+        self.SUBMARINE = 1
+
+        # AXIS
+        self.HORIZONTAL_AXIS = 1
 
 
 

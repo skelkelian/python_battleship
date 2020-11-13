@@ -34,10 +34,8 @@ class BattleShip:
     # GAME DIFFICULTY
 
     # SHIP IDENTIFICATION
-    SUBMARINE = 1
 
     # AXIS
-    HORIZONTAL_AXIS = 1
     VERTICAL_AXIS = 2
 
     # HIT COUNTER
@@ -236,7 +234,7 @@ class BattleShip:
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        if carrier_axis_player_one == self.HORIZONTAL_AXIS:
+        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.constants.CARRIER
             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.constants.CARRIER
@@ -254,7 +252,7 @@ class BattleShip:
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
-        if carrier_axis_computer == self.HORIZONTAL_AXIS:
+        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
             self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.constants.CARRIER
             self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer] = self.constants.CARRIER
             self.primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 1] = self.constants.CARRIER
@@ -272,7 +270,7 @@ class BattleShip:
         battleship_axis_player_one = int(battleship_values_player_one.split(',')[0].strip())
         battleship_row_player_one = int(battleship_values_player_one.split(',')[1].strip())
         battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
-        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+        if battleship_axis_player_one == self.constants.HORIZONTAL_AXIS:
             self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] = self.constants.BATTLESHIP
             self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] = self.constants.BATTLESHIP
             self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] = self.constants.BATTLESHIP
@@ -288,7 +286,7 @@ class BattleShip:
         battleship_axis_computer = int(battleship_values_computer.split(',')[0].strip())
         battleship_row_computer = int(battleship_values_computer.split(',')[1].strip())
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
-        if battleship_axis_computer == self.HORIZONTAL_AXIS:
+        if battleship_axis_computer == self.constants.HORIZONTAL_AXIS:
             self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] = self.constants.BATTLESHIP
             self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer] = self.constants.BATTLESHIP
             self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] = self.constants.BATTLESHIP
@@ -304,7 +302,7 @@ class BattleShip:
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
-        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
             self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
             self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.DESTROYER
             self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.DESTROYER
@@ -318,7 +316,7 @@ class BattleShip:
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
-        if destroyer_axis_computer == self.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
             self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
             self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.DESTROYER
             self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.DESTROYER
@@ -332,7 +330,7 @@ class BattleShip:
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
-        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
             self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
             self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
         else:
@@ -344,7 +342,7 @@ class BattleShip:
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
-        if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
             self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
             self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.PATROL_BOAT
         else:
@@ -356,28 +354,28 @@ class BattleShip:
         submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
-        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
-            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
-            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.SUBMARINE
-            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.SUBMARINE
+        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.constants.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.constants.SUBMARINE
         else:
-            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.SUBMARINE
-            self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.SUBMARINE
-            self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.constants.SUBMARINE
+            self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
 
     def place_submarine_computer(self):
         submarine_values_computer = self.config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
-        if submarine_axis_computer == self.HORIZONTAL_AXIS:
-            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.SUBMARINE
-            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.SUBMARINE
-            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.SUBMARINE
+        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.SUBMARINE
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.constants.SUBMARINE
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.constants.SUBMARINE
         else:
-            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.SUBMARINE
-            self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.SUBMARINE
-            self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.SUBMARINE
+            self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.SUBMARINE
+            self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.constants.SUBMARINE
+            self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.constants.SUBMARINE
 
     def validate_carrier_points(self):
         carrier_values_player_one = self.config.get('main', 'carrier_player')
@@ -386,7 +384,7 @@ class BattleShip:
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_player_one != self.HORIZONTAL_AXIS and carrier_axis_player_one != self.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.validation_flag_carrier_player = False
 
@@ -401,7 +399,7 @@ class BattleShip:
                 self.validation_flag_carrier_player = False
 
         # check column
-        if carrier_axis_player_one == self.HORIZONTAL_AXIS:
+        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.validation_flag_carrier_player = False
@@ -417,7 +415,7 @@ class BattleShip:
         battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
 
         # check axis
-        if battleship_axis_player_one != self.HORIZONTAL_AXIS and battleship_axis_player_one != self.VERTICAL_AXIS:
+        if battleship_axis_player_one != self.constants.HORIZONTAL_AXIS and battleship_axis_player_one != self.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
             self.validation_flag_battleship_player = False
 
@@ -432,7 +430,7 @@ class BattleShip:
                 self.validation_flag_battleship_player = False
 
         # check column
-        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+        if battleship_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if battleship_column_player_one > 7 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
                 self.validation_flag_battleship_player = False
@@ -449,7 +447,7 @@ class BattleShip:
         battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if battleship_axis_player_one == self.HORIZONTAL_AXIS:
+        if battleship_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] != 0 or \
@@ -471,7 +469,7 @@ class BattleShip:
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_player_one != self.HORIZONTAL_AXIS and destroyer_axis_player_one != self.VERTICAL_AXIS:
+        if destroyer_axis_player_one != self.constants.HORIZONTAL_AXIS and destroyer_axis_player_one != self.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.validation_flag_destroyer_player = False
 
@@ -486,7 +484,7 @@ class BattleShip:
                 self.validation_flag_destroyer_player = False
 
         # check column
-        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if destroyer_column_player_one > 8 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.validation_flag_destroyer_player = False
@@ -502,7 +500,7 @@ class BattleShip:
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if destroyer_axis_player_one == self.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] != 0 or \
                     self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] != 0:
@@ -522,7 +520,7 @@ class BattleShip:
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_player_one != self.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.validation_flag_patrol_boat_player = False
 
@@ -537,7 +535,7 @@ class BattleShip:
                 self.validation_flag_patrol_boat_player = False
 
         # check column
-        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.validation_flag_patrol_boat_player = False
@@ -553,7 +551,7 @@ class BattleShip:
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if patrol_boat_axis_player_one == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
@@ -571,7 +569,7 @@ class BattleShip:
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_player_one != self.HORIZONTAL_AXIS and submarine_axis_player_one != self.VERTICAL_AXIS:
+        if submarine_axis_player_one != self.constants.HORIZONTAL_AXIS and submarine_axis_player_one != self.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.validation_flag_submarine_player = False
 
@@ -586,7 +584,7 @@ class BattleShip:
                 self.validation_flag_submarine_player = False
 
         # check column
-        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.validation_flag_submarine_player = False
@@ -603,7 +601,7 @@ class BattleShip:
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if submarine_axis_player_one == self.HORIZONTAL_AXIS:
+        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
@@ -624,7 +622,7 @@ class BattleShip:
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_computer != self.HORIZONTAL_AXIS and carrier_axis_computer != self.VERTICAL_AXIS:
+        if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.validation_flag_carrier_computer = False
 
@@ -639,7 +637,7 @@ class BattleShip:
                 self.validation_flag_carrier_computer = False
 
         # check column
-        if carrier_axis_computer == self.HORIZONTAL_AXIS:
+        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
             if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.validation_flag_carrier_computer = False
@@ -655,7 +653,7 @@ class BattleShip:
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
 
         # check axis
-        if battleship_axis_computer != self.HORIZONTAL_AXIS and battleship_axis_computer != self.VERTICAL_AXIS:
+        if battleship_axis_computer != self.constants.HORIZONTAL_AXIS and battleship_axis_computer != self.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
             self.validation_flag_battleship_computer = False
 
@@ -670,7 +668,7 @@ class BattleShip:
                 self.validation_flag_battleship_computer = False
 
         # check column
-        if battleship_axis_computer == self.HORIZONTAL_AXIS:
+        if battleship_axis_computer == self.constants.HORIZONTAL_AXIS:
             if battleship_column_computer > 7 or battleship_column_computer <= 0 or battleship_column_computer % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
                 self.validation_flag_battleship_computer = False
@@ -687,7 +685,7 @@ class BattleShip:
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if battleship_axis_computer == self.HORIZONTAL_AXIS:
+        if battleship_axis_computer == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] != 0 or \
                     self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer] != 0 or \
                     self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] != 0 or \
@@ -709,7 +707,7 @@ class BattleShip:
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_computer != self.HORIZONTAL_AXIS and destroyer_axis_computer != self.VERTICAL_AXIS:
+        if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.validation_flag_destroyer_computer = False
 
@@ -724,7 +722,7 @@ class BattleShip:
                 self.validation_flag_destroyer_computer = False
 
         # check column
-        if destroyer_axis_computer == self.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
             if destroyer_column_computer > 8 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.validation_flag_destroyer_computer = False
@@ -740,7 +738,7 @@ class BattleShip:
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if destroyer_axis_computer == self.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] != 0 or \
                     self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] != 0 or \
                     self.primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] != 0:
@@ -760,7 +758,7 @@ class BattleShip:
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_computer != self.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.VERTICAL_AXIS:
+        if patrol_boat_axis_computer != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.validation_flag_patrol_boat_computer = False
 
@@ -775,7 +773,7 @@ class BattleShip:
                 self.validation_flag_patrol_boat_computer = False
 
         # check column
-        if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
             if patrol_boat_column_computer > 9 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.validation_flag_patrol_boat_computer = False
@@ -791,7 +789,7 @@ class BattleShip:
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if patrol_boat_axis_computer == self.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
                     self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
@@ -809,7 +807,7 @@ class BattleShip:
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_computer != self.HORIZONTAL_AXIS and submarine_axis_computer != self.VERTICAL_AXIS:
+        if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.validation_flag_submarine_computer = False
 
@@ -824,7 +822,7 @@ class BattleShip:
                 self.validation_flag_submarine_computer = False
 
         # check column
-        if submarine_axis_computer == self.HORIZONTAL_AXIS:
+        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
             if submarine_column_computer > 8 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.validation_flag_submarine_computer = False
@@ -841,7 +839,7 @@ class BattleShip:
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if submarine_axis_computer == self.HORIZONTAL_AXIS:
+        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
             if self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] != 0 or \
                     self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] != 0 or \
                     self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] != 0:
@@ -887,11 +885,11 @@ class BattleShip:
     def hit_or_miss_player(self):  # player attacking computer's ships
         row_selected, column_selected = self.pick_point_player_one()
         primary_board_computer = self.get_primary_board_computer()
-        if primary_board_computer[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.PATROL_BOAT and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.DESTROYER and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.CARRIER:
+        if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
             self.validation_flag_hit_or_miss_player = False
             self.secondary_board_player_one[row_selected - 1][column_selected - 1] = -1
         else:
@@ -902,11 +900,11 @@ class BattleShip:
     def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.pick_point_computer()
         primary_board_player = self.get_primary_board_player_one()
-        if primary_board_player[row_selected - 1][column_selected - 1] != self.SUBMARINE and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.PATROL_BOAT and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.DESTROYER and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.BATTLESHIP and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.CARRIER:
+        if primary_board_player[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
+                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
             self.validation_flag_hit_or_miss_computer = False
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
         else:
@@ -923,13 +921,13 @@ class BattleShip:
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
             self.HIT_COUNTER_COMPUTER[1] = self.HIT_COUNTER_COMPUTER[1] + 1
             print("hit battleship")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.DESTROYER:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.DESTROYER:
             self.HIT_COUNTER_COMPUTER[2] = self.HIT_COUNTER_COMPUTER[2] + 1
             print("hit destroyer")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.PATROL_BOAT:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.PATROL_BOAT:
             self.HIT_COUNTER_COMPUTER[3] = self.HIT_COUNTER_COMPUTER[3] + 1
             print("hit patrol boat")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.SUBMARINE:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.SUBMARINE:
             self.HIT_COUNTER_COMPUTER[4] = self.HIT_COUNTER_COMPUTER[4] + 1
             print("hit submarine")
         else:
@@ -946,13 +944,13 @@ class BattleShip:
         elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
             self.HIT_COUNTER_PLAYER_ONE[1] = self.HIT_COUNTER_PLAYER_ONE[1] + 1
             print("hit battleship")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.DESTROYER:
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.DESTROYER:
             self.HIT_COUNTER_PLAYER_ONE[2] = self.HIT_COUNTER_PLAYER_ONE[2] + 1
             print("hit destroyer")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.PATROL_BOAT:
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.PATROL_BOAT:
             self.HIT_COUNTER_PLAYER_ONE[3] = self.HIT_COUNTER_PLAYER_ONE[3] + 1
             print("hit patrol boat")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.SUBMARINE:
+        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.SUBMARINE:
             self.HIT_COUNTER_PLAYER_ONE[4] = self.HIT_COUNTER_PLAYER_ONE[4] + 1
             print("hit submarine")
         else:
