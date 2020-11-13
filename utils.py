@@ -18,6 +18,7 @@ class Constants:
 
         # AXIS
         self.HORIZONTAL_AXIS = 1
+        self.VERTICAL_AXIS = 2
 
 
 

@@ -36,7 +36,6 @@ class BattleShip:
     # SHIP IDENTIFICATION
 
     # AXIS
-    VERTICAL_AXIS = 2
 
     # HIT COUNTER
     HIT_COUNTER_PLAYER_ONE = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
@@ -384,12 +383,12 @@ class BattleShip:
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.validation_flag_carrier_player = False
 
         # check row
-        if carrier_axis_player_one == self.VERTICAL_AXIS:
+        if carrier_axis_player_one == self.constants.VERTICAL_AXIS:
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
                 self.validation_flag_carrier_player = False
@@ -415,12 +414,12 @@ class BattleShip:
         battleship_column_player_one = int(battleship_values_player_one.split(',')[2].strip())
 
         # check axis
-        if battleship_axis_player_one != self.constants.HORIZONTAL_AXIS and battleship_axis_player_one != self.VERTICAL_AXIS:
+        if battleship_axis_player_one != self.constants.HORIZONTAL_AXIS and battleship_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
             self.validation_flag_battleship_player = False
 
         # check row
-        if battleship_axis_player_one == self.VERTICAL_AXIS:
+        if battleship_axis_player_one == self.constants.VERTICAL_AXIS:
             if battleship_row_player_one > 7 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
                 self.validation_flag_battleship_player = False
@@ -469,12 +468,12 @@ class BattleShip:
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_player_one != self.constants.HORIZONTAL_AXIS and destroyer_axis_player_one != self.VERTICAL_AXIS:
+        if destroyer_axis_player_one != self.constants.HORIZONTAL_AXIS and destroyer_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.validation_flag_destroyer_player = False
 
         # check row
-        if destroyer_axis_player_one == self.VERTICAL_AXIS:
+        if destroyer_axis_player_one == self.constants.VERTICAL_AXIS:
             if destroyer_row_player_one > 8 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.validation_flag_destroyer_player = False
@@ -520,12 +519,12 @@ class BattleShip:
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_player_one != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.validation_flag_patrol_boat_player = False
 
         # check row
-        if patrol_boat_axis_player_one == self.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.VERTICAL_AXIS:
             if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
                 self.validation_flag_patrol_boat_player = False
@@ -569,12 +568,12 @@ class BattleShip:
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_player_one != self.constants.HORIZONTAL_AXIS and submarine_axis_player_one != self.VERTICAL_AXIS:
+        if submarine_axis_player_one != self.constants.HORIZONTAL_AXIS and submarine_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.validation_flag_submarine_player = False
 
         # check row
-        if submarine_axis_player_one == self.VERTICAL_AXIS:
+        if submarine_axis_player_one == self.constants.VERTICAL_AXIS:
             if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
                 self.validation_flag_submarine_player = False
@@ -622,12 +621,12 @@ class BattleShip:
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.VERTICAL_AXIS:
+        if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.validation_flag_carrier_computer = False
 
         # check row
-        if carrier_axis_computer == self.VERTICAL_AXIS:
+        if carrier_axis_computer == self.constants.VERTICAL_AXIS:
             if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
                 self.validation_flag_carrier_player = False
@@ -653,12 +652,12 @@ class BattleShip:
         battleship_column_computer = int(battleship_values_computer.split(',')[2].strip())
 
         # check axis
-        if battleship_axis_computer != self.constants.HORIZONTAL_AXIS and battleship_axis_computer != self.VERTICAL_AXIS:
+        if battleship_axis_computer != self.constants.HORIZONTAL_AXIS and battleship_axis_computer != self.constants.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
             self.validation_flag_battleship_computer = False
 
         # check row
-        if battleship_axis_computer == self.VERTICAL_AXIS:
+        if battleship_axis_computer == self.constants.VERTICAL_AXIS:
             if battleship_row_computer > 7 or battleship_row_computer <= 0 or battleship_row_computer % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
                 self.validation_flag_battleship_computer = False
@@ -707,12 +706,12 @@ class BattleShip:
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.VERTICAL_AXIS:
+        if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.validation_flag_destroyer_computer = False
 
         # check row
-        if destroyer_axis_computer == self.VERTICAL_AXIS:
+        if destroyer_axis_computer == self.constants.VERTICAL_AXIS:
             if destroyer_row_computer > 8 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.validation_flag_destroyer_computer = False
@@ -758,12 +757,12 @@ class BattleShip:
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_computer != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.VERTICAL_AXIS:
+        if patrol_boat_axis_computer != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.validation_flag_patrol_boat_computer = False
 
         # check row
-        if patrol_boat_axis_computer == self.VERTICAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.VERTICAL_AXIS:
             if patrol_boat_row_computer > 9 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
                 self.validation_flag_patrol_boat_computer = False
@@ -807,12 +806,12 @@ class BattleShip:
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.VERTICAL_AXIS:
+        if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.validation_flag_submarine_computer = False
 
         # check row
-        if submarine_axis_computer == self.VERTICAL_AXIS:
+        if submarine_axis_computer == self.constants.VERTICAL_AXIS:
             if submarine_row_computer > 8 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
                 self.validation_flag_submarine_computer = False
