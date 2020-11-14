@@ -29,6 +29,7 @@ class Constants:
 
         # VALIDATION PLAYER
         self.validation_flag_game = True
+        self.validation_flag_carrier_player = True
 
 
 

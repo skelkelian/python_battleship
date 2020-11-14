@@ -93,11 +93,12 @@ class TestInit(unittest.TestCase):
     def test_validate_carrier_points(self, validate_game_difficulty):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+        self.constants = utils.Constants()
 
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_carrier_player
+        observed_result = self.battleship.validate_carrier_points()
 
         # assert
         self.assertEqual(expected_result, observed_result)

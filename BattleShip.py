@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_carrier_player = True
     validation_flag_battleship_player = True
     validation_flag_destroyer_player = True
     validation_flag_patrol_boat_player = True
@@ -379,27 +378,28 @@ class BattleShip:
         # check axis
         if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
-            self.validation_flag_carrier_player = False
+            self.constants.validation_flag_carrier_player = False
 
         # check row
         if carrier_axis_player_one == self.constants.VERTICAL_AXIS:
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_flag_carrier_player = False
+                self.constants.validation_flag_carrier_player = False
         else:
             if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_flag_carrier_player = False
+                self.constants.validation_flag_carrier_player = False
 
         # check column
         if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_flag_carrier_player = False
+                self.constants.validation_flag_carrier_player = False
         else:
             if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_flag_carrier_player = False
+                self.constants.validation_flag_carrier_player = False
+        return self.constants.validation_flag_carrier_player
 
     def validate_battleship_points(self):
         battleship_values_player_one = self.config.get('main', 'battleship_player')
@@ -623,7 +623,7 @@ class BattleShip:
         if carrier_axis_computer == self.constants.VERTICAL_AXIS:
             if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_flag_carrier_player = False
+                self.validation_flag_carrier_computer = False
         else:
             if carrier_row_computer > 10 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
