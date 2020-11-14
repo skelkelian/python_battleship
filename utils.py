@@ -27,5 +27,9 @@ class Constants:
         # 5,4,3,2,1 [5 = carrier, 4 = battleship, 3 = destroyer, 2 = patrol boat, 1 = submarine]
         # [carrier_max = 5, battleship_max = 4 , destroyer_max = 3, patrol_boat_max = 2, submarine_max = 3]
 
+        # VALIDATION PLAYER
+        self.validation_flag_game = True
+
+
 
 

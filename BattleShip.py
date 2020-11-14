@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_game = True
     validation_flag_carrier_player = True
     validation_flag_battleship_player = True
     validation_flag_destroyer_player = True
@@ -219,8 +218,8 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
-            self.validation_flag_game = False
-        return self.validation_flag_game
+            self.constants.validation_flag_game = False
+        return self.constants.validation_flag_game
 
 # PLAYER
     def place_carrier_player_one(self):
