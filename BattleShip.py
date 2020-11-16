@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_submarine_player = True
     validation_flag_battleship_overlap_player = True
     validation_flag_destroyer_overlap_player = True
     validation_flag_patrol_boat_overlap_player = True
@@ -564,27 +563,28 @@ class BattleShip:
         # check axis
         if submarine_axis_player_one != self.constants.HORIZONTAL_AXIS and submarine_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
-            self.validation_flag_submarine_player = False
+            self.constants.validation_flag_submarine_player = False
 
         # check row
         if submarine_axis_player_one == self.constants.VERTICAL_AXIS:
             if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.validation_flag_submarine_player = False
+                self.constants.validation_flag_submarine_player = False
         else:
             if submarine_row_player_one > 10 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.validation_flag_submarine_player = False
+                self.constants.validation_flag_submarine_player = False
 
         # check column
         if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.validation_flag_submarine_player = False
+                self.constants.validation_flag_submarine_player = False
         else:
             if submarine_column_player_one > 10 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.validation_flag_submarine_player = False
+                self.constants.validation_flag_submarine_player = False
+        return self.constants.validation_flag_submarine_player
 
     def validate_submarine_overlap(self):
         # obtain and parse through values
