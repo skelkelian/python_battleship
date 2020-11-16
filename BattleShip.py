@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_patrol_boat_player = True
     validation_flag_submarine_player = True
     validation_flag_battleship_overlap_player = True
     validation_flag_destroyer_overlap_player = True
@@ -474,7 +473,6 @@ class BattleShip:
             if destroyer_row_player_one > 10 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_player = False
-        return self.constants.validation_flag_destroyer_player
 
         # check column
         if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
@@ -485,6 +483,7 @@ class BattleShip:
             if destroyer_column_player_one > 10 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_player = False
+        return self.constants.validation_flag_destroyer_player
 
     def validate_destroyer_overlap(self):
         destroyer_values_player_one = self.config.get('main', 'destroyer_player')
@@ -515,27 +514,28 @@ class BattleShip:
         # check axis
         if patrol_boat_axis_player_one != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
-            self.validation_flag_patrol_boat_player = False
+            self.constants.validation_flag_patrol_boat_player = False
 
         # check row
         if patrol_boat_axis_player_one == self.constants.VERTICAL_AXIS:
             if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.validation_flag_patrol_boat_player = False
+                self.constants.validation_flag_patrol_boat_player = False
         else:
             if patrol_boat_row_player_one > 10 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.validation_flag_patrol_boat_player = False
+                self.constants.validation_flag_patrol_boat_player = False
 
         # check column
         if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.validation_flag_patrol_boat_player = False
+                self.constants.validation_flag_patrol_boat_player = False
         else:
             if patrol_boat_column_player_one > 10 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.validation_flag_patrol_boat_player = False
+                self.constants.validation_flag_patrol_boat_player = False
+        return self.constants.validation_flag_patrol_boat_player
 
     def validate_patrol_boat_overlap(self):
         patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
