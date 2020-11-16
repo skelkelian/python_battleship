@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_battleship_player = True
     validation_flag_destroyer_player = True
     validation_flag_patrol_boat_player = True
     validation_flag_submarine_player = True
@@ -410,27 +409,28 @@ class BattleShip:
         # check axis
         if battleship_axis_player_one != self.constants.HORIZONTAL_AXIS and battleship_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
-            self.validation_flag_battleship_player = False
+            self.constants.validation_flag_battleship_player = False
 
         # check row
         if battleship_axis_player_one == self.constants.VERTICAL_AXIS:
             if battleship_row_player_one > 7 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
-                self.validation_flag_battleship_player = False
+                self.constants.validation_flag_battleship_player = False
         else:
             if battleship_row_player_one > 10 or battleship_row_player_one <= 0 or battleship_row_player_one % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
-                self.validation_flag_battleship_player = False
+                self.constants.validation_flag_battleship_player = False
 
         # check column
         if battleship_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if battleship_column_player_one > 7 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
-                self.validation_flag_battleship_player = False
+                self.constants.validation_flag_battleship_player = False
         else:
             if battleship_column_player_one > 10 or battleship_column_player_one <= 0 or battleship_column_player_one % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
-                self.validation_flag_battleship_player = False
+                self.constants.validation_flag_battleship_player = False
+        return self.constants.validation_flag_battleship_player
 
     def validate_battleship_overlap(self):
         # obtain and parse through values
