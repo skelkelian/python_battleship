@@ -31,6 +31,7 @@ class Constants:
         self.validation_flag_game = True
         self.validation_flag_carrier_player = True
         self.validation_flag_battleship_player = True
+        self.validation_flag_destroyer_player = True
 
 
 

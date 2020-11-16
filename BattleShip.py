@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_destroyer_player = True
     validation_flag_patrol_boat_player = True
     validation_flag_submarine_player = True
     validation_flag_battleship_overlap_player = True
@@ -464,27 +463,28 @@ class BattleShip:
         # check axis
         if destroyer_axis_player_one != self.constants.HORIZONTAL_AXIS and destroyer_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
-            self.validation_flag_destroyer_player = False
+            self.constants.validation_flag_destroyer_player = False
 
         # check row
         if destroyer_axis_player_one == self.constants.VERTICAL_AXIS:
             if destroyer_row_player_one > 8 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
-                self.validation_flag_destroyer_player = False
+                self.constants.validation_flag_destroyer_player = False
         else:
             if destroyer_row_player_one > 10 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
-                self.validation_flag_destroyer_player = False
+                self.constants.validation_flag_destroyer_player = False
+        return self.constants.validation_flag_destroyer_player
 
         # check column
         if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
             if destroyer_column_player_one > 8 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
-                self.validation_flag_destroyer_player = False
+                self.constants.validation_flag_destroyer_player = False
         else:
             if destroyer_column_player_one > 10 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
-                self.validation_flag_destroyer_player = False
+                self.constants.validation_flag_destroyer_player = False
 
     def validate_destroyer_overlap(self):
         destroyer_values_player_one = self.config.get('main', 'destroyer_player')
