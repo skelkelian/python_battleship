@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
     validation_flag_ship_sunk_carrier_player = False
     validation_flag_ship_sunk_battleship_player = False
@@ -883,12 +882,12 @@ class BattleShip:
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
-            self.validation_flag_hit_or_miss_player = False
+            self.constants.validation_flag_hit_or_miss_player = False
             self.secondary_board_player_one[row_selected - 1][column_selected - 1] = -1
         else:
             self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
             self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
-        return self.validation_flag_hit_or_miss_player
+        return self.constants.validation_flag_hit_or_miss_player
 
     def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.pick_point_computer()
@@ -1068,7 +1067,7 @@ class BattleShip:
         while game_over == 0:
             self.start_game()
             self.hit_or_miss_player()
-            while self.validation_flag_hit_or_miss_player is True:
+            while self.constants.validation_flag_hit_or_miss_player is True:
                 self.hit_counter_computer()
                 self.ship_sunk_carrier_computer()
                 self.ship_sunk_battleship_computer()
