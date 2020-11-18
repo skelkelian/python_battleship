@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_submarine_overlap_player = True
     validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
     validation_flag_ship_sunk_carrier_player = False
@@ -599,13 +598,14 @@ class BattleShip:
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap_player = False
+                self.constants.validation_flag_submarine_overlap_player = False
         else:
             if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap_player = False
+                self.constants.validation_flag_submarine_overlap_player = False
+        return self.constants.validation_flag_submarine_overlap_player
 
 # COMPUTER
     def validate_carrier_computer_points(self):
