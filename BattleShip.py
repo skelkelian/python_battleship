@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_ship_sunk_destroyer_player = False
     validation_flag_ship_sunk_patrol_boat_player = False
     validation_flag_ship_sunk_submarine_player = False
     validation_flag_game_over_player = False
@@ -970,9 +969,9 @@ class BattleShip:
     def ship_sunk_destroyer_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[2] == 3:
-            self.validation_flag_ship_sunk_destroyer_player = True
+            self.constants.validation_flag_ship_sunk_destroyer_player = True
             print("computer sunk player's destroyer")
-        return self.validation_flag_ship_sunk_destroyer_player
+        return self.constants.validation_flag_ship_sunk_destroyer_player
 
     def ship_sunk_patrol_boat_player(self):
         hit_counter_player = self.get_hit_counter_player()
