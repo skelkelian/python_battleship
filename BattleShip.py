@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_game_over_player = False
 
     # VALIDATION COMPUTER
     validation_flag_carrier_computer = True
@@ -1024,8 +1023,8 @@ class BattleShip:
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[0] + hit_counter_player[1] + hit_counter_player[2] + \
                 hit_counter_player[3] + hit_counter_player[4] == 17:
-            self.validation_flag_game_over_player = True
-        return self.validation_flag_game_over_player
+            self.constants.validation_flag_game_over_player = True
+        return self.constants.validation_flag_game_over_player
 
     def game_over_computer(self):  # if this triggers, the computer lost
         hit_counter_computer = self.get_hit_counter_computer()
