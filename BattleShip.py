@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_battleship_overlap_player = True
     validation_flag_destroyer_overlap_player = True
     validation_flag_patrol_boat_overlap_player = True
     validation_flag_submarine_overlap_player = True
@@ -443,14 +442,15 @@ class BattleShip:
                     self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 1] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one + 2] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_battleship_overlap_player = False
+                self.constants.validation_flag_battleship_overlap_player = False
         else:
             if self.primary_board_player_one[battleship_row_player_one - 1][battleship_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one][battleship_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one + 1][battleship_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[battleship_row_player_one + 2][battleship_column_player_one - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_battleship_overlap_player = False
+                self.constants.validation_flag_battleship_overlap_player = False
+        return self.constants.validation_flag_battleship_overlap_player
 
     def validate_destroyer_points(self):
         destroyer_values_player_one = self.config.get('main', 'destroyer_player')
