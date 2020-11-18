@@ -35,6 +35,7 @@ class Constants:
         self.validation_flag_patrol_boat_player = True
         self.validation_flag_submarine_player = True
         self.validation_flag_battleship_overlap_player = True
+        self.validation_flag_destroyer_overlap_player = True
 
 
 

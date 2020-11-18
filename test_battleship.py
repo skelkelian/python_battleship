@@ -254,7 +254,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_destroyer_overlap_player
+        observed_result = self.battleship.validate_destroyer_overlap()
 
         # assert
         self.assertEqual(expected_result, observed_result)
