@@ -40,7 +40,6 @@ class BattleShip:
     # HIT COUNTER
 
     # VALIDATION PLAYER
-    validation_flag_patrol_boat_overlap_player = True
     validation_flag_submarine_overlap_player = True
     validation_flag_hit_or_miss_player = True
     validation_flag_hit_counter_player = True
@@ -547,12 +546,13 @@ class BattleShip:
             if self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.validation_flag_patrol_boat_overlap_player = False
+                self.constants.validation_flag_patrol_boat_overlap_player = False
         else:
             if self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.validation_flag_patrol_boat_overlap_player = False
+                self.constants.validation_flag_patrol_boat_overlap_player = False
+        return self.constants.validation_flag_patrol_boat_overlap_player
 
     def validate_submarine_points(self):
         submarine_values_player_one = self.config.get('main', 'submarine_player')
