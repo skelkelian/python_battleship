@@ -42,8 +42,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_carrier_computer = True
-    validation_flag_battleship_computer = True
     validation_flag_destroyer_computer = True
     validation_flag_patrol_boat_computer = True
     validation_flag_submarine_computer = True
@@ -609,27 +607,28 @@ class BattleShip:
         # check axis
         if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
-            self.validation_flag_carrier_computer = False
+            self.constants.validation_flag_carrier_computer = False
 
         # check row
         if carrier_axis_computer == self.constants.VERTICAL_AXIS:
             if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_flag_carrier_computer = False
+                self.constants.validation_flag_carrier_computer = False
         else:
             if carrier_row_computer > 10 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.validation_flag_carrier_computer = False
+                self.constants.validation_flag_carrier_computer = False
 
         # check column
         if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
             if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_flag_carrier_computer = False
+                self.constants.validation_flag_carrier_computer = False
         else:
             if carrier_column_computer > 10 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.validation_flag_carrier_computer = False
+                self.constants.validation_flag_carrier_computer = False
+        return self.constants.validation_flag_carrier_computer
 
     def validate_battleship_computer_points(self):
         battleship_values_computer = self.config.get('main', 'battleship_computer')
@@ -640,27 +639,28 @@ class BattleShip:
         # check axis
         if battleship_axis_computer != self.constants.HORIZONTAL_AXIS and battleship_axis_computer != self.constants.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
-            self.validation_flag_battleship_computer = False
+            self.constants.validation_flag_battleship_computer = False
 
         # check row
         if battleship_axis_computer == self.constants.VERTICAL_AXIS:
             if battleship_row_computer > 7 or battleship_row_computer <= 0 or battleship_row_computer % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
-                self.validation_flag_battleship_computer = False
+                self.constants.validation_flag_battleship_computer = False
         else:
             if battleship_row_computer > 10 or battleship_row_computer <= 0 or battleship_row_computer % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
-                self.validation_flag_battleship_computer = False
+                self.constants.validation_flag_battleship_computer = False
 
         # check column
         if battleship_axis_computer == self.constants.HORIZONTAL_AXIS:
             if battleship_column_computer > 7 or battleship_column_computer <= 0 or battleship_column_computer % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
-                self.validation_flag_battleship_computer = False
+                self.constants.validation_flag_battleship_computer = False
         else:
             if battleship_column_computer > 10 or battleship_column_computer <= 0 or battleship_column_computer % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
-                self.validation_flag_battleship_computer = False
+                self.constants.validation_flag_battleship_computer = False
+        return self.constants.validation_flag_battleship_computer
 
     def validate_battleship_computer_overlap(self):
         # obtain and parse through values
