@@ -11,6 +11,15 @@ import utils
 # todo: how to integrate repo w travis
 # add features
 # screenshots
+    # visuals of what the game is like
+    # a legend that shows what each value is
+    # explain the config file (how to make (give template) and default, what to put in for each values, etc)
+# teach user how to install the game for themselves
+    # git clone ssh endpoint (my endpoint: git@github.com:skelkelian/python_battleship.git)
+         # git clone git@github.com:skelkelian/python_battleship.git
+    # cd into directory
+    # run play_game
+# create pull request for readme so keri can comment on my documentation
 # document how to fill out config file (how to configure)
 # how to run
 # how to test
@@ -42,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_destroyer_computer = True
     validation_flag_patrol_boat_computer = True
     validation_flag_submarine_computer = True
     validation_flag_battleship_overlap_computer = True
@@ -694,27 +702,28 @@ class BattleShip:
         # check axis
         if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
-            self.validation_flag_destroyer_computer = False
+            self.constants.validation_flag_destroyer_computer = False
 
         # check row
         if destroyer_axis_computer == self.constants.VERTICAL_AXIS:
             if destroyer_row_computer > 8 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
-                self.validation_flag_destroyer_computer = False
+                self.constants.validation_flag_destroyer_computer = False
         else:
             if destroyer_row_computer > 10 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
-                self.validation_flag_destroyer_computer = False
+                self.constants.validation_flag_destroyer_computer = False
 
         # check column
         if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
             if destroyer_column_computer > 8 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
-                self.validation_flag_destroyer_computer = False
+                self.constants.validation_flag_destroyer_computer = False
         else:
             if destroyer_column_computer > 10 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
-                self.validation_flag_destroyer_computer = False
+                self.constants.validation_flag_destroyer_computer = False
+        return self.constants.validation_flag_destroyer_computer
 
     def validate_destroyer_computer_overlap(self):
         destroyer_values_computer = self.config.get('main', 'destroyer_computer')

@@ -50,6 +50,7 @@ class Constants:
         # VALIDATION COMPUTER
         self.validation_flag_carrier_computer = True
         self.validation_flag_battleship_computer = True
+        self.validation_flag_destroyer_computer = True
 
 
 

@@ -159,7 +159,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validation_flag_destroyer_computer
+        observed_result = self.battleship.validate_destroyer_computer_points()
 
         # assert
         self.assertEqual(expected_result, observed_result)
