@@ -51,6 +51,9 @@ class Constants:
         self.validation_flag_carrier_computer = True
         self.validation_flag_battleship_computer = True
         self.validation_flag_destroyer_computer = True
+        self.validation_flag_patrol_boat_computer = True
+        self.validation_flag_submarine_computer = True
+        self.validation_flag_battleship_overlap_computer = True
 
 
 

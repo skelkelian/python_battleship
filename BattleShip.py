@@ -51,9 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_patrol_boat_computer = True
-    validation_flag_submarine_computer = True
-    validation_flag_battleship_overlap_computer = True
     validation_flag_destroyer_overlap_computer = True
     validation_flag_patrol_boat_overlap_computer = True
     validation_flag_submarine_overlap_computer = True
@@ -684,14 +681,15 @@ class BattleShip:
                     self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 1] != 0 or \
                     self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer + 2] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_battleship_overlap_computer = False
+                self.constants.validation_flag_battleship_overlap_computer = False
         else:
             if self.primary_board_computer[battleship_row_computer - 1][battleship_column_computer - 1] != 0 or \
                     self.primary_board_computer[battleship_row_computer][battleship_column_computer - 1] != 0 or \
                     self.primary_board_computer[battleship_row_computer + 1][battleship_column_computer - 1] != 0 or \
                     self.primary_board_computer[battleship_row_computer + 2][battleship_column_computer - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_battleship_overlap_computer = False
+                self.constants.validation_flag_battleship_overlap_computer = False
+        return self.constants.validation_flag_battleship_overlap_computer
 
     def validate_destroyer_computer_points(self):
         destroyer_values_computer = self.config.get('main', 'destroyer_computer')
@@ -754,27 +752,28 @@ class BattleShip:
         # check axis
         if patrol_boat_axis_computer != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
-            self.validation_flag_patrol_boat_computer = False
+            self.constants.validation_flag_patrol_boat_computer = False
 
         # check row
         if patrol_boat_axis_computer == self.constants.VERTICAL_AXIS:
             if patrol_boat_row_computer > 9 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.validation_flag_patrol_boat_computer = False
+                self.constants.validation_flag_patrol_boat_computer = False
         else:
             if patrol_boat_row_computer > 10 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.validation_flag_patrol_boat_computer = False
+                self.constants.validation_flag_patrol_boat_computer = False
 
         # check column
         if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
             if patrol_boat_column_computer > 9 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.validation_flag_patrol_boat_computer = False
+                self.constants.validation_flag_patrol_boat_computer = False
         else:
             if patrol_boat_column_computer > 10 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.validation_flag_patrol_boat_computer = False
+                self.constants.validation_flag_patrol_boat_computer = False
+        return self.constants.validation_flag_patrol_boat_computer
 
     def validate_patrol_boat_computer_overlap(self):
         patrol_boat_values_computer = self.config.get('main', 'patrol_boat_computer')
@@ -803,27 +802,28 @@ class BattleShip:
         # check axis
         if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
-            self.validation_flag_submarine_computer = False
+            self.constants.validation_flag_submarine_computer = False
 
         # check row
         if submarine_axis_computer == self.constants.VERTICAL_AXIS:
             if submarine_row_computer > 8 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.validation_flag_submarine_computer = False
+                self.constants.validation_flag_submarine_computer = False
         else:
             if submarine_row_computer > 10 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.validation_flag_submarine_computer = False
+                self.constants.validation_flag_submarine_computer = False
 
         # check column
         if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
             if submarine_column_computer > 8 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.validation_flag_submarine_computer = False
+                self.constants.validation_flag_submarine_computer = False
         else:
             if submarine_column_computer > 10 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.validation_flag_submarine_computer = False
+                self.constants.validation_flag_submarine_computer = False
+        return self.constants.validation_flag_submarine_computer
 
     def validate_submarine_computer_overlap(self):
         # obtain and parse through values
