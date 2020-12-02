@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_submarine_overlap_computer = True
     validation_flag_hit_or_miss_computer = True
     validation_flag_hit_counter_computer = True
     validation_flag_ship_sunk_carrier_computer = False
@@ -838,13 +837,14 @@ class BattleShip:
                     self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer] != 0 or \
                     self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap_computer = False
+                self.constants.validation_flag_submarine_overlap_computer = False
         else:
             if self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] != 0 or \
                     self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] != 0 or \
                     self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.validation_flag_submarine_overlap_computer = False
+                self.constants.validation_flag_submarine_overlap_computer = False
+        return self.constants.validation_flag_submarine_overlap_computer
 
     def pick_point_player_one(self):
         row_picked_by_player = randint(1, 10)
