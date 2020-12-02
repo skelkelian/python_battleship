@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_ship_sunk_submarine_computer = False
     validation_flag_game_over_computer = False
 
     # BOARD
@@ -1018,9 +1017,9 @@ class BattleShip:
     def ship_sunk_submarine_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[4] == 3:
-            self.validation_flag_ship_sunk_submarine_computer = True
+            self.constants.validation_flag_ship_sunk_submarine_computer = True
             print("player sunk computer's submarine")
-        return self.validation_flag_ship_sunk_submarine_computer
+        return self.constants.validation_flag_ship_sunk_submarine_computer
 
     def game_over_player(self):  # if this triggers, the player lost
         hit_counter_player = self.get_hit_counter_player()
