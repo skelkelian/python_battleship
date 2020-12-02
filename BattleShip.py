@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_game_over_computer = False
 
     # BOARD
     PRIMARY_BOARD = [
@@ -1032,8 +1031,8 @@ class BattleShip:
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
                 hit_counter_computer[3] + hit_counter_computer[4] == 17:
-            self.validation_flag_game_over_computer = True
-        return self.validation_flag_game_over_computer
+            self.constants.validation_flag_game_over_computer = True
+        return self.constants.validation_flag_game_over_computer
 
 # START GAME
 
