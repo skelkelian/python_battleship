@@ -62,3 +62,4 @@ class Constants:
         self.validation_flag_ship_sunk_carrier_computer = False
         self.validation_flag_ship_sunk_battleship_computer = False
         self.validation_flag_ship_sunk_destroyer_computer = False
+        self.validation_flag_ship_sunk_patrol_boat_computer = False
