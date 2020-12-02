@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_hit_counter_computer = True
     validation_flag_ship_sunk_carrier_computer = False
     validation_flag_ship_sunk_battleship_computer = False
     validation_flag_ship_sunk_destroyer_computer = False
@@ -947,9 +946,9 @@ class BattleShip:
             self.constants.HIT_COUNTER_PLAYER_ONE[4] = self.constants.HIT_COUNTER_PLAYER_ONE[4] + 1
             print("hit submarine")
         else:
-            self.validation_flag_hit_counter_computer = False
+            self.constants.validation_flag_hit_counter_computer = False
             print("missed ships")
-        return self.validation_flag_hit_counter_computer
+        return self.constants.validation_flag_hit_counter_computer
 
     def get_hit_counter_player(self):
         return self.HIT_COUNTER_PLAYER_ONE

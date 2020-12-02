@@ -58,6 +58,7 @@ class Constants:
         self.validation_flag_patrol_boat_overlap_computer = True
         self.validation_flag_submarine_overlap_computer = True
         self.validation_flag_hit_or_miss_computer = True
+        self.validation_flag_hit_counter_computer = True
 
 
 
