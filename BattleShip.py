@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_ship_sunk_battleship_computer = False
     validation_flag_ship_sunk_destroyer_computer = False
     validation_flag_ship_sunk_patrol_boat_computer = False
     validation_flag_ship_sunk_submarine_computer = False
