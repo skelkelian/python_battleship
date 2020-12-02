@@ -51,7 +51,6 @@ class BattleShip:
     # VALIDATION PLAYER
 
     # VALIDATION COMPUTER
-    validation_flag_patrol_boat_overlap_computer = True
     validation_flag_submarine_overlap_computer = True
     validation_flag_hit_or_miss_computer = True
     validation_flag_hit_counter_computer = True
@@ -786,12 +785,13 @@ class BattleShip:
             if self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
                     self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.validation_flag_patrol_boat_overlap_computer = False
+                self.constants.validation_flag_patrol_boat_overlap_computer = False
         else:
             if self.primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
                     self.primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.validation_flag_patrol_boat_overlap_computer = False
+                self.constants.validation_flag_patrol_boat_overlap_computer = False
+        return self.constants.validation_flag_patrol_boat_overlap_computer
 
     def validate_submarine_computer_points(self):
         submarine_values_computer = self.config.get('main', 'submarine_computer')
