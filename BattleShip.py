@@ -5,25 +5,15 @@ from random import randint
 import utils
 
 # TODO'S NOW
-# todo: find two open source repositories and read their README.md and then modify your README.md
-    # pandas readme
-# todo: finish everything (EVERYTHING)
 # todo: how to integrate repo w travis
-# add features
-# screenshots
-    # visuals of what the game is like
-    # a legend that shows what each value is
-    # explain the config file (how to make (give template) and default, what to put in for each values, etc)
-# teach user how to install the game for themselves
-    # git clone ssh endpoint (my endpoint: git@github.com:skelkelian/python_battleship.git)
-         # git clone git@github.com:skelkelian/python_battleship.git
-    # cd into directory
-    # run play_game
-# create pull request for readme so keri can comment on my documentation
-# document how to fill out config file (how to configure)
-# how to run
-# how to test
-# learn how
+
+# parent (ship)
+    #
+
+# child (specific ship)
+    # two methods
+        # place
+        # validate
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
 
