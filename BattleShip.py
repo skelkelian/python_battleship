@@ -1,6 +1,7 @@
 # battleship
 # imports
 from configparser import ConfigParser
+from carrier import Carrier
 from random import randint
 import utils
 
@@ -67,11 +68,10 @@ class BattleShip:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
-    # I created constants for the primary/secondary board. Should I use it to replace the 10x10 list or is that 10x10
-    # list self explanatory?
 
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
+        self.carrier = Carrier()
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

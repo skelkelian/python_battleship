@@ -98,7 +98,7 @@ class TestInit(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.battleship.validate_carrier_points()
+        observed_result = self.battleship.carrier.validate_carrier_points(self.battleship.config)
 
         # assert
         self.assertEqual(expected_result, observed_result)
