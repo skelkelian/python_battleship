@@ -76,8 +76,7 @@ class TestInit(unittest.TestCase):
 
 # validate
 
-    @patch('BattleShip.BattleShip.validate_carrier_points', return_value=True)
-    def test_validate_game_difficulty(self, validate_carrier_points):
+    def test_validate_game_difficulty(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
