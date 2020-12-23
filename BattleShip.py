@@ -2,6 +2,7 @@
 # imports
 from configparser import ConfigParser
 from carrier import Carrier
+from destroyer import Destroyer
 from random import randint
 import utils
 
@@ -72,6 +73,7 @@ class BattleShip:
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
         self.carrier = Carrier()
+        self.destroyer = Destroyer()
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
