@@ -4,6 +4,7 @@ from configparser import ConfigParser
 from carrier import Carrier
 from destroyer import Destroyer
 from patrol_boat import Patrol_Boat
+from submarine import Submarine
 from random import randint
 import utils
 
@@ -76,6 +77,7 @@ class BattleShip:
         self.carrier = Carrier()
         self.destroyer = Destroyer()
         self.patrol_boat = Patrol_Boat()
+        self.submarine = Submarine()
 
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
