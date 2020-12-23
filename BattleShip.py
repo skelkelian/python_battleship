@@ -10,6 +10,7 @@ import utils
 
 # TODO'S NOW
 # todo: how to integrate repo w travis
+# todo: move the commits from destroyer to patrol boat and submarine respectively
 
 # parent (ship)
     #
