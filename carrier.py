@@ -54,3 +54,10 @@ class Carrier:
             primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.constants.CARRIER
             primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.constants.CARRIER
             primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.constants.CARRIER
+
+    def ship_sunk_carrier_player(self, get_hit_counter_player):
+        hit_counter_player = get_hit_counter_player()
+        if hit_counter_player[0] == 5:
+            self.constants.validation_flag_ship_sunk_carrier_player = True
+            print("computer sunk player's carrier")
+        return self.constants.validation_flag_ship_sunk_carrier_player

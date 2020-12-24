@@ -186,25 +186,6 @@ class BattleShip:
             self.constants.validation_flag_game = False
         return self.constants.validation_flag_game
 
-# PLAYER
-#     def place_carrier_player_one(self):
-#         carrier_values_player_one = self.config.get('main', 'carrier_player')
-#         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
-#         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
-#         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-#         if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = self.constants.CARRIER
-#         else:
-#             self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.constants.CARRIER
-#             self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.constants.CARRIER
-
     def place_carrier_computer(self):
         carrier_values_computer = self.config.get('main', 'carrier_computer')
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
@@ -940,12 +921,12 @@ class BattleShip:
     def get_hit_counter_computer(self):
         return self.HIT_COUNTER_COMPUTER
 
-    def ship_sunk_carrier_player(self):
-        hit_counter_player = self.get_hit_counter_player()
-        if hit_counter_player[0] == 5:
-            self.constants.validation_flag_ship_sunk_carrier_player = True
-            print("computer sunk player's carrier")
-        return self.constants.validation_flag_ship_sunk_carrier_player
+    # def ship_sunk_carrier_player(self):
+    #     hit_counter_player = self.get_hit_counter_player()
+    #     if hit_counter_player[0] == 5:
+    #         self.constants.validation_flag_ship_sunk_carrier_player = True
+    #         print("computer sunk player's carrier")
+    #     return self.constants.validation_flag_ship_sunk_carrier_player
 
     def ship_sunk_battleship_player(self):
         hit_counter_player = self.get_hit_counter_player()

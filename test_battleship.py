@@ -560,12 +560,13 @@ class TestInit(unittest.TestCase):
     def test_ship_sunk_carrier_player(self, get_hit_counter_player):
         # create an object of class BattleShip
         self.battleship = BattleShip()
+        self.constants = utils.Constants()
 
         # when
         expected_result = True
 
         # call method of class BattleShip
-        observed_result = self.battleship.ship_sunk_carrier_player()
+        observed_result = self.battleship.carrier.ship_sunk_carrier_player(get_hit_counter_player)
 
         self.assertEqual(expected_result, observed_result)
 
