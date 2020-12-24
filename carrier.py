@@ -36,3 +36,21 @@ class Carrier:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.constants.validation_flag_carrier_player = False
         return self.constants.validation_flag_carrier_player
+
+    def place_carrier_player_one(self, battleship_config, primary_board_player_one):
+        carrier_values_player_one = battleship_config.get('main', 'carrier_player')
+        carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
+        carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
+        carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
+        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = self.constants.CARRIER
+        else:
+            primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.constants.CARRIER
+            primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.constants.CARRIER
