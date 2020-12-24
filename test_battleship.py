@@ -27,7 +27,6 @@ class TestInit(unittest.TestCase):
 
         # when
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-        # does the line above matter because we are not extracting a value from config file in this function?
 
         # assert
         self.assertEqual(expected_player_board_player_one, self.battleship.primary_board_player_one)
