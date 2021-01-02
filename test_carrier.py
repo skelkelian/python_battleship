@@ -35,7 +35,7 @@ class TestCarrier(unittest.TestCase):
         # when
         expected_result = True
 
-        # call method of class BattleShip
+        # call method of class Carrier
 
         observed_result = self.carrier.ship_sunk_carrier_player()
 

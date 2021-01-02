@@ -1,8 +1,11 @@
 from utils import Constants
+from ship import Ship
+from configparser import ConfigParser
 
 
-class Destroyer:
+class Destroyer(Ship):
     def __init__(self):
+        super().__init__()
         self.constants = Constants()
 
     def validate_destroyer_points(self, battleship_config):
@@ -36,3 +39,10 @@ class Destroyer:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_player = False
         return self.constants.validation_flag_destroyer_player
+
+    def ship_sunk_destroyer_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[2] == 3:
+            self.constants.validation_flag_ship_sunk_destroyer_player = True
+            print("computer sunk player's destroyer")
+        return self.constants.validation_flag_ship_sunk_destroyer_player
