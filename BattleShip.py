@@ -148,7 +148,7 @@ class BattleShip:
             self.validate_game_difficulty()
 
             # PLAYER ONE
-            self.validate_carrier_points()
+            self.carrier.validate_carrier_points(self.config)
             self.validate_battleship_points()
             self.validate_destroyer_points()
             self.validate_patrol_boat_points()
@@ -193,25 +193,6 @@ class BattleShip:
                   '\nNext time try to choose a value that is valid.')
             self.constants.validation_flag_game = False
         return self.constants.validation_flag_game
-
-# PLAYER
-    def place_carrier_player_one(self):
-        carrier_values_player_one = self.config.get('main', 'carrier_player')
-        carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
-        carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
-        carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 2] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 3] = self.constants.CARRIER
-        else:
-            self.primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one][carrier_column_player_one - 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.constants.CARRIER
-            self.primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.constants.CARRIER
 
     def place_carrier_computer(self):
         carrier_values_computer = self.config.get('main', 'carrier_computer')
@@ -342,38 +323,6 @@ class BattleShip:
             self.primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.SUBMARINE
             self.primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.constants.SUBMARINE
             self.primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.constants.SUBMARINE
-
-    def validate_carrier_points(self):
-        carrier_values_player_one = self.config.get('main', 'carrier_player')
-        carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
-        carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
-        carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-
-        # check axis
-        if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
-            print("The carrier axis value is invalid.")
-            self.constants.validation_flag_carrier_player = False
-
-        # check row
-        if carrier_axis_player_one == self.constants.VERTICAL_AXIS:
-            if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
-                print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
-        else:
-            if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
-                print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
-
-        # check column
-        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
-                print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
-        else:
-            if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
-                print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
-        return self.constants.validation_flag_carrier_player
 
     def validate_battleship_points(self):
         battleship_values_player_one = self.config.get('main', 'battleship_player')
@@ -948,13 +897,6 @@ class BattleShip:
     def get_hit_counter_computer(self):
         return self.HIT_COUNTER_COMPUTER
 
-    def ship_sunk_carrier_player(self):
-        hit_counter_player = self.get_hit_counter_player()
-        if hit_counter_player[0] == 5:
-            self.constants.validation_flag_ship_sunk_carrier_player = True
-            print("computer sunk player's carrier")
-        return self.constants.validation_flag_ship_sunk_carrier_player
-
     def ship_sunk_battleship_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[1] == 4:
@@ -1035,7 +977,7 @@ class BattleShip:
 # START GAME
 
     def start_game(self):
-        self.place_carrier_player_one()
+        self.carrier.place_carrier_player_one(self.config, self.primary_board_player_one)
         self.place_battleship_player_one()
         self.place_destroyer_player_one()
         self.place_patrol_boat_player_one()
@@ -1070,7 +1012,7 @@ class BattleShip:
             self.hit_or_miss_computer()
             while self.constants.validation_flag_hit_or_miss_computer is True:
                 self.hit_counter_player()
-                self.ship_sunk_carrier_player()
+                self.carrier.ship_sunk_carrier_player(self.get_hit_counter_player)
                 self.ship_sunk_battleship_player()
                 self.ship_sunk_destroyer_player()
                 self.ship_sunk_patrol_boat_player()

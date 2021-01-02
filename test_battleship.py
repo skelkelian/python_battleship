@@ -6,7 +6,7 @@ from unittest.mock import patch
 from configparser import ConfigParser
 
 
-class TestInit(unittest.TestCase):
+class TestBattleShip(unittest.TestCase):
 
 # read
 
@@ -27,7 +27,6 @@ class TestInit(unittest.TestCase):
 
         # when
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-        # does the line above matter because we are not extracting a value from config file in this function?
 
         # assert
         self.assertEqual(expected_player_board_player_one, self.battleship.primary_board_player_one)
@@ -76,8 +75,7 @@ class TestInit(unittest.TestCase):
 
 # validate
 
-    @patch('BattleShip.BattleShip.validate_carrier_points', return_value=True)
-    def test_validate_game_difficulty(self, validate_carrier_points):
+    def test_validate_game_difficulty(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
 
@@ -88,20 +86,6 @@ class TestInit(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
-
-    @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
-    def test_validate_carrier_points(self, validate_game_difficulty):
-        # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-        self.constants = utils.Constants()
-
-        # when
-        expected_result = False
-        # call method of object BattleShip
-        observed_result = self.battleship.carrier.validate_carrier_points(self.battleship.config)
-
-        # assert
-        self.assertEqual(expected_result, observed_result)
 
     @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
     def test_validate_carrier_computer_points(self, validate_game_difficulty):
@@ -557,19 +541,6 @@ class TestInit(unittest.TestCase):
 
         # call method of class BattleShip
         observed_result = self.battleship.hit_counter_player()
-
-        self.assertEqual(expected_result, observed_result)
-
-    @patch('BattleShip.BattleShip.get_hit_counter_player', return_value=[5, 1, 2, 0, 0])
-    def test_ship_sunk_carrier_player(self, get_hit_counter_player):
-        # create an object of class BattleShip
-        self.battleship = BattleShip()
-
-        # when
-        expected_result = True
-
-        # call method of class BattleShip
-        observed_result = self.battleship.ship_sunk_carrier_player()
 
         self.assertEqual(expected_result, observed_result)
 
