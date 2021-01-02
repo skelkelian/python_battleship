@@ -244,20 +244,6 @@ class BattleShip:
             self.primary_board_computer[battleship_row_computer + 1][battleship_column_computer - 1] = self.constants.BATTLESHIP
             self.primary_board_computer[battleship_row_computer + 2][battleship_column_computer - 1] = self.constants.BATTLESHIP
 
-    def place_destroyer_player_one(self):
-        destroyer_values_player_one = self.config.get('main', 'destroyer_player')
-        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
-        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
-        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
-        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.DESTROYER
-        else:
-            self.primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            self.primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
-
     def place_destroyer_computer(self):
         destroyer_values_computer = self.config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
@@ -940,7 +926,7 @@ class BattleShip:
     def start_game(self):
         self.carrier.place_carrier_player_one(self.config, self.primary_board_player_one)
         self.place_battleship_player_one()
-        self.place_destroyer_player_one()
+        self.destroyer.place_destroyer_player_one(self.config, self.primary_board_player_one)
         self.place_patrol_boat_player_one()
         self.place_submarine_player_one()
         self.place_carrier_computer()

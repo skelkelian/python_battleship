@@ -40,6 +40,20 @@ class Destroyer(Ship):
                 self.constants.validation_flag_destroyer_player = False
         return self.constants.validation_flag_destroyer_player
 
+    def place_destroyer_player_one(self, battleship_config, primary_board_player_one):
+        destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.DESTROYER
+        else:
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+
     def ship_sunk_destroyer_player(self):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[2] == 3:
