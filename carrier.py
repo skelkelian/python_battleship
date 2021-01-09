@@ -9,8 +9,6 @@ class Carrier(Ship):
         self.constants = Constants()
 
     def validate_carrier_points(self, battleship_config):
-        print(type(battleship_config))
-        print(f"value is {battleship_config}")
         carrier_values_player_one = battleship_config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
