@@ -865,13 +865,6 @@ class BattleShip:
             print("computer sunk player's patrol boat")
         return self.constants.validation_flag_ship_sunk_patrol_boat_player
 
-    def ship_sunk_submarine_player(self):
-        hit_counter_player = self.get_hit_counter_player()
-        if hit_counter_player[4] == 3:
-            self.constants.validation_flag_ship_sunk_submarine_player = True
-            print("computer sunk player's submarine")
-        return self.constants.validation_flag_ship_sunk_submarine_player
-
     def ship_sunk_carrier_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] == 5:

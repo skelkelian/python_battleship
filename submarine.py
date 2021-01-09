@@ -1,8 +1,10 @@
 from utils import Constants
+from ship import Ship
 
 
-class Submarine:
+class Submarine(Ship):
     def __init__(self):
+        super().__init__()
         self.constants = Constants()
 
     def validate_submarine_points(self, battleship_config):
@@ -36,3 +38,10 @@ class Submarine:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.constants.validation_flag_submarine_player = False
         return self.constants.validation_flag_submarine_player
+
+    def ship_sunk_submarine_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[4] == 3:
+            self.constants.validation_flag_ship_sunk_submarine_player = True
+            print("computer sunk player's submarine")
+        return self.constants.validation_flag_ship_sunk_submarine_player

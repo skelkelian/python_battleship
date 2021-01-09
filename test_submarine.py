@@ -24,3 +24,16 @@ class TestSubmarine(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    @patch('ship.Ship.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
+    def test_ship_sunk_submarine_player(self, get_hit_counter_player):
+        # create an object of class Carrier
+        self.submarine = Submarine()
+        self.constants = utils.Constants()
+
+        # when
+        expected_result = True
+        # call method of class Carrier
+        observed_result = self.submarine.ship_sunk_submarine_player()
+
+        self.assertEqual(expected_result, observed_result)
