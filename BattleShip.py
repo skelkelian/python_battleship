@@ -934,8 +934,8 @@ class BattleShip:
                 self.carrier.ship_sunk_carrier_player(self.get_hit_counter_player)
                 self.ship_sunk_battleship_player()
                 self.destroyer.ship_sunk_destroyer_player(self.get_hit_counter_player)
-                self.ship_sunk_patrol_boat_player()
-                self.ship_sunk_submarine_player()
+                self.patrol_boat.ship_sunk_patrol_boat_player(self.get_hit_counter_player)
+                self.submarine.ship_sunk_submarine_player(self.get_hit_counter_player)
                 self.game_over_player()
 
         # functions
