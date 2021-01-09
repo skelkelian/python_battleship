@@ -136,19 +136,6 @@ class TestBattleShip(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
-    def test_validate_patrol_boat_points(self):
-        # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-        self.constants = utils.Constants()
-
-        # when
-        expected_result = False
-        # call method of object BattleShip
-        observed_result = self.battleship.patrol_boat.validate_patrol_boat_points(self.battleship.config)
-
-        # assert
-        self.assertEqual(expected_result, observed_result)
-
     def test_validate_patrol_boat_computer_points(self):
         # create an object of class BattleShip
         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
