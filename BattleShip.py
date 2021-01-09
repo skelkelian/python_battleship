@@ -258,17 +258,17 @@ class BattleShip:
             self.primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.constants.DESTROYER
             self.primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.DESTROYER
 
-    def place_patrol_boat_player_one(self):
-        patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
-        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
-        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
-        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
-        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
-        else:
-            self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
-            self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+    # def place_patrol_boat_player_one(self):
+    #     patrol_boat_values_player_one = self.config.get('main', 'patrol_boat_player')
+    #     patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+    #     patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+    #     patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+    #     if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+    #         self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+    #         self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
+    #     else:
+    #         self.primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+    #         self.primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
 
     def place_patrol_boat_computer(self):
         patrol_boat_values_computer = self.config.get('main', 'patrol_boat_computer')
@@ -844,13 +844,6 @@ class BattleShip:
             print("computer sunk player's battleship")
         return self.constants.validation_flag_ship_sunk_battleship_player
 
-    def ship_sunk_patrol_boat_player(self):
-        hit_counter_player = self.get_hit_counter_player()
-        if hit_counter_player[3] == 2:
-            self.constants.validation_flag_ship_sunk_patrol_boat_player = True
-            print("computer sunk player's patrol boat")
-        return self.constants.validation_flag_ship_sunk_patrol_boat_player
-
     def ship_sunk_carrier_computer(self):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] == 5:
@@ -906,7 +899,7 @@ class BattleShip:
         self.carrier.place_carrier_player_one(self.config, self.primary_board_player_one)
         self.place_battleship_player_one()
         self.destroyer.place_destroyer_player_one(self.config, self.primary_board_player_one)
-        self.place_patrol_boat_player_one()
+        self.patrol_boat.place_patrol_boat_player_one(self.config, self.primary_board_player_one)
         self.submarine.place_submarine_player_one(self.config, self.primary_board_player_one)
         self.place_carrier_computer()
         self.place_battleship_computer()

@@ -1,8 +1,11 @@
 from utils import Constants
+from ship import Ship
+from configparser import ConfigParser
 
 
-class Patrol_Boat:
+class Patrol_Boat(Ship):
     def __init__(self):
+        super().__init__()
         self.constants = Constants()
 
     def validate_patrol_boat_points(self, battleship_config):
@@ -36,3 +39,22 @@ class Patrol_Boat:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_player = False
         return self.constants.validation_flag_patrol_boat_player
+
+    def place_patrol_boat_player_one(self, battleship_config, primary_board_player_one):
+        patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
+        else:
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+            primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+
+    def ship_sunk_patrol_boat_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[3] == 2:
+            self.constants.validation_flag_ship_sunk_patrol_boat_player = True
+            print("computer sunk player's patrol boat")
+        return self.constants.validation_flag_ship_sunk_patrol_boat_player
