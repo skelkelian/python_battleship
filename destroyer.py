@@ -60,3 +60,24 @@ class Destroyer(Ship):
             self.constants.validation_flag_ship_sunk_destroyer_player = True
             print("computer sunk player's destroyer")
         return self.constants.validation_flag_ship_sunk_destroyer_player
+
+    def validate_destroyer_overlap(self, battleship_config, primary_board_player_one):
+        destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
+        destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
+        destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
+        destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            if primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
+                    primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] != 0 or \
+                    primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.constants.validation_flag_destroyer_overlap_player = False
+        else:
+            if primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
+                    primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] != 0 or \
+                    primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.constants.validation_flag_destroyer_overlap_player = False
+        return self.constants.validation_flag_destroyer_overlap_player
