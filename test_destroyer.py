@@ -71,7 +71,7 @@ class TestDestroyer(unittest.TestCase):
         # when
         expected_result = False
         # call method of object BattleShip
-        observed_result = self.destroyer.validate_destroyer_overlap(config, self.mocked_primary_board)
+        observed_result = self.destroyer.validate_destroyer_overlap(config)
 
         # assert
         self.assertEqual(expected_result, observed_result)
