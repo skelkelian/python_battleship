@@ -457,28 +457,6 @@ class BattleShip:
                 self.constants.validation_flag_submarine_player = False
         return self.constants.validation_flag_submarine_player
 
-    def validate_submarine_overlap(self):
-        # obtain and parse through values
-        submarine_values_player_one = self.config.get('main', 'submarine_player')
-        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
-        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
-        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
-
-        # check if ship does not overlap
-        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
-                print('\nThe battleship overlaps with another ship.\n\n')
-                self.constants.validation_flag_submarine_overlap_player = False
-        else:
-            if self.primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
-                    self.primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
-                print('\nThe battleship overlaps with another ship.\n\n')
-                self.constants.validation_flag_submarine_overlap_player = False
-        return self.constants.validation_flag_submarine_overlap_player
-
 # COMPUTER
     def validate_carrier_computer_points(self):
         carrier_values_computer = self.config.get('main', 'carrier_computer')
@@ -917,7 +895,7 @@ class BattleShip:
         self.validate_battleship_overlap()
         self.validate_destroyer_overlap()
         self.validate_patrol_boat_overlap()
-        self.validate_submarine_overlap()
+        self.submarine.validate_submarine_overlap(self.config)
         self.validate_battleship_computer_overlap()
         self.validate_destroyer_computer_overlap()
         self.validate_patrol_boat_computer_overlap()

@@ -10,9 +10,9 @@ from configparser import ConfigParser
 class TestDestroyer(unittest.TestCase):
     mocked_primary_board = [
             [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
-            [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
-            [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
-            [2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -65,8 +65,6 @@ class TestDestroyer(unittest.TestCase):
 
         # read config file
         config.read('config_easy_ship_overlap.ini')
-
-        # print(self.mocked_primary_board)
 
         # when
         expected_result = False
