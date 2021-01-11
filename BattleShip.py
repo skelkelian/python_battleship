@@ -21,6 +21,7 @@ import utils
         # validate
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
+# you declare attributes outside the constructor and you define inside the constructor
 
 # TODO'S LATER
 # todo: create a class for player and class for computer
