@@ -58,3 +58,23 @@ class Patrol_Boat(Ship):
             self.constants.validation_flag_ship_sunk_patrol_boat_player = True
             print("computer sunk player's patrol boat")
         return self.constants.validation_flag_ship_sunk_patrol_boat_player
+
+    def validate_patrol_boat_overlap(self, battleship_config):
+        primary_board_player_one = self.get_primary_board_player_one()
+        patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
+        patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
+        patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
+        patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            if primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
+                    primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.constants.validation_flag_patrol_boat_overlap_player = False
+        else:
+            if primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
+                    primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.constants.validation_flag_patrol_boat_overlap_player = False
+        return self.constants.validation_flag_patrol_boat_overlap_player

@@ -6,6 +6,19 @@ from configparser import ConfigParser
 
 
 class TestPatrol_Boat(unittest.TestCase):
+    mocked_primary_board = [
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+
     def test_validate_patrol_boat_points(self):
         # create an object of class Patrol_Boat
         self.patrol_boat = Patrol_Boat()
@@ -37,4 +50,24 @@ class TestPatrol_Boat(unittest.TestCase):
         # call method of class BattleShip
         observed_result = self.patrol_boat.ship_sunk_patrol_boat_player()
 
+        self.assertEqual(expected_result, observed_result)
+
+    @patch('ship.Ship.get_primary_board_player_one', return_value=mocked_primary_board)
+    def test_validate_patrol_boat_overlap(self, get_primary_board_player_one):
+        # create an object of class Patrol Boat
+        self.patrol_boat = Patrol_Boat()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_ship_overlap.ini')
+
+        # when
+        expected_result = False
+        # call method of object BattleShip
+        observed_result = self.patrol_boat.validate_patrol_boat_overlap(config)
+
+        # assert
         self.assertEqual(expected_result, observed_result)
