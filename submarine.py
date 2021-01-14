@@ -59,3 +59,25 @@ class Submarine(Ship):
             self.constants.validation_flag_ship_sunk_submarine_player = True
             print("computer sunk player's submarine")
         return self.constants.validation_flag_ship_sunk_submarine_player
+
+    def validate_submarine_overlap(self, battleship_config):
+        primary_board_player_one = self.get_primary_board_player_one()
+        submarine_values_player_one = battleship_config.get('main', 'submarine_player')
+        submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
+        submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
+        submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            if primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
+                    primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
+                    primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.constants.validation_flag_submarine_overlap_player = False
+        else:
+            if primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
+                    primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
+                    primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
+                print('\nThe battleship overlaps with another ship.\n\n')
+                self.constants.validation_flag_submarine_overlap_player = False
+        return self.constants.validation_flag_submarine_overlap_player
