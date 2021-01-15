@@ -1,10 +1,14 @@
-from random import randint
+import unittest
+import utils
+from ship import Ship
+from unittest.mock import patch
+from configparser import ConfigParser
 
 
-class Ship:
-    def __init__(self, config_name):
-        self.hit_counter = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
-        self.primary_board_player_one = [
+class TestShip(unittest.TestCase):
+    def test_player_board_player_one(self):
+        # given
+        expected_player_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -17,10 +21,9 @@ class Ship:
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
 
-    def get_hit_counter_player(self):
-        return self.hit_counter
+        # when
+        self.ship = Ship(config_name='config_easy_difficulty.ini')
 
-    def get_primary_board_player_one(self):
-        return self.primary_board_player_one
-
+        # assert
+        self.assertEqual(expected_player_board_player_one, self.ship.primary_board_player_one)
 
