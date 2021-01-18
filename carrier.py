@@ -1,5 +1,6 @@
 from utils import Constants
 from ship import Ship
+from player import Player
 from configparser import ConfigParser
 
 
@@ -7,6 +8,7 @@ class Carrier(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.player = Player()
 
     def validate_carrier_points(self, battleship_config):
         carrier_values_player_one = battleship_config.get('main', 'carrier_player')
@@ -40,7 +42,8 @@ class Carrier(Ship):
                 self.constants.validation_flag_carrier_player = False
         return self.constants.validation_flag_carrier_player
 
-    def place_carrier_player_one(self, battleship_config, primary_board_player_one):
+    def place_carrier_player_one(self, battleship_config):
+        primary_board_player_one = self.player.get_primary_board_player_one()
         carrier_values_player_one = battleship_config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
@@ -57,6 +60,7 @@ class Carrier(Ship):
             primary_board_player_one[carrier_row_player_one + 1][carrier_column_player_one - 1] = self.constants.CARRIER
             primary_board_player_one[carrier_row_player_one + 2][carrier_column_player_one - 1] = self.constants.CARRIER
             primary_board_player_one[carrier_row_player_one + 3][carrier_column_player_one - 1] = self.constants.CARRIER
+        return primary_board_player_one
 
     def ship_sunk_carrier_player(self):
         hit_counter_player = self.get_hit_counter_player()
