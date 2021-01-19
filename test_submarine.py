@@ -64,7 +64,7 @@ class TestSubmarine(unittest.TestCase):
         # read config file
         config.read('config_easy_difficulty.ini')
 
-        # call method of class Carrier
+        # call method of class Submarine
         observed_result = self.submarine.place_submarine_player_one(config)
 
         # assert

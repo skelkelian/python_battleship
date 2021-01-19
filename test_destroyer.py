@@ -65,7 +65,7 @@ class TestDestroyer(unittest.TestCase):
         # read config file
         config.read('config_easy_difficulty.ini')
 
-        # call method of class Carrier
+        # call method of class Destroyer
         observed_result = self.destroyer.place_destroyer_player_one(config)
 
         # assert
