@@ -39,6 +39,37 @@ class TestSubmarine(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+    def test_place_submarine_player_one(self):
+        # create an object of class Carrier
+        self.submarine = Submarine()
+        self.constants = utils.Constants()
+
+        # when
+        initial_result = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty.ini')
+
+        # call method of class Carrier
+        observed_result = self.submarine.place_submarine_player_one(config)
+
+        # assert
+        self.assertNotEqual(initial_result, observed_result)
+
     @patch('ship.Ship.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_player(self, get_hit_counter_player):
         # create an object of class Carrier

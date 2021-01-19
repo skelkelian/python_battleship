@@ -1,11 +1,13 @@
 from utils import Constants
 from ship import Ship
+from player import Player
 
 
 class Submarine(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.player = Player()
 
     def validate_submarine_points(self, battleship_config):
         submarine_values_player_one = battleship_config.get('main', 'submarine_player')
@@ -39,7 +41,8 @@ class Submarine(Ship):
                 self.constants.validation_flag_submarine_player = False
         return self.constants.validation_flag_submarine_player
 
-    def place_submarine_player_one(self, battleship_config, primary_board_player_one):
+    def place_submarine_player_one(self, battleship_config):
+        primary_board_player_one = self.player.get_primary_board_player_one()
         submarine_values_player_one = battleship_config.get('main', 'submarine_player')
         submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())

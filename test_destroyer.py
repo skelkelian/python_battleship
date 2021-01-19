@@ -40,7 +40,7 @@ class TestDestroyer(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
-    def test_place_carrier_player_one(self):
+    def test_place_destroyer_player_one(self):
         # create an object of class Carrier
         self.destroyer = Destroyer()
         self.constants = utils.Constants()
