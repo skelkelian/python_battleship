@@ -1,5 +1,6 @@
 from utils import Constants
 from ship import Ship
+from player import Player
 from configparser import ConfigParser
 
 
@@ -7,6 +8,7 @@ class Destroyer(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.player = Player()
 
     def validate_destroyer_points(self, battleship_config):
         destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
@@ -40,7 +42,8 @@ class Destroyer(Ship):
                 self.constants.validation_flag_destroyer_player = False
         return self.constants.validation_flag_destroyer_player
 
-    def place_destroyer_player_one(self, battleship_config, primary_board_player_one):
+    def place_destroyer_player_one(self, battleship_config):
+        primary_board_player_one = self.player.get_primary_board_player_one()
         destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())

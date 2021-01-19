@@ -50,10 +50,11 @@ class TestCarrier(unittest.TestCase):
 
         # read config file
         config.read('config_easy_difficulty.ini')
-        
-        # call method of class Carrier
 
+        # call method of class Carrier
         observed_result = self.carrier.place_carrier_player_one(config)
+
+        # assert
         self.assertNotEqual(initial_result, observed_result)
 
     @patch('ship.Ship.get_hit_counter_player', return_value=[5, 1, 2, 0, 0])
