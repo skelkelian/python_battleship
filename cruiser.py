@@ -41,3 +41,21 @@ class Cruiser(Ship):
                 print('\nThe cruiser column value is invalid.\n\n')
                 self.constants.validation_flag_cruiser_player = False
         return self.constants.validation_flag_cruiser_player
+
+    def place_cruiser_player_one(self, battleship_config):
+        primary_board_player_one = self.player.get_primary_board_player_one()
+        cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
+        cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
+        cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
+        cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
+        if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 2] = self.constants.BATTLESHIP
+        else:
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one + 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one + 2][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+

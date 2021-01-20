@@ -6,9 +6,6 @@ from configparser import ConfigParser
 
 
 class TestPlayer(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
-
     def test_player_board_player_one(self):
         # given
         expected_player_board_player_one = [
