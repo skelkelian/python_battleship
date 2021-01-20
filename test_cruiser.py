@@ -8,7 +8,7 @@ from configparser import ConfigParser
 
 class TestCruiser(unittest.TestCase):
     def test_validate_cruiser_points(self):
-        # create an object of class BattleShip
+        # create an object of class Cruiser
         self.cruiser = Cruiser()
         self.constants = utils.Constants()
 
@@ -27,7 +27,7 @@ class TestCruiser(unittest.TestCase):
         self.assertEqual(expected_result, observed_result)
 
     def test_place_cruiser_player_one(self):
-        # create an object of class Carrier
+        # create an object of class Cruiser
         self.cruiser = Cruiser()
         self.constants = utils.Constants()
 
@@ -51,8 +51,22 @@ class TestCruiser(unittest.TestCase):
         # read config file
         config.read('config_easy_difficulty.ini')
 
-        # call method of class Destroyer
+        # call method of class Cruiser
         observed_result = self.cruiser.place_cruiser_player_one(config)
 
         # assert
         self.assertNotEqual(initial_result, observed_result)
+
+    @patch('ship.Ship.get_hit_counter_player', return_value=[2, 4, 3, 0, 0])
+    def test_ship_sunk_cruiser_player(self, get_hit_counter_player):
+        # create an object of class Cruiser
+        self.cruiser = Cruiser()
+        self.constants = utils.Constants()
+
+        # when
+        expected_result = True
+
+        # call method of class Cruiser
+        observed_result = self.cruiser.ship_sunk_cruiser_player()
+
+        self.assertEqual(expected_result, observed_result)

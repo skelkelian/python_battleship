@@ -41,7 +41,7 @@ class Constants:
         self.validation_flag_hit_or_miss_player = True
         self.validation_flag_hit_counter_player = True
         self.validation_flag_ship_sunk_carrier_player = False
-        self.validation_flag_ship_sunk_battleship_player = False
+        self.validation_flag_ship_sunk_cruiser_player = False
         self.validation_flag_ship_sunk_destroyer_player = False
         self.validation_flag_ship_sunk_patrol_boat_player = False
         self.validation_flag_ship_sunk_submarine_player = False
