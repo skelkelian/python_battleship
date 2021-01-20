@@ -65,3 +65,27 @@ class Cruiser(Ship):
             self.constants.validation_flag_ship_sunk_cruiser_player = True
             print("computer sunk player's cruiser")
         return self.constants.validation_flag_ship_sunk_cruiser_player
+
+    def validate_cruiser_overlap(self, battleship_config):
+        primary_board_player_one = self.get_primary_board_player_one()
+        cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
+        cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
+        cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
+        cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
+            if primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 2] != 0:
+                print('\nThe cruiser overlaps with another ship.\n\n')
+                self.constants.validation_flag_cruiser_overlap_player = False
+        else:
+            if primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one][cruiser_column_player_one - 1] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one + 1][cruiser_column_player_one - 1] != 0 or \
+                    primary_board_player_one[cruiser_row_player_one + 2][cruiser_column_player_one - 1] != 0:
+                print('\nThe cruiser overlaps with another ship.\n\n')
+                self.constants.validation_flag_cruiser_overlap_player = False
+        return self.constants.validation_flag_cruiser_overlap_player
