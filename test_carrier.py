@@ -92,3 +92,34 @@ class TestCarrier(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    def test_place_carrier_computer(self):
+        # create an object of class Carrier
+        self.carrier = Carrier()
+        self.constants = utils.Constants()
+
+        # when
+        initial_result = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty.ini')
+
+        # call method of class Carrier
+        observed_result = self.carrier.place_carrier_computer(config)
+
+        # assert
+        self.assertNotEqual(initial_result, observed_result)

@@ -100,3 +100,23 @@ class Carrier(Ship):
                 print('\nThe carrier column value is invalid.\n\n')
                 self.constants.validation_flag_carrier_computer = False
         return self.constants.validation_flag_carrier_computer
+
+    def place_carrier_computer(self, battleship_config):
+        primary_board_computer = self.player.get_primary_board_player_one()
+        carrier_values_computer = battleship_config.get('main', 'carrier_computer')
+        carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
+        carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
+        carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
+        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 2] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 3] = self.constants.CARRIER
+        else:
+            primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer][carrier_column_computer - 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer + 1][carrier_column_computer - 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer + 2][carrier_column_computer - 1] = self.constants.CARRIER
+            primary_board_computer[carrier_row_computer + 3][carrier_column_computer - 1] = self.constants.CARRIER
+
