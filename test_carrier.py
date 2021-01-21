@@ -20,6 +20,7 @@ class TestCarrier(unittest.TestCase):
 
         # when
         expected_result = False
+
         # call method of object Carrier
         observed_result = self.carrier.validate_carrier_points(config)
 
@@ -67,7 +68,27 @@ class TestCarrier(unittest.TestCase):
         expected_result = True
 
         # call method of class Carrier
-
         observed_result = self.carrier.ship_sunk_carrier_player()
 
+        self.assertEqual(expected_result, observed_result)
+
+    @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
+    def test_validate_carrier_computer_points(self, validate_game_difficulty):
+        # create an object of class Carrier
+        self.carrier = Carrier()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+
+        # call method of object Carrier
+        observed_result = self.carrier.validate_carrier_computer_points(config)
+
+        # assert
         self.assertEqual(expected_result, observed_result)

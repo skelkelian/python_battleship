@@ -12,23 +12,9 @@ import utils
 # todo: how to integrate repo w travis
 # todo: move the commits from destroyer to patrol boat and submarine respectively
 
-# parent (ship)
-    #
-
-# child (specific ship)
-    # two methods
-        # place
-        # validate
-
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
 # you declare attributes outside the constructor and you define inside the constructor
 
-# TODO'S LATER
-# todo: create a class for player and class for computer
-    # todo: keep track of stats (total shots fired, percent accuracy, number of turns, time)
-    #  for player and computer to display at end of game
-# todo: create method that places the computer ships too
-# todo: create simple print functions (pretty print)
 
 
 class BattleShip:

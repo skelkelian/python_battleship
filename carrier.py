@@ -68,3 +68,35 @@ class Carrier(Ship):
             self.constants.validation_flag_ship_sunk_carrier_player = True
             print("computer sunk player's carrier")
         return self.constants.validation_flag_ship_sunk_carrier_player
+
+    def validate_carrier_computer_points(self, battleship_config):
+        carrier_values_computer = battleship_config.get('main', 'carrier_computer')
+        carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
+        carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
+        carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
+
+        # check axis
+        if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.constants.VERTICAL_AXIS:
+            print("The carrier axis value is invalid.")
+            self.constants.validation_flag_carrier_computer = False
+
+        # check row
+        if carrier_axis_computer == self.constants.VERTICAL_AXIS:
+            if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.constants.validation_flag_carrier_computer = False
+        else:
+            if carrier_row_computer > 10 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
+                print('\nThe carrier row value is invalid.\n\n')
+                self.constants.validation_flag_carrier_computer = False
+
+        # check column
+        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.constants.validation_flag_carrier_computer = False
+        else:
+            if carrier_column_computer > 10 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
+                print('\nThe carrier column value is invalid.\n\n')
+                self.constants.validation_flag_carrier_computer = False
+        return self.constants.validation_flag_carrier_computer
