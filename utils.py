@@ -24,8 +24,8 @@ class Constants:
         self.HIT_COUNTER_PLAYER_ONE = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
         self.HIT_COUNTER_COMPUTER = [0, 0, 0, 0, 0]  # when player hits a ship adjust this hit counter
         # if sum of hit counters is 17 then game is over
-        # 5,4,3,2,1 [5 = carrier, 4 = battleship, 3 = destroyer, 2 = patrol boat, 1 = submarine]
-        # [carrier_max = 5, battleship_max = 4 , destroyer_max = 3, patrol_boat_max = 2, submarine_max = 3]
+        # 5,4,3,2,1 [5 = carrier, 4 = cruiser, 3 = destroyer, 2 = patrol boat, 1 = submarine]
+        # [carrier_max = 5, cruiser_max = 4 , destroyer_max = 3, patrol_boat_max = 2, submarine_max = 3]
 
         # VALIDATION PLAYER
         self.validation_flag_game = True
