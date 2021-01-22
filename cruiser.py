@@ -122,3 +122,19 @@ class Cruiser(Ship):
                 self.constants.validation_flag_battleship_computer = False
         return self.constants.validation_flag_battleship_computer
 
+    def place_cruiser_computer(self, battleship_config):
+        primary_board_computer = self.player.get_primary_board_computer()
+        cruiser_values_computer = battleship_config.get('main', 'cruiser_computer')
+        cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
+        cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
+        cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
+        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 2] = self.constants.BATTLESHIP
+        else:
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer][cruiser_column_computer - 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer + 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer + 2][cruiser_column_computer - 1] = self.constants.BATTLESHIP

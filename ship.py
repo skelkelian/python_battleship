@@ -14,3 +14,6 @@ class Ship:
 
     def get_hit_counter_computer(self):
         return self.hit_counter_computer
+
+    def get_primary_board_computer(self):
+        return self.primary_board_computer
