@@ -145,3 +145,27 @@ class Cruiser(Ship):
             self.constants.validation_flag_ship_sunk_cruiser_computer = True
             print("player sunk computer's cruiser")
         return self.constants.validation_flag_ship_sunk_cruiser_computer
+
+    def validate_cruiser_computer_overlap(self, battleship_config):
+        primary_board_computer = self.get_primary_board_computer()
+        cruiser_values_computer = battleship_config.get('main', 'cruiser_computer')
+        cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
+        cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
+        cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] != 0 or \
+                    primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] != 0 or \
+                    primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] != 0 or \
+                    primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 2] != 0:
+                print('\nThe cruiser overlaps with another ship.\n\n')
+                self.constants.validation_flag_cruiser_overlap_computer = False
+        else:
+            if primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] != 0 or \
+                    primary_board_computer[cruiser_row_computer][cruiser_column_computer - 1] != 0 or \
+                    primary_board_computer[cruiser_row_computer + 1][cruiser_column_computer - 1] != 0 or \
+                    primary_board_computer[cruiser_row_computer + 2][cruiser_column_computer - 1] != 0:
+                print('\nThe cruiser overlaps with another ship.\n\n')
+                self.constants.validation_flag_cruiser_overlap_computer = False
+        return self.constants.validation_flag_cruiser_overlap_computer

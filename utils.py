@@ -34,7 +34,7 @@ class Constants:
         self.validation_flag_destroyer_player = True
         self.validation_flag_patrol_boat_player = True
         self.validation_flag_submarine_player = True
-        self.validation_flag_battleship_overlap_player = True
+        self.validation_flag_cruiser_overlap_player = True
         self.validation_flag_destroyer_overlap_player = True
         self.validation_flag_patrol_boat_overlap_player = True
         self.validation_flag_submarine_overlap_player = True
@@ -53,7 +53,7 @@ class Constants:
         self.validation_flag_destroyer_computer = True
         self.validation_flag_patrol_boat_computer = True
         self.validation_flag_submarine_computer = True
-        self.validation_flag_battleship_overlap_computer = True
+        self.validation_flag_cruiser_overlap_computer = True
         self.validation_flag_destroyer_overlap_computer = True
         self.validation_flag_patrol_boat_overlap_computer = True
         self.validation_flag_submarine_overlap_computer = True

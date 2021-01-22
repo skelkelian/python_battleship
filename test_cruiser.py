@@ -19,6 +19,18 @@ class TestCruiser(unittest.TestCase):
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
+    mocked_primary_board_computer = [
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+        [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
 
     def test_validate_cruiser_points(self):
         # create an object of class Cruiser
@@ -171,3 +183,23 @@ class TestCruiser(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
+    @patch('ship.Ship.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    def test_validate_cruiser_computer_overlap(self, get_primary_board_player_one):
+        # create an object of class Cruiser
+        self.cruiser = Cruiser()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_ship_overlap.ini')
+
+        # when
+        expected_result = False
+
+        # call method of object Cruiser
+        observed_result = self.cruiser.validate_cruiser_computer_overlap(config)
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
