@@ -33,6 +33,7 @@ class TestCruiser(unittest.TestCase):
 
         # when
         expected_result = False
+
         # call method of object Cruiser
         observed_result = self.cruiser.validate_cruiser_points(config)
 
@@ -98,8 +99,30 @@ class TestCruiser(unittest.TestCase):
 
         # when
         expected_result = False
-        # call method of object BattleShip
+
+        # call method of object Cruiser
         observed_result = self.cruiser.validate_cruiser_overlap(config)
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    def test_validate_cruiser_computer_points(self):
+        # create an object of class Cruiser
+        self.cruiser = Cruiser()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+
+        # call method of object Cruiser
+        observed_result = self.cruiser.validate_cruiser_computer_points(config)
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
+

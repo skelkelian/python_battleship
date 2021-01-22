@@ -89,3 +89,36 @@ class Cruiser(Ship):
                 print('\nThe cruiser overlaps with another ship.\n\n')
                 self.constants.validation_flag_cruiser_overlap_player = False
         return self.constants.validation_flag_cruiser_overlap_player
+
+    def validate_cruiser_computer_points(self, battleship_config):
+        cruiser_values_player_one = battleship_config.get('main', 'cruiser_computer')
+        cruiser_axis_computer = int(cruiser_values_player_one.split(',')[0].strip())
+        cruiser_row_computer = int(cruiser_values_player_one.split(',')[1].strip())
+        cruiser_column_computer = int(cruiser_values_player_one.split(',')[2].strip())
+
+        # check axis
+        if cruiser_axis_computer != self.constants.HORIZONTAL_AXIS and cruiser_axis_computer != self.constants.VERTICAL_AXIS:
+            print("The battleship axis value is invalid.")
+            self.constants.validation_flag_battleship_computer = False
+
+        # check row
+        if cruiser_axis_computer == self.constants.VERTICAL_AXIS:
+            if cruiser_row_computer > 7 or cruiser_row_computer <= 0 or cruiser_row_computer % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.constants.validation_flag_battleship_computer = False
+        else:
+            if cruiser_row_computer > 10 or cruiser_row_computer <= 0 or cruiser_row_computer % 1 != 0:
+                print('\nThe battleship row value is invalid.\n\n')
+                self.constants.validation_flag_battleship_computer = False
+
+        # check column
+        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if cruiser_column_computer > 7 or cruiser_column_computer <= 0 or cruiser_column_computer % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.constants.validation_flag_battleship_computer = False
+        else:
+            if cruiser_column_computer > 10 or cruiser_column_computer <= 0 or cruiser_column_computer % 1 != 0:
+                print('\nThe battleship column value is invalid.\n\n')
+                self.constants.validation_flag_battleship_computer = False
+        return self.constants.validation_flag_battleship_computer
+
