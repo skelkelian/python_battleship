@@ -156,3 +156,18 @@ class TestCruiser(unittest.TestCase):
 
         # assert
         self.assertNotEqual(initial_result, observed_result)
+
+    @patch('ship.Ship.get_hit_counter_computer', return_value=[2, 4, 2, 0, 0])
+    def test_ship_sunk_cruiser_computer(self, get_hit_counter_computer):
+        # create an object of class Cruiser
+        self.cruiser = Cruiser()
+        self.constants = utils.Constants()
+
+        # when
+        expected_result = True
+
+        # call method of class Cruiser
+        observed_result = self.cruiser.ship_sunk_cruiser_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
