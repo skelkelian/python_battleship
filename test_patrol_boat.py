@@ -102,3 +102,22 @@ class TestPatrol_Boat(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    def test_validate_patrol_boat_computer_points(self):
+        # create an object of class Patrol_Boat
+        self.patrol_boat = Patrol_Boat()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_result = False
+        # call method of object Patrol_Boat
+        observed_result = self.patrol_boat.validate_patrol_boat_computer_points(config)
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
