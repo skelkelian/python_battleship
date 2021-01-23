@@ -113,3 +113,16 @@ class Patrol_Boat(Ship):
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_computer = False
         return self.constants.validation_flag_patrol_boat_computer
+
+    def place_patrol_boat_computer(self, battleship_config):
+        primary_board_computer = self.player.get_primary_board_computer()
+        patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
+        patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
+        patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
+        patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
+        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.PATROL_BOAT
+        else:
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+            primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT

@@ -39,7 +39,7 @@ class TestPatrol_Boat(unittest.TestCase):
         self.assertEqual(expected_result, observed_result)
 
     def test_place_patrol_boat_player_one(self):
-        # create an object of class Carrier
+        # create an object of class Patrol Boat
         self.patrol_boat = Patrol_Boat()
         self.constants = utils.Constants()
 
@@ -78,7 +78,7 @@ class TestPatrol_Boat(unittest.TestCase):
         # when
         expected_result = True
 
-        # call method of class BattleShip
+        # call method of class Patrol Boat
         observed_result = self.patrol_boat.ship_sunk_patrol_boat_player()
 
         self.assertEqual(expected_result, observed_result)
@@ -97,7 +97,7 @@ class TestPatrol_Boat(unittest.TestCase):
 
         # when
         expected_result = False
-        # call method of object BattleShip
+        # call method of object Patrol Boat
         observed_result = self.patrol_boat.validate_patrol_boat_overlap(config)
 
         # assert
@@ -121,3 +121,35 @@ class TestPatrol_Boat(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    def test_place_patrol_boat_computer(self):
+        # create an object of class Patrol Boat
+        self.patrol_boat = Patrol_Boat()
+        self.constants = utils.Constants()
+
+        # when
+        initial_result = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty.ini')
+
+        # call method of class Patrol Boat
+        observed_result = self.patrol_boat.place_patrol_boat_computer(config)
+
+        # assert
+        self.assertNotEqual(initial_result, observed_result)
+
