@@ -19,6 +19,18 @@ class TestSubmarine(unittest.TestCase):
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
+    mocked_primary_board_computer = [
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+        [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
 
     def test_validate_submarine_points(self):
         # create an object of class Submarine
@@ -164,4 +176,24 @@ class TestSubmarine(unittest.TestCase):
         # call method of class Submarine
         observed_result = self.submarine.ship_sunk_submarine_computer()
 
+        self.assertEqual(expected_result, observed_result)
+
+    @patch('ship.Ship.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    def test_validate_submarine_computer_overlap(self, get_primary_board_computer):
+        # create an object of class Submarine
+        self.submarine = Submarine()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_ship_overlap.ini')
+
+        # when
+        expected_result = False
+        # call method of object Submarine
+        observed_result = self.submarine.validate_submarine_computer_overlap(config)
+
+        # assert
         self.assertEqual(expected_result, observed_result)
