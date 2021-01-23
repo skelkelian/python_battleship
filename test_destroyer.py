@@ -41,7 +41,7 @@ class TestDestroyer(unittest.TestCase):
         self.assertEqual(expected_result, observed_result)
 
     def test_place_destroyer_player_one(self):
-        # create an object of class Carrier
+        # create an object of class Destroyer
         self.destroyer = Destroyer()
         self.constants = utils.Constants()
 
@@ -124,3 +124,33 @@ class TestDestroyer(unittest.TestCase):
         # assert
         self.assertEqual(expected_result, observed_result)
 
+    def test_place_destroyer_computer(self):
+        # create an object of class Destroyer
+        self.destroyer = Destroyer()
+        self.constants = utils.Constants()
+
+        # when
+        initial_result = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty.ini')
+
+        # call method of class Destroyer
+        observed_result = self.destroyer.place_destroyer_computer(config)
+
+        # assert
+        self.assertNotEqual(initial_result, observed_result)

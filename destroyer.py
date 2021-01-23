@@ -117,3 +117,18 @@ class Destroyer(Ship):
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_computer = False
         return self.constants.validation_flag_destroyer_computer
+
+    def place_destroyer_computer(self, battleship_config):
+        primary_board_computer = self.player.get_primary_board_player_one()
+        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+        destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
+        destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
+        destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.DESTROYER
+        else:
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.DESTROYER
