@@ -126,3 +126,30 @@ class Patrol_Boat(Ship):
         else:
             primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
             primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+
+    def ship_sunk_patrol_boat_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[3] == 2:
+            self.constants.validation_flag_ship_sunk_patrol_boat_computer = True
+            print("player sunk computer's patrol boat")
+        return self.constants.validation_flag_ship_sunk_patrol_boat_computer
+
+    def validate_patrol_boat_computer_overlap(self, battleship_config):
+        primary_board_computer = self.get_primary_board_computer()
+        patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
+        patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
+        patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
+        patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
+                    primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.constants.validation_flag_patrol_boat_overlap_computer = False
+        else:
+            if primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
+                    primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] != 0:
+                print('\nThe patrol boat overlaps with another ship.\n\n')
+                self.constants.validation_flag_patrol_boat_overlap_computer = False
+        return self.constants.validation_flag_patrol_boat_overlap_computer

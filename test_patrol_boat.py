@@ -18,6 +18,18 @@ class TestPatrol_Boat(unittest.TestCase):
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
+    mocked_primary_board_computer = [
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+        [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
 
     def test_validate_patrol_boat_points(self):
         # create an object of class Patrol_Boat
@@ -153,3 +165,36 @@ class TestPatrol_Boat(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
+    @patch('ship.Ship.get_hit_counter_computer', return_value=[2, 3, 1, 2, 0])
+    def test_ship_sunk_patrol_boat_computer(self, get_hit_counter_computer):
+        # create an object of class Patrol_Boat
+        self.patrol_boat = Patrol_Boat()
+        self.constants = utils.Constants()
+
+        # when
+        expected_result = True
+
+        # call method of class Patrol Boat
+        observed_result = self.patrol_boat.ship_sunk_patrol_boat_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
+    @patch('ship.Ship.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    def test_validate_patrol_boat_computer_overlap(self, get_primary_board_player_one):
+        # create an object of class Patrol Boat
+        self.patrol_boat = Patrol_Boat()
+        self.constants = utils.Constants()
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_ship_overlap.ini')
+
+        # when
+        expected_result = False
+        # call method of object Patrol Boat
+        observed_result = self.patrol_boat.validate_patrol_boat_computer_overlap(config)
+
+        # assert
+        self.assertEqual(expected_result, observed_result)
