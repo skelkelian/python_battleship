@@ -21,7 +21,7 @@ class TestSubmarine(unittest.TestCase):
     ]
 
     def test_validate_submarine_points(self):
-        # create an object of class Carrier
+        # create an object of class Submarine
         self.submarine = Submarine()
         self.constants = utils.Constants()
 
@@ -40,7 +40,7 @@ class TestSubmarine(unittest.TestCase):
         self.assertEqual(expected_result, observed_result)
 
     def test_place_submarine_player_one(self):
-        # create an object of class Carrier
+        # create an object of class Submarine
         self.submarine = Submarine()
         self.constants = utils.Constants()
 
@@ -72,13 +72,13 @@ class TestSubmarine(unittest.TestCase):
 
     @patch('ship.Ship.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_player(self, get_hit_counter_player):
-        # create an object of class Carrier
+        # create an object of class Submarine
         self.submarine = Submarine()
         self.constants = utils.Constants()
 
         # when
         expected_result = True
-        # call method of class Carrier
+        # call method of class Submarine
         observed_result = self.submarine.ship_sunk_submarine_player()
 
         self.assertEqual(expected_result, observed_result)
@@ -97,14 +97,14 @@ class TestSubmarine(unittest.TestCase):
 
         # when
         expected_result = False
-        # call method of object BattleShip
+        # call method of object Submarine
         observed_result = self.submarine.validate_submarine_overlap(config)
 
         # assert
         self.assertEqual(expected_result, observed_result)
 
     def test_validate_submarine_computer_points(self):
-        # create an object of class Carrier
+        # create an object of class Submarine
         self.submarine = Submarine()
         self.constants = utils.Constants()
 
@@ -123,7 +123,7 @@ class TestSubmarine(unittest.TestCase):
         self.assertEqual(expected_result, observed_result)
 
     def test_place_submarine_computer(self):
-        # create an object of class Carrier
+        # create an object of class Submarine
         self.submarine = Submarine()
         self.constants = utils.Constants()
 
@@ -152,3 +152,16 @@ class TestSubmarine(unittest.TestCase):
 
         # assert
         self.assertNotEqual(initial_result, observed_result)
+
+    @patch('ship.Ship.get_hit_counter_computer', return_value=[2, 3, 1, 1, 3])
+    def test_ship_sunk_submarine_computer(self, get_hit_counter_computer):
+        # create an object of class Submarine
+        self.submarine = Submarine()
+        self.constants = utils.Constants()
+
+        # when
+        expected_result = True
+        # call method of class Submarine
+        observed_result = self.submarine.ship_sunk_submarine_computer()
+
+        self.assertEqual(expected_result, observed_result)
