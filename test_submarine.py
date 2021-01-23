@@ -121,3 +121,34 @@ class TestSubmarine(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_result, observed_result)
+
+    def test_place_submarine_computer(self):
+        # create an object of class Carrier
+        self.submarine = Submarine()
+        self.constants = utils.Constants()
+
+        # when
+        initial_result = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # creates an object of ConfigParser
+        config = ConfigParser()
+
+        # read config file
+        config.read('config_easy_difficulty.ini')
+
+        # call method of class Submarine
+        observed_result = self.submarine.place_submarine_computer(config)
+
+        # assert
+        self.assertNotEqual(initial_result, observed_result)
