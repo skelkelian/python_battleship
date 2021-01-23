@@ -119,7 +119,7 @@ class Destroyer(Ship):
         return self.constants.validation_flag_destroyer_computer
 
     def place_destroyer_computer(self, battleship_config):
-        primary_board_computer = self.player.get_primary_board_player_one()
+        primary_board_computer = self.player.get_primary_board_computer()
         destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
@@ -139,3 +139,25 @@ class Destroyer(Ship):
             self.constants.validation_flag_ship_sunk_destroyer_computer = True
             print("player sunk computer's destroyer")
         return self.constants.validation_flag_ship_sunk_destroyer_computer
+
+    def validate_destroyer_computer_overlap(self, battleship_config):
+        primary_board_computer = self.get_primary_board_computer()
+        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+        destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
+        destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
+        destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
+
+        # check if ship does not overlap
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] != 0 or \
+                    primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] != 0 or \
+                    primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.constants.validation_flag_destroyer_overlap_computer = False
+        else:
+            if primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] != 0 or \
+                    primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] != 0 or \
+                    primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] != 0:
+                print('\nThe destroyer overlaps with another ship.\n\n')
+                self.constants.validation_flag_destroyer_overlap_computer = False
+        return self.constants.validation_flag_destroyer_overlap_computer
