@@ -85,3 +85,35 @@ class Destroyer(Ship):
                 print('\nThe destroyer overlaps with another ship.\n\n')
                 self.constants.validation_flag_destroyer_overlap_player = False
         return self.constants.validation_flag_destroyer_overlap_player
+
+    def validate_destroyer_computer_points(self, battleship_config):
+        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+        destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
+        destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
+        destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
+
+        # check axis
+        if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
+            print("The destroyer axis value is invalid.")
+            self.constants.validation_flag_destroyer_computer = False
+
+        # check row
+        if destroyer_axis_computer == self.constants.VERTICAL_AXIS:
+            if destroyer_row_computer > 8 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.constants.validation_flag_destroyer_computer = False
+        else:
+            if destroyer_row_computer > 10 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
+                print('\nThe destroyer row value is invalid.\n\n')
+                self.constants.validation_flag_destroyer_computer = False
+
+        # check column
+        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if destroyer_column_computer > 8 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.constants.validation_flag_destroyer_computer = False
+        else:
+            if destroyer_column_computer > 10 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
+                print('\nThe destroyer column value is invalid.\n\n')
+                self.constants.validation_flag_destroyer_computer = False
+        return self.constants.validation_flag_destroyer_computer
