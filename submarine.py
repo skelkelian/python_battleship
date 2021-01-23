@@ -84,3 +84,35 @@ class Submarine(Ship):
                 print('\nThe battleship overlaps with another ship.\n\n')
                 self.constants.validation_flag_submarine_overlap_player = False
         return self.constants.validation_flag_submarine_overlap_player
+
+    def validate_submarine_computer_points(self, battleship_config):
+        submarine_values_computer = battleship_config.get('main', 'submarine_computer')
+        submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
+        submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
+        submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
+
+        # check axis
+        if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.constants.VERTICAL_AXIS:
+            print("The submarine axis value is invalid.")
+            self.constants.validation_flag_submarine_computer = False
+
+        # check row
+        if submarine_axis_computer == self.constants.VERTICAL_AXIS:
+            if submarine_row_computer > 8 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.constants.validation_flag_submarine_computer = False
+        else:
+            if submarine_row_computer > 10 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
+                print('\nThe submarine row value is invalid.\n\n')
+                self.constants.validation_flag_submarine_computer = False
+
+        # check column
+        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
+            if submarine_column_computer > 8 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.constants.validation_flag_submarine_computer = False
+        else:
+            if submarine_column_computer > 10 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
+                print('\nThe submarine column value is invalid.\n\n')
+                self.constants.validation_flag_submarine_computer = False
+        return self.constants.validation_flag_submarine_computer
