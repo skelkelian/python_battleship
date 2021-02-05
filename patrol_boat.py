@@ -1,6 +1,7 @@
 from utils import Constants
 from ship import Ship
 from player import Player
+from computer import Computer
 from configparser import ConfigParser
 
 
@@ -9,6 +10,7 @@ class Patrol_Boat(Ship):
         super().__init__()
         self.constants = Constants()
         self.player = Player()
+        self.computer = Computer()
 
     def validate_patrol_boat_points(self, battleship_config):
         patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
@@ -115,7 +117,7 @@ class Patrol_Boat(Ship):
         return self.constants.validation_flag_patrol_boat_computer
 
     def place_patrol_boat_computer(self, battleship_config):
-        primary_board_computer = self.player.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
