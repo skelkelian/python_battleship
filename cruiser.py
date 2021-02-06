@@ -149,7 +149,7 @@ class Cruiser(Ship):
         return self.constants.validation_flag_ship_sunk_cruiser_computer
 
     def validate_cruiser_computer_overlap(self, battleship_config):
-        primary_board_computer = self.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         cruiser_values_computer = battleship_config.get('main', 'cruiser_computer')
         cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
         cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
