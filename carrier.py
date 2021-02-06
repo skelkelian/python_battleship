@@ -1,6 +1,7 @@
 from utils import Constants
 from ship import Ship
 from player import Player
+from computer import Computer
 from configparser import ConfigParser
 
 
@@ -9,6 +10,7 @@ class Carrier(Ship):
         super().__init__()
         self.constants = Constants()
         self.player = Player()
+        self.computer = Computer()
 
     def validate_carrier_points(self, battleship_config):
         carrier_values_player_one = battleship_config.get('main', 'carrier_player')
@@ -102,7 +104,7 @@ class Carrier(Ship):
         return self.constants.validation_flag_carrier_computer
 
     def place_carrier_computer(self, battleship_config):
-        primary_board_computer = self.player.get_primary_board_player_one()
+        primary_board_computer = self.computer.get_primary_board_computer()
         carrier_values_computer = battleship_config.get('main', 'carrier_computer')
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
