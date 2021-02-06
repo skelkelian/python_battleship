@@ -1,6 +1,7 @@
 from utils import Constants
 from ship import Ship
 from player import Player
+from computer import Computer
 
 
 class Submarine(Ship):
@@ -8,6 +9,7 @@ class Submarine(Ship):
         super().__init__()
         self.constants = Constants()
         self.player = Player()
+        self.computer = Computer()
 
     def validate_submarine_points(self, battleship_config):
         submarine_values_player_one = battleship_config.get('main', 'submarine_player')
@@ -118,7 +120,7 @@ class Submarine(Ship):
         return self.constants.validation_flag_submarine_computer
 
     def place_submarine_computer(self, battleship_config):
-        primary_board_computer = self.player.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         submarine_values_computer = battleship_config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())

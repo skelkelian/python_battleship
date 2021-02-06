@@ -16,7 +16,6 @@ import utils
 # you declare attributes outside the constructor and you define inside the constructor
 
 
-
 class BattleShip:
     # CONSTANTS
 
