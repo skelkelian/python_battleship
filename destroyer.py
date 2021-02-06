@@ -60,7 +60,7 @@ class Destroyer(Ship):
             primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
 
     def ship_sunk_destroyer_player(self):
-        hit_counter_player = self.get_hit_counter_player()
+        hit_counter_player = self.player.get_hit_counter_player()
         if hit_counter_player[2] == 3:
             self.constants.validation_flag_ship_sunk_destroyer_player = True
             print("computer sunk player's destroyer")
