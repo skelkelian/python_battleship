@@ -69,7 +69,7 @@ class Cruiser(Ship):
         return self.constants.validation_flag_ship_sunk_cruiser_player
 
     def validate_cruiser_overlap(self, battleship_config):
-        primary_board_player_one = self.get_primary_board_player_one()
+        primary_board_player_one = self.player.get_primary_board_player_one()
         cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
         cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
