@@ -83,7 +83,7 @@ class TestCruiser(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('ship.Ship.get_hit_counter_player', return_value=[2, 4, 3, 0, 0])
+    @patch('player.Player.get_hit_counter_player', return_value=[2, 4, 3, 0, 0])
     def test_ship_sunk_cruiser_player(self, get_hit_counter_player):
         # create an object of class Cruiser
         self.cruiser = Cruiser()

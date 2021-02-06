@@ -62,7 +62,7 @@ class Cruiser(Ship):
             primary_board_player_one[cruiser_row_player_one + 2][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
 
     def ship_sunk_cruiser_player(self):
-        hit_counter_player = self.get_hit_counter_player()
+        hit_counter_player = self.player.get_hit_counter_player()
         if hit_counter_player[1] == 4:
             self.constants.validation_flag_ship_sunk_cruiser_player = True
             print("computer sunk player's cruiser")
