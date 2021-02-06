@@ -97,7 +97,7 @@ class TestDestroyer(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('ship.Ship.get_primary_board_player_one', return_value=mocked_primary_board)
+    @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_destroyer_overlap(self, get_primary_board_player_one):
         # create an object of class Destroyer
         self.destroyer = Destroyer()
