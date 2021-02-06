@@ -1,35 +1,33 @@
-# from unittest import TestCase
-# import unittest
-# import utils
-# from BattleShip import BattleShip
-# from unittest.mock import patch
-# from configparser import ConfigParser
-#
-#
-# class TestBattleShip(unittest.TestCase):
-#
-# # read
-#
-#     def test_player_board_one(self):
-#         # given
-#         expected_player_board_player_one = [
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ]
-#
-#         # when
-#         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-#
-#         # assert
-#         self.assertEqual(expected_player_board_player_one, self.battleship.primary_board_player_one)
+from unittest import TestCase
+import unittest
+import utils
+from BattleShip import BattleShip
+from unittest.mock import patch
+from configparser import ConfigParser
+
+
+class TestBattleShip(unittest.TestCase):
+
+    def test_player_board_one(self):
+        # given
+        expected_player_board_player_one = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # when
+        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+
+        # assert
+        self.assertEqual(expected_player_board_player_one, self.battleship.ship.primary_board_player_one)
 #
 #     def test_read_computer_opponent_type_file(self):
 #         # create an object of class BattleShip
@@ -577,7 +575,7 @@
 #
 #         self.assertEqual(expected_result, observed_result)
 #
-# # start game
+# start game
 #
 #     def test_start_game(self):
 #         # given
@@ -612,8 +610,8 @@
 #         ]
 #         # call method of object BattleShip
 #         self.battleship.start_game()
-#         observed_primary_board_player_one = self.battleship.get_primary_board_player_one()
-#         observed_primary_board_computer = self.battleship.get_primary_board_computer()
+#         observed_primary_board_player_one = self.battleship.ship.get_primary_board_player_one()
+#         observed_primary_board_computer = self.battleship.ship.get_primary_board_computer()
 #
 #         # assert
 #         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
