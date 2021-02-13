@@ -110,7 +110,7 @@ class TestBattleShip(unittest.TestCase):
         highest_valid_value = 10
 
         # call method of class BattleShip
-        observed_point = self.battleship.pick_point_computer()
+        observed_point = self.battleship.computer.pick_point_computer()
 
         # assert
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and

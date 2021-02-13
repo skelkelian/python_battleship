@@ -8,6 +8,7 @@ from patrol_boat import Patrol_Boat
 from submarine import Submarine
 from ship import Ship
 from player import Player
+from computer import Computer
 from random import randint
 import utils
 
@@ -71,6 +72,7 @@ class BattleShip:
         self.submarine = Submarine()
         self.ship = Ship()
         self.player = Player()
+        self.computer = Computer()
 
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
@@ -579,11 +581,6 @@ class BattleShip:
                 self.constants.validation_flag_submarine_overlap_computer = False
         return self.constants.validation_flag_submarine_overlap_computer
 
-    def pick_point_computer(self):
-        row_picked_by_computer = randint(1, 10)
-        column_picked_by_computer = randint(1, 10)
-        return row_picked_by_computer, column_picked_by_computer
-
     def place_point_on_primary_player(self):
         row_selected, column_selected = self.player.pick_point_player_one()
         self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
@@ -595,12 +592,12 @@ class BattleShip:
         return self.secondary_board_player_one
 
     def place_point_on_primary_computer(self):
-        row_selected, column_selected = self.pick_point_computer()
+        row_selected, column_selected = self.computer.pick_point_computer()
         self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
         return self.primary_board_player_one
 
     def place_point_on_secondary_computer(self):
-        row_selected, column_selected = self.pick_point_computer()
+        row_selected, column_selected = self.computer.pick_point_computer()
         self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.secondary_board_computer
 
