@@ -617,7 +617,7 @@ class BattleShip:
         return self.constants.validation_flag_hit_or_miss_player
 
     def hit_or_miss_computer(self):  # computer attacking player's ships
-        row_selected, column_selected = self.pick_point_computer()
+        row_selected, column_selected = self.computer.pick_point_computer()
         primary_board_player = self.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
                 primary_board_player[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
@@ -655,7 +655,7 @@ class BattleShip:
         return self.constants.validation_flag_hit_counter_player
 
     def hit_counter_player(self):  # this tracks the computer's hits on the player's ships
-        row_selected, column_selected = self.pick_point_computer()
+        row_selected, column_selected = self.computer.pick_point_computer()
         primary_board_player = self.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] == self.constants.CARRIER:
             self.constants.HIT_COUNTER_PLAYER_ONE[0] = self.constants.HIT_COUNTER_PLAYER_ONE[0] + 1
