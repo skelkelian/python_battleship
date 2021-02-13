@@ -2,9 +2,12 @@
 # imports
 from configparser import ConfigParser
 from carrier import Carrier
+from cruiser import Cruiser
 from destroyer import Destroyer
 from patrol_boat import Patrol_Boat
 from submarine import Submarine
+from ship import Ship
+from player import Player
 from random import randint
 import utils
 
@@ -62,9 +65,12 @@ class BattleShip:
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
         self.carrier = Carrier()
+        self.cruiser = Cruiser()
         self.destroyer = Destroyer()
         self.patrol_boat = Patrol_Boat()
         self.submarine = Submarine()
+        self.ship = Ship()
+        self.player = Player()
 
         # create primary board for player 1 and computer
         self.primary_board_player_one = [
@@ -135,14 +141,14 @@ class BattleShip:
 
             # PLAYER ONE
             self.carrier.validate_carrier_points(self.config)
-            self.validate_battleship_points()
+            self.cruiser.validate_cruiser_points(self.config)
             self.destroyer.validate_destroyer_points(self.config)
             self.patrol_boat.validate_patrol_boat_points(self.config)
             self.submarine.validate_submarine_points(self.config)
 
             # COMPUTER
             self.validate_carrier_computer_points()
-            self.validate_battleship_computer_points()
+            self.cruiser.validate_cruiser_computer_points(self.config)
             self.validate_destroyer_computer_points()
             self.validate_patrol_boat_computer_points()
             self.validate_submarine_computer_points()
@@ -573,11 +579,6 @@ class BattleShip:
                 self.constants.validation_flag_submarine_overlap_computer = False
         return self.constants.validation_flag_submarine_overlap_computer
 
-    def pick_point_player_one(self):
-        row_picked_by_player = randint(1, 10)
-        column_picked_by_player = randint(1, 10)
-        return row_picked_by_player, column_picked_by_player
-
     def pick_point_computer(self):
         row_picked_by_computer = randint(1, 10)
         column_picked_by_computer = randint(1, 10)
@@ -604,8 +605,8 @@ class BattleShip:
         return self.secondary_board_computer
 
     def hit_or_miss_player(self):  # player attacking computer's ships
-        row_selected, column_selected = self.pick_point_player_one()
-        primary_board_computer = self.get_primary_board_computer()
+        row_selected, column_selected = self.player.pick_point_player_one()
+        primary_board_computer = self.ship.get_primary_board_computer()
         if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
@@ -744,24 +745,24 @@ class BattleShip:
 # START GAME
 
     def start_game(self):
-        self.carrier.place_carrier_player_one(self.config, self.primary_board_player_one)
-        self.place_battleship_player_one()
-        self.destroyer.place_destroyer_player_one(self.config, self.primary_board_player_one)
-        self.patrol_boat.place_patrol_boat_player_one(self.config, self.primary_board_player_one)
-        self.submarine.place_submarine_player_one(self.config, self.primary_board_player_one)
-        self.place_carrier_computer()
-        self.place_battleship_computer()
-        self.place_destroyer_computer()
-        self.place_patrol_boat_computer()
-        self.place_submarine_computer()
-        self.validate_battleship_overlap()
+        self.carrier.place_carrier_player_one(self.config)
+        self.cruiser.place_cruiser_player_one(self.config)
+        self.destroyer.place_destroyer_player_one(self.config)
+        self.patrol_boat.place_patrol_boat_player_one(self.config)
+        self.submarine.place_submarine_player_one(self.config)
+        self.carrier.place_carrier_computer(self.config)
+        self.cruiser.place_cruiser_computer(self.config)
+        self.destroyer.place_destroyer_computer(self.config)
+        self.patrol_boat.place_patrol_boat_computer(self.config)
+        self.submarine.place_submarine_computer(self.config)
+        self.cruiser.validate_cruiser_overlap(self.config)
         self.destroyer.validate_destroyer_overlap(self.config)
         self.patrol_boat.validate_patrol_boat_overlap(self.config)
         self.submarine.validate_submarine_overlap(self.config)
-        self.validate_battleship_computer_overlap()
-        self.validate_destroyer_computer_overlap()
-        self.validate_patrol_boat_computer_overlap()
-        self.validate_submarine_computer_overlap()
+        self.cruiser.validate_cruiser_computer_overlap(self.config)
+        self.destroyer.validate_destroyer_computer_overlap(self.config)
+        self.patrol_boat.validate_patrol_boat_computer_overlap(self.config)
+        self.submarine.validate_submarine_computer_overlap(self.config)
 
     def play_game(self):
         game_over = 0

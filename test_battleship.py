@@ -28,374 +28,211 @@ class TestBattleShip(unittest.TestCase):
 
         # assert
         self.assertEqual(expected_player_board_player_one, self.battleship.ship.primary_board_player_one)
-#
-#     def test_read_computer_opponent_type_file(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-#         self.constants = utils.Constants()
-#
-#         # when
-#         expected_opponent_type = self.constants.COMPUTER_OPPONENT
-#         # call method of object BattleShip
-#         observed_opponent_type = self.battleship.get_opponent_type()
-#
-#         # assert
-#         self.assertEqual(expected_opponent_type, observed_opponent_type)
-#
-#     def test_read_game_difficulty_config_file(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-#         self.constants = utils.Constants()
-#
-#         # when
-#         expected_game_difficulty = self.constants.EASY_DIFFICULTY
-#         # call method of object BattleShip
-#         observed_game_difficulty = self.battleship.get_game_difficulty()
-#
-#         # assert
-#         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
-#
-#     def test_read_value_without_config_file(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#         self.constants = utils.Constants()
-#
-#         # when
-#         expected_game_difficulty = self.constants.EASY_DIFFICULTY
-#         expected_opponent_type = self.constants.COMPUTER_OPPONENT
-#         # call method of object BattleShip
-#         observed_game_difficulty = self.battleship.get_game_difficulty()
-#         observed_opponent_type = self.battleship.get_opponent_type()
-#
-#         # assert
-#         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
-#         self.assertEqual(expected_opponent_type, observed_opponent_type)
-#
-# # validate
-#
-#     def test_validate_game_difficulty(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_game_difficulty = False
-#         # call method of object BattleShip
-#         observed_game_difficulty = self.battleship.validate_game_difficulty()
-#
-#         # assert
-#         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
-#
-#     @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
-#     def test_validate_carrier_computer_points(self, validate_game_difficulty):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_carrier_computer_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_battleship_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_battleship_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_battleship_computer_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_battleship_computer_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_destroyer_computer_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_destroyer_computer_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_patrol_boat_computer_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_patrol_boat_computer_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_submarine_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#         self.constants = utils.Constants()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.submarine.validate_submarine_points(self.battleship.config)
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_submarine_computer_points(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_submarine_computer_points()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-# # overlap
-#
-#     def test_validate_battleship_overlap(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
-#
-#         # run start_game function to place all the points
-#         self.battleship.start_game()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_battleship_overlap()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_battleship_computer_overlap(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
-#
-#         # run start_game function to place all the points
-#         self.battleship.start_game()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_battleship_computer_overlap()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_destroyer_computer_overlap(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
-#
-#         # run start_game function to place all the points
-#         self.battleship.start_game()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_destroyer_computer_overlap()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_patrol_boat_computer_overlap(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
-#
-#         # run start_game function to place all the points
-#         self.battleship.start_game()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_patrol_boat_computer_overlap()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-#     def test_validate_submarine_computer_overlap(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip(config_name='config_easy_ship_overlap.ini')
-#
-#         # run start_game function to place all the points
-#         self.battleship.start_game()
-#
-#         # when
-#         expected_result = False
-#         # call method of object BattleShip
-#         observed_result = self.battleship.validate_submarine_computer_overlap()
-#
-#         # assert
-#         self.assertEqual(expected_result, observed_result)
-#
-# # offense
-#     def test_picking_point_player(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         lowest_valid_value = 0
-#         highest_valid_value = 10
-#
-#         # call method of class BattleShip
-#         observed_point = self.battleship.pick_point_player_one()
-#
-#         # assert
-#         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
-#                         lowest_valid_value < observed_point[1] <= highest_valid_value)
-#
-#     def test_picking_point_computer(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         lowest_valid_value = 0
-#         highest_valid_value = 10
-#
-#         # call method of class BattleShip
-#         observed_point = self.battleship.pick_point_computer()
-#
-#         # assert
-#         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
-#                         lowest_valid_value < observed_point[1] <= highest_valid_value)
-#
-#     def test_place_point_primary_player(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_primary_board = [
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ]
-#
-#         # call method of class BattleShip
-#         observed_primary_board = self.battleship.place_point_on_primary_player()
-#
-#         self.assertNotEqual(expected_primary_board, observed_primary_board)
-#
-#     def test_place_point_secondary_player(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_secondary_board = [
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ]
-#
-#         # call method of class BattleShip
-#         observed_secondary_board = self.battleship.place_point_on_secondary_player()
-#
-#         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
-#
-#     def test_place_point_primary_computer(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_primary_board = [
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ]
-#
-#         # call method of class BattleShip
-#         observed_primary_board = self.battleship.place_point_on_primary_computer()
-#
-#         self.assertNotEqual(expected_primary_board, observed_primary_board)
-#
-#     def test_place_point_secondary_computer(self):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_secondary_board = [
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ]
-#
-#         # call method of class BattleShip
-#         observed_secondary_board = self.battleship.place_point_on_secondary_computer()
-#
-#         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
-#
-#     @patch('BattleShip.BattleShip.get_primary_board_computer', return_value=[
-#             [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         ])
-#     @patch('BattleShip.BattleShip.pick_point_player_one', return_value=(1, 1))
-#     def test_hit_or_miss_player(self, get_primary_board_player_one, pick_point_player_one):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_result = True
-#
-#         # call method of class BattleShip
-#         observed_result = self.battleship.hit_or_miss_player()
-#
-#         self.assertEqual(expected_result, observed_result)
-#
+
+    def test_read_computer_opponent_type_file(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.constants = utils.Constants()
+
+        # when
+        expected_opponent_type = self.constants.COMPUTER_OPPONENT
+        # call method of object BattleShip
+        observed_opponent_type = self.battleship.get_opponent_type()
+
+        # assert
+        self.assertEqual(expected_opponent_type, observed_opponent_type)
+
+    def test_read_game_difficulty_config_file(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.constants = utils.Constants()
+
+        # when
+        expected_game_difficulty = self.constants.EASY_DIFFICULTY
+        # call method of object BattleShip
+        observed_game_difficulty = self.battleship.get_game_difficulty()
+
+        # assert
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
+
+    def test_read_value_without_config_file(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+        self.constants = utils.Constants()
+
+        # when
+        expected_game_difficulty = self.constants.EASY_DIFFICULTY
+        expected_opponent_type = self.constants.COMPUTER_OPPONENT
+        # call method of object BattleShip
+        observed_game_difficulty = self.battleship.get_game_difficulty()
+        observed_opponent_type = self.battleship.get_opponent_type()
+
+        # assert
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
+        self.assertEqual(expected_opponent_type, observed_opponent_type)
+
+# validate
+
+    def test_validate_game_difficulty(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+
+        # when
+        expected_game_difficulty = False
+        # call method of object BattleShip
+        observed_game_difficulty = self.battleship.validate_game_difficulty()
+
+        # assert
+        self.assertEqual(expected_game_difficulty, observed_game_difficulty)
+
+# offense
+    def test_picking_point_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.battleship.pick_point_player_one()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    def test_picking_point_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.battleship.pick_point_computer()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    def test_place_point_primary_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_primary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_primary_board = self.battleship.place_point_on_primary_player()
+
+        self.assertNotEqual(expected_primary_board, observed_primary_board)
+
+    def test_place_point_secondary_player(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_secondary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_secondary_board = self.battleship.place_point_on_secondary_player()
+
+        self.assertNotEqual(expected_secondary_board, observed_secondary_board)
+
+    def test_place_point_primary_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_primary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_primary_board = self.battleship.place_point_on_primary_computer()
+
+        self.assertNotEqual(expected_primary_board, observed_primary_board)
+
+    def test_place_point_secondary_computer(self):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_secondary_board = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # call method of class BattleShip
+        observed_secondary_board = self.battleship.place_point_on_secondary_computer()
+
+        self.assertNotEqual(expected_secondary_board, observed_secondary_board)
+
+    @patch('ship.Ship.get_primary_board_computer', return_value=[
+            [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ])
+    @patch('player.Player.pick_point_player_one', return_value=(1, 1))
+    def test_hit_or_miss_player(self, get_primary_board_player_one, pick_point_player_one):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.hit_or_miss_player()
+
+        self.assertEqual(expected_result, observed_result)
+
 #     @patch('BattleShip.BattleShip.get_primary_board_player_one', return_value=[
 #         [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
 #         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

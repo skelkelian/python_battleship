@@ -22,3 +22,8 @@ class Player:
 
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
+
+    def pick_point_player_one(self):
+        row_picked_by_player = randint(1, 10)
+        column_picked_by_player = randint(1, 10)
+        return row_picked_by_player, column_picked_by_player
