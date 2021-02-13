@@ -585,12 +585,12 @@ class BattleShip:
         return row_picked_by_computer, column_picked_by_computer
 
     def place_point_on_primary_player(self):
-        row_selected, column_selected = self.pick_point_player_one()
+        row_selected, column_selected = self.player.pick_point_player_one()
         self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
         return self.primary_board_computer
 
     def place_point_on_secondary_player(self):
-        row_selected, column_selected = self.pick_point_player_one()
+        row_selected, column_selected = self.player.pick_point_player_one()
         self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
         return self.secondary_board_player_one
 
