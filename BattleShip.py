@@ -14,7 +14,8 @@ import utils
 
 # TODO'S NOW
 # todo: how to integrate repo w travis
-# todo: move the commits from destroyer to patrol boat and submarine respectively
+# todo: move test_picking_point_computer from test_battleship to test_computer
+# todo: move test_picking_point_player from test_battleship to test_player
 
 # A CLASS IS A BLUE PRINT AND AN OBJECT IS SOMETHING YOU MAKE FROM THAT BLUE PRINT
 # you declare attributes outside the constructor and you define inside the constructor
