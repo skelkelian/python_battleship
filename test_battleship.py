@@ -257,32 +257,32 @@ class TestBattleShip(unittest.TestCase):
         observed_result = self.battleship.hit_or_miss_computer()
 
         self.assertEqual(expected_result, observed_result)
-#
-#     @patch('BattleShip.BattleShip.get_primary_board_computer', return_value=[
-#         [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
-#         [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-#         [2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
-#         [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     ])
-#     @patch('BattleShip.BattleShip.pick_point_player_one', return_value=(5, 1))
-#     def test_hit_counter_player(self, get_primary_board_computer, pick_point_player_one):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_result = True
-#
-#         # call method of class BattleShip
-#         observed_result = self.battleship.hit_counter_computer()
-#
-#         self.assertEqual(expected_result, observed_result)
-#
+
+    @patch('ship.Ship.get_primary_board_computer', return_value=[
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+        [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
+        [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ])
+    @patch('player.Player.pick_point_player_one', return_value=(5, 1))
+    def test_hit_counter_player(self, get_primary_board_computer, pick_point_player_one):
+        # create an object of class BattleShip
+        self.battleship = BattleShip()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.battleship.computer.track_hit_counter_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
 #     @patch('BattleShip.BattleShip.get_primary_board_player_one', return_value=[
 #         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 #         [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
