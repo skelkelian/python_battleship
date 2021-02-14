@@ -233,7 +233,7 @@ class TestBattleShip(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('ship.Ship.get_primary_board_computer', return_value=[
+    @patch('ship.Ship.get_primary_board_player_one', return_value=[
         [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

@@ -618,7 +618,7 @@ class BattleShip:
 
     def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.computer.pick_point_computer()
-        primary_board_player = self.get_primary_board_player_one()
+        primary_board_player = self.ship.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
                 primary_board_player[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
                 primary_board_player[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
