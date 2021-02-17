@@ -258,31 +258,6 @@ class TestBattleShip(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-#     @patch('BattleShip.BattleShip.get_primary_board_player_one', return_value=[
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 2, 2, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
-#         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 3, 3, 3, 0, 0, 0],
-#         [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
-#     ])
-#     @patch('BattleShip.BattleShip.pick_point_computer', return_value=(2, 1))
-#     def test_hit_counter_computer(self, get_primary_board_player_one, pick_point_computer):
-#         # create an object of class BattleShip
-#         self.battleship = BattleShip()
-#
-#         # when
-#         expected_result = True
-#
-#         # call method of class BattleShip
-#         observed_result = self.battleship.hit_counter_player()
-#
-#         self.assertEqual(expected_result, observed_result)
-#
 #     @patch('BattleShip.BattleShip.get_hit_counter_player', return_value=[2, 4, 2, 0, 0])
 #     def test_ship_sunk_battleship_player(self, get_hit_counter_player):
 #         # create an object of class BattleShip

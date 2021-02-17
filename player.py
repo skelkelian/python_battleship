@@ -1,8 +1,10 @@
 from random import randint
+from participant import Participant
 
 
-class Player:
+class Player(Participant):
     def __init__(self, config_name=None):
+        super().__init__()
         self.hit_counter = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

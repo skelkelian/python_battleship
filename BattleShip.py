@@ -632,29 +632,6 @@ class BattleShip:
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.constants.validation_flag_hit_or_miss_computer
 
-    def hit_counter_player(self):  # this tracks the computer's hits on the player's ships
-        row_selected, column_selected = self.computer.pick_point_computer()
-        primary_board_player = self.get_primary_board_player_one()
-        if primary_board_player[row_selected - 1][column_selected - 1] == self.constants.CARRIER:
-            self.constants.HIT_COUNTER_PLAYER_ONE[0] = self.constants.HIT_COUNTER_PLAYER_ONE[0] + 1
-            print("hit carrier")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
-            self.constants.HIT_COUNTER_PLAYER_ONE[1] = self.constants.HIT_COUNTER_PLAYER_ONE[1] + 1
-            print("hit battleship")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.DESTROYER:
-            self.constants.HIT_COUNTER_PLAYER_ONE[2] = self.constants.HIT_COUNTER_PLAYER_ONE[2] + 1
-            print("hit destroyer")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.PATROL_BOAT:
-            self.constants.HIT_COUNTER_PLAYER_ONE[3] = self.constants.HIT_COUNTER_PLAYER_ONE[3] + 1
-            print("hit patrol boat")
-        elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.SUBMARINE:
-            self.constants.HIT_COUNTER_PLAYER_ONE[4] = self.constants.HIT_COUNTER_PLAYER_ONE[4] + 1
-            print("hit submarine")
-        else:
-            self.constants.validation_flag_hit_counter_computer = False
-            print("missed ships")
-        return self.constants.validation_flag_hit_counter_computer
-
     def get_hit_counter_player(self):
         return self.HIT_COUNTER_PLAYER_ONE
 
