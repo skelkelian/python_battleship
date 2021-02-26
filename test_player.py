@@ -41,7 +41,6 @@ class TestPlayer(unittest.TestCase):
     ])
     @patch('player.Player.pick_point', return_value=(2, 1))
     def test_hit_counter_player(self, get_primary_board_player_one, pick_point):
-        # print()
         # create object of class Player
         self.player = Player()
 
