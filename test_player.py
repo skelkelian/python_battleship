@@ -1,8 +1,6 @@
 import unittest
 import utils
 from player import Player
-from computer import Computer
-from ship import Ship
 from unittest.mock import patch
 from configparser import ConfigParser
 
@@ -29,27 +27,28 @@ class TestPlayer(unittest.TestCase):
         # assert
         self.assertEqual(expected_player_board_player_one, self.player.primary_board_player_one)
 
-    @patch('ship.Ship.get_primary_board_computer', return_value=[
-        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
-        [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-        [2, 2, 0, 0, 0, 0, 0, 0, 0, 0],
-        [3, 3, 3, 0, 0, 0, 0, 0, 0, 0],
+    @patch('player.Player.get_primary_board_player_one', return_value=[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 2, 2, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 1, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 3, 3, 3, 0, 0, 0],
+        [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
     ])
-    @patch('player.Player.pick_point_player_one', return_value=(5, 1))
-    def test_hit_counter_player(self, get_primary_board_computer, pick_point_player_one):
-        # create object of class Computer
-        self.computer = Computer()
+    @patch('player.Player.pick_point', return_value=(2, 1))
+    def test_hit_counter_player(self, get_primary_board_player_one, pick_point):
+        # print()
+        # create object of class Player
+        self.player = Player()
 
         # when
         expected_result = True
 
-        # call method of class Computer
-        observed_result = self.computer.track_hit_counter_computer()
+        # call method of class Player
+        observed_result = self.player.track_hit_counter_player()
 
         self.assertEqual(expected_result, observed_result)
