@@ -6,9 +6,9 @@ from configparser import ConfigParser
 
 
 class TestPlayer(unittest.TestCase):
-    def test_player_board_player_one(self):
+    def test_primary_board_player_one(self):
         # given
-        expected_player_board_player_one = [
+        expected_primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,7 +25,7 @@ class TestPlayer(unittest.TestCase):
         self.player = Player(config_name='config_easy_difficulty.ini')
 
         # assert
-        self.assertEqual(expected_player_board_player_one, self.player.primary_board_player_one)
+        self.assertEqual(expected_primary_board_player_one, self.player.primary_board_player_one)
 
     @patch('player.Player.get_primary_board_player_one', return_value=[
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

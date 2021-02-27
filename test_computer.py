@@ -6,6 +6,27 @@ from configparser import ConfigParser
 
 
 class TestComputer(unittest.TestCase):
+    def test_primary_board_computer(self):
+        # given
+        expected_primary_board_computer = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
+
+        # when
+        self.computer = Computer(config_name='config_easy_difficulty.ini')
+
+        # assert
+        self.assertEqual(expected_primary_board_computer, self.computer.primary_board_computer)
+
     @patch('computer.Computer.get_primary_board_computer', return_value=[
         [5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
         [4, 4, 4, 4, 0, 0, 0, 0, 0, 0],
