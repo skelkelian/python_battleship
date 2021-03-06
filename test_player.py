@@ -51,3 +51,43 @@ class TestPlayer(unittest.TestCase):
         observed_result = self.player.track_hit_counter_player()
 
         self.assertEqual(expected_result, observed_result)
+
+    @patch('player.Player.get_primary_board_player_one', return_value=[
+        [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ])
+    @patch('player.Player.pick_point', return_value=(1, 1))
+    def test_hit_or_miss_player(self, get_primary_board_player_one, pick_point):
+        # create object of class Player
+        self.player = Player()
+
+        # when
+        expected_result = True
+
+        # call method of class Player
+        observed_result = self.player.hit_or_miss_player()
+
+        self.assertEqual(expected_result, observed_result)
+
+    def test_picking_point_player(self):
+        # create object of class Player
+        self.player = Player()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.player.pick_point()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)

@@ -582,41 +582,6 @@ class BattleShip:
                 self.constants.validation_flag_submarine_overlap_computer = False
         return self.constants.validation_flag_submarine_overlap_computer
 
-    def place_point_on_primary_player(self):
-        row_selected, column_selected = self.player.pick_point_player_one()
-        self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
-        return self.primary_board_computer
-
-    def place_point_on_secondary_player(self):
-        row_selected, column_selected = self.player.pick_point_player_one()
-        self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
-        return self.secondary_board_player_one
-
-    def place_point_on_primary_computer(self):
-        row_selected, column_selected = self.computer.pick_point_computer()
-        self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
-        return self.primary_board_player_one
-
-    def place_point_on_secondary_computer(self):
-        row_selected, column_selected = self.computer.pick_point_computer()
-        self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
-        return self.secondary_board_computer
-
-    def hit_or_miss_player(self):  # player attacking computer's ships
-        row_selected, column_selected = self.player.pick_point_player_one()
-        primary_board_computer = self.ship.get_primary_board_computer()
-        if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
-            self.constants.validation_flag_hit_or_miss_player = False
-            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = -1
-        else:
-            self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
-            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
-        return self.constants.validation_flag_hit_or_miss_player
-
     def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.computer.pick_point_computer()
         primary_board_player = self.ship.get_primary_board_player_one()

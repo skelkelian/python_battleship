@@ -18,17 +18,24 @@ class Player(Participant):
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
+        self.secondary_board_player_one = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
 
     def get_hit_counter_player(self):
         return self.hit_counter
 
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
-
-    def pick_point_player_one(self):
-        row_picked_by_player = randint(1, 10)
-        column_picked_by_player = randint(1, 10)
-        return row_picked_by_player, column_picked_by_player
 
     def track_hit_counter_player(self):  # this tracks the computer's hits on the player's ships
         row_selected, column_selected = self.pick_point()
@@ -38,7 +45,7 @@ class Player(Participant):
             print("hit carrier")
         elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
             self.constants.HIT_COUNTER_PLAYER_ONE[1] = self.constants.HIT_COUNTER_PLAYER_ONE[1] + 1
-            print("hit battleship")
+            print("hit cruiser")
         elif primary_board_player[row_selected - 1][column_selected - 1] == self.constants.DESTROYER:
             self.constants.HIT_COUNTER_PLAYER_ONE[2] = self.constants.HIT_COUNTER_PLAYER_ONE[2] + 1
             print("hit destroyer")
@@ -52,3 +59,19 @@ class Player(Participant):
             self.constants.validation_flag_hit_counter_computer = False
             print("missed ships")
         return self.constants.validation_flag_hit_counter_computer
+
+    def hit_or_miss_player(self):  # player attacking computer's ships
+        row_selected, column_selected = self.pick_point()
+        primary_board_player_one = self.get_primary_board_player_one()
+        if primary_board_player_one[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
+                primary_board_player_one[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
+                primary_board_player_one[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
+                primary_board_player_one[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
+                primary_board_player_one[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
+            self.constants.validation_flag_hit_or_miss_player = False
+            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = -1
+        else:
+            self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
+            self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
+        return self.constants.validation_flag_hit_or_miss_player
+
