@@ -18,6 +18,18 @@ class Computer(Participant):
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
+        self.secondary_board_computer = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ]
 
     def get_hit_counter_computer(self):
         return self.hit_counter_computer
@@ -48,7 +60,17 @@ class Computer(Participant):
             print("missed ships")
         return self.constants.validation_flag_hit_counter_player
 
-    def pick_point_computer(self):
-        row_picked_by_computer = randint(1, 10)
-        column_picked_by_computer = randint(1, 10)
-        return row_picked_by_computer, column_picked_by_computer
+    def hit_or_miss_computer(self):  # computer attacking player's ships
+        row_selected, column_selected = self.pick_point()
+        primary_board_computer = self.get_primary_board_computer()
+        if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
+            self.constants.validation_flag_hit_or_miss_computer = False
+            self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
+        else:
+            self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
+            self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
+        return self.constants.validation_flag_hit_or_miss_computer

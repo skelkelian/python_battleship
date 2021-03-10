@@ -582,21 +582,6 @@ class BattleShip:
                 self.constants.validation_flag_submarine_overlap_computer = False
         return self.constants.validation_flag_submarine_overlap_computer
 
-    def hit_or_miss_computer(self):  # computer attacking player's ships
-        row_selected, column_selected = self.computer.pick_point_computer()
-        primary_board_player = self.ship.get_primary_board_player_one()
-        if primary_board_player[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
-                primary_board_player[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
-            self.constants.validation_flag_hit_or_miss_computer = False
-            self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
-        else:
-            self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
-            self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
-        return self.constants.validation_flag_hit_or_miss_computer
-
     def get_hit_counter_player(self):
         return self.HIT_COUNTER_PLAYER_ONE
 

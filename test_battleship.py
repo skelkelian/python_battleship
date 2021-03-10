@@ -86,21 +86,6 @@ class TestBattleShip(unittest.TestCase):
         self.assertEqual(expected_game_difficulty, observed_game_difficulty)
 
 # offense
-    def test_picking_point_computer(self):
-        # create an object of class BattleShip
-        self.battleship = BattleShip()
-
-        # when
-        lowest_valid_value = 0
-        highest_valid_value = 10
-
-        # call method of class BattleShip
-        observed_point = self.battleship.computer.pick_point_computer()
-
-        # assert
-        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
-                        lowest_valid_value < observed_point[1] <= highest_valid_value)
-
     def test_place_point_primary_player(self):
         # create an object of class BattleShip
         self.battleship = BattleShip()
@@ -192,31 +177,6 @@ class TestBattleShip(unittest.TestCase):
         observed_secondary_board = self.battleship.place_point_on_secondary_computer()
 
         self.assertNotEqual(expected_secondary_board, observed_secondary_board)
-
-    @patch('ship.Ship.get_primary_board_player_one', return_value=[
-        [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ])
-    @patch('computer.Computer.pick_point_computer', return_value=(1, 4))
-    def test_hit_or_miss_computer(self, get_primary_board_player_one, pick_point_computer):
-        # create an object of class BattleShip
-        self.battleship = BattleShip()
-
-        # when
-        expected_result = True
-
-        # call method of class BattleShip
-        observed_result = self.battleship.hit_or_miss_computer()
-
-        self.assertEqual(expected_result, observed_result)
 
 #     @patch('BattleShip.BattleShip.get_hit_counter_player', return_value=[2, 4, 2, 0, 0])
 #     def test_ship_sunk_battleship_player(self, get_hit_counter_player):

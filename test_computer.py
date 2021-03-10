@@ -52,3 +52,42 @@ class TestComputer(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
+    @patch('computer.Computer.get_primary_board_computer', return_value=[
+        [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ])
+    @patch('computer.Computer.pick_point', return_value=(1, 1))
+    def test_hit_or_miss_computer(self, get_primary_board_computer, pick_point):
+        # create an object of class Computer
+        self.computer = Computer()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.computer.hit_or_miss_computer()
+
+        self.assertEqual(expected_result, observed_result)
+
+    def test_picking_point_computer(self):
+        # create an object of class Computer
+        self.computer = Computer()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class BattleShip
+        observed_point = self.computer.pick_point()
+
+        # assert
+        self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
+                        lowest_valid_value < observed_point[1] <= highest_valid_value)
