@@ -91,3 +91,16 @@ class TestPlayer(unittest.TestCase):
         # assert
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
                         lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    @patch('player.Player.get_hit_counter_player', return_value=[5, 4, 3, 2, 3])
+    def test_game_over_player(self, get_hit_counter_player):
+        # create an object of class Player
+        self.player = Player()
+
+        # when
+        expected_result = True
+
+        # call method of class BattleShip
+        observed_result = self.player.game_over_player()
+
+        self.assertEqual(expected_result, observed_result)
