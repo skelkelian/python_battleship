@@ -74,3 +74,10 @@ class Computer(Participant):
             self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.constants.validation_flag_hit_or_miss_computer
+
+    def game_over_computer(self):  # if this triggers, the computer lost
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
+                hit_counter_computer[3] + hit_counter_computer[4] == 17:
+            self.constants.validation_flag_game_over_computer = True
+        return self.constants.validation_flag_game_over_computer

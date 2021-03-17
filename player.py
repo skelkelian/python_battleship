@@ -75,3 +75,9 @@ class Player(Participant):
             self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
         return self.constants.validation_flag_hit_or_miss_player
 
+    def game_over_player(self):  # if this triggers, the player lost
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[0] + hit_counter_player[1] + hit_counter_player[2] + \
+                hit_counter_player[3] + hit_counter_player[4] == 17:
+            self.constants.validation_flag_game_over_player = True
+        return self.constants.validation_flag_game_over_player
