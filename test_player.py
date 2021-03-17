@@ -100,7 +100,7 @@ class TestPlayer(unittest.TestCase):
         # when
         expected_result = True
 
-        # call method of class BattleShip
+        # call method of class Player
         observed_result = self.player.game_over_player()
 
         self.assertEqual(expected_result, observed_result)

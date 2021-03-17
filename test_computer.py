@@ -91,3 +91,16 @@ class TestComputer(unittest.TestCase):
         # assert
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
                         lowest_valid_value < observed_point[1] <= highest_valid_value)
+
+    @patch('computer.Computer.get_hit_counter_computer', return_value=[5, 4, 3, 2, 3])
+    def test_game_over_computer(self, get_hit_counter_computer):
+        # create an object of class Computer
+        self.computer = Computer()
+
+        # when
+        expected_result = True
+
+        # call method of class Computer
+        observed_result = self.computer.game_over_computer()
+
+        self.assertEqual(expected_result, observed_result)
