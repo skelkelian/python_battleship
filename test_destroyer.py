@@ -181,7 +181,7 @@ class TestDestroyer(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('ship.Ship.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_destroyer_computer_overlap(self, get_primary_board_computer):
         # create an object of class Destroyer
         self.destroyer = Destroyer()
