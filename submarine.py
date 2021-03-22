@@ -66,7 +66,7 @@ class Submarine(Ship):
         return self.constants.validation_flag_ship_sunk_submarine_player
 
     def validate_submarine_overlap(self, battleship_config):
-        primary_board_player_one = self.get_primary_board_player_one()
+        primary_board_player_one = self.player.get_primary_board_player_one()
         submarine_values_player_one = battleship_config.get('main', 'submarine_player')
         submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
