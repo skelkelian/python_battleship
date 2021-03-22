@@ -65,7 +65,7 @@ class Patrol_Boat(Ship):
         return self.constants.validation_flag_ship_sunk_patrol_boat_player
 
     def validate_patrol_boat_overlap(self, battleship_config):
-        primary_board_player_one = self.get_primary_board_player_one()
+        primary_board_player_one = self.player.get_primary_board_player_one()
         patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
