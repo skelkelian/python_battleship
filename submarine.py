@@ -59,7 +59,7 @@ class Submarine(Ship):
             primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
 
     def ship_sunk_submarine_player(self):
-        hit_counter_player = self.get_hit_counter_player()
+        hit_counter_player = self.player.get_hit_counter_player()
         if hit_counter_player[4] == 3:
             self.constants.validation_flag_ship_sunk_submarine_player = True
             print("computer sunk player's submarine")
