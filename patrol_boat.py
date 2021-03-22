@@ -130,7 +130,7 @@ class Patrol_Boat(Ship):
             primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
 
     def ship_sunk_patrol_boat_computer(self):
-        hit_counter_computer = self.get_hit_counter_computer()
+        hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[3] == 2:
             self.constants.validation_flag_ship_sunk_patrol_boat_computer = True
             print("player sunk computer's patrol boat")
