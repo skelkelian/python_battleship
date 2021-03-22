@@ -136,14 +136,14 @@ class Destroyer(Ship):
             primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.DESTROYER
 
     def ship_sunk_destroyer_computer(self):
-        hit_counter_computer = self.get_hit_counter_computer()
+        hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[2] == 3:
             self.constants.validation_flag_ship_sunk_destroyer_computer = True
             print("player sunk computer's destroyer")
         return self.constants.validation_flag_ship_sunk_destroyer_computer
 
     def validate_destroyer_computer_overlap(self, battleship_config):
-        primary_board_computer = self.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())

@@ -59,14 +59,14 @@ class Submarine(Ship):
             primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
 
     def ship_sunk_submarine_player(self):
-        hit_counter_player = self.get_hit_counter_player()
+        hit_counter_player = self.player.get_hit_counter_player()
         if hit_counter_player[4] == 3:
             self.constants.validation_flag_ship_sunk_submarine_player = True
             print("computer sunk player's submarine")
         return self.constants.validation_flag_ship_sunk_submarine_player
 
     def validate_submarine_overlap(self, battleship_config):
-        primary_board_player_one = self.get_primary_board_player_one()
+        primary_board_player_one = self.player.get_primary_board_player_one()
         submarine_values_player_one = battleship_config.get('main', 'submarine_player')
         submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
@@ -135,14 +135,14 @@ class Submarine(Ship):
             primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.constants.SUBMARINE
 
     def ship_sunk_submarine_computer(self):
-        hit_counter_computer = self.get_hit_counter_computer()
+        hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[4] == 3:
             self.constants.validation_flag_ship_sunk_submarine_computer = True
             print("player sunk computer's submarine")
         return self.constants.validation_flag_ship_sunk_submarine_computer
 
     def validate_submarine_computer_overlap(self, battleship_config):
-        primary_board_computer = self.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         submarine_values_computer = battleship_config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())

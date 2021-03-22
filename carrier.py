@@ -65,7 +65,7 @@ class Carrier(Ship):
         return primary_board_player_one
 
     def ship_sunk_carrier_player(self):
-        hit_counter_player = self.get_hit_counter_player()
+        hit_counter_player = self.player.get_hit_counter_player()
         if hit_counter_player[0] == 5:
             self.constants.validation_flag_ship_sunk_carrier_player = True
             print("computer sunk player's carrier")
@@ -123,7 +123,7 @@ class Carrier(Ship):
             primary_board_computer[carrier_row_computer + 3][carrier_column_computer - 1] = self.constants.CARRIER
 
     def ship_sunk_carrier_computer(self):
-        hit_counter_computer = self.get_hit_counter_computer()
+        hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[0] == 5:
             self.constants.validation_flag_ship_sunk_carrier_computer = True
             print("player sunk computer's carrier")

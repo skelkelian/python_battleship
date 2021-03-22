@@ -82,7 +82,7 @@ class TestSubmarine(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('ship.Ship.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
+    @patch('player.Player.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_player(self, get_hit_counter_player):
         # create an object of class Submarine
         self.submarine = Submarine()
@@ -95,7 +95,7 @@ class TestSubmarine(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('ship.Ship.get_primary_board_player_one', return_value=mocked_primary_board)
+    @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_submarine_overlap(self, get_primary_board_player_one):
         # create an object of class Submarine
         self.submarine = Submarine()
@@ -165,7 +165,7 @@ class TestSubmarine(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('ship.Ship.get_hit_counter_computer', return_value=[2, 3, 1, 1, 3])
+    @patch('computer.Computer.get_hit_counter_computer', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_computer(self, get_hit_counter_computer):
         # create an object of class Submarine
         self.submarine = Submarine()
@@ -178,7 +178,7 @@ class TestSubmarine(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('ship.Ship.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_submarine_computer_overlap(self, get_primary_board_computer):
         # create an object of class Submarine
         self.submarine = Submarine()
