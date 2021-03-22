@@ -81,7 +81,7 @@ class TestPatrol_Boat(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('ship.Ship.get_hit_counter_player', return_value=[2, 3, 1, 2, 0])
+    @patch('player.Player.get_hit_counter_player', return_value=[2, 3, 1, 2, 0])
     def test_ship_sunk_patrol_boat_player(self, get_hit_counter_player):
         # create an object of class Patrol_Boat
         self.patrol_boat = Patrol_Boat()
