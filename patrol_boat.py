@@ -137,7 +137,7 @@ class Patrol_Boat(Ship):
         return self.constants.validation_flag_ship_sunk_patrol_boat_computer
 
     def validate_patrol_boat_computer_overlap(self, battleship_config):
-        primary_board_computer = self.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
