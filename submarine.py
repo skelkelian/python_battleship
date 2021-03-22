@@ -142,7 +142,7 @@ class Submarine(Ship):
         return self.constants.validation_flag_ship_sunk_submarine_computer
 
     def validate_submarine_computer_overlap(self, battleship_config):
-        primary_board_computer = self.get_primary_board_computer()
+        primary_board_computer = self.computer.get_primary_board_computer()
         submarine_values_computer = battleship_config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
