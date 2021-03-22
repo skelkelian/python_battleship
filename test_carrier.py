@@ -124,7 +124,7 @@ class TestCarrier(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('ship.Ship.get_hit_counter_computer', return_value=[5, 1, 2, 0, 0])
+    @patch('computer.Computer.get_hit_counter_computer', return_value=[5, 1, 2, 0, 0])
     def test_ship_sunk_carrier_computer(self, get_hit_counter_computer):
         # create an object of class Carrier
         self.carrier = Carrier()
