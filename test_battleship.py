@@ -27,7 +27,7 @@ class TestBattleShip(unittest.TestCase):
         self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
 
         # assert
-        self.assertEqual(expected_player_board_player_one, self.battleship.ship.primary_board_player_one)
+        self.assertEqual(expected_player_board_player_one, self.battleship.player.primary_board_player_one)
 
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
