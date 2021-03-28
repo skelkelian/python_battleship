@@ -1,6 +1,6 @@
 .idea
 local
-venv
+venv2
 __pycache__
 .pyc
 # Byte-compiled / optimized / DLL files
