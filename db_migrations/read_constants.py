@@ -4,7 +4,7 @@ import sys
 con = None
 
 try:
-    con = psycopg2.connect("host='localhost' dbname='skelkelian' user='skelkelian' password='nhlrules'")
+    con = psycopg2.connect("host='localhost' dbname='skelkelian'")
     cur = con.cursor()
     cur.execute("SELECT * FROM constants")
 

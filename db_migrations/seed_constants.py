@@ -4,7 +4,7 @@ import sys
 con = None
 
 try:
-    con = psycopg2.connect("host='localhost' dbname='skelkelian' user='skelkelian' password='nhlrules'")
+    con = psycopg2.connect("host='localhost' dbname='skelkelian'")
     cur = con.cursor()
     cur.execute("CREATE TABLE constants(name VARCHAR(64) NOT NULL, value INT)")
     cur.execute("INSERT INTO constants VALUES('computer_opponent',1)")
