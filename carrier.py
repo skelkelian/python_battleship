@@ -109,6 +109,8 @@ class Carrier(Ship):
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
+        print("test for conflicts")
+        x = 2
         if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
             primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.constants.CARRIER
             primary_board_computer[carrier_row_computer - 1][carrier_column_computer] = self.constants.CARRIER
@@ -128,3 +130,7 @@ class Carrier(Ship):
             self.constants.validation_flag_ship_sunk_carrier_computer = True
             print("player sunk computer's carrier")
         return self.constants.validation_flag_ship_sunk_carrier_computer
+
+    def example_rebase_method(self):
+        print("rebase")
+        xye = 2
