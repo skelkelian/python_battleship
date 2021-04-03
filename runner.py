@@ -10,6 +10,8 @@ import test_destroyer
 import test_battleship
 import test_patrol_boat
 import test_ship
+import test_submarine
+import test_utils
 
 # initialize the test suite
 loader = unittest.TestLoader()
@@ -24,6 +26,8 @@ suite.addTests(loader.loadTestsFromModule(test_destroyer))
 suite.addTests(loader.loadTestsFromModule(test_battleship))
 suite.addTests(loader.loadTestsFromModule(test_patrol_boat))
 suite.addTests(loader.loadTestsFromModule(test_ship))
+suite.addTests(loader.loadTestsFromModule(test_submarine))
+suite.addTests(loader.loadTestsFromModule(test_utils))
 
 # initialize a runner, pass it your suite and run it
 runner = unittest.TextTestRunner(verbosity=3)
