@@ -1,3 +1,10 @@
+import psycopg2
+import sys
+
+con = None
+constants = dict()
+
+
 class Constants:
     def __init__(self):
         # OPPONENT TYPE
@@ -65,3 +72,32 @@ class Constants:
         self.validation_flag_ship_sunk_patrol_boat_computer = False
         self.validation_flag_ship_sunk_submarine_computer = False
         self.validation_flag_game_over_computer = False
+
+    def get_dictionary_from_database(self, host='localhost', dbname='skelkelian'):
+        try:
+            con = psycopg2.connect("host=" + host + " dbname=" + dbname)
+            cur = con.cursor()
+            cur.execute("SELECT * FROM constants")
+
+            while True:
+                row = cur.fetchone()
+
+                if row == None:
+                    break
+
+                constant = row[0]
+                value = row[1]
+                constants[constant] = value
+
+            print(constants)
+            return constants
+        except psycopg2.OperationalError as ex:
+            if con:
+                con.rollback()
+
+            print("Connection failed: {0}".format(ex))
+            sys.exit(1)
+
+        finally:
+            if con:
+                con.close()

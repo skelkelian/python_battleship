@@ -2,6 +2,7 @@ import psycopg2
 import sys
 
 con = None
+constants = dict()
 
 try:
     con = psycopg2.connect("host='localhost' dbname='skelkelian'")
@@ -16,8 +17,9 @@ try:
 
         constant = row[0]
         value = row[1]
-        print("constant: {}\nvalue: {}\n\n".format(constant, value))
+        constants[constant] = value
 
+    print(constants)
 except psycopg2.OperationalError as ex:
     if con:
         con.rollback()
