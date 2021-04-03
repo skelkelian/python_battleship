@@ -16,7 +16,9 @@ try:
 
         constant = row[0]
         value = row[1]
-        print("constant: {}\nvalue: {}\n\n".format(constant, value))
+        constants = dict()
+        constants[constant] = value
+        print(constants)
 
 except psycopg2.OperationalError as ex:
     if con:
