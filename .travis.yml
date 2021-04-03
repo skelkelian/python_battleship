@@ -3,6 +3,7 @@ python:
   - "3.8.5"
 install:
   - pip3 install coverage
+  - pip3 install psycopg2
 script:
   - python runner.py
   - coverage run runner.py
