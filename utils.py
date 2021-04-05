@@ -89,7 +89,6 @@ class Constants:
                 value = row[1]
                 constants[constant] = value
 
-            print(constants)
             return constants
         except psycopg2.OperationalError as ex:
             if con:
@@ -101,3 +100,9 @@ class Constants:
         finally:
             if con:
                 con.close()
+
+    def get_constant_values_from_database(self, key):
+        self.get_dictionary_from_database(host='localhost', dbname='skelkelian')
+        value = constants[key]
+        print(key + ": " + str(value))
+        return value
