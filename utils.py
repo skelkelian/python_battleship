@@ -104,5 +104,5 @@ class Constants:
     def get_constant_values_from_database(self, key):
         self.get_dictionary_from_database(host='localhost', dbname='skelkelian')
         value = constants[key]
-        print(key + ": " + str(value))
+        # print(key + ": " + str(value))
         return value
