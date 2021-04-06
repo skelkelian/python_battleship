@@ -157,7 +157,7 @@ class BattleShip:
             self.validate_submarine_computer_points()
         else:
             self.game_difficulty = self.constants.EASY_DIFFICULTY
-            self.opponent_type = self.constants.get_constant_values_from_database('computer_opponent')
+            self.opponent_type = self.constants.get_constant_values('computer_opponent')
 
     def get_opponent_type(self):
         return self.opponent_type

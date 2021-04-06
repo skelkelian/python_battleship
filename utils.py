@@ -1,12 +1,13 @@
 import psycopg2
 import sys
 
-con = None
-constants = dict()
-
 
 class Constants:
+
     def __init__(self):
+        self.constants = dict()
+        self.set_constants_from_database(host='localhost', dbname='skelkelian')
+
         # OPPONENT TYPE
         self.COMPUTER_OPPONENT = 1
         self.PLAYER_OPPONENT = 2
@@ -73,7 +74,10 @@ class Constants:
         self.validation_flag_ship_sunk_submarine_computer = False
         self.validation_flag_game_over_computer = False
 
-    def get_dictionary_from_database(self, host='localhost', dbname='skelkelian'):
+    def get_constants(self):
+        return self.constants
+
+    def set_constants_from_database(self, host='localhost', dbname='skelkelian'):
         try:
             con = psycopg2.connect("host=" + host + " dbname=" + dbname)
             cur = con.cursor()
@@ -87,9 +91,8 @@ class Constants:
 
                 constant = row[0]
                 value = row[1]
-                constants[constant] = value
+                self.constants[constant] = value
 
-            return constants
         except psycopg2.OperationalError as ex:
             if con:
                 con.rollback()
@@ -101,8 +104,7 @@ class Constants:
             if con:
                 con.close()
 
-    def get_constant_values_from_database(self, key):
-        self.get_dictionary_from_database(host='localhost', dbname='skelkelian')
-        value = constants[key]
-        # print(key + ": " + str(value))
+    def get_constant_values(self, key):
+        value = self.constants[key]
+        print(key + ": " + str(value))
         return value

@@ -3,7 +3,7 @@ import utils
 
 
 class TestUtils(unittest.TestCase):
-    def test_get_dictionary_from_database(self):
+    def test_set_constants_from_database(self):
         # create object of class Constants
         self.constants = utils.Constants()
 
@@ -13,12 +13,12 @@ class TestUtils(unittest.TestCase):
                     'submarine': 1, 'horizontal_axis': 1, 'vertical_axis': 2}
 
         # call method of object Constants
-        observed = self.constants.get_dictionary_from_database(host='localhost', dbname='skelkelian')
+        observed = self.constants.get_constants()
 
         # assert
         self.assertEqual(expected, observed)
 
-    def test_get_constant_values_from_database(self):
+    def test_get_constant_values(self):
         # create object of class Constants
         self.constants = utils.Constants()
 
@@ -26,7 +26,7 @@ class TestUtils(unittest.TestCase):
         expected = 1
 
         # call method of object Constants
-        observed = self.constants.get_constant_values_from_database('computer_opponent')
+        observed = self.constants.get_constant_values('computer_opponent')
 
         # assert
         self.assertEqual(expected, observed)
