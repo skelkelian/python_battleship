@@ -105,6 +105,7 @@ class Constants:
                 con.close()
 
     def get_constant_values(self, key):
+        value = None
         if key in self.constants:
             value = self.constants[key]
             print(key + ": " + str(value))

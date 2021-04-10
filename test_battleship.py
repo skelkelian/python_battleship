@@ -35,7 +35,7 @@ class TestBattleShip(unittest.TestCase):
         self.constants = utils.Constants()
 
         # when
-        expected_opponent_type = self.constants.COMPUTER_OPPONENT
+        expected_opponent_type = 1
         # call method of object BattleShip
         observed_opponent_type = self.battleship.get_opponent_type()
 
