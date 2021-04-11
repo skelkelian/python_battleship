@@ -48,7 +48,7 @@ class TestBattleShip(unittest.TestCase):
         self.constants = utils.Constants()
 
         # when
-        expected_game_difficulty = self.constants.EASY_DIFFICULTY
+        expected_game_difficulty = 1
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
 
@@ -61,8 +61,8 @@ class TestBattleShip(unittest.TestCase):
         self.constants = utils.Constants()
 
         # when
-        expected_game_difficulty = self.constants.EASY_DIFFICULTY
-        expected_opponent_type = self.constants.COMPUTER_OPPONENT
+        expected_game_difficulty = 1
+        expected_opponent_type = 1
         # call method of object BattleShip
         observed_game_difficulty = self.battleship.get_game_difficulty()
         observed_opponent_type = self.battleship.get_opponent_type()
