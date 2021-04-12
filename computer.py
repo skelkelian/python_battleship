@@ -40,7 +40,7 @@ class Computer(Participant):
     def track_hit_counter_computer(self):  # this tracks the player's hits on the computer's ships
         row_selected, column_selected = self.pick_point()
         primary_board_computer = self.get_primary_board_computer()
-        if primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.CARRIER:
+        if primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('carrier'):
             self.constants.HIT_COUNTER_COMPUTER[0] = self.constants.HIT_COUNTER_COMPUTER[0] + 1
             print("hit carrier")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
@@ -67,7 +67,7 @@ class Computer(Participant):
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.CARRIER:
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('carrier'):
             self.constants.validation_flag_hit_or_miss_computer = False
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
         else:

@@ -108,7 +108,7 @@ class Constants:
         value = None
         if key in self.constants:
             value = self.constants[key]
-            print(key + ": " + str(value))
+            # print(key + ": " + str(value))
         else:
             print("Key does not exist")
         return value
