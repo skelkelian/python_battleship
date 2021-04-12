@@ -180,8 +180,8 @@ class BattleShip:
 
     def validate_game_difficulty(self):
         if self.game_difficulty != self.constants.get_constant_values('easy_difficulty') and \
-                self.game_difficulty != self.constants.NORMAL_DIFFICULTY and \
-                self.game_difficulty != self.constants.GOD_DIFFICULTY:
+                self.game_difficulty != self.constants.get_constant_values('normal_difficulty') and \
+                self.game_difficulty != self.constants.get_constant_values('god_difficulty'):
             self.game_difficulty = self.constants.get_constant_values('easy_difficulty')
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
