@@ -43,7 +43,7 @@ class Computer(Participant):
         if primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('carrier'):
             self.constants.HIT_COUNTER_COMPUTER[0] = self.constants.HIT_COUNTER_COMPUTER[0] + 1
             print("hit carrier")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.BATTLESHIP:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('cruiser'):
             self.constants.HIT_COUNTER_COMPUTER[1] = self.constants.HIT_COUNTER_COMPUTER[1] + 1
             print("hit battleship")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.DESTROYER:
@@ -66,7 +66,7 @@ class Computer(Participant):
         if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.DESTROYER and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.BATTLESHIP and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('cruiser') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('carrier'):
             self.constants.validation_flag_hit_or_miss_computer = False
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1

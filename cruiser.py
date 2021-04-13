@@ -51,15 +51,15 @@ class Cruiser(Ship):
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
         if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 2] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 2] = self.constants.get_constant_values('cruiser')
         else:
-            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one + 1][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
-            primary_board_player_one[cruiser_row_player_one + 2][cruiser_column_player_one - 1] = self.constants.BATTLESHIP
+            primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one + 1][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_player_one[cruiser_row_player_one + 2][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
 
     def ship_sunk_cruiser_player(self):
         hit_counter_player = self.player.get_hit_counter_player()
@@ -131,15 +131,15 @@ class Cruiser(Ship):
         cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
         cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
         if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
-            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 2] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 2] = self.constants.get_constant_values('cruiser')
         else:
-            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer][cruiser_column_computer - 1] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer + 1][cruiser_column_computer - 1] = self.constants.BATTLESHIP
-            primary_board_computer[cruiser_row_computer + 2][cruiser_column_computer - 1] = self.constants.BATTLESHIP
+            primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer + 1][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
+            primary_board_computer[cruiser_row_computer + 2][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
 
     def ship_sunk_cruiser_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()
