@@ -50,13 +50,13 @@ class Submarine(Ship):
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
         if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
-            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.constants.SUBMARINE
-            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.constants.SUBMARINE
+            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.get_constant_values('submarine')
+            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.constants.get_constant_values('submarine')
+            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.constants.get_constant_values('submarine')
         else:
-            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
-            primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.constants.SUBMARINE
-            primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.constants.SUBMARINE
+            primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.get_constant_values('submarine')
+            primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] = self.constants.get_constant_values('submarine')
+            primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] = self.constants.get_constant_values('submarine')
 
     def ship_sunk_submarine_player(self):
         hit_counter_player = self.player.get_hit_counter_player()
@@ -126,13 +126,13 @@ class Submarine(Ship):
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
         if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
-            primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.SUBMARINE
-            primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.constants.SUBMARINE
-            primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.constants.SUBMARINE
+            primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.get_constant_values('submarine')
+            primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.constants.get_constant_values('submarine')
+            primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.constants.get_constant_values('submarine')
         else:
-            primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.SUBMARINE
-            primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.constants.SUBMARINE
-            primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.constants.SUBMARINE
+            primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.get_constant_values('submarine')
+            primary_board_computer[submarine_row_computer][submarine_column_computer - 1] = self.constants.get_constant_values('submarine')
+            primary_board_computer[submarine_row_computer + 1][submarine_column_computer - 1] = self.constants.get_constant_values('submarine')
 
     def ship_sunk_submarine_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()
