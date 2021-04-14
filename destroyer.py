@@ -51,13 +51,13 @@ class Destroyer(Ship):
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
         if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.DESTROYER
-            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.get_constant_values('destroyer')
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.get_constant_values('destroyer')
         else:
-            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.constants.DESTROYER
-            primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.DESTROYER
+            primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] = self.constants.get_constant_values('destroyer')
 
     def ship_sunk_destroyer_player(self):
         hit_counter_player = self.player.get_hit_counter_player()
@@ -127,13 +127,13 @@ class Destroyer(Ship):
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
         if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
-            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
-            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.DESTROYER
-            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.get_constant_values('destroyer')
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.get_constant_values('destroyer')
         else:
-            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.DESTROYER
-            primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.constants.DESTROYER
-            primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.DESTROYER
+            primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_computer[destroyer_row_computer][destroyer_column_computer - 1] = self.constants.get_constant_values('destroyer')
+            primary_board_computer[destroyer_row_computer + 1][destroyer_column_computer - 1] = self.constants.get_constant_values('destroyer')
 
     def ship_sunk_destroyer_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()
