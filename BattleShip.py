@@ -273,10 +273,3 @@ class BattleShip:
                 self.patrol_boat.ship_sunk_patrol_boat_player(self.get_hit_counter_player)
                 self.submarine.ship_sunk_submarine_player(self.get_hit_counter_player)
                 self.game_over_player()
-
-        # functions
-        #   def pretty_print_list(self, matrix):
-    #         for row in range(0, len(matrix)):
-    #             print(matrix[row])
-    #             for col in range(0, len(matrix)-1):
-    #                 pass
