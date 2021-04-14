@@ -51,11 +51,11 @@ class Patrol_Boat(Ship):
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
         if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
-            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
-            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.PATROL_BOAT
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.get_constant_values('patrol_boat')
         else:
-            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
-            primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.PATROL_BOAT
+            primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+            primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
 
     def ship_sunk_patrol_boat_player(self):
         hit_counter_player = self.player.get_hit_counter_player()
@@ -123,11 +123,11 @@ class Patrol_Boat(Ship):
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
         if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
-            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
-            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.PATROL_BOAT
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.get_constant_values('patrol_boat')
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.get_constant_values('patrol_boat')
         else:
-            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
-            primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.PATROL_BOAT
+            primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.get_constant_values('patrol_boat')
+            primary_board_computer[patrol_boat_row_computer][patrol_boat_column_computer - 1] = self.constants.get_constant_values('patrol_boat')
 
     def ship_sunk_patrol_boat_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()

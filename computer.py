@@ -49,7 +49,7 @@ class Computer(Participant):
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('destroyer'):
             self.constants.HIT_COUNTER_COMPUTER[2] = self.constants.HIT_COUNTER_COMPUTER[2] + 1
             print("hit destroyer")
-        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.PATROL_BOAT:
+        elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('patrol_boat'):
             self.constants.HIT_COUNTER_COMPUTER[3] = self.constants.HIT_COUNTER_COMPUTER[3] + 1
             print("hit patrol boat")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.SUBMARINE:
@@ -64,7 +64,7 @@ class Computer(Participant):
         row_selected, column_selected = self.pick_point()
         primary_board_computer = self.get_primary_board_computer()
         if primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.SUBMARINE and \
-                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.PATROL_BOAT and \
+                primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('patrol_boat') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('destroyer') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('cruiser') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('carrier'):
