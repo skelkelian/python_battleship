@@ -27,11 +27,11 @@ try:
             else:
                 value = False
         else:
-            value = value.split(', ')
-            for i in value:
+            type_casted_list = []
+            for i in value.split(', '):
                 i = int(i)
-                # print(value)
-                # print(type(i))
+                type_casted_list.append(i)
+            value = type_casted_list
 
         battleship_constants[constant] = value
 
