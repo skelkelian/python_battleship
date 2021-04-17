@@ -10,7 +10,8 @@ class TestUtils(unittest.TestCase):
         # when
         expected = {'computer_opponent': 1, 'player_opponent': 2, 'easy_difficulty': 1, 'normal_difficulty': 2,
                     'god_difficulty': 3, 'carrier': 5, 'cruiser': 4, 'destroyer': 3, 'patrol_boat': 2,
-                    'submarine': 1, 'horizontal_axis': 1, 'vertical_axis': 2}
+                    'submarine': 1, 'horizontal_axis': 1, 'vertical_axis': 2, 'validation_flag_game': True,
+                    'hit_counter_player_one': [0, 0, 0, 0, 0]}
 
         # call method of object Constants
         observed = self.constants.get_constants()

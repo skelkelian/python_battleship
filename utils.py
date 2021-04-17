@@ -81,7 +81,7 @@ class Constants:
         try:
             con = psycopg2.connect("host=" + host + " dbname=" + dbname)
             cur = con.cursor()
-            cur.execute("SELECT * FROM constants")
+            cur.execute("SELECT * FROM battleship_constants")
 
             while True:
                 row = cur.fetchone()
@@ -90,7 +90,23 @@ class Constants:
                     break
 
                 constant = row[0]
-                value = row[1]
+                datatype = row[1]
+                value = row[2]
+
+                if datatype == 'int':
+                    value = int(value)
+                elif datatype == 'bool':
+                    if value == 'True':
+                        value = True
+                    else:
+                        value = False
+                else:
+                    type_casted_list = []
+                    for i in value.split(', '):
+                        i = int(i)
+                        type_casted_list.append(i)
+                    value = type_casted_list
+
                 self.constants[constant] = value
 
         except psycopg2.OperationalError as ex:
