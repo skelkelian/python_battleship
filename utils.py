@@ -128,3 +128,17 @@ class Constants:
         else:
             print("Key does not exist")
         return value
+
+    def get_constant_list(self, key, ship_type):
+        if ship_type == 'carrier':
+            index = 0
+        elif ship_type == 'cruiser':
+            index = 1
+        elif ship_type == 'destroyer':
+            index = 2
+        elif ship_type == 'patrol_boat':
+            index = 3
+        else:
+            index = 4
+        result = self.constants.get(key, 'empty')
+        return result[index] if result != 'empty' else None

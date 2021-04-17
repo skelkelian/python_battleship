@@ -32,6 +32,19 @@ class TestUtils(unittest.TestCase):
         # assert
         self.assertEqual(expected, observed)
 
+    def test_get_constant_list(self):
+        # create object of class Constants
+        self.constants = utils.Constants()
+
+        # when
+        expected = 0
+
+        # call method of object Constants
+        observed = self.constants.get_constant_list('hit_counter_player_one', 'carrier')
+
+        # assert
+        self.assertEqual(expected, observed)
+
 
 if __name__ == '__main__':
     unittest.main()
