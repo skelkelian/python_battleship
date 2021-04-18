@@ -11,7 +11,29 @@ class TestUtils(unittest.TestCase):
         expected = {'computer_opponent': 1, 'player_opponent': 2, 'easy_difficulty': 1, 'normal_difficulty': 2,
                     'god_difficulty': 3, 'carrier': 5, 'cruiser': 4, 'destroyer': 3, 'patrol_boat': 2,
                     'submarine': 1, 'horizontal_axis': 1, 'vertical_axis': 2, 'validation_flag_game': True,
-                    'hit_counter_player_one': [0, 0, 0, 0, 0]}
+                    'validation_flag_carrier_player': True, 'validation_flag_cruiser_player': True,
+                    'validation_flag_destroyer_player': True, 'validation_flag_patrol_boat_player': True,
+                    'validation_flag_submarine_player': True, 'validation_flag_cruiser_overlap_player': True,
+                    'validation_flag_destroyer_overlap_player': True,
+                    'validation_flag_patrol_boat_overlap_player': True,
+                    'validation_flag_submarine_overlap_player': True, 'validation_flag_hit_or_miss_player': True,
+                    'validation_flag_hit_counter_player': True, 'validation_flag_ship_sunk_carrier_player': False,
+                    'validation_flag_ship_sunk_cruiser_player': False,
+                    'validation_flag_ship_sunk_destroyer_player': False,
+                    'validation_flag_ship_sunk_patrol_boat_player': False,
+                    'validation_flag_ship_sunk_submarine_player': False, 'validation_flag_game_over_player': False,
+                    'validation_flag_carrier_computer': True, 'validation_flag_battleship_computer': True,
+                    'validation_flag_destroyer_computer': True, 'validation_flag_patrol_boat_computer': True,
+                    'validation_flag_submarine_computer': True, 'validation_flag_cruiser_overlap_computer': True,
+                    'validation_flag_destroyer_overlap_computer': True,
+                    'validation_flag_patrol_boat_overlap_computer': True,
+                    'validation_flag_submarine_overlap_computer': True, 'validation_flag_hit_or_miss_computer': True,
+                    'validation_flag_hit_counter_computer': True, 'validation_flag_ship_sunk_carrier_computer': False,
+                    'validation_flag_ship_sunk_cruiser_computer': False,
+                    'validation_flag_ship_sunk_destroyer_computer': False,
+                    'validation_flag_ship_sunk_patrol_boat_computer': False,
+                    'validation_flag_ship_sunk_submarine_computer': False, 'validation_flag_game_over_computer': False,
+                    'hit_counter_player_one': [0, 0, 0, 0, 0], 'hit_counter_computer': [0, 0, 0, 0, 0]}
 
         # call method of object Constants
         observed = self.constants.get_constants()
