@@ -19,7 +19,7 @@ class Patrol_Boat(Ship):
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_player_one != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_player_one != self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.constants.validation_flag_patrol_boat_player = False
 
@@ -34,7 +34,7 @@ class Patrol_Boat(Ship):
                 self.constants.validation_flag_patrol_boat_player = False
 
         # check column
-        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_player = False
@@ -50,7 +50,7 @@ class Patrol_Boat(Ship):
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
-        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
             primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] = self.constants.get_constant_values('patrol_boat')
         else:
@@ -72,7 +72,7 @@ class Patrol_Boat(Ship):
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if patrol_boat_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
@@ -91,7 +91,7 @@ class Patrol_Boat(Ship):
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_computer != self.constants.HORIZONTAL_AXIS and patrol_boat_axis_computer != self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_computer != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_computer != self.constants.VERTICAL_AXIS:
             print("The patrol boat axis value is invalid.")
             self.constants.validation_flag_patrol_boat_computer = False
 
@@ -106,7 +106,7 @@ class Patrol_Boat(Ship):
                 self.constants.validation_flag_patrol_boat_computer = False
 
         # check column
-        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if patrol_boat_column_computer > 9 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_computer = False
@@ -122,7 +122,7 @@ class Patrol_Boat(Ship):
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
-        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] = self.constants.get_constant_values('patrol_boat')
             primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] = self.constants.get_constant_values('patrol_boat')
         else:
@@ -144,7 +144,7 @@ class Patrol_Boat(Ship):
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if patrol_boat_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer - 1] != 0 or \
                     primary_board_computer[patrol_boat_row_computer - 1][patrol_boat_column_computer] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')

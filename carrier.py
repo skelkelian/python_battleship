@@ -19,7 +19,7 @@ class Carrier(Ship):
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_player_one != self.constants.HORIZONTAL_AXIS and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.constants.get_constant_values('horizontal_axis') and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.constants.validation_flag_carrier_player = False
 
@@ -34,7 +34,7 @@ class Carrier(Ship):
                 self.constants.validation_flag_carrier_player = False
 
         # check column
-        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if carrier_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.constants.validation_flag_carrier_player = False
@@ -50,7 +50,7 @@ class Carrier(Ship):
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
-        if carrier_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if carrier_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one - 1] = self.constants.get_constant_values('carrier')
             primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one] = self.constants.get_constant_values('carrier')
             primary_board_player_one[carrier_row_player_one - 1][carrier_column_player_one + 1] = self.constants.get_constant_values('carrier')
@@ -78,7 +78,7 @@ class Carrier(Ship):
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_computer != self.constants.HORIZONTAL_AXIS and carrier_axis_computer != self.constants.VERTICAL_AXIS:
+        if carrier_axis_computer != self.constants.get_constant_values('horizontal_axis') and carrier_axis_computer != self.constants.VERTICAL_AXIS:
             print("The carrier axis value is invalid.")
             self.constants.validation_flag_carrier_computer = False
 
@@ -93,7 +93,7 @@ class Carrier(Ship):
                 self.constants.validation_flag_carrier_computer = False
 
         # check column
-        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if carrier_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
                 self.constants.validation_flag_carrier_computer = False
@@ -109,7 +109,7 @@ class Carrier(Ship):
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
-        if carrier_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if carrier_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             primary_board_computer[carrier_row_computer - 1][carrier_column_computer - 1] = self.constants.get_constant_values('carrier')
             primary_board_computer[carrier_row_computer - 1][carrier_column_computer] = self.constants.get_constant_values('carrier')
             primary_board_computer[carrier_row_computer - 1][carrier_column_computer + 1] = self.constants.get_constant_values('carrier')

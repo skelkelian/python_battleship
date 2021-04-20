@@ -18,7 +18,7 @@ class Submarine(Ship):
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_player_one != self.constants.HORIZONTAL_AXIS and submarine_axis_player_one != self.constants.VERTICAL_AXIS:
+        if submarine_axis_player_one != self.constants.get_constant_values('horizontal_axis') and submarine_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.constants.validation_flag_submarine_player = False
 
@@ -33,7 +33,7 @@ class Submarine(Ship):
                 self.constants.validation_flag_submarine_player = False
 
         # check column
-        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.constants.validation_flag_submarine_player = False
@@ -49,7 +49,7 @@ class Submarine(Ship):
         submarine_axis_player_one = int(submarine_values_player_one.split(',')[0].strip())
         submarine_row_player_one = int(submarine_values_player_one.split(',')[1].strip())
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
-        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] = self.constants.get_constant_values('submarine')
             primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] = self.constants.get_constant_values('submarine')
             primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] = self.constants.get_constant_values('submarine')
@@ -73,7 +73,7 @@ class Submarine(Ship):
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if submarine_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
                     primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
@@ -94,7 +94,7 @@ class Submarine(Ship):
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_computer != self.constants.HORIZONTAL_AXIS and submarine_axis_computer != self.constants.VERTICAL_AXIS:
+        if submarine_axis_computer != self.constants.get_constant_values('horizontal_axis') and submarine_axis_computer != self.constants.VERTICAL_AXIS:
             print("The submarine axis value is invalid.")
             self.constants.validation_flag_submarine_computer = False
 
@@ -109,7 +109,7 @@ class Submarine(Ship):
                 self.constants.validation_flag_submarine_computer = False
 
         # check column
-        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if submarine_column_computer > 8 or submarine_column_computer <= 0 or submarine_column_computer % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
                 self.constants.validation_flag_submarine_computer = False
@@ -125,7 +125,7 @@ class Submarine(Ship):
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())
         submarine_row_computer = int(submarine_values_computer.split(',')[1].strip())
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
-        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] = self.constants.get_constant_values('submarine')
             primary_board_computer[submarine_row_computer - 1][submarine_column_computer] = self.constants.get_constant_values('submarine')
             primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] = self.constants.get_constant_values('submarine')
@@ -149,7 +149,7 @@ class Submarine(Ship):
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if submarine_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if submarine_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_computer[submarine_row_computer - 1][submarine_column_computer - 1] != 0 or \
                     primary_board_computer[submarine_row_computer - 1][submarine_column_computer] != 0 or \
                     primary_board_computer[submarine_row_computer - 1][submarine_column_computer + 1] != 0:

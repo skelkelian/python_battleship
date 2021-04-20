@@ -19,7 +19,7 @@ class Destroyer(Ship):
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_player_one != self.constants.HORIZONTAL_AXIS and destroyer_axis_player_one != self.constants.VERTICAL_AXIS:
+        if destroyer_axis_player_one != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.constants.validation_flag_destroyer_player = False
 
@@ -34,7 +34,7 @@ class Destroyer(Ship):
                 self.constants.validation_flag_destroyer_player = False
 
         # check column
-        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if destroyer_column_player_one > 8 or destroyer_column_player_one <= 0 or destroyer_column_player_one % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_player = False
@@ -50,7 +50,7 @@ class Destroyer(Ship):
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
-        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] = self.constants.get_constant_values('destroyer')
             primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] = self.constants.get_constant_values('destroyer')
             primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] = self.constants.get_constant_values('destroyer')
@@ -74,7 +74,7 @@ class Destroyer(Ship):
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if destroyer_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
                     primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] != 0 or \
                     primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] != 0:
@@ -95,7 +95,7 @@ class Destroyer(Ship):
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_computer != self.constants.HORIZONTAL_AXIS and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
+        if destroyer_axis_computer != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
             print("The destroyer axis value is invalid.")
             self.constants.validation_flag_destroyer_computer = False
 
@@ -110,7 +110,7 @@ class Destroyer(Ship):
                 self.constants.validation_flag_destroyer_computer = False
 
         # check column
-        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if destroyer_column_computer > 8 or destroyer_column_computer <= 0 or destroyer_column_computer % 1 != 0:
                 print('\nThe destroyer column value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_computer = False
@@ -126,7 +126,7 @@ class Destroyer(Ship):
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
-        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] = self.constants.get_constant_values('destroyer')
             primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] = self.constants.get_constant_values('destroyer')
             primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] = self.constants.get_constant_values('destroyer')
@@ -150,7 +150,7 @@ class Destroyer(Ship):
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if destroyer_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if destroyer_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer - 1] != 0 or \
                     primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer] != 0 or \
                     primary_board_computer[destroyer_row_computer - 1][destroyer_column_computer + 1] != 0:

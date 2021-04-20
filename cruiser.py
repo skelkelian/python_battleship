@@ -19,7 +19,7 @@ class Cruiser(Ship):
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
 
         # check axis
-        if cruiser_axis_player_one != self.constants.HORIZONTAL_AXIS and cruiser_axis_player_one != self.constants.VERTICAL_AXIS:
+        if cruiser_axis_player_one != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_player_one != self.constants.VERTICAL_AXIS:
             print("The cruiser axis value is invalid.")
             self.constants.validation_flag_cruiser_player = False
 
@@ -34,7 +34,7 @@ class Cruiser(Ship):
                 self.constants.validation_flag_cruiser_player = False
 
         # check column
-        if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if cruiser_column_player_one > 7 or cruiser_column_player_one <= 0 or cruiser_column_player_one % 1 != 0:
                 print('\nThe cruiser column value is invalid.\n\n')
                 self.constants.validation_flag_cruiser_player = False
@@ -50,7 +50,7 @@ class Cruiser(Ship):
         cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
-        if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] = self.constants.get_constant_values('cruiser')
             primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] = self.constants.get_constant_values('cruiser')
             primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] = self.constants.get_constant_values('cruiser')
@@ -76,7 +76,7 @@ class Cruiser(Ship):
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
 
         # check if ship does not overlap
-        if cruiser_axis_player_one == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one - 1] != 0 or \
                     primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one] != 0 or \
                     primary_board_player_one[cruiser_row_player_one - 1][cruiser_column_player_one + 1] != 0 or \
@@ -99,7 +99,7 @@ class Cruiser(Ship):
         cruiser_column_computer = int(cruiser_values_player_one.split(',')[2].strip())
 
         # check axis
-        if cruiser_axis_computer != self.constants.HORIZONTAL_AXIS and cruiser_axis_computer != self.constants.VERTICAL_AXIS:
+        if cruiser_axis_computer != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_computer != self.constants.VERTICAL_AXIS:
             print("The battleship axis value is invalid.")
             self.constants.validation_flag_battleship_computer = False
 
@@ -114,7 +114,7 @@ class Cruiser(Ship):
                 self.constants.validation_flag_battleship_computer = False
 
         # check column
-        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if cruiser_column_computer > 7 or cruiser_column_computer <= 0 or cruiser_column_computer % 1 != 0:
                 print('\nThe battleship column value is invalid.\n\n')
                 self.constants.validation_flag_battleship_computer = False
@@ -130,7 +130,7 @@ class Cruiser(Ship):
         cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
         cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
         cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
-        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] = self.constants.get_constant_values('cruiser')
             primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] = self.constants.get_constant_values('cruiser')
             primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] = self.constants.get_constant_values('cruiser')
@@ -156,7 +156,7 @@ class Cruiser(Ship):
         cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
 
         # check if ship does not overlap
-        if cruiser_axis_computer == self.constants.HORIZONTAL_AXIS:
+        if cruiser_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] != 0 or \
                     primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer] != 0 or \
                     primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] != 0 or \
