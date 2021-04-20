@@ -19,12 +19,12 @@ class Cruiser(Ship):
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
 
         # check axis
-        if cruiser_axis_player_one != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_player_one != self.constants.VERTICAL_AXIS:
+        if cruiser_axis_player_one != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The cruiser axis value is invalid.")
             self.constants.validation_flag_cruiser_player = False
 
         # check row
-        if cruiser_axis_player_one == self.constants.VERTICAL_AXIS:
+        if cruiser_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if cruiser_row_player_one > 7 or cruiser_row_player_one <= 0 or cruiser_row_player_one % 1 != 0:
                 print('\nThe cruiser row value is invalid.\n\n')
                 self.constants.validation_flag_cruiser_player = False
@@ -99,12 +99,12 @@ class Cruiser(Ship):
         cruiser_column_computer = int(cruiser_values_player_one.split(',')[2].strip())
 
         # check axis
-        if cruiser_axis_computer != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_computer != self.constants.VERTICAL_AXIS:
+        if cruiser_axis_computer != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The battleship axis value is invalid.")
             self.constants.validation_flag_battleship_computer = False
 
         # check row
-        if cruiser_axis_computer == self.constants.VERTICAL_AXIS:
+        if cruiser_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if cruiser_row_computer > 7 or cruiser_row_computer <= 0 or cruiser_row_computer % 1 != 0:
                 print('\nThe battleship row value is invalid.\n\n')
                 self.constants.validation_flag_battleship_computer = False

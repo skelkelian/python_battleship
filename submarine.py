@@ -18,12 +18,12 @@ class Submarine(Ship):
         submarine_column_player_one = int(submarine_values_player_one.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_player_one != self.constants.get_constant_values('horizontal_axis') and submarine_axis_player_one != self.constants.VERTICAL_AXIS:
+        if submarine_axis_player_one != self.constants.get_constant_values('horizontal_axis') and submarine_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The submarine axis value is invalid.")
             self.constants.validation_flag_submarine_player = False
 
         # check row
-        if submarine_axis_player_one == self.constants.VERTICAL_AXIS:
+        if submarine_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
                 self.constants.validation_flag_submarine_player = False
@@ -94,12 +94,12 @@ class Submarine(Ship):
         submarine_column_computer = int(submarine_values_computer.split(',')[2].strip())
 
         # check axis
-        if submarine_axis_computer != self.constants.get_constant_values('horizontal_axis') and submarine_axis_computer != self.constants.VERTICAL_AXIS:
+        if submarine_axis_computer != self.constants.get_constant_values('horizontal_axis') and submarine_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The submarine axis value is invalid.")
             self.constants.validation_flag_submarine_computer = False
 
         # check row
-        if submarine_axis_computer == self.constants.VERTICAL_AXIS:
+        if submarine_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if submarine_row_computer > 8 or submarine_row_computer <= 0 or submarine_row_computer % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
                 self.constants.validation_flag_submarine_computer = False

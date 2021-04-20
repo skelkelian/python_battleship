@@ -19,12 +19,12 @@ class Carrier(Ship):
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_player_one != self.constants.get_constant_values('horizontal_axis') and carrier_axis_player_one != self.constants.VERTICAL_AXIS:
+        if carrier_axis_player_one != self.constants.get_constant_values('horizontal_axis') and carrier_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The carrier axis value is invalid.")
             self.constants.validation_flag_carrier_player = False
 
         # check row
-        if carrier_axis_player_one == self.constants.VERTICAL_AXIS:
+        if carrier_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
                 self.constants.validation_flag_carrier_player = False
@@ -78,12 +78,12 @@ class Carrier(Ship):
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
 
         # check axis
-        if carrier_axis_computer != self.constants.get_constant_values('horizontal_axis') and carrier_axis_computer != self.constants.VERTICAL_AXIS:
+        if carrier_axis_computer != self.constants.get_constant_values('horizontal_axis') and carrier_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The carrier axis value is invalid.")
             self.constants.validation_flag_carrier_computer = False
 
         # check row
-        if carrier_axis_computer == self.constants.VERTICAL_AXIS:
+        if carrier_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
                 self.constants.validation_flag_carrier_computer = False

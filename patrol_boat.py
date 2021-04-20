@@ -19,12 +19,12 @@ class Patrol_Boat(Ship):
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_player_one != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_player_one != self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The patrol boat axis value is invalid.")
             self.constants.validation_flag_patrol_boat_player = False
 
         # check row
-        if patrol_boat_axis_player_one == self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_player = False
@@ -91,12 +91,12 @@ class Patrol_Boat(Ship):
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
 
         # check axis
-        if patrol_boat_axis_computer != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_computer != self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_computer != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The patrol boat axis value is invalid.")
             self.constants.validation_flag_patrol_boat_computer = False
 
         # check row
-        if patrol_boat_axis_computer == self.constants.VERTICAL_AXIS:
+        if patrol_boat_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if patrol_boat_row_computer > 9 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
                 self.constants.validation_flag_patrol_boat_computer = False

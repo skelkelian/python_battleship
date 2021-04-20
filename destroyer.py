@@ -19,12 +19,12 @@ class Destroyer(Ship):
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_player_one != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_player_one != self.constants.VERTICAL_AXIS:
+        if destroyer_axis_player_one != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The destroyer axis value is invalid.")
             self.constants.validation_flag_destroyer_player = False
 
         # check row
-        if destroyer_axis_player_one == self.constants.VERTICAL_AXIS:
+        if destroyer_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if destroyer_row_player_one > 8 or destroyer_row_player_one <= 0 or destroyer_row_player_one % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_player = False
@@ -95,12 +95,12 @@ class Destroyer(Ship):
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
 
         # check axis
-        if destroyer_axis_computer != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_computer != self.constants.VERTICAL_AXIS:
+        if destroyer_axis_computer != self.constants.get_constant_values('horizontal_axis') and destroyer_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The destroyer axis value is invalid.")
             self.constants.validation_flag_destroyer_computer = False
 
         # check row
-        if destroyer_axis_computer == self.constants.VERTICAL_AXIS:
+        if destroyer_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if destroyer_row_computer > 8 or destroyer_row_computer <= 0 or destroyer_row_computer % 1 != 0:
                 print('\nThe destroyer row value is invalid.\n\n')
                 self.constants.validation_flag_destroyer_computer = False
