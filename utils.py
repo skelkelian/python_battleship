@@ -142,3 +142,11 @@ class Constants:
             index = 4
         result = self.constants.get(key, 'empty')
         return result[index] if result != 'empty' else None
+
+    def get_constant_bool(self, boolean):
+        value = None
+        if boolean in self.constants:
+            value = self.constants[boolean]
+        else:
+            print("Key does not exist")
+        return value

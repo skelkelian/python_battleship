@@ -67,6 +67,19 @@ class TestUtils(unittest.TestCase):
         # assert
         self.assertEqual(expected, observed)
 
+    def test_get_constant_bool(self):
+        # create object of class Constants
+        self.constants = utils.Constants()
+
+        # when
+        expected = True
+
+        # call method of object Constants
+        observed = self.constants.get_constant_bool('validation_flag_game')
+
+        # assert
+        self.assertEqual(expected, observed)
+
 
 if __name__ == '__main__':
     unittest.main()
