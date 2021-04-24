@@ -14,23 +14,6 @@ import utils
 
 
 class BattleShip:
-    # CONSTANTS
-
-    # OPPONENT TYPE
-
-    # GAME DIFFICULTY
-
-    # SHIP IDENTIFICATION
-
-    # AXIS
-
-    # HIT COUNTER
-
-    # VALIDATION PLAYER
-
-    # VALIDATION COMPUTER
-
-    # BOARD
     PRIMARY_BOARD = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -58,6 +41,7 @@ class BattleShip:
 
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
+        self.validation_flag_game = self.constants.get_constant_bool('validation_flag_game')
         self.carrier = Carrier()
         self.cruiser = Cruiser()
         self.destroyer = Destroyer()
@@ -178,8 +162,8 @@ class BattleShip:
             print('You have selected an invalid choice for game difficulty.' +
                   '\nThe game difficulty has defaulted to easy.' +
                   '\nNext time try to choose a value that is valid.')
-            self.constants.validation_flag_game = False
-        return self.constants.validation_flag_game
+            self.validation_flag_game = False
+        return self.validation_flag_game
 
     def get_hit_counter_player(self):
         return self.HIT_COUNTER_PLAYER_ONE
