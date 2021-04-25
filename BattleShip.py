@@ -41,7 +41,7 @@ class BattleShip:
 
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
-        self.validation_flag_game = self.constants.get_constant_bool('validation_flag_game')
+        self.validation_flag_game = self.constants.get_constant_values('validation_flag_game')
         self.carrier = Carrier()
         self.cruiser = Cruiser()
         self.destroyer = Destroyer()

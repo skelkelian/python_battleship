@@ -59,10 +59,10 @@ class TestUtils(unittest.TestCase):
         self.constants = utils.Constants()
 
         # when
-        expected = 0
+        expected = [0, 0, 0, 0, 0]
 
         # call method of object Constants
-        observed = self.constants.get_constant_list('hit_counter_player_one', 'carrier')
+        observed = self.constants.get_constant_values('hit_counter_player_one')
 
         # assert
         self.assertEqual(expected, observed)
@@ -75,7 +75,7 @@ class TestUtils(unittest.TestCase):
         expected = True
 
         # call method of object Constants
-        observed = self.constants.get_constant_bool('validation_flag_game')
+        observed = self.constants.get_constant_values('validation_flag_game')
 
         # assert
         self.assertEqual(expected, observed)
