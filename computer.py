@@ -1,11 +1,13 @@
 from random import randint
+import utils
 from participant import Participant
 
 
 class Computer(Participant):
     def __init__(self, config_name=None):
         super().__init__()
-        self.hit_counter_computer = [0, 0, 0, 0, 0]  # when player hits a ship adjust this hit counter
+        self.constants = utils.Constants()
+        self.hit_counter_computer = self.constants.get_constant_values('hit_counter_computer')
         self.primary_board_computer = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -41,19 +43,19 @@ class Computer(Participant):
         row_selected, column_selected = self.pick_point()
         primary_board_computer = self.get_primary_board_computer()
         if primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('carrier'):
-            self.constants.HIT_COUNTER_COMPUTER[0] = self.constants.HIT_COUNTER_COMPUTER[0] + 1
+            self.hit_counter_computer[0] = self.hit_counter_computer[0] + 1
             print("hit carrier")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('cruiser'):
-            self.constants.HIT_COUNTER_COMPUTER[1] = self.constants.HIT_COUNTER_COMPUTER[1] + 1
+            self.hit_counter_computer[1] = self.hit_counter_computer[1] + 1
             print("hit battleship")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('destroyer'):
-            self.constants.HIT_COUNTER_COMPUTER[2] = self.constants.HIT_COUNTER_COMPUTER[2] + 1
+            self.hit_counter_computer[2] = self.hit_counter_computer[2] + 1
             print("hit destroyer")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('patrol_boat'):
-            self.constants.HIT_COUNTER_COMPUTER[3] = self.constants.HIT_COUNTER_COMPUTER[3] + 1
+            self.hit_counter_computer[3] = self.hit_counter_computer[3] + 1
             print("hit patrol boat")
         elif primary_board_computer[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('submarine'):
-            self.constants.HIT_COUNTER_COMPUTER[4] = self.constants.HIT_COUNTER_COMPUTER[4] + 1
+            self.hit_counter_computer[4] = self.hit_counter_computer[4] + 1
             print("hit submarine")
         else:
             self.constants.validation_flag_hit_counter_player = False

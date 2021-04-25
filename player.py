@@ -1,5 +1,4 @@
 from random import randint
-
 import utils
 from participant import Participant
 
@@ -9,7 +8,6 @@ class Player(Participant):
         super().__init__()
         self.constants = utils.Constants()
         self.hit_counter_player_one = self.constants.get_constant_values('hit_counter_player_one')
-        self.hit_counter = [0, 0, 0, 0, 0]  # when computer hits a ship adjust this hit counter
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -36,7 +34,7 @@ class Player(Participant):
         ]
 
     def get_hit_counter_player(self):
-        return self.hit_counter
+        return self.hit_counter_player_one
 
     def get_primary_board_player_one(self):
         return self.primary_board_player_one
