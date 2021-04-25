@@ -9,6 +9,7 @@ class Cruiser(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.validation_flag_cruiser_player = self.constants.get_constant_values('validation_flag_cruiser_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -21,28 +22,28 @@ class Cruiser(Ship):
         # check axis
         if cruiser_axis_player_one != self.constants.get_constant_values('horizontal_axis') and cruiser_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The cruiser axis value is invalid.")
-            self.constants.validation_flag_cruiser_player = False
+            self.validation_flag_cruiser_player = False
 
         # check row
         if cruiser_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if cruiser_row_player_one > 7 or cruiser_row_player_one <= 0 or cruiser_row_player_one % 1 != 0:
                 print('\nThe cruiser row value is invalid.\n\n')
-                self.constants.validation_flag_cruiser_player = False
+                self.validation_flag_cruiser_player = False
         else:
             if cruiser_row_player_one > 10 or cruiser_row_player_one <= 0 or cruiser_row_player_one % 1 != 0:
                 print('\nThe cruiser row value is invalid.\n\n')
-                self.constants.validation_flag_cruiser_player = False
+                self.validation_flag_cruiser_player = False
 
         # check column
         if cruiser_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if cruiser_column_player_one > 7 or cruiser_column_player_one <= 0 or cruiser_column_player_one % 1 != 0:
                 print('\nThe cruiser column value is invalid.\n\n')
-                self.constants.validation_flag_cruiser_player = False
+                self.validation_flag_cruiser_player = False
         else:
             if cruiser_column_player_one > 10 or cruiser_column_player_one <= 0 or cruiser_column_player_one % 1 != 0:
                 print('\nThe cruiser column value is invalid.\n\n')
-                self.constants.validation_flag_cruiser_player = False
-        return self.constants.validation_flag_cruiser_player
+                self.validation_flag_cruiser_player = False
+        return self.validation_flag_cruiser_player
 
     def place_cruiser_player_one(self, battleship_config):
         primary_board_player_one = self.player.get_primary_board_player_one()

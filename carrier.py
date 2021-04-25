@@ -9,6 +9,7 @@ class Carrier(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.validation_flag_carrier_player = self.constants.get_constant_values('validation_flag_carrier_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -21,28 +22,28 @@ class Carrier(Ship):
         # check axis
         if carrier_axis_player_one != self.constants.get_constant_values('horizontal_axis') and carrier_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The carrier axis value is invalid.")
-            self.constants.validation_flag_carrier_player = False
+            self.validation_flag_carrier_player = False
 
         # check row
         if carrier_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if carrier_row_player_one > 6 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
+                self.validation_flag_carrier_player = False
         else:
             if carrier_row_player_one > 10 or carrier_row_player_one <= 0 or carrier_row_player_one % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
+                self.validation_flag_carrier_player = False
 
         # check column
         if carrier_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if carrier_column_player_one > 6 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
+                self.validation_flag_carrier_player = False
         else:
             if carrier_column_player_one > 10 or carrier_column_player_one <= 0 or carrier_column_player_one % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_player = False
-        return self.constants.validation_flag_carrier_player
+                self.validation_flag_carrier_player = False
+        return self.validation_flag_carrier_player
 
     def place_carrier_player_one(self, battleship_config):
         primary_board_player_one = self.player.get_primary_board_player_one()
