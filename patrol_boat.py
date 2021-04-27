@@ -9,6 +9,7 @@ class Patrol_Boat(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.validation_flag_patrol_boat_player = self.constants.get_constant_values('validation_flag_patrol_boat_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -21,28 +22,28 @@ class Patrol_Boat(Ship):
         # check axis
         if patrol_boat_axis_player_one != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The patrol boat axis value is invalid.")
-            self.constants.validation_flag_patrol_boat_player = False
+            self.validation_flag_patrol_boat_player = False
 
         # check row
         if patrol_boat_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if patrol_boat_row_player_one > 9 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_player = False
+                self.validation_flag_patrol_boat_player = False
         else:
             if patrol_boat_row_player_one > 10 or patrol_boat_row_player_one <= 0 or patrol_boat_row_player_one % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_player = False
+                self.validation_flag_patrol_boat_player = False
 
         # check column
         if patrol_boat_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if patrol_boat_column_player_one > 9 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_player = False
+                self.validation_flag_patrol_boat_player = False
         else:
             if patrol_boat_column_player_one > 10 or patrol_boat_column_player_one <= 0 or patrol_boat_column_player_one % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_player = False
-        return self.constants.validation_flag_patrol_boat_player
+                self.validation_flag_patrol_boat_player = False
+        return self.validation_flag_patrol_boat_player
 
     def place_patrol_boat_player_one(self, battleship_config):
         primary_board_player_one = self.player.get_primary_board_player_one()
