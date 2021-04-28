@@ -8,6 +8,7 @@ class Submarine(Ship):
     def __init__(self):
         super().__init__()
         self.constants = Constants()
+        self.validation_flag_submarine_player = self.constants.get_constant_values('validation_flag_submarine_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -20,28 +21,28 @@ class Submarine(Ship):
         # check axis
         if submarine_axis_player_one != self.constants.get_constant_values('horizontal_axis') and submarine_axis_player_one != self.constants.get_constant_values('vertical_axis'):
             print("The submarine axis value is invalid.")
-            self.constants.validation_flag_submarine_player = False
+            self.validation_flag_submarine_player = False
 
         # check row
         if submarine_axis_player_one == self.constants.get_constant_values('vertical_axis'):
             if submarine_row_player_one > 8 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.constants.validation_flag_submarine_player = False
+                self.validation_flag_submarine_player = False
         else:
             if submarine_row_player_one > 10 or submarine_row_player_one <= 0 or submarine_row_player_one % 1 != 0:
                 print('\nThe submarine row value is invalid.\n\n')
-                self.constants.validation_flag_submarine_player = False
+                self.validation_flag_submarine_player = False
 
         # check column
         if submarine_axis_player_one == self.constants.get_constant_values('horizontal_axis'):
             if submarine_column_player_one > 8 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.constants.validation_flag_submarine_player = False
+                self.validation_flag_submarine_player = False
         else:
             if submarine_column_player_one > 10 or submarine_column_player_one <= 0 or submarine_column_player_one % 1 != 0:
                 print('\nThe submarine column value is invalid.\n\n')
-                self.constants.validation_flag_submarine_player = False
-        return self.constants.validation_flag_submarine_player
+                self.validation_flag_submarine_player = False
+        return self.validation_flag_submarine_player
 
     def place_submarine_player_one(self, battleship_config):
         primary_board_player_one = self.player.get_primary_board_player_one()

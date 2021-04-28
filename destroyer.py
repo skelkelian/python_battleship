@@ -10,6 +10,7 @@ class Destroyer(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_destroyer_player = self.constants.get_constant_values('validation_flag_destroyer_player')
+        self.validation_flag_destroyer_overlap_player = self.constants.get_constant_values('validation_flag_destroyer_overlap_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -80,14 +81,14 @@ class Destroyer(Ship):
                     primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one] != 0 or \
                     primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one + 1] != 0:
                 print('\nThe destroyer overlaps with another ship.\n\n')
-                self.constants.validation_flag_destroyer_overlap_player = False
+                self.validation_flag_destroyer_overlap_player = False
         else:
             if primary_board_player_one[destroyer_row_player_one - 1][destroyer_column_player_one - 1] != 0 or \
                     primary_board_player_one[destroyer_row_player_one][destroyer_column_player_one - 1] != 0 or \
                     primary_board_player_one[destroyer_row_player_one + 1][destroyer_column_player_one - 1] != 0:
                 print('\nThe destroyer overlaps with another ship.\n\n')
-                self.constants.validation_flag_destroyer_overlap_player = False
-        return self.constants.validation_flag_destroyer_overlap_player
+                self.validation_flag_destroyer_overlap_player = False
+        return self.validation_flag_destroyer_overlap_player
 
     def validate_destroyer_computer_points(self, battleship_config):
         destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')

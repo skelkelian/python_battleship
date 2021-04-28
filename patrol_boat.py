@@ -10,6 +10,7 @@ class Patrol_Boat(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_patrol_boat_player = self.constants.get_constant_values('validation_flag_patrol_boat_player')
+        self.validation_flag_patrol_boat_overlap_player = self.constants.get_constant_values('validation_flag_patrol_boat_overlap_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -77,13 +78,13 @@ class Patrol_Boat(Ship):
             if primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.constants.validation_flag_patrol_boat_overlap_player = False
+                self.validation_flag_patrol_boat_overlap_player = False
         else:
             if primary_board_player_one[patrol_boat_row_player_one - 1][patrol_boat_column_player_one - 1] != 0 or \
                     primary_board_player_one[patrol_boat_row_player_one][patrol_boat_column_player_one - 1] != 0:
                 print('\nThe patrol boat overlaps with another ship.\n\n')
-                self.constants.validation_flag_patrol_boat_overlap_player = False
-        return self.constants.validation_flag_patrol_boat_overlap_player
+                self.validation_flag_patrol_boat_overlap_player = False
+        return self.validation_flag_patrol_boat_overlap_player
 
     def validate_patrol_boat_computer_points(self, battleship_config):
         patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
