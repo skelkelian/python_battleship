@@ -9,6 +9,7 @@ class Submarine(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_submarine_player = self.constants.get_constant_values('validation_flag_submarine_player')
+        self.validation_flag_submarine_overlap_player = self.constants.get_constant_values('validation_flag_submarine_overlap_player')
         self.player = Player()
         self.computer = Computer()
 
@@ -79,14 +80,14 @@ class Submarine(Ship):
                     primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one] != 0 or \
                     primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one + 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.constants.validation_flag_submarine_overlap_player = False
+                self.validation_flag_submarine_overlap_player = False
         else:
             if primary_board_player_one[submarine_row_player_one - 1][submarine_column_player_one - 1] != 0 or \
                     primary_board_player_one[submarine_row_player_one][submarine_column_player_one - 1] != 0 or \
                     primary_board_player_one[submarine_row_player_one + 1][submarine_column_player_one - 1] != 0:
                 print('\nThe battleship overlaps with another ship.\n\n')
-                self.constants.validation_flag_submarine_overlap_player = False
-        return self.constants.validation_flag_submarine_overlap_player
+                self.validation_flag_submarine_overlap_player = False
+        return self.validation_flag_submarine_overlap_player
 
     def validate_submarine_computer_points(self, battleship_config):
         submarine_values_computer = battleship_config.get('main', 'submarine_computer')

@@ -42,6 +42,7 @@ class BattleShip:
     def __init__(self, config_name=None):
         self.constants = utils.Constants()
         self.validation_flag_game = self.constants.get_constant_values('validation_flag_game')
+        self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
         self.carrier = Carrier()
         self.cruiser = Cruiser()
         self.destroyer = Destroyer()
@@ -240,7 +241,7 @@ class BattleShip:
         while game_over == 0:
             self.start_game()
             self.hit_or_miss_player()
-            while self.constants.validation_flag_hit_or_miss_player is True:
+            while self.validation_flag_hit_or_miss_player is True:
                 self.hit_counter_computer()
                 self.ship_sunk_carrier_computer()
                 self.ship_sunk_battleship_computer()

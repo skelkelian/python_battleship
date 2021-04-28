@@ -7,6 +7,7 @@ class Computer(Participant):
     def __init__(self, config_name=None):
         super().__init__()
         self.constants = utils.Constants()
+        self.validation_flag_hit_counter_player = self.constants.get_constant_values('validation_flag_hit_counter_player')
         self.hit_counter_computer = self.constants.get_constant_values('hit_counter_computer')
         self.primary_board_computer = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -58,9 +59,9 @@ class Computer(Participant):
             self.hit_counter_computer[4] = self.hit_counter_computer[4] + 1
             print("hit submarine")
         else:
-            self.constants.validation_flag_hit_counter_player = False
+            self.validation_flag_hit_counter_player = False
             print("missed ships")
-        return self.constants.validation_flag_hit_counter_player
+        return self.validation_flag_hit_counter_player
 
     def hit_or_miss_computer(self):  # computer attacking player's ships
         row_selected, column_selected = self.pick_point()
