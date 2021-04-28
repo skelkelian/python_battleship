@@ -10,6 +10,7 @@ class Destroyer(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_destroyer_player = self.constants.get_constant_values('validation_flag_destroyer_player')
+        self.validation_flag_ship_sunk_destroyer_player = self.constants.get_constant_values('validation_flag_ship_sunk_destroyer_player')
         self.validation_flag_destroyer_overlap_player = self.constants.get_constant_values('validation_flag_destroyer_overlap_player')
         self.player = Player()
         self.computer = Computer()
