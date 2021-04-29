@@ -10,6 +10,7 @@ class Carrier(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_carrier_player = self.constants.get_constant_values('validation_flag_carrier_player')
+        self.validation_flag_carrier_computer = self.constants.get_constant_values('validation_flag_carrier_computer')
         self.validation_flag_ship_sunk_carrier_player = self.constants.get_constant_values('validation_flag_ship_sunk_carrier_player')
         self.player = Player()
         self.computer = Computer()
@@ -82,28 +83,28 @@ class Carrier(Ship):
         # check axis
         if carrier_axis_computer != self.constants.get_constant_values('horizontal_axis') and carrier_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The carrier axis value is invalid.")
-            self.constants.validation_flag_carrier_computer = False
+            self.validation_flag_carrier_computer = False
 
         # check row
         if carrier_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if carrier_row_computer > 6 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_computer = False
+                self.validation_flag_carrier_computer = False
         else:
             if carrier_row_computer > 10 or carrier_row_computer <= 0 or carrier_row_computer % 1 != 0:
                 print('\nThe carrier row value is invalid.\n\n')
-                self.constants.validation_flag_carrier_computer = False
+                self.validation_flag_carrier_computer = False
 
         # check column
         if carrier_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if carrier_column_computer > 6 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_computer = False
+                self.validation_flag_carrier_computer = False
         else:
             if carrier_column_computer > 10 or carrier_column_computer <= 0 or carrier_column_computer % 1 != 0:
                 print('\nThe carrier column value is invalid.\n\n')
-                self.constants.validation_flag_carrier_computer = False
-        return self.constants.validation_flag_carrier_computer
+                self.validation_flag_carrier_computer = False
+        return self.validation_flag_carrier_computer
 
     def place_carrier_computer(self, battleship_config):
         primary_board_computer = self.computer.get_primary_board_computer()
