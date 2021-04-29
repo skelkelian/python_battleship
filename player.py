@@ -8,6 +8,7 @@ class Player(Participant):
         super().__init__()
         self.constants = utils.Constants()
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
+        self.validation_flag_game_over_player = self.constants.get_constant_values('validation_flag_game_over_player')
         self.hit_counter_player_one = self.constants.get_constant_values('hit_counter_player_one')
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -82,5 +83,5 @@ class Player(Participant):
         hit_counter_player = self.get_hit_counter_player()
         if hit_counter_player[0] + hit_counter_player[1] + hit_counter_player[2] + \
                 hit_counter_player[3] + hit_counter_player[4] == 17:
-            self.constants.validation_flag_game_over_player = True
-        return self.constants.validation_flag_game_over_player
+            self.validation_flag_game_over_player = True
+        return self.validation_flag_game_over_player
