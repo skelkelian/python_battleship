@@ -13,6 +13,7 @@ class Cruiser(Ship):
         self.validation_flag_cruiser_computer = self.constants.get_constant_values('validation_flag_cruiser_computer')
         self.validation_flag_ship_sunk_cruiser_player = self.constants.get_constant_values('validation_flag_ship_sunk_cruiser_player')
         self.validation_flag_cruiser_overlap_player = self.constants.get_constant_values('validation_flag_cruiser_overlap_player')
+        self.validation_flag_cruiser_overlap_computer = self.constants.get_constant_values('validation_flag_cruiser_overlap_computer')
         self.player = Player()
         self.computer = Computer()
 
@@ -166,12 +167,12 @@ class Cruiser(Ship):
                     primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 1] != 0 or \
                     primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer + 2] != 0:
                 print('\nThe cruiser overlaps with another ship.\n\n')
-                self.constants.validation_flag_cruiser_overlap_computer = False
+                self.validation_flag_cruiser_overlap_computer = False
         else:
             if primary_board_computer[cruiser_row_computer - 1][cruiser_column_computer - 1] != 0 or \
                     primary_board_computer[cruiser_row_computer][cruiser_column_computer - 1] != 0 or \
                     primary_board_computer[cruiser_row_computer + 1][cruiser_column_computer - 1] != 0 or \
                     primary_board_computer[cruiser_row_computer + 2][cruiser_column_computer - 1] != 0:
                 print('\nThe cruiser overlaps with another ship.\n\n')
-                self.constants.validation_flag_cruiser_overlap_computer = False
-        return self.constants.validation_flag_cruiser_overlap_computer
+                self.validation_flag_cruiser_overlap_computer = False
+        return self.validation_flag_cruiser_overlap_computer

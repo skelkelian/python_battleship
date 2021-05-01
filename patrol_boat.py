@@ -10,6 +10,7 @@ class Patrol_Boat(Ship):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_patrol_boat_player = self.constants.get_constant_values('validation_flag_patrol_boat_player')
+        self.validation_flag_patrol_boat_computer = self.constants.get_constant_values('validation_flag_patrol_boat_computer')
         self.validation_flag_ship_sunk_patrol_boat_player = self.constants.get_constant_values('validation_flag_ship_sunk_patrol_boat_player')
         self.validation_flag_patrol_boat_overlap_player = self.constants.get_constant_values('validation_flag_patrol_boat_overlap_player')
         self.player = Player()
@@ -96,28 +97,28 @@ class Patrol_Boat(Ship):
         # check axis
         if patrol_boat_axis_computer != self.constants.get_constant_values('horizontal_axis') and patrol_boat_axis_computer != self.constants.get_constant_values('vertical_axis'):
             print("The patrol boat axis value is invalid.")
-            self.constants.validation_flag_patrol_boat_computer = False
+            self.validation_flag_patrol_boat_computer = False
 
         # check row
         if patrol_boat_axis_computer == self.constants.get_constant_values('vertical_axis'):
             if patrol_boat_row_computer > 9 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_computer = False
+                self.validation_flag_patrol_boat_computer = False
         else:
             if patrol_boat_row_computer > 10 or patrol_boat_row_computer <= 0 or patrol_boat_row_computer % 1 != 0:
                 print('\nThe patrol boat row value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_computer = False
+                self.validation_flag_patrol_boat_computer = False
 
         # check column
         if patrol_boat_axis_computer == self.constants.get_constant_values('horizontal_axis'):
             if patrol_boat_column_computer > 9 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_computer = False
+                self.validation_flag_patrol_boat_computer = False
         else:
             if patrol_boat_column_computer > 10 or patrol_boat_column_computer <= 0 or patrol_boat_column_computer % 1 != 0:
                 print('\nThe patrol boat column value is invalid.\n\n')
-                self.constants.validation_flag_patrol_boat_computer = False
-        return self.constants.validation_flag_patrol_boat_computer
+                self.validation_flag_patrol_boat_computer = False
+        return self.validation_flag_patrol_boat_computer
 
     def place_patrol_boat_computer(self, battleship_config):
         primary_board_computer = self.computer.get_primary_board_computer()
