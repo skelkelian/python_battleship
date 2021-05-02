@@ -9,6 +9,7 @@ class Computer(Participant):
         self.constants = utils.Constants()
         self.validation_flag_hit_counter_player = self.constants.get_constant_values('validation_flag_hit_counter_player')
         self.validation_flag_hit_or_miss_computer = self.constants.get_constant_values('validation_flag_hit_or_miss_computer')
+        self.validation_flag_game_over_computer = self.constants.get_constant_values('validation_flag_game_over_computer')
         self.hit_counter_computer = self.constants.get_constant_values('hit_counter_computer')
         self.primary_board_computer = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -83,5 +84,5 @@ class Computer(Participant):
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
                 hit_counter_computer[3] + hit_counter_computer[4] == 17:
-            self.constants.validation_flag_game_over_computer = True
-        return self.constants.validation_flag_game_over_computer
+            self.validation_flag_game_over_computer = True
+        return self.validation_flag_game_over_computer

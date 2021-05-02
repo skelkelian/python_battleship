@@ -12,6 +12,7 @@ class Destroyer(Ship):
         self.validation_flag_destroyer_player = self.constants.get_constant_values('validation_flag_destroyer_player')
         self.validation_flag_destroyer_computer = self.constants.get_constant_values('validation_flag_destroyer_computer')
         self.validation_flag_ship_sunk_destroyer_player = self.constants.get_constant_values('validation_flag_ship_sunk_destroyer_player')
+        self.validation_flag_ship_sunk_destroyer_computer = self.constants.get_constant_values('validation_flag_ship_sunk_destroyer_computer')
         self.validation_flag_destroyer_overlap_player = self.constants.get_constant_values('validation_flag_destroyer_overlap_player')
         self.validation_flag_destroyer_overlap_computer = self.constants.get_constant_values('validation_flag_destroyer_overlap_computer')
         self.player = Player()
@@ -143,9 +144,9 @@ class Destroyer(Ship):
     def ship_sunk_destroyer_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[2] == 3:
-            self.constants.validation_flag_ship_sunk_destroyer_computer = True
+            self.validation_flag_ship_sunk_destroyer_computer = True
             print("player sunk computer's destroyer")
-        return self.constants.validation_flag_ship_sunk_destroyer_computer
+        return self.validation_flag_ship_sunk_destroyer_computer
 
     def validate_destroyer_computer_overlap(self, battleship_config):
         primary_board_computer = self.computer.get_primary_board_computer()
