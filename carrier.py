@@ -12,6 +12,7 @@ class Carrier(Ship):
         self.validation_flag_carrier_player = self.constants.get_constant_values('validation_flag_carrier_player')
         self.validation_flag_carrier_computer = self.constants.get_constant_values('validation_flag_carrier_computer')
         self.validation_flag_ship_sunk_carrier_player = self.constants.get_constant_values('validation_flag_ship_sunk_carrier_player')
+        self.validation_flag_ship_sunk_carrier_computer = self.constants.get_constant_values('validation_flag_ship_sunk_carrier_computer')
         self.player = Player()
         self.computer = Computer()
 
@@ -128,6 +129,6 @@ class Carrier(Ship):
     def ship_sunk_carrier_computer(self):
         hit_counter_computer = self.computer.get_hit_counter_computer()
         if hit_counter_computer[0] == 5:
-            self.constants.validation_flag_ship_sunk_carrier_computer = True
+            self.validation_flag_ship_sunk_carrier_computer = True
             print("player sunk computer's carrier")
-        return self.constants.validation_flag_ship_sunk_carrier_computer
+        return self.validation_flag_ship_sunk_carrier_computer

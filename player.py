@@ -9,6 +9,7 @@ class Player(Participant):
         self.constants = utils.Constants()
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
         self.validation_flag_game_over_player = self.constants.get_constant_values('validation_flag_game_over_player')
+        self.validation_flag_hit_counter_computer = self.constants.get_constant_values('validation_flag_hit_counter_computer')
         self.hit_counter_player_one = self.constants.get_constant_values('hit_counter_player_one')
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -60,9 +61,9 @@ class Player(Participant):
             self.hit_counter_player_one[4] = self.hit_counter_player_one[4] + 1
             print("hit submarine")
         else:
-            self.constants.validation_flag_hit_counter_computer = False
+            self.validation_flag_hit_counter_computer = False
             print("missed ships")
-        return self.constants.validation_flag_hit_counter_computer
+        return self.validation_flag_hit_counter_computer
 
     def hit_or_miss_player(self):  # player attacking computer's ships
         row_selected, column_selected = self.pick_point()

@@ -8,6 +8,7 @@ class Computer(Participant):
         super().__init__()
         self.constants = utils.Constants()
         self.validation_flag_hit_counter_player = self.constants.get_constant_values('validation_flag_hit_counter_player')
+        self.validation_flag_hit_or_miss_computer = self.constants.get_constant_values('validation_flag_hit_or_miss_computer')
         self.hit_counter_computer = self.constants.get_constant_values('hit_counter_computer')
         self.primary_board_computer = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -71,12 +72,12 @@ class Computer(Participant):
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('destroyer') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('cruiser') and \
                 primary_board_computer[row_selected - 1][column_selected - 1] != self.constants.get_constant_values('carrier'):
-            self.constants.validation_flag_hit_or_miss_computer = False
+            self.validation_flag_hit_or_miss_computer = False
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = -1
         else:
             self.primary_board_computer[row_selected - 1][column_selected - 1] = 9
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
-        return self.constants.validation_flag_hit_or_miss_computer
+        return self.validation_flag_hit_or_miss_computer
 
     def game_over_computer(self):  # if this triggers, the computer lost
         hit_counter_computer = self.get_hit_counter_computer()
