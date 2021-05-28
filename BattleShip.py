@@ -143,15 +143,6 @@ class BattleShip:
     def get_game_difficulty(self):
         return self.game_difficulty
 
-    def get_primary_board_player_one(self):
-        return self.primary_board_player_one
-
-    def get_primary_board_computer(self):
-        return self.primary_board_computer
-
-    def get_secondary_board_player_one(self):
-        return self.secondary_board_player_one
-
     def print_directions(self):
         print('You have chosen to play against: ' + str(self.get_opponent_type()) +
               '\nThe game difficulty is ' + str(self.get_game_difficulty()))
