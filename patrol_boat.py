@@ -1,6 +1,5 @@
 from utils import Constants
 from ship import Ship
-import os
 from player import Player
 from computer import Computer
 from configparser import ConfigParser

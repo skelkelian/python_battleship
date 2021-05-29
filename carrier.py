@@ -27,6 +27,10 @@ class Carrier(Ship):
 
             self.battleship_config = config_parser
 
+    def get_carrier_values_player_one(self):
+        carrier_values_player_one = self.battleship_config.get('main', 'carrier_player')
+        return carrier_values_player_one
+
     def validate_carrier_points(self):
         carrier_values_player_one = self.battleship_config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
