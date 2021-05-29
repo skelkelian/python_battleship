@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 
 class Carrier(Ship):
-    def __init__(self):
+    def __init__(self, config_name=None):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_carrier_player = self.constants.get_constant_values('validation_flag_carrier_player')
@@ -16,8 +16,19 @@ class Carrier(Ship):
         self.player = Player()
         self.computer = Computer()
 
-    def validate_carrier_points(self, battleship_config):
-        carrier_values_player_one = battleship_config.get('main', 'carrier_player')
+        # if there is a config file, take values from there
+        # if not, set the values to default
+        if config_name is not None:
+            # creates an object of ConfigParser
+            config_parser = ConfigParser()
+
+            # read config file
+            config_parser.read(config_name)
+
+            self.battleship_config = config_parser
+
+    def validate_carrier_points(self):
+        carrier_values_player_one = self.battleship_config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
@@ -48,9 +59,9 @@ class Carrier(Ship):
                 self.validation_flag_carrier_player = False
         return self.validation_flag_carrier_player
 
-    def place_carrier_player_one(self, battleship_config):
+    def place_carrier_player_one(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        carrier_values_player_one = battleship_config.get('main', 'carrier_player')
+        carrier_values_player_one = self.battleship_config.get('main', 'carrier_player')
         carrier_axis_player_one = int(carrier_values_player_one.split(',')[0].strip())
         carrier_row_player_one = int(carrier_values_player_one.split(',')[1].strip())
         carrier_column_player_one = int(carrier_values_player_one.split(',')[2].strip())
@@ -75,8 +86,8 @@ class Carrier(Ship):
             print("computer sunk player's carrier")
         return self.validation_flag_ship_sunk_carrier_player
 
-    def validate_carrier_computer_points(self, battleship_config):
-        carrier_values_computer = battleship_config.get('main', 'carrier_computer')
+    def validate_carrier_computer_points(self):
+        carrier_values_computer = self.battleship_config.get('main', 'carrier_computer')
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
@@ -107,9 +118,9 @@ class Carrier(Ship):
                 self.validation_flag_carrier_computer = False
         return self.validation_flag_carrier_computer
 
-    def place_carrier_computer(self, battleship_config):
+    def place_carrier_computer(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        carrier_values_computer = battleship_config.get('main', 'carrier_computer')
+        carrier_values_computer = self.battleship_config.get('main', 'carrier_computer')
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
         carrier_row_computer = int(carrier_values_computer.split(',')[1].strip())
         carrier_column_computer = int(carrier_values_computer.split(',')[2].strip())
