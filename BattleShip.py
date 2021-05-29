@@ -45,7 +45,7 @@ class BattleShip:
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
         self.validation_flag_hit_or_miss_computer = self.constants.get_constant_values('validation_flag_hit_or_miss_computer')
         self.carrier = Carrier(config_name)
-        self.cruiser = Cruiser()
+        self.cruiser = Cruiser(config_name)
         self.destroyer = Destroyer()
         self.patrol_boat = Patrol_Boat(config_name)
         self.submarine = Submarine()
@@ -69,14 +69,14 @@ class BattleShip:
 
             # PLAYER ONE
             self.carrier.validate_carrier_points()
-            self.cruiser.validate_cruiser_points(self.config)
+            self.cruiser.validate_cruiser_points()
             self.destroyer.validate_destroyer_points(self.config)
             self.patrol_boat.validate_patrol_boat_points()
             self.submarine.validate_submarine_points(self.config)
 
             # COMPUTER
             self.carrier.validate_carrier_computer_points()
-            self.cruiser.validate_cruiser_computer_points(self.config)
+            self.cruiser.validate_cruiser_computer_points()
             self.destroyer.validate_destroyer_computer_points(self.config)
             self.patrol_boat.validate_patrol_boat_computer_points()
             self.submarine.validate_submarine_computer_points(self.config)
@@ -157,24 +157,23 @@ class BattleShip:
 
     def place_all_ships(self):
         self.player.update_primary_board_player_one("carrier", self.carrier.get_carrier_values_player_one())
-        self.carrier.place_carrier_player_one()
-        self.cruiser.place_cruiser_player_one(self.config)
+        self.player.update_primary_board_player_one("cruiser", self.cruiser.get_cruiser_values_player_one())
+        # self.cruiser.place_cruiser_player_one(self.config)
         self.destroyer.place_destroyer_player_one(self.config)
         self.player.update_primary_board_player_one("patrol_boat", self.patrol_boat.get_patrol_boat_values_player_one())
-        # self.patrol_boat.place_patrol_boat_player_one(self.config)
         self.submarine.place_submarine_player_one(self.config)
         self.carrier.place_carrier_computer()
-        self.cruiser.place_cruiser_computer(self.config)
+        self.cruiser.place_cruiser_computer()
         self.destroyer.place_destroyer_computer(self.config)
         self.patrol_boat.place_patrol_boat_computer()
         self.submarine.place_submarine_computer(self.config)
 
     def validate_all_ships(self):
-        self.cruiser.validate_cruiser_overlap(self.config)
+        self.cruiser.validate_cruiser_overlap()
         self.destroyer.validate_destroyer_overlap(self.config)
         self.patrol_boat.validate_patrol_boat_overlap()
         self.submarine.validate_submarine_overlap(self.config)
-        self.cruiser.validate_cruiser_computer_overlap(self.config)
+        self.cruiser.validate_cruiser_computer_overlap()
         self.destroyer.validate_destroyer_computer_overlap(self.config)
         self.patrol_boat.validate_patrol_boat_computer_overlap()
         self.submarine.validate_submarine_computer_overlap(self.config)

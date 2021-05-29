@@ -61,6 +61,18 @@ class Player(Participant):
                 self.primary_board_player_one[row_player_one + 2][column_player_one - 1] = self.constants.get_constant_values('carrier')
                 self.primary_board_player_one[row_player_one + 3][column_player_one - 1] = self.constants.get_constant_values('carrier')
 
+        elif boat_type == "cruiser":
+            if axis_player_one == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one - 1][column_player_one] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one - 1][column_player_one + 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one - 1][column_player_one + 2] = self.constants.get_constant_values('cruiser')
+            else:
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one][column_player_one - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one + 1][column_player_one - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_player_one[row_player_one + 2][column_player_one - 1] = self.constants.get_constant_values('cruiser')
+
         elif boat_type == "destroyer":
             if axis_player_one == self.constants.get_constant_values('horizontal_axis'):
                 self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('destroyer')

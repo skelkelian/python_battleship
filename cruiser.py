@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 
 class Cruiser(Ship):
-    def __init__(self):
+    def __init__(self, config_name=None):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_cruiser_player = self.constants.get_constant_values('validation_flag_cruiser_player')
@@ -18,8 +18,23 @@ class Cruiser(Ship):
         self.player = Player()
         self.computer = Computer()
 
-    def validate_cruiser_points(self, battleship_config):
-        cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
+        # if there is a config file, take values from there
+        # if not, set the values to default
+        if config_name is not None:
+            # creates an object of ConfigParser
+            config_parser = ConfigParser()
+
+            # read config file
+            config_parser.read(config_name)
+
+            self.battleship_config = config_parser
+
+    def get_cruiser_values_player_one(self):
+        cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_player')
+        return cruiser_values_player_one
+
+    def validate_cruiser_points(self):
+        cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_player')
         cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
@@ -50,9 +65,9 @@ class Cruiser(Ship):
                 self.validation_flag_cruiser_player = False
         return self.validation_flag_cruiser_player
 
-    def place_cruiser_player_one(self, battleship_config):
+    def place_cruiser_player_one(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
+        cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_player')
         cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
@@ -74,9 +89,9 @@ class Cruiser(Ship):
             print("computer sunk player's cruiser")
         return self.validation_flag_ship_sunk_cruiser_player
 
-    def validate_cruiser_overlap(self, battleship_config):
+    def validate_cruiser_overlap(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        cruiser_values_player_one = battleship_config.get('main', 'cruiser_player')
+        cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_player')
         cruiser_axis_player_one = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_player_one = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_player_one = int(cruiser_values_player_one.split(',')[2].strip())
@@ -98,8 +113,8 @@ class Cruiser(Ship):
                 self.validation_flag_cruiser_overlap_player = False
         return self.validation_flag_cruiser_overlap_player
 
-    def validate_cruiser_computer_points(self, battleship_config):
-        cruiser_values_player_one = battleship_config.get('main', 'cruiser_computer')
+    def validate_cruiser_computer_points(self):
+        cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_computer')
         cruiser_axis_computer = int(cruiser_values_player_one.split(',')[0].strip())
         cruiser_row_computer = int(cruiser_values_player_one.split(',')[1].strip())
         cruiser_column_computer = int(cruiser_values_player_one.split(',')[2].strip())
@@ -130,9 +145,9 @@ class Cruiser(Ship):
                 self.validation_flag_cruiser_computer = False
         return self.validation_flag_cruiser_computer
 
-    def place_cruiser_computer(self, battleship_config):
+    def place_cruiser_computer(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        cruiser_values_computer = battleship_config.get('main', 'cruiser_computer')
+        cruiser_values_computer = self.battleship_config.get('main', 'cruiser_computer')
         cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
         cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
         cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
@@ -154,9 +169,9 @@ class Cruiser(Ship):
             print("player sunk computer's cruiser")
         return self.validation_flag_ship_sunk_cruiser_computer
 
-    def validate_cruiser_computer_overlap(self, battleship_config):
+    def validate_cruiser_computer_overlap(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        cruiser_values_computer = battleship_config.get('main', 'cruiser_computer')
+        cruiser_values_computer = self.battleship_config.get('main', 'cruiser_computer')
         cruiser_axis_computer = int(cruiser_values_computer.split(',')[0].strip())
         cruiser_row_computer = int(cruiser_values_computer.split(',')[1].strip())
         cruiser_column_computer = int(cruiser_values_computer.split(',')[2].strip())
