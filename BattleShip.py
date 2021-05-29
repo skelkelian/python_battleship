@@ -47,64 +47,11 @@ class BattleShip:
         self.carrier = Carrier()
         self.cruiser = Cruiser()
         self.destroyer = Destroyer()
-        self.patrol_boat = Patrol_Boat()
+        self.patrol_boat = Patrol_Boat(config_name)
         self.submarine = Submarine()
         self.ship = Ship()
         self.player = Player()
         self.computer = Computer()
-
-        # create primary board for player 1 and computer
-        self.primary_board_player_one = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
-
-        self.primary_board_computer = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
-
-        self.secondary_board_player_one = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
-
-        self.secondary_board_computer = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ]
 
         # if there is a config file, take values from there
         # if not, set the values to default
@@ -124,14 +71,14 @@ class BattleShip:
             self.carrier.validate_carrier_points(self.config)
             self.cruiser.validate_cruiser_points(self.config)
             self.destroyer.validate_destroyer_points(self.config)
-            self.patrol_boat.validate_patrol_boat_points(self.config)
+            self.patrol_boat.validate_patrol_boat_points()
             self.submarine.validate_submarine_points(self.config)
 
             # COMPUTER
             self.carrier.validate_carrier_computer_points(self.config)
             self.cruiser.validate_cruiser_computer_points(self.config)
             self.destroyer.validate_destroyer_computer_points(self.config)
-            self.patrol_boat.validate_patrol_boat_computer_points(self.config)
+            self.patrol_boat.validate_patrol_boat_computer_points()
             self.submarine.validate_submarine_computer_points(self.config)
         else:
             self.game_difficulty = self.constants.get_constant_values('easy_difficulty')
@@ -208,25 +155,32 @@ class BattleShip:
 
 # START GAME
 
-    def start_game(self):
+    def place_all_ships(self):
         self.carrier.place_carrier_player_one(self.config)
         self.cruiser.place_cruiser_player_one(self.config)
         self.destroyer.place_destroyer_player_one(self.config)
-        self.patrol_boat.place_patrol_boat_player_one(self.config)
+        self.player.update_primary_board_player_one("patrol_boat", self.patrol_boat.get_patrol_boat_values_player_one())
+        # self.patrol_boat.place_patrol_boat_player_one(self.config)
         self.submarine.place_submarine_player_one(self.config)
         self.carrier.place_carrier_computer(self.config)
         self.cruiser.place_cruiser_computer(self.config)
         self.destroyer.place_destroyer_computer(self.config)
-        self.patrol_boat.place_patrol_boat_computer(self.config)
+        self.patrol_boat.place_patrol_boat_computer()
         self.submarine.place_submarine_computer(self.config)
+
+    def validate_all_ships(self):
         self.cruiser.validate_cruiser_overlap(self.config)
         self.destroyer.validate_destroyer_overlap(self.config)
-        self.patrol_boat.validate_patrol_boat_overlap(self.config)
+        self.patrol_boat.validate_patrol_boat_overlap()
         self.submarine.validate_submarine_overlap(self.config)
         self.cruiser.validate_cruiser_computer_overlap(self.config)
         self.destroyer.validate_destroyer_computer_overlap(self.config)
-        self.patrol_boat.validate_patrol_boat_computer_overlap(self.config)
+        self.patrol_boat.validate_patrol_boat_computer_overlap()
         self.submarine.validate_submarine_computer_overlap(self.config)
+
+    def start_game(self):
+        self.place_all_ships()
+        self.validate_all_ships()
 
     def play_game(self):
         game_over = 0

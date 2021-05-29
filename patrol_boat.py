@@ -1,12 +1,13 @@
 from utils import Constants
 from ship import Ship
+import os
 from player import Player
 from computer import Computer
 from configparser import ConfigParser
 
 
 class Patrol_Boat(Ship):
-    def __init__(self):
+    def __init__(self, config_name=None):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_patrol_boat_player = self.constants.get_constant_values('validation_flag_patrol_boat_player')
@@ -18,8 +19,23 @@ class Patrol_Boat(Ship):
         self.player = Player()
         self.computer = Computer()
 
-    def validate_patrol_boat_points(self, battleship_config):
-        patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
+        # if there is a config file, take values from there
+        # if not, set the values to default
+        if config_name is not None:
+            # creates an object of ConfigParser
+            config_parser = ConfigParser()
+
+            # read config file
+            config_parser.read(config_name)
+
+            self.battleship_config = config_parser
+
+    def get_patrol_boat_values_player_one(self):
+        patrol_boat_values_player_one = self.battleship_config.get('main', 'patrol_boat_player')
+        return patrol_boat_values_player_one
+
+    def validate_patrol_boat_points(self):
+        patrol_boat_values_player_one = self.battleship_config.get('main', 'patrol_boat_player')
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
@@ -50,9 +66,9 @@ class Patrol_Boat(Ship):
                 self.validation_flag_patrol_boat_player = False
         return self.validation_flag_patrol_boat_player
 
-    def place_patrol_boat_player_one(self, battleship_config):
+    def place_patrol_boat_player_one(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
+        patrol_boat_values_player_one = self.battleship_config.get('main', 'patrol_boat_player')
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
@@ -70,9 +86,9 @@ class Patrol_Boat(Ship):
             print("computer sunk player's patrol boat")
         return self.validation_flag_ship_sunk_patrol_boat_player
 
-    def validate_patrol_boat_overlap(self, battleship_config):
+    def validate_patrol_boat_overlap(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        patrol_boat_values_player_one = battleship_config.get('main', 'patrol_boat_player')
+        patrol_boat_values_player_one = self.battleship_config.get('main', 'patrol_boat_player')
         patrol_boat_axis_player_one = int(patrol_boat_values_player_one.split(',')[0].strip())
         patrol_boat_row_player_one = int(patrol_boat_values_player_one.split(',')[1].strip())
         patrol_boat_column_player_one = int(patrol_boat_values_player_one.split(',')[2].strip())
@@ -90,8 +106,8 @@ class Patrol_Boat(Ship):
                 self.validation_flag_patrol_boat_overlap_player = False
         return self.validation_flag_patrol_boat_overlap_player
 
-    def validate_patrol_boat_computer_points(self, battleship_config):
-        patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
+    def validate_patrol_boat_computer_points(self):
+        patrol_boat_values_computer = self.battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
@@ -122,9 +138,9 @@ class Patrol_Boat(Ship):
                 self.validation_flag_patrol_boat_computer = False
         return self.validation_flag_patrol_boat_computer
 
-    def place_patrol_boat_computer(self, battleship_config):
+    def place_patrol_boat_computer(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
+        patrol_boat_values_computer = self.battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
@@ -142,9 +158,9 @@ class Patrol_Boat(Ship):
             print("player sunk computer's patrol boat")
         return self.validation_flag_ship_sunk_patrol_boat_computer
 
-    def validate_patrol_boat_computer_overlap(self, battleship_config):
+    def validate_patrol_boat_computer_overlap(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        patrol_boat_values_computer = battleship_config.get('main', 'patrol_boat_computer')
+        patrol_boat_values_computer = self.battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())
         patrol_boat_row_computer = int(patrol_boat_values_computer.split(',')[1].strip())
         patrol_boat_column_computer = int(patrol_boat_values_computer.split(',')[2].strip())
