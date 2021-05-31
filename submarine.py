@@ -109,6 +109,10 @@ class Submarine(Ship):
                 self.validation_flag_submarine_overlap_player = False
         return self.validation_flag_submarine_overlap_player
 
+    def get_submarine_values_computer(self):
+        submarine_values_computer = self.battleship_config.get('main', 'submarine_computer')
+        return submarine_values_computer
+
     def validate_submarine_computer_points(self):
         submarine_values_computer = self.battleship_config.get('main', 'submarine_computer')
         submarine_axis_computer = int(submarine_values_computer.split(',')[0].strip())

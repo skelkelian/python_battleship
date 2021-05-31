@@ -163,10 +163,10 @@ class BattleShip:
         self.player.update_primary_board_player_one("patrol_boat", self.patrol_boat.get_patrol_boat_values_player_one())
         self.player.update_primary_board_player_one("submarine", self.submarine.get_submarine_values_player_one())
         self.computer.update_primary_board_computer("carrier", self.carrier.get_carrier_values_computer())
-        self.cruiser.place_cruiser_computer()
+        self.computer.update_primary_board_computer("cruiser", self.cruiser.get_cruiser_values_computer())
         self.computer.update_primary_board_computer("destroyer", self.destroyer.get_destroyer_values_computer())
         self.computer.update_primary_board_computer("patrol_boat", self.patrol_boat.get_patrol_boat_values_computer())
-        self.submarine.place_submarine_computer()
+        self.computer.update_primary_board_computer("submarine", self.submarine.get_submarine_values_computer())
 
     def validate_all_ships(self):
         self.cruiser.validate_cruiser_overlap()

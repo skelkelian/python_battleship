@@ -113,6 +113,10 @@ class Cruiser(Ship):
                 self.validation_flag_cruiser_overlap_player = False
         return self.validation_flag_cruiser_overlap_player
 
+    def get_cruiser_values_computer(self):
+        cruiser_values_computer = self.battleship_config.get('main', 'cruiser_computer')
+        return cruiser_values_computer
+
     def validate_cruiser_computer_points(self):
         cruiser_values_player_one = self.battleship_config.get('main', 'cruiser_computer')
         cruiser_axis_computer = int(cruiser_values_player_one.split(',')[0].strip())
