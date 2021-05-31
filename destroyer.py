@@ -6,7 +6,7 @@ from configparser import ConfigParser
 
 
 class Destroyer(Ship):
-    def __init__(self):
+    def __init__(self, config_name=None):
         super().__init__()
         self.constants = Constants()
         self.validation_flag_destroyer_player = self.constants.get_constant_values('validation_flag_destroyer_player')
@@ -18,8 +18,23 @@ class Destroyer(Ship):
         self.player = Player()
         self.computer = Computer()
 
-    def validate_destroyer_points(self, battleship_config):
-        destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
+        # if there is a config file, take values from there
+        # if not, set the values to default
+        if config_name is not None:
+            # creates an object of ConfigParser
+            config_parser = ConfigParser()
+
+            # read config file
+            config_parser.read(config_name)
+
+            self.battleship_config = config_parser
+
+    def get_destroyer_values_player_one(self):
+        destroyer_values_player_one = self.battleship_config.get('main', 'destroyer_player')
+        return destroyer_values_player_one
+
+    def validate_destroyer_points(self):
+        destroyer_values_player_one = self.battleship_config.get('main', 'destroyer_player')
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
@@ -50,9 +65,9 @@ class Destroyer(Ship):
                 self.validation_flag_destroyer_player = False
         return self.validation_flag_destroyer_player
 
-    def place_destroyer_player_one(self, battleship_config):
+    def place_destroyer_player_one(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
+        destroyer_values_player_one = self.battleship_config.get('main', 'destroyer_player')
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
@@ -72,9 +87,9 @@ class Destroyer(Ship):
             print("computer sunk player's destroyer")
         return self.validation_flag_ship_sunk_destroyer_player
 
-    def validate_destroyer_overlap(self, battleship_config):
+    def validate_destroyer_overlap(self):
         primary_board_player_one = self.player.get_primary_board_player_one()
-        destroyer_values_player_one = battleship_config.get('main', 'destroyer_player')
+        destroyer_values_player_one = self.battleship_config.get('main', 'destroyer_player')
         destroyer_axis_player_one = int(destroyer_values_player_one.split(',')[0].strip())
         destroyer_row_player_one = int(destroyer_values_player_one.split(',')[1].strip())
         destroyer_column_player_one = int(destroyer_values_player_one.split(',')[2].strip())
@@ -94,8 +109,8 @@ class Destroyer(Ship):
                 self.validation_flag_destroyer_overlap_player = False
         return self.validation_flag_destroyer_overlap_player
 
-    def validate_destroyer_computer_points(self, battleship_config):
-        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+    def validate_destroyer_computer_points(self):
+        destroyer_values_computer = self.battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
@@ -126,9 +141,9 @@ class Destroyer(Ship):
                 self.validation_flag_destroyer_computer = False
         return self.validation_flag_destroyer_computer
 
-    def place_destroyer_computer(self, battleship_config):
+    def place_destroyer_computer(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+        destroyer_values_computer = self.battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
@@ -148,9 +163,9 @@ class Destroyer(Ship):
             print("player sunk computer's destroyer")
         return self.validation_flag_ship_sunk_destroyer_computer
 
-    def validate_destroyer_computer_overlap(self, battleship_config):
+    def validate_destroyer_computer_overlap(self):
         primary_board_computer = self.computer.get_primary_board_computer()
-        destroyer_values_computer = battleship_config.get('main', 'destroyer_computer')
+        destroyer_values_computer = self.battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())
         destroyer_row_computer = int(destroyer_values_computer.split(',')[1].strip())
         destroyer_column_computer = int(destroyer_values_computer.split(',')[2].strip())
