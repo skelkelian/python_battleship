@@ -85,15 +85,21 @@ class Player(Participant):
 
         elif boat_type == "patrol_boat":
             if axis_player_one == self.constants.get_constant_values('horizontal_axis'):
-                self.primary_board_player_one[row_player_one - 1][
-                    column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
-                self.primary_board_player_one[row_player_one - 1][
-                    column_player_one] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_player_one[row_player_one - 1][column_player_one] = self.constants.get_constant_values('patrol_boat')
             else:
-                self.primary_board_player_one[row_player_one - 1][
-                    column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
-                self.primary_board_player_one[row_player_one][
-                    column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_player_one[row_player_one][column_player_one - 1] = self.constants.get_constant_values('patrol_boat')
+
+        elif boat_type == "submarine":
+            if axis_player_one == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_player_one[row_player_one - 1][column_player_one] = self.constants.get_constant_values('submarine')
+                self.primary_board_player_one[row_player_one - 1][column_player_one + 1] = self.constants.get_constant_values('submarine')
+            else:
+                self.primary_board_player_one[row_player_one - 1][column_player_one - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_player_one[row_player_one][column_player_one - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_player_one[row_player_one + 1][column_player_one - 1] = self.constants.get_constant_values('submarine')
 
         else:
             print("boat type is undefined")
