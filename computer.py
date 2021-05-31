@@ -42,6 +42,68 @@ class Computer(Participant):
     def get_primary_board_computer(self):
         return self.primary_board_computer
 
+    def update_primary_board_computer(self, boat_type, boat_values):
+        values_computer = boat_values
+        axis_computer = int(values_computer.split(',')[0].strip())
+        row_computer = int(values_computer.split(',')[1].strip())
+        column_computer = int(values_computer.split(',')[2].strip())
+        if boat_type == "carrier":
+            if axis_computer == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer - 1][column_computer] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer - 1][column_computer + 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer - 1][column_computer + 2] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer - 1][column_computer + 3] = self.constants.get_constant_values('carrier')
+            else:
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer][column_computer - 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer + 1][column_computer - 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer + 2][column_computer - 1] = self.constants.get_constant_values('carrier')
+                self.primary_board_computer[row_computer + 3][column_computer - 1] = self.constants.get_constant_values('carrier')
+
+        elif boat_type == "cruiser":
+            if axis_computer == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer - 1][column_computer] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer - 1][column_computer + 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer - 1][column_computer + 2] = self.constants.get_constant_values('cruiser')
+            else:
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer][column_computer - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer + 1][column_computer - 1] = self.constants.get_constant_values('cruiser')
+                self.primary_board_computer[row_computer + 2][column_computer - 1] = self.constants.get_constant_values('cruiser')
+
+        elif boat_type == "destroyer":
+            if axis_computer == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('destroyer')
+                self.primary_board_computer[row_computer - 1][column_computer] = self.constants.get_constant_values('destroyer')
+                self.primary_board_computer[row_computer - 1][column_computer + 1] = self.constants.get_constant_values('destroyer')
+            else:
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('destroyer')
+                self.primary_board_computer[row_computer][column_computer - 1] = self.constants.get_constant_values('destroyer')
+                self.primary_board_computer[row_computer + 1][column_computer - 1] = self.constants.get_constant_values('destroyer')
+
+        elif boat_type == "patrol_boat":
+            if axis_computer == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_computer[row_computer - 1][column_computer] = self.constants.get_constant_values('patrol_boat')
+            else:
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('patrol_boat')
+                self.primary_board_computer[row_computer][column_computer - 1] = self.constants.get_constant_values('patrol_boat')
+
+        elif boat_type == "submarine":
+            if axis_computer == self.constants.get_constant_values('horizontal_axis'):
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_computer[row_computer - 1][column_computer] = self.constants.get_constant_values('submarine')
+                self.primary_board_computer[row_computer - 1][column_computer + 1] = self.constants.get_constant_values('submarine')
+            else:
+                self.primary_board_computer[row_computer - 1][column_computer - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_computer[row_computer][column_computer - 1] = self.constants.get_constant_values('submarine')
+                self.primary_board_computer[row_computer + 1][column_computer - 1] = self.constants.get_constant_values('submarine')
+
+        else:
+            print("boat type is undefined")
+
     def track_hit_counter_computer(self):  # this tracks the player's hits on the computer's ships
         row_selected, column_selected = self.pick_point()
         primary_board_computer = self.get_primary_board_computer()

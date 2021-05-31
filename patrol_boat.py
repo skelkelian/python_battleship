@@ -105,6 +105,10 @@ class Patrol_Boat(Ship):
                 self.validation_flag_patrol_boat_overlap_player = False
         return self.validation_flag_patrol_boat_overlap_player
 
+    def get_patrol_boat_values_computer(self):
+        patrol_boat_values_computer = self.battleship_config.get('main', 'patrol_boat_computer')
+        return patrol_boat_values_computer
+
     def validate_patrol_boat_computer_points(self):
         patrol_boat_values_computer = self.battleship_config.get('main', 'patrol_boat_computer')
         patrol_boat_axis_computer = int(patrol_boat_values_computer.split(',')[0].strip())

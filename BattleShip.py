@@ -10,6 +10,7 @@ from ship import Ship
 from player import Player
 from computer import Computer
 from random import randint
+from participant import Participant
 import utils
 
 
@@ -158,16 +159,13 @@ class BattleShip:
     def place_all_ships(self):
         self.player.update_primary_board_player_one("carrier", self.carrier.get_carrier_values_player_one())
         self.player.update_primary_board_player_one("cruiser", self.cruiser.get_cruiser_values_player_one())
-        # self.cruiser.place_cruiser_player_one(self.config)
         self.player.update_primary_board_player_one("destroyer", self.destroyer.get_destroyer_values_player_one())
-        # self.destroyer.place_destroyer_player_one(self.config)
         self.player.update_primary_board_player_one("patrol_boat", self.patrol_boat.get_patrol_boat_values_player_one())
         self.player.update_primary_board_player_one("submarine", self.submarine.get_submarine_values_player_one())
-        # self.submarine.place_submarine_player_one(self.config)
-        self.carrier.place_carrier_computer()
+        self.computer.update_primary_board_computer("carrier", self.carrier.get_carrier_values_computer())
         self.cruiser.place_cruiser_computer()
-        self.destroyer.place_destroyer_computer()
-        self.patrol_boat.place_patrol_boat_computer()
+        self.computer.update_primary_board_computer("destroyer", self.destroyer.get_destroyer_values_computer())
+        self.computer.update_primary_board_computer("patrol_boat", self.patrol_boat.get_patrol_boat_values_computer())
         self.submarine.place_submarine_computer()
 
     def validate_all_ships(self):
@@ -185,9 +183,10 @@ class BattleShip:
         self.validate_all_ships()
 
     def play_game(self):
-        game_over = 0
-        while game_over == 0:
+        game_over = False
+        while game_over == False:
             self.start_game()
+            self.participant.pick_point()
             self.player.hit_or_miss_player()
             while self.validation_flag_hit_or_miss_player is True:
                 self.computer.get_hit_counter_computer()
@@ -197,6 +196,7 @@ class BattleShip:
                 self.patrol_boat.ship_sunk_patrol_boat_computer(self.computer.get_hit_counter_computer)
                 self.submarine.ship_sunk_submarine_computer(self.computer.get_hit_counter_computer)
                 self.computer.game_over_computer()
+                # if game is over change game_over to true and stop the game
             self.computer.hit_or_miss_computer()
             while self.validation_flag_hit_or_miss_computer is True:
                 self.player.get_hit_counter_player()
@@ -206,3 +206,5 @@ class BattleShip:
                 self.patrol_boat.ship_sunk_patrol_boat_player(self.player.get_hit_counter_player)
                 self.submarine.ship_sunk_submarine_player(self.player.get_hit_counter_player)
                 self.player.game_over_player()
+                # if game is over change game_over to true and stop the game
+

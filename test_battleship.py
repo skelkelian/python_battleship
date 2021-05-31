@@ -121,8 +121,20 @@ class TestBattleShip(unittest.TestCase):
         # call method of object BattleShip
         self.battleship.start_game()
         observed_primary_board_player_one = self.battleship.player.get_primary_board_player_one()
-        # observed_primary_board_computer = self.battleship.computer.get_primary_board_computer()
+        observed_primary_board_computer = self.battleship.computer.get_primary_board_computer()
 
         # assert
         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
-        # self.assertEqual(expected_primary_board_computer, observed_primary_board_computer)
+        self.assertEqual(expected_primary_board_computer, observed_primary_board_computer)
+
+    # def test_end_game(self):
+    #     # given
+    #     # create an object of class BattleShip
+    #     self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+    #
+    #     observed_result = self.battleship.play_game()
+    #
+    #     expected_result = True
+    #
+    #     # assert
+    #     self.assertEqual(observed_result, expected_result)

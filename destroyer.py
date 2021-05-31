@@ -109,6 +109,10 @@ class Destroyer(Ship):
                 self.validation_flag_destroyer_overlap_player = False
         return self.validation_flag_destroyer_overlap_player
 
+    def get_destroyer_values_computer(self):
+        destroyer_values_computer = self.battleship_config.get('main', 'destroyer_computer')
+        return destroyer_values_computer
+
     def validate_destroyer_computer_points(self):
         destroyer_values_computer = self.battleship_config.get('main', 'destroyer_computer')
         destroyer_axis_computer = int(destroyer_values_computer.split(',')[0].strip())

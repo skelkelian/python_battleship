@@ -90,6 +90,10 @@ class Carrier(Ship):
             print("computer sunk player's carrier")
         return self.validation_flag_ship_sunk_carrier_player
 
+    def get_carrier_values_computer(self):
+        carrier_values_computer = self.battleship_config.get('main', 'carrier_computer')
+        return carrier_values_computer
+
     def validate_carrier_computer_points(self):
         carrier_values_computer = self.battleship_config.get('main', 'carrier_computer')
         carrier_axis_computer = int(carrier_values_computer.split(',')[0].strip())
