@@ -127,14 +127,14 @@ class TestBattleShip(unittest.TestCase):
         self.assertEqual(expected_primary_board_player_one, observed_primary_board_player_one)
         self.assertEqual(expected_primary_board_computer, observed_primary_board_computer)
 
-    # def test_end_game(self):
-    #     # given
-    #     # create an object of class BattleShip
-    #     self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
-    #
-    #     observed_result = self.battleship.play_game()
-    #
-    #     expected_result = True
-    #
-    #     # assert
-    #     self.assertEqual(observed_result, expected_result)
+    def test_end_game(self):
+        # given
+        # create an object of class BattleShip
+        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+
+        observed_result = self.battleship.play_game()
+
+        expected_result = True
+
+        # assert
+        self.assertEqual(observed_result, expected_result)

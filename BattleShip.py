@@ -45,12 +45,15 @@ class BattleShip:
         self.validation_flag_game = self.constants.get_constant_values('validation_flag_game')
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
         self.validation_flag_hit_or_miss_computer = self.constants.get_constant_values('validation_flag_hit_or_miss_computer')
+        self.validation_flag_game_over_computer = self.constants.get_constant_values('validation_flag_game_over_computer')
+        self.validation_flag_game_over_player = self.constants.get_constant_values('validation_flag_game_over_player')
         self.carrier = Carrier(config_name)
         self.cruiser = Cruiser(config_name)
         self.destroyer = Destroyer(config_name)
         self.patrol_boat = Patrol_Boat(config_name)
         self.submarine = Submarine(config_name)
         self.ship = Ship()
+        self.participant = Participant()
         self.player = Player()
         self.computer = Computer()
 
@@ -184,27 +187,49 @@ class BattleShip:
 
     def play_game(self):
         game_over = False
+        self.start_game()
         while game_over == False:
-            self.start_game()
-            self.participant.pick_point()
+            # player picks first
+            # self.participant.pick_point()
             self.player.hit_or_miss_player()
             while self.validation_flag_hit_or_miss_player is True:
+                # print('YOU ARE IN THE WHILE LOOP')
                 self.computer.get_hit_counter_computer()
-                self.carrier.ship_sunk_carrier_computer(self.computer.get_hit_counter_computer)
-                self.cruiser.ship_sunk_cruiser_computer(self.computer.get_hit_counter_computer)
-                self.destroyer.ship_sunk_destroyer_computer(self.computer.get_hit_counter_computer)
-                self.patrol_boat.ship_sunk_patrol_boat_computer(self.computer.get_hit_counter_computer)
-                self.submarine.ship_sunk_submarine_computer(self.computer.get_hit_counter_computer)
+                self.computer.track_hit_counter_computer()
+                self.carrier.ship_sunk_carrier_computer()
+                self.cruiser.ship_sunk_cruiser_computer()
+                self.destroyer.ship_sunk_destroyer_computer()
+                self.patrol_boat.ship_sunk_patrol_boat_computer()
+                self.submarine.ship_sunk_submarine_computer()
                 self.computer.game_over_computer()
                 # if game is over change game_over to true and stop the game
+                if self.computer.validation_flag_game_over_computer is True:
+                    game_over = True
+                    print('COMPUTER LOST')
+                    break
+                # self.participant.pick_point()
+                self.player.hit_or_miss_player()
             self.computer.hit_or_miss_computer()
             while self.validation_flag_hit_or_miss_computer is True:
                 self.player.get_hit_counter_player()
-                self.carrier.ship_sunk_carrier_player(self.player.get_hit_counter_player)
-                self.cruiser.ship_sunk_cruiser_player(self.player.get_hit_counter_player)
-                self.destroyer.ship_sunk_destroyer_player(self.player.get_hit_counter_player)
-                self.patrol_boat.ship_sunk_patrol_boat_player(self.player.get_hit_counter_player)
-                self.submarine.ship_sunk_submarine_player(self.player.get_hit_counter_player)
+                self.player.track_hit_counter_player()
+                self.carrier.ship_sunk_carrier_player()
+                self.cruiser.ship_sunk_cruiser_player()
+                self.destroyer.ship_sunk_destroyer_player()
+                self.patrol_boat.ship_sunk_patrol_boat_player()
+                self.submarine.ship_sunk_submarine_player()
                 self.player.game_over_player()
                 # if game is over change game_over to true and stop the game
+                if self.validation_flag_game_over_player is True:
+                    game_over = True
+                    break
+                # self.participant.pick_point()
+                self.computer.hit_or_miss_computer()
 
+def main():
+    battleship = BattleShip(config_name='config_easy_difficulty.ini')
+
+    observed_result = battleship.play_game()
+
+if __name__ == '__main__':
+    main()

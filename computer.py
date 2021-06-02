@@ -147,4 +147,5 @@ class Computer(Participant):
         if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
                 hit_counter_computer[3] + hit_counter_computer[4] == 17:
             self.validation_flag_game_over_computer = True
+            print('Computer lost, Player wins!')
         return self.validation_flag_game_over_computer
