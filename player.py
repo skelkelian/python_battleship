@@ -10,6 +10,11 @@ class Player(Participant):
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')
         self.validation_flag_game_over_player = self.constants.get_constant_values('validation_flag_game_over_player')
         self.validation_flag_hit_counter_computer = self.constants.get_constant_values('validation_flag_hit_counter_computer')
+        self.validation_flag_ship_sunk_carrier_player = self.constants.get_constant_values('validation_flag_ship_sunk_carrier_player')
+        self.validation_flag_ship_sunk_cruiser_player = self.constants.get_constant_values('validation_flag_ship_sunk_cruiser_player')
+        self.validation_flag_ship_sunk_destroyer_player = self.constants.get_constant_values('validation_flag_ship_sunk_destroyer_player')
+        self.validation_flag_ship_sunk_patrol_boat_player = self.constants.get_constant_values('validation_flag_ship_sunk_patrol_boat_player')
+        self.validation_flag_ship_sunk_submarine_player = self.constants.get_constant_values('validation_flag_ship_sunk_submarine_player')
         self.hit_counter_player_one = self.constants.get_constant_values('hit_counter_player_one')
         self.primary_board_player_one = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -104,8 +109,16 @@ class Player(Participant):
         else:
             print("boat type is undefined")
 
+    def verify_unique_points_picked(self):
+        row_selected, column_selected = self.pick_point()
+        while self.secondary_board_player_one[row_selected - 1][column_selected - 1] != 0:
+            row_selected, column_selected = self.pick_point()
+        return row_selected, column_selected
+
     def track_hit_counter_player(self):  # this tracks the computer's hits on the player's ships
         row_selected, column_selected = self.pick_point()
+        while self.secondary_board_player_one[row_selected - 1][column_selected - 1] != 0:
+            row_selected, column_selected = self.pick_point()
         primary_board_player = self.get_primary_board_player_one()
         if primary_board_player[row_selected - 1][column_selected - 1] == self.constants.get_constant_values('carrier'):
             self.hit_counter_player_one[0] = self.hit_counter_player_one[0] + 1
@@ -141,6 +154,26 @@ class Player(Participant):
             self.primary_board_player_one[row_selected - 1][column_selected - 1] = 9
             self.secondary_board_player_one[row_selected - 1][column_selected - 1] = 1
         return self.validation_flag_hit_or_miss_player
+
+    def update_hit_counter_player(self):
+        hit_counter_player = self.get_hit_counter_player()
+        if hit_counter_player[0] == 5:
+            self.validation_flag_ship_sunk_carrier_player = True
+            print("computer sunk player's carrier")
+        elif hit_counter_player[1] == 4:
+            self.validation_flag_ship_sunk_cruiser_player = True
+            print("computer sunk player's cruiser")
+        elif hit_counter_player[2] == 3:
+            self.validation_flag_ship_sunk_destroyer_player = True
+            print("computer sunk player's destroyer")
+        elif hit_counter_player[3] == 2:
+            self.validation_flag_ship_sunk_patrol_boat_player = True
+            print("computer sunk player's patrol boat")
+        elif hit_counter_player[4] == 3:
+            self.validation_flag_ship_sunk_submarine_player = True
+            print("computer sunk player's submarine")
+        else:
+            print("No ships were sunk")
 
     def game_over_player(self):  # if this triggers, the player lost
         hit_counter_player = self.get_hit_counter_player()

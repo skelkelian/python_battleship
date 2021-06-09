@@ -190,41 +190,37 @@ class BattleShip:
         self.start_game()
         while game_over == False:
             # player picks first
-            # self.participant.pick_point()
             self.player.hit_or_miss_player()
             while self.validation_flag_hit_or_miss_player is True:
-                # print('YOU ARE IN THE WHILE LOOP')
                 self.computer.get_hit_counter_computer()
                 self.computer.track_hit_counter_computer()
-                self.carrier.ship_sunk_carrier_computer()
-                self.cruiser.ship_sunk_cruiser_computer()
-                self.destroyer.ship_sunk_destroyer_computer()
-                self.patrol_boat.ship_sunk_patrol_boat_computer()
-                self.submarine.ship_sunk_submarine_computer()
+                self.computer.update_hit_counter_computer()
                 self.computer.game_over_computer()
                 # if game is over change game_over to true and stop the game
                 if self.computer.validation_flag_game_over_computer is True:
                     game_over = True
-                    print('COMPUTER LOST')
                     break
-                # self.participant.pick_point()
+                if game_over == True:
+                    break
                 self.player.hit_or_miss_player()
+
+            # computer picks next
             self.computer.hit_or_miss_computer()
             while self.validation_flag_hit_or_miss_computer is True:
                 self.player.get_hit_counter_player()
                 self.player.track_hit_counter_player()
-                self.carrier.ship_sunk_carrier_player()
-                self.cruiser.ship_sunk_cruiser_player()
-                self.destroyer.ship_sunk_destroyer_player()
-                self.patrol_boat.ship_sunk_patrol_boat_player()
-                self.submarine.ship_sunk_submarine_player()
+                self.player.update_hit_counter_player()
                 self.player.game_over_player()
+
                 # if game is over change game_over to true and stop the game
                 if self.validation_flag_game_over_player is True:
                     game_over = True
                     break
-                # self.participant.pick_point()
+                if game_over == True:
+                    break
                 self.computer.hit_or_miss_computer()
+        return game_over
+
 
 def main():
     battleship = BattleShip(config_name='config_easy_difficulty.ini')

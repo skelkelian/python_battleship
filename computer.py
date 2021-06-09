@@ -142,6 +142,26 @@ class Computer(Participant):
             self.secondary_board_computer[row_selected - 1][column_selected - 1] = 1
         return self.validation_flag_hit_or_miss_computer
 
+    def update_hit_counter_computer(self):
+        hit_counter_computer = self.get_hit_counter_computer()
+        if hit_counter_computer[0] == 5:
+            self.validation_flag_ship_sunk_carrier_computer = True
+            print("player sunk computer's carrier")
+        elif hit_counter_computer[1] == 4:
+            self.validation_flag_ship_sunk_cruiser_computer = True
+            print("player sunk computer's cruiser")
+        elif hit_counter_computer[2] == 3:
+            self.validation_flag_ship_sunk_destroyer_computer = True
+            print("player sunk computer's destroyer")
+        elif hit_counter_computer[3] == 2:
+            self.validation_flag_ship_sunk_patrol_boat_computer = True
+            print("player sunk computer's patrol boat")
+        elif hit_counter_computer[4] == 3:
+            self.validation_flag_ship_sunk_submarine_computer = True
+            print("player sunk computer's submarine")
+        else:
+            print("No ships were sunk")
+
     def game_over_computer(self):  # if this triggers, the computer lost
         hit_counter_computer = self.get_hit_counter_computer()
         if hit_counter_computer[0] + hit_counter_computer[1] + hit_counter_computer[2] + \
