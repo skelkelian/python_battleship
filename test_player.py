@@ -92,6 +92,20 @@ class TestPlayer(unittest.TestCase):
         self.assertTrue(lowest_valid_value < observed_point[0] <= highest_valid_value and
                         lowest_valid_value < observed_point[1] <= highest_valid_value)
 
+    def test_verify_unique_points_picked(self):
+        # create object of class Player
+        self.player = Player()
+
+        # when
+        lowest_valid_value = 0
+        highest_valid_value = 10
+
+        # call method of class Player
+        observed_result = self.player.verify_unique_points_picked()
+
+        self.assertTrue(lowest_valid_value < observed_result[0] <= highest_valid_value and
+                        lowest_valid_value < observed_result[1] <= highest_valid_value)
+
     @patch('player.Player.get_hit_counter_player', return_value=[5, 4, 3, 2, 3])
     def test_game_over_player(self, get_hit_counter_player):
         # create an object of class Player

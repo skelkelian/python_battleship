@@ -1,12 +1,13 @@
 import psycopg2
 import sys
 
-con = None
-constants = dict()
-
 
 class Constants:
+
     def __init__(self):
+        self.constants = dict()
+        self.set_constants_from_database(host='localhost', dbname='skelkelian')
+
         # OPPONENT TYPE
         self.COMPUTER_OPPONENT = 1
         self.PLAYER_OPPONENT = 2
@@ -56,7 +57,7 @@ class Constants:
 
         # VALIDATION COMPUTER
         self.validation_flag_carrier_computer = True
-        self.validation_flag_battleship_computer = True
+        self.validation_flag_cruiser_computer = True
         self.validation_flag_destroyer_computer = True
         self.validation_flag_patrol_boat_computer = True
         self.validation_flag_submarine_computer = True
@@ -73,11 +74,14 @@ class Constants:
         self.validation_flag_ship_sunk_submarine_computer = False
         self.validation_flag_game_over_computer = False
 
-    def get_dictionary_from_database(self, host='localhost', dbname='skelkelian'):
+    def get_constants(self):
+        return self.constants
+
+    def set_constants_from_database(self, host='localhost', dbname='skelkelian'):
         try:
             con = psycopg2.connect("host=" + host + " dbname=" + dbname)
             cur = con.cursor()
-            cur.execute("SELECT * FROM constants")
+            cur.execute("SELECT * FROM battleship_constants")
 
             while True:
                 row = cur.fetchone()
@@ -86,11 +90,25 @@ class Constants:
                     break
 
                 constant = row[0]
-                value = row[1]
-                constants[constant] = value
+                datatype = row[1]
+                value = row[2]
 
-            print(constants)
-            return constants
+                if datatype == 'int':
+                    value = int(value)
+                elif datatype == 'bool':
+                    if value == 'True':
+                        value = True
+                    else:
+                        value = False
+                else:
+                    type_casted_list = []
+                    for i in value.split(', '):
+                        i = int(i)
+                        type_casted_list.append(i)
+                    value = type_casted_list
+
+                self.constants[constant] = value
+
         except psycopg2.OperationalError as ex:
             if con:
                 con.rollback()
@@ -101,3 +119,12 @@ class Constants:
         finally:
             if con:
                 con.close()
+
+    def get_constant_values(self, key):
+        value = None
+        if key in self.constants:
+            value = self.constants[key]
+            # print(key + ": " + str(value))
+        else:
+            print("Key does not exist")
+        return value

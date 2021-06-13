@@ -9,27 +9,21 @@ from configparser import ConfigParser
 class TestCarrier(unittest.TestCase):
     def test_validate_carrier_points(self):
         # create an object of class Carrier
-        self.carrier = Carrier()
+        self.carrier = Carrier('config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
-
-        # creates an object of ConfigParser
-        config = ConfigParser()
-
-        # read config file
-        config.read('config_easy_difficulty_with_errors.ini')
 
         # when
         expected_result = False
 
         # call method of object Carrier
-        observed_result = self.carrier.validate_carrier_points(config)
+        observed_result = self.carrier.validate_carrier_points()
 
         # assert
         self.assertEqual(expected_result, observed_result)
 
     def test_place_carrier_player_one(self):
         # create an object of class Carrier
-        self.carrier = Carrier()
+        self.carrier = Carrier('config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -46,14 +40,8 @@ class TestCarrier(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
 
-        # creates an object of ConfigParser
-        config = ConfigParser()
-
-        # read config file
-        config.read('config_easy_difficulty.ini')
-
         # call method of class Carrier
-        observed_result = self.carrier.place_carrier_player_one(config)
+        observed_result = self.carrier.place_carrier_player_one()
 
         # assert
         self.assertNotEqual(initial_result, observed_result)
@@ -75,27 +63,21 @@ class TestCarrier(unittest.TestCase):
     @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
     def test_validate_carrier_computer_points(self, validate_game_difficulty):
         # create an object of class Carrier
-        self.carrier = Carrier()
+        self.carrier = Carrier('config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
-
-        # creates an object of ConfigParser
-        config = ConfigParser()
-
-        # read config file
-        config.read('config_easy_difficulty_with_errors.ini')
 
         # when
         expected_result = False
 
         # call method of object Carrier
-        observed_result = self.carrier.validate_carrier_computer_points(config)
+        observed_result = self.carrier.validate_carrier_computer_points()
 
         # assert
         self.assertEqual(expected_result, observed_result)
 
     def test_place_carrier_computer(self):
         # create an object of class Carrier
-        self.carrier = Carrier()
+        self.carrier = Carrier('config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -112,14 +94,8 @@ class TestCarrier(unittest.TestCase):
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         ]
 
-        # creates an object of ConfigParser
-        config = ConfigParser()
-
-        # read config file
-        config.read('config_easy_difficulty.ini')
-
         # call method of class Carrier
-        observed_result = self.carrier.place_carrier_computer(config)
+        observed_result = self.carrier.place_carrier_computer()
 
         # assert
         self.assertNotEqual(initial_result, observed_result)
