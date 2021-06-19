@@ -1,10 +1,9 @@
-from random import randint
 import utils
-from participant import Participant
+from src.participant import Participant
 
 
 class Player(Participant):
-    def __init__(self, config_name=None):
+    def __init__(self):
         super().__init__()
         self.constants = utils.Constants()
         self.validation_flag_hit_or_miss_player = self.constants.get_constant_values('validation_flag_hit_or_miss_player')

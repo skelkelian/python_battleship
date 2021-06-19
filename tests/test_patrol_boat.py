@@ -1,9 +1,7 @@
 import unittest
 import utils
-import os
 from unittest.mock import patch
-from patrol_boat import Patrol_Boat
-from configparser import ConfigParser
+from src.patrol_boat import Patrol_Boat
 
 
 class TestPatrol_Boat(unittest.TestCase):
@@ -34,7 +32,7 @@ class TestPatrol_Boat(unittest.TestCase):
 
     def test_validate_patrol_boat_points(self):
         # create an object of class Patrol_Boat
-        self.patrol_boat = Patrol_Boat('config_easy_difficulty_with_errors.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -47,7 +45,7 @@ class TestPatrol_Boat(unittest.TestCase):
 
     def test_place_patrol_boat_player_one(self):
         # create an object of class Patrol Boat
-        self.patrol_boat = Patrol_Boat('config_easy_difficulty.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -87,7 +85,7 @@ class TestPatrol_Boat(unittest.TestCase):
     @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_patrol_boat_overlap(self, get_primary_board_player_one):
         # create an object of class Patrol Boat
-        self.patrol_boat = Patrol_Boat('config_easy_ship_overlap.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when
@@ -100,7 +98,7 @@ class TestPatrol_Boat(unittest.TestCase):
 
     def test_validate_patrol_boat_computer_points(self):
         # create an object of class Patrol_Boat
-        self.patrol_boat = Patrol_Boat('config_easy_difficulty_with_errors.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -113,7 +111,7 @@ class TestPatrol_Boat(unittest.TestCase):
 
     def test_place_patrol_boat_computer(self):
         # create an object of class Patrol Boat
-        self.patrol_boat = Patrol_Boat('config_easy_difficulty.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -153,7 +151,7 @@ class TestPatrol_Boat(unittest.TestCase):
     @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_patrol_boat_computer_overlap(self, get_primary_board_player_one):
         # create an object of class Patrol Boat
-        self.patrol_boat = Patrol_Boat('config_easy_ship_overlap.ini')
+        self.patrol_boat = Patrol_Boat('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when

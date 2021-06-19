@@ -1,9 +1,7 @@
 import unittest
 import utils
 from unittest.mock import patch
-from submarine import Submarine
-from ship import Ship
-from configparser import ConfigParser
+from src.submarine import Submarine
 
 
 class TestSubmarine(unittest.TestCase):
@@ -34,7 +32,7 @@ class TestSubmarine(unittest.TestCase):
 
     def test_validate_submarine_points(self):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_difficulty_with_errors.ini')
+        self.submarine = Submarine('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -47,7 +45,7 @@ class TestSubmarine(unittest.TestCase):
 
     def test_place_submarine_player_one(self):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_difficulty.ini')
+        self.submarine = Submarine('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -70,7 +68,7 @@ class TestSubmarine(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('player.Player.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
+    @patch('src.player.Player.get_hit_counter_player', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_player(self, get_hit_counter_player):
         # create an object of class Submarine
         self.submarine = Submarine()
@@ -83,10 +81,10 @@ class TestSubmarine(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
+    @patch('src.player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_submarine_overlap(self, get_primary_board_player_one):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_ship_overlap.ini')
+        self.submarine = Submarine('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when
@@ -99,7 +97,7 @@ class TestSubmarine(unittest.TestCase):
 
     def test_validate_submarine_computer_points(self):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_difficulty_with_errors.ini')
+        self.submarine = Submarine('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -112,7 +110,7 @@ class TestSubmarine(unittest.TestCase):
 
     def test_place_submarine_computer(self):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_difficulty.ini')
+        self.submarine = Submarine('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -135,7 +133,7 @@ class TestSubmarine(unittest.TestCase):
         # assert
         self.assertNotEqual(initial_result, observed_result)
 
-    @patch('computer.Computer.get_hit_counter_computer', return_value=[2, 3, 1, 1, 3])
+    @patch('src.computer.Computer.get_hit_counter_computer', return_value=[2, 3, 1, 1, 3])
     def test_ship_sunk_submarine_computer(self, get_hit_counter_computer):
         # create an object of class Submarine
         self.submarine = Submarine()
@@ -148,10 +146,10 @@ class TestSubmarine(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
+    @patch('src.computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_submarine_computer_overlap(self, get_primary_board_computer):
         # create an object of class Submarine
-        self.submarine = Submarine('config_easy_ship_overlap.ini')
+        self.submarine = Submarine('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when

@@ -1,9 +1,7 @@
 import unittest
 import utils
 from unittest.mock import patch
-from cruiser import Cruiser
-from ship import Ship
-from configparser import ConfigParser
+from src.cruiser import Cruiser
 
 
 class TestCruiser(unittest.TestCase):
@@ -34,7 +32,7 @@ class TestCruiser(unittest.TestCase):
 
     def test_validate_cruiser_points(self):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_difficulty_with_errors.ini')
+        self.cruiser = Cruiser('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -48,7 +46,7 @@ class TestCruiser(unittest.TestCase):
 
     def test_place_cruiser_player_one(self):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_difficulty.ini')
+        self.cruiser = Cruiser('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -88,7 +86,7 @@ class TestCruiser(unittest.TestCase):
     @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_cruiser_overlap(self, get_primary_board_player_one):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_ship_overlap.ini')
+        self.cruiser = Cruiser('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when
@@ -102,7 +100,7 @@ class TestCruiser(unittest.TestCase):
 
     def test_validate_cruiser_computer_points(self):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_difficulty_with_errors.ini')
+        self.cruiser = Cruiser('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -116,7 +114,7 @@ class TestCruiser(unittest.TestCase):
 
     def test_place_cruiser_computer(self):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_difficulty.ini')
+        self.cruiser = Cruiser('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -156,7 +154,7 @@ class TestCruiser(unittest.TestCase):
     @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_cruiser_computer_overlap(self, get_primary_board_player_one):
         # create an object of class Cruiser
-        self.cruiser = Cruiser('config_easy_ship_overlap.ini')
+        self.cruiser = Cruiser('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when

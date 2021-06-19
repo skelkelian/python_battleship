@@ -1,7 +1,7 @@
 from utils import Constants
-from ship import Ship
-from player import Player
-from computer import Computer
+from src.ship import Ship
+from src.player import Player
+from src.computer import Computer
 from configparser import ConfigParser
 
 

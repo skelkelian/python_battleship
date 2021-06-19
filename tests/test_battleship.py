@@ -1,9 +1,6 @@
-from unittest import TestCase
 import unittest
 import utils
-from BattleShip import BattleShip
-from unittest.mock import patch
-from configparser import ConfigParser
+from src.BattleShip import BattleShip
 
 
 class TestBattleShip(unittest.TestCase):
@@ -24,14 +21,14 @@ class TestBattleShip(unittest.TestCase):
         ]
 
         # when
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty.ini')
 
         # assert
         self.assertEqual(expected_player_board_player_one, self.battleship.player.primary_board_player_one)
 
     def test_read_computer_opponent_type_file(self):
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -44,7 +41,7 @@ class TestBattleShip(unittest.TestCase):
 
     def test_read_game_difficulty_config_file(self):
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -75,7 +72,7 @@ class TestBattleShip(unittest.TestCase):
 
     def test_validate_game_difficulty(self):
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty_with_errors.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty_with_errors.ini')
 
         # when
         expected_game_difficulty = False
@@ -90,7 +87,7 @@ class TestBattleShip(unittest.TestCase):
     def test_start_game(self):
         # given
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty.ini')
 
         # when
         expected_primary_board_player_one = [
@@ -130,7 +127,7 @@ class TestBattleShip(unittest.TestCase):
     def test_end_game(self):
         # given
         # create an object of class BattleShip
-        self.battleship = BattleShip(config_name='config_easy_difficulty.ini')
+        self.battleship = BattleShip(config_name='../config/config_easy_difficulty.ini')
 
         observed_result = self.battleship.play_game()
 

@@ -1,15 +1,13 @@
-from unittest import TestCase
 import unittest
 import utils
 from unittest.mock import patch
-from carrier import Carrier
-from configparser import ConfigParser
+from src.carrier import Carrier
 
 
 class TestCarrier(unittest.TestCase):
     def test_validate_carrier_points(self):
         # create an object of class Carrier
-        self.carrier = Carrier('config_easy_difficulty_with_errors.ini')
+        self.carrier = Carrier('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -23,7 +21,7 @@ class TestCarrier(unittest.TestCase):
 
     def test_place_carrier_player_one(self):
         # create an object of class Carrier
-        self.carrier = Carrier('config_easy_difficulty.ini')
+        self.carrier = Carrier('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -60,10 +58,10 @@ class TestCarrier(unittest.TestCase):
 
         self.assertEqual(expected_result, observed_result)
 
-    @patch('BattleShip.BattleShip.validate_game_difficulty', return_value=True)
+    @patch('src.BattleShip.BattleShip.validate_game_difficulty', return_value=True)
     def test_validate_carrier_computer_points(self, validate_game_difficulty):
         # create an object of class Carrier
-        self.carrier = Carrier('config_easy_difficulty_with_errors.ini')
+        self.carrier = Carrier('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -77,7 +75,7 @@ class TestCarrier(unittest.TestCase):
 
     def test_place_carrier_computer(self):
         # create an object of class Carrier
-        self.carrier = Carrier('config_easy_difficulty.ini')
+        self.carrier = Carrier('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
