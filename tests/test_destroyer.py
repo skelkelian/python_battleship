@@ -1,10 +1,7 @@
-from unittest import TestCase
 import unittest
 import utils
 from unittest.mock import patch
-from destroyer import Destroyer
-from ship import Ship
-from configparser import ConfigParser
+from src.destroyer import Destroyer
 
 
 class TestDestroyer(unittest.TestCase):
@@ -35,7 +32,7 @@ class TestDestroyer(unittest.TestCase):
 
     def test_validate_destroyer_points(self):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_difficulty_with_errors.ini')
+        self.destroyer = Destroyer('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -48,7 +45,7 @@ class TestDestroyer(unittest.TestCase):
 
     def test_place_destroyer_player_one(self):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_difficulty.ini')
+        self.destroyer = Destroyer('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -88,7 +85,7 @@ class TestDestroyer(unittest.TestCase):
     @patch('player.Player.get_primary_board_player_one', return_value=mocked_primary_board)
     def test_validate_destroyer_overlap(self, get_primary_board_player_one):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_ship_overlap.ini')
+        self.destroyer = Destroyer('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when
@@ -101,7 +98,7 @@ class TestDestroyer(unittest.TestCase):
 
     def test_validate_destroyer_computer_points(self):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_difficulty_with_errors.ini')
+        self.destroyer = Destroyer('../config/config_easy_difficulty_with_errors.ini')
         self.constants = utils.Constants()
 
         # when
@@ -114,7 +111,7 @@ class TestDestroyer(unittest.TestCase):
 
     def test_place_destroyer_computer(self):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_difficulty.ini')
+        self.destroyer = Destroyer('../config/config_easy_difficulty.ini')
         self.constants = utils.Constants()
 
         # when
@@ -154,7 +151,7 @@ class TestDestroyer(unittest.TestCase):
     @patch('computer.Computer.get_primary_board_computer', return_value=mocked_primary_board_computer)
     def test_validate_destroyer_computer_overlap(self, get_primary_board_computer):
         # create an object of class Destroyer
-        self.destroyer = Destroyer('config_easy_ship_overlap.ini')
+        self.destroyer = Destroyer('../config/config_easy_ship_overlap.ini')
         self.constants = utils.Constants()
 
         # when

@@ -1,16 +1,16 @@
 # battleship
 # imports
 from configparser import ConfigParser
-from carrier import Carrier
-from cruiser import Cruiser
-from destroyer import Destroyer
-from patrol_boat import Patrol_Boat
-from submarine import Submarine
-from ship import Ship
-from player import Player
-from computer import Computer
+from src.carrier import Carrier
+from src.cruiser import Cruiser
+from src.destroyer import Destroyer
+from src.patrol_boat import Patrol_Boat
+from src.submarine import Submarine
+from src.ship import Ship
+from src.player import Player
+from src.computer import Computer
 from random import randint
-from participant import Participant
+from src.participant import Participant
 import utils
 
 
@@ -223,7 +223,7 @@ class BattleShip:
 
 
 def main():
-    battleship = BattleShip(config_name='config_easy_difficulty.ini')
+    battleship = BattleShip(config_name='./config/config_easy_difficulty.ini')
 
     observed_result = battleship.play_game()
 
